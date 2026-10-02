@@ -19,11 +19,11 @@
     --ink-soft:#4B5D63;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth;background:var(--navy-deep);}
   body{
     font-family:'Source Sans 3', sans-serif;
     color:var(--ink);
-    background:var(--cream);
+    background:var(--navy-deep);
     line-height:1.55;
   }
   h1,h2,h3,.brand-word{
@@ -36,7 +36,7 @@
   .container{max-width:1120px;margin:0 auto;padding:0 24px;}
   .btn{
     display:inline-flex;align-items:center;gap:8px;
-    padding:13px 26px;border-radius:2px;
+    padding:13px 26px;border-radius:10px;
     font-weight:600;font-size:0.95rem;
     border:1px solid transparent;
     cursor:pointer;
@@ -51,9 +51,12 @@
 
   /* ---------- HEADER ---------- */
   header{
-    background:var(--navy-deep);
+    background:rgba(20,38,47,0.72);
+    backdrop-filter:blur(14px) saturate(140%);
+    -webkit-backdrop-filter:blur(14px) saturate(140%);
     position:sticky;top:0;z-index:50;
     border-bottom:1px solid var(--navy-line);
+    border-radius:0 0 22px 22px;
   }
   .nav-wrap{
     display:flex;align-items:center;justify-content:space-between;
@@ -88,6 +91,75 @@
     display:block;padding:9px 12px;font-size:0.9rem;color:var(--cream);border-radius:2px;
   }
   .dropdown a:hover{background:var(--navy-line);color:var(--gold-light);}
+
+  .header-icons{display:flex;align-items:center;gap:16px;}
+  .icon-btn{
+    display:flex;align-items:center;justify-content:center;
+    width:30px;height:30px;color:var(--cream);background:none;border:none;
+    cursor:pointer;padding:0;transition:color .18s ease,transform .18s ease;
+  }
+  .icon-btn svg{width:21px;height:21px;}
+  .icon-btn:hover{color:var(--gold-light);transform:translateY(-1px);}
+  .icon-cart{color:var(--gold);}
+  .icon-cart:hover{color:var(--gold-light);}
+  .icon-badge{
+    position:absolute;top:-4px;right:-6px;background:#B5493C;color:#fff;
+    font-size:0.64rem;font-weight:700;min-width:16px;height:16px;border-radius:50%;
+    align-items:center;justify-content:center;line-height:1;padding:0 3px;
+  }
+
+  /* ---------- CARRINHO ---------- */
+  .carrinho-layout{display:grid;grid-template-columns:1fr 320px;gap:36px;align-items:start;}
+  .carrinho-lista{display:flex;flex-direction:column;gap:14px;}
+  .carrinho-item{
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    background:var(--navy-panel);border:1px solid var(--navy-line);border-radius:12px;padding:18px 20px;
+  }
+  .carrinho-item-tag{color:var(--gold-light);font-size:0.7rem;font-weight:700;letter-spacing:0.05em;display:block;margin-bottom:4px;}
+  .carrinho-item h4{color:var(--cream);font-size:1.05rem;}
+  .carrinho-item-right{display:flex;align-items:center;gap:18px;}
+  .carrinho-item-right .price{color:var(--gold-light);font-weight:700;}
+  .carrinho-remover{
+    background:none;border:none;color:var(--cream-2);cursor:pointer;font-size:1rem;
+    width:26px;height:26px;border-radius:50%;transition:background .15s ease,color .15s ease;
+  }
+  .carrinho-remover:hover{background:var(--navy-line);color:#E6998C;}
+  .carrinho-resumo{
+    background:var(--navy-panel);border:1px solid var(--navy-line);border-radius:16px;
+    padding:26px 24px;display:flex;flex-direction:column;gap:14px;position:sticky;top:110px;
+  }
+  .carrinho-resumo-linha{
+    display:flex;align-items:center;justify-content:space-between;color:var(--cream);font-weight:600;
+    padding-bottom:14px;border-bottom:1px solid var(--navy-line);
+  }
+  .carrinho-resumo .btn[disabled]{opacity:0.5;cursor:default;}
+  .carrinho-cupom{color:var(--cream-2);font-size:0.82rem;text-align:center;margin-top:4px;}
+  @media (max-width:760px){
+    .carrinho-layout{grid-template-columns:1fr;}
+    .carrinho-resumo{position:static;}
+  }
+
+  /* ---------- PÁGINA DE CADASTRO ---------- */
+  .cadastro-step{display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:26px;}
+  .cadastro-step .step-dot{
+    width:34px;height:34px;border-radius:50%;background:var(--gold);color:var(--navy-deep);
+    display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.95rem;flex:none;
+  }
+  .cadastro-step .step-label{color:var(--gold-light);font-weight:700;font-size:0.8rem;letter-spacing:0.05em;}
+  .cadastro-card{
+    background:var(--navy-panel);border:1px solid var(--navy-line);border-radius:16px;
+    padding:30px 28px;border-top:3px solid var(--gold);
+  }
+  .cadastro-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px 20px;}
+  .cadastro-card .checkout-field label{color:var(--gold-light);font-size:0.76rem;letter-spacing:0.04em;text-transform:uppercase;}
+  .cadastro-card .checkout-field input{
+    background:var(--navy-deep);border:1px solid var(--navy-line);color:var(--cream);
+  }
+  .cadastro-card .checkout-field input::placeholder{color:#6C8795;}
+  .cadastro-card .checkout-field input:focus{border-color:var(--gold);}
+  @media (max-width:640px){
+    .cadastro-grid{grid-template-columns:1fr;}
+  }
 
   .menu-toggle{display:none;background:none;border:none;color:var(--cream);font-size:1.6rem;cursor:pointer;}
   .nav-close{display:none;}
@@ -124,7 +196,7 @@
   .hero-meta div span.label{font-size:0.82rem;color:#9FB1B7;}
 
   /* ---------- SECTION HEADINGS ---------- */
-  .section{padding:88px 0;}
+  .section{padding:88px 0;background:var(--cream);}
   .section-head{max-width:640px;margin-bottom:52px;}
   .section-head .kicker{
     color:var(--gold);font-weight:700;font-size:0.8rem;letter-spacing:0.04em;margin-bottom:12px;display:block;
@@ -138,7 +210,7 @@
   /* ---------- PRACTICE AREAS ---------- */
   .areas-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
   .area-card{
-    background:#fff;border:1px solid #E1D9C8;border-radius:2px;
+    background:#fff;border:1px solid #E1D9C8;border-radius:16px;
     padding:36px 34px;position:relative;
   }
   .area-card .icon{
@@ -246,6 +318,7 @@
   /* ---------- CTA STRIP ---------- */
   .cta-strip{
     background:var(--gold);padding:56px 0;
+    width:calc(100% - 48px);max-width:1120px;margin:48px auto;border-radius:22px;
   }
   .cta-inner{
     display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:24px;
@@ -254,7 +327,7 @@
   .cta-strip .btn-outline-dark{border-color:var(--navy-deep);}
 
   /* ---------- FOOTER ---------- */
-  footer{background:var(--navy-deep);padding:70px 0 30px;border-top:1px solid var(--navy-line);}
+  footer{background:var(--navy-deep);padding:70px 0 30px;border-top:1px solid var(--navy-line);border-radius:22px 22px 0 0;}
   .footer-grid{
     display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px;padding-bottom:44px;border-bottom:1px solid var(--navy-line);
   }
@@ -273,6 +346,130 @@
   .footer-pagamento h5{color:var(--gold-light);font-size:0.82rem;letter-spacing:0.04em;margin-bottom:14px;}
   .footer-pagamento img{width:520px;max-width:100%;height:auto;}
   @media (max-width:600px){ .footer-pagamento img{width:100%;} }
+
+  /* ---------- CHECKOUT MODAL ---------- */
+  .checkout-overlay{
+    display:none;position:fixed;inset:0;background:rgba(14,22,26,0.62);z-index:100;
+    align-items:center;justify-content:center;padding:20px;
+  }
+  .checkout-overlay.open{display:flex;}
+  .checkout-box{
+    background:#fff;border-radius:3px;max-width:440px;width:100%;padding:34px 30px;position:relative;
+  }
+  .checkout-box h3{font-size:1.3rem;color:var(--ink);margin-bottom:6px;}
+  .checkout-box .checkout-item{color:var(--ink-soft);font-size:0.92rem;margin-bottom:22px;}
+  .checkout-box .checkout-item b{color:var(--ink);}
+  .checkout-close{
+    position:absolute;top:16px;right:18px;background:none;border:none;font-size:1.3rem;
+    color:var(--ink-soft);cursor:pointer;line-height:1;
+  }
+  .checkout-field{margin-bottom:16px;}
+  .checkout-field label{display:block;font-size:0.84rem;font-weight:600;color:var(--ink);margin-bottom:6px;}
+  .checkout-field input{
+    width:100%;padding:11px 13px;border:1px solid #D8CDB4;border-radius:2px;font-size:0.95rem;
+    font-family:inherit;color:var(--ink);
+  }
+  .checkout-field input:focus{outline:none;border-color:var(--gold);}
+  .checkout-erro{color:#B5493C;font-size:0.86rem;margin-bottom:14px;display:none;}
+  .checkout-erro.show{display:block;}
+  .checkout-box .btn{width:100%;justify-content:center;margin-top:6px;}
+  .checkout-box .btn[disabled]{opacity:0.6;cursor:default;}
+
+  /* ---------- MODAL ESCURO (login, área do aluno) ---------- */
+  .checkout-box-dark{
+    background:var(--navy-panel);border:1px solid var(--navy-line);border-top:3px solid var(--gold);
+    border-radius:16px;
+  }
+  .checkout-box-dark h3{font-family:'Fraunces',serif;color:var(--cream);font-size:1.7rem;}
+  .checkout-box-dark .checkout-item{color:var(--cream-2);}
+  .checkout-box-dark .checkout-item b{color:var(--cream);}
+  .checkout-box-dark .checkout-close{color:var(--cream-2);}
+  .checkout-box-dark .checkout-close:hover{color:var(--cream);}
+  .checkout-box-dark .checkout-field label{color:var(--gold-light);font-size:0.76rem;letter-spacing:0.04em;text-transform:uppercase;}
+  .checkout-box-dark .checkout-field input{
+    background:var(--navy-deep);border:1px solid var(--navy-line);color:var(--cream);
+  }
+  .checkout-box-dark .checkout-field input::placeholder{color:#6C8795;}
+  .checkout-box-dark .checkout-field input:focus{border-color:var(--gold);}
+
+  .pagamento-banner{
+    padding:14px 20px;border-radius:2px;margin-bottom:22px;font-size:0.92rem;font-weight:600;
+  }
+  .pagamento-banner.sucesso{background:#E4EFE1;color:#2F5E2A;border:1px solid #BFDAB8;}
+  .pagamento-banner.erro{background:#F7E4E1;color:#8C3327;border:1px solid #E6BCB4;}
+  .pagamento-banner.pendente{background:#FBF1DC;color:#8A6412;border:1px solid #EFD9A3;}
+
+  /* ---------- TRANSIÇÃO ENTRE PÁGINAS ---------- */
+  @keyframes pageFadeIn{
+    from{ opacity:0; transform:translateY(14px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+  .page-anim{
+    animation:pageFadeIn .42s cubic-bezier(.22,.61,.36,1) both;
+  }
+  @media (prefers-reduced-motion:reduce){
+    .page-anim{ animation:none; }
+  }
+
+  /* ---------- BOTÃO FLUTUANTE WHATSAPP ---------- */
+  .whatsapp-float{
+    position:fixed;right:24px;bottom:24px;z-index:80;
+    width:58px;height:58px;border-radius:50%;
+    background:#25D366;
+    display:flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 18px rgba(0,0,0,0.28);
+    transition:transform .18s ease, box-shadow .18s ease;
+  }
+  .whatsapp-float:hover{transform:scale(1.08);box-shadow:0 8px 22px rgba(0,0,0,0.34);}
+  .whatsapp-float svg{width:30px;height:30px;}
+  .whatsapp-float::before{
+    content:"";position:absolute;inset:0;border-radius:50%;
+    background:#25D366;opacity:0.55;
+    animation:whatsappPulse 2.4s ease-out infinite;
+  }
+  @keyframes whatsappPulse{
+    0%{ transform:scale(1); opacity:0.55; }
+    100%{ transform:scale(1.7); opacity:0; }
+  }
+  @media (prefers-reduced-motion:reduce){
+    .whatsapp-float::before{ animation:none; display:none; }
+  }
+  @media (max-width:600px){
+    .whatsapp-float{right:16px;bottom:16px;width:52px;height:52px;}
+    .whatsapp-float svg{width:27px;height:27px;}
+  }
+
+  /* ---------- TELA DE CARREGAMENTO ---------- */
+  #splash{
+    position:fixed;inset:0;z-index:999;
+    background:var(--navy-deep);
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    transition:opacity .55s ease, visibility .55s ease;
+  }
+  #splash.splash-hide{opacity:0;visibility:hidden;}
+  #splash svg{width:56px;height:56px;margin-bottom:22px;animation:splashFloat 2.2s ease-in-out infinite;}
+  #splash h1{
+    font-family:'Fraunces',serif;font-weight:500;color:var(--cream);
+    font-size:2.1rem;letter-spacing:0.01em;margin-bottom:10px;
+    opacity:0;animation:splashTextIn .7s ease .15s forwards;
+  }
+  #splash p{
+    font-size:0.86rem;letter-spacing:0.14em;color:var(--gold-light);font-weight:600;
+    text-transform:uppercase;
+    opacity:0;animation:splashTextIn .7s ease .35s forwards;
+  }
+  @keyframes splashFloat{
+    0%,100%{ transform:translateY(0); }
+    50%{ transform:translateY(-6px); }
+  }
+  @keyframes splashTextIn{
+    from{ opacity:0; transform:translateY(10px); }
+    to{ opacity:1; transform:translateY(0); }
+  }
+  @media (prefers-reduced-motion:reduce){
+    #splash svg{animation:none;}
+    #splash h1, #splash p{animation:none;opacity:1;}
+  }
 
   /* ---------- PREVIEW NOTICE ---------- */
   .preview-banner{
@@ -319,6 +516,14 @@
 </head>
 <body>
 
+<div id="splash">
+  <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M24 10v22M17 14h14M13 17l-5 8a5 5 0 0010 0l-5-8zM35 17l-5 8a5 5 0 0010 0l-5-8zM8 25h10M30 25h10M18 36h12" stroke="#D3AE84" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  <h1>Bem-vindo</h1>
+  <p>Advocacia Israel</p>
+</div>
+
 <div class="preview-banner">Prévia de layout — <b>Israel Donizete Advocacia</b> · conteúdo e imagens finais a definir</div>
 
 <header>
@@ -344,19 +549,19 @@
           </div>
         </li>
         <li>
-          <a class="top-link" href="#livros-cursos">Livros e Cursos <span class="caret">▾</span></a>
+          <a class="top-link" href="#livros-todos">Livros e Cursos <span class="caret">▾</span></a>
           <div class="dropdown">
             <a href="#livros-todos">Livros</a>
             <a href="#cursos-todos">Cursos</a>
           </div>
         </li>
         <li>
-          <a class="top-link" href="#blog">Blog <span class="caret">▾</span></a>
+          <a class="top-link" href="#blog-todos">Blog <span class="caret">▾</span></a>
           <div class="dropdown">
-            <a href="#blog">Trabalhista</a>
-            <a href="#blog">Previdenciário</a>
-            <a href="#blog">Notícias</a>
-            <a href="#blog">Artigos</a>
+            <a href="#blog-todos-trabalhista">Trabalhista</a>
+            <a href="#blog-todos-previdenciario">Previdenciário</a>
+            <a href="#blog-todos-noticias">Notícias</a>
+            <a href="#blog-todos-artigos">Artigos</a>
           </div>
         </li>
         <li><a class="top-link" href="#sobre">Sobre</a></li>
@@ -364,13 +569,118 @@
       </ul>
     </nav>
 
-    <div style="display:flex;align-items:center;gap:14px;">
-      <a href="#contato" class="btn btn-gold" style="display:none" id="ctaDesktop">Fale com um Advogado</a>
+    <div style="display:flex;align-items:center;gap:18px;">
+      <div class="header-icons">
+        <button class="icon-btn icon-cart" id="iconCarrinho" aria-label="Carrinho" title="Carrinho" style="position:relative;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+          <span id="badgeCarrinho" class="icon-badge" style="display:none;">0</span>
+        </button>
+        <button class="icon-btn" id="iconCadastro" aria-label="Criar conta" title="Criar conta">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="8.5" cy="7" r="4"></circle><line x1="20" y1="8" x2="20" y2="14"></line><line x1="23" y1="11" x2="17" y2="11"></line></svg>
+        </button>
+        <button class="icon-btn" id="iconLogin" aria-label="Entrar" title="Entrar">
+          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/><path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/></svg>
+        </button>
+      </div>
+      <a href="https://wa.me/5511975751984?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20um%20advogado." target="_blank" rel="noopener" class="btn btn-gold" style="display:none" id="ctaDesktop">Fale com um Advogado</a>
       <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">☰</button>
     </div>
   </div>
   <div class="nav-backdrop" id="navBackdrop"></div>
 </header>
+
+<!-- ================= CHECKOUT MODAL ================= -->
+<div class="checkout-overlay" id="checkoutOverlay">
+  <div class="checkout-box">
+    <button class="checkout-close" id="checkoutClose" aria-label="Fechar">✕</button>
+    <h3 id="checkoutTitulo">Finalizar compra</h3>
+    <p class="checkout-item" id="checkoutItem"></p>
+    <p class="checkout-erro" id="checkoutErro"></p>
+    <div class="checkout-field">
+      <label for="checkoutNome">Nome completo</label>
+      <input type="text" id="checkoutNome" placeholder="Seu nome">
+    </div>
+    <div class="checkout-field">
+      <label for="checkoutEmail">E-mail</label>
+      <input type="email" id="checkoutEmail" placeholder="seu@email.com">
+    </div>
+    <button class="btn btn-gold" id="checkoutConfirmar">Ir para o pagamento</button>
+  </div>
+</div>
+
+<!-- ================= PÁGINA CADASTRO (ALUNO) ================= -->
+<section id="cadastroPage" style="display:none;background:var(--navy-deep);padding:76px 0 100px;">
+  <div class="container" style="max-width:640px;">
+    <div style="text-align:center;margin-bottom:34px;">
+      <span class="detalhe-kicker" style="color:var(--gold);">ÁREA DO ALUNO</span>
+      <h1 style="font-family:'Fraunces',serif;color:var(--cream);font-size:2.3rem;margin:10px 0 14px;">Cadastre-se</h1>
+      <p style="color:var(--cream-2);max-width:460px;margin:0 auto;">Crie sua conta para acessar os cursos, materiais e suas compras.</p>
+    </div>
+
+    <div class="cadastro-step">
+      <span class="step-dot">1</span>
+      <span class="step-label">DADOS PESSOAIS</span>
+    </div>
+
+    <div class="cadastro-card">
+      <p class="checkout-erro" id="cadastroErro"></p>
+      <div class="cadastro-grid">
+        <div class="checkout-field">
+          <label for="cadastroNome">Nome</label>
+          <input type="text" id="cadastroNome" placeholder="Seu nome completo">
+        </div>
+        <div class="checkout-field">
+          <label for="cadastroEmail">E-mail</label>
+          <input type="email" id="cadastroEmail" placeholder="seu@email.com">
+        </div>
+        <div class="checkout-field">
+          <label for="cadastroTelefone">Tel. celular</label>
+          <input type="text" id="cadastroTelefone" placeholder="(99) 99999-9999">
+        </div>
+        <div class="checkout-field"></div>
+        <div class="checkout-field">
+          <label for="cadastroSenha">Senha</label>
+          <input type="password" id="cadastroSenha" placeholder="Crie uma senha">
+        </div>
+        <div class="checkout-field">
+          <label for="cadastroSenhaConfirmar">Confirmar senha</label>
+          <input type="password" id="cadastroSenhaConfirmar" placeholder="Repita a senha">
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-top:24px;">
+      <p style="color:var(--cream-2);font-size:0.85rem;font-style:italic;margin:0;">* Telefone é opcional, os demais campos são obrigatórios</p>
+      <button class="btn btn-gold" id="cadastroConfirmar">Criar conta</button>
+    </div>
+    <p style="text-align:center;color:var(--cream-2);margin-top:22px;">Já tem conta? <a href="#" id="irParaLogin" style="color:var(--gold);">Entrar</a></p>
+  </div>
+</section>
+
+<!-- ================= PÁGINA CARRINHO ================= -->
+<section id="carrinhoPage" style="display:none;background:var(--navy-deep);padding:76px 0 100px;">
+  <div class="container" id="carrinhoConteudo" style="max-width:980px;"></div>
+</section>
+
+<!-- ================= MODAL LOGIN (ALUNO) ================= -->
+<div class="checkout-overlay" id="loginOverlay">
+  <div class="checkout-box checkout-box-dark">
+    <button class="checkout-close" id="loginClose" aria-label="Fechar">✕</button>
+    <h3>Entrar</h3>
+    <p class="checkout-item">Acesse sua área do aluno.</p>
+    <p class="checkout-erro" id="loginErro"></p>
+    <div class="checkout-field">
+      <label for="loginEmail">E-mail</label>
+      <input type="email" id="loginEmail" placeholder="seu@email.com">
+    </div>
+    <div class="checkout-field">
+      <label for="loginSenha">Senha</label>
+      <input type="password" id="loginSenha" placeholder="Sua senha">
+    </div>
+    <button class="btn btn-gold" id="loginConfirmar">Entrar</button>
+    <p class="checkout-item" style="margin-top:14px;text-align:center;">Ainda não tem conta? <a href="#" id="irParaCadastro" style="color:var(--gold);">Criar conta</a></p>
+  </div>
+</div>
 
 <div id="homeContent">
 
@@ -386,7 +696,7 @@
     <h1>Defendendo seus direitos trabalhistas e previdenciários com clareza e segurança.</h1>
     <p class="lead">Atendimento humanizado e técnico para quem precisa de um advogado de confiança — da reclamação trabalhista à revisão de aposentadoria.</p>
     <div class="hero-actions">
-      <a href="#contato" class="btn btn-gold">Falar com um advogado</a>
+      <a href="https://wa.me/5511975751984?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20um%20advogado." target="_blank" rel="noopener" class="btn btn-gold">Falar com um advogado</a>
       <a href="#advocacia" class="btn btn-outline">Ver áreas de atuação</a>
     </div>
     <div class="hero-meta">
@@ -419,7 +729,7 @@
           <li>Acidentes de trabalho</li>
           <li>Acordos trabalhistas</li>
         </ul>
-        <a href="#contato" class="btn btn-outline-dark">Fale com um advogado</a>
+        <a href="https://wa.me/5511975751984?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20um%20advogado." target="_blank" rel="noopener" class="btn btn-outline-dark">Fale com um advogado</a>
       </div>
 
       <div class="area-card" id="previdenciario">
@@ -434,7 +744,7 @@
           <li>Planejamento previdenciário</li>
           <li>Recursos administrativos</li>
         </ul>
-        <a href="#contato" class="btn btn-outline-dark">Fale com um advogado</a>
+        <a href="https://wa.me/5511975751984?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20um%20advogado." target="_blank" rel="noopener" class="btn btn-outline-dark">Fale com um advogado</a>
       </div>
     </div>
   </div>
@@ -444,50 +754,9 @@
 <div class="cta-strip">
   <div class="container cta-inner">
     <h2>Precisa entender seus direitos antes de decidir? Marque uma conversa.</h2>
-    <a href="#contato" class="btn btn-outline-dark">Agendar atendimento</a>
+    <a href="https://wa.me/5511975751984?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20um%20advogado." target="_blank" rel="noopener" class="btn btn-outline-dark">Agendar atendimento</a>
   </div>
 </div>
-
-<!-- ================= LIVROS E CURSOS ================= -->
-<section class="section" id="livros-cursos">
-  <div class="container">
-    <div class="section-head">
-      <span class="kicker">LIVROS E CURSOS</span>
-      <h2>Material próprio, direto de quem atua na área</h2>
-      <p>Uma frente independente da advocacia: livros, e-books e cursos sobre Direito do Trabalho e Direito Previdenciário.</p>
-    </div>
-
-    <div class="shop-tabs">
-      <button class="shop-tab active" data-filter="todos">Todos</button>
-      <button class="shop-tab" id="livros" data-filter="livro">Livros</button>
-      <button class="shop-tab" id="cursos" data-filter="curso">Cursos</button>
-    </div>
-
-    <div class="products-grid" id="productsGrid">
-      <p style="color:var(--ink-soft);grid-column:1/-1;">Carregando…</p>
-    </div>
-    <div class="blog-more" style="display:flex;gap:24px;justify-content:center;">
-      <a href="#livros-todos" class="btn btn-outline-dark">Ver todos os livros</a>
-      <a href="#cursos-todos" class="btn btn-outline-dark">Ver todos os cursos</a>
-    </div>
-  </div>
-</section>
-
-<!-- ================= BLOG ================= -->
-<section class="section section-on-dark" id="blog">
-  <div class="container">
-    <div class="section-head">
-      <span class="kicker" style="color:var(--gold-light)">BLOG</span>
-      <h2>Conteúdo para entender seus direitos</h2>
-      <p>Artigos e notícias sobre Direito do Trabalho, Direito Previdenciário e atualizações relevantes.</p>
-    </div>
-
-    <div class="blog-grid" id="blogGrid">
-      <p style="color:#B7C4C8;grid-column:1/-1;">Carregando…</p>
-    </div>
-    <div class="blog-more"><a href="#blog-todos" class="btn btn-outline">Ver todos os artigos</a></div>
-  </div>
-</section>
 
 <!-- ================= SOBRE ================= -->
 <section class="section" id="sobre">
@@ -604,118 +873,6 @@
   const ICON_BOOK = '<svg viewBox="0 0 48 48" fill="none"><path d="M10 10h14a4 4 0 014 4v24a4 4 0 00-4-4H10V10z" stroke="#D3AE84" stroke-width="1.4"/><path d="M38 10H24v28h14a4 4 0 004-4V14a4 4 0 00-4-4z" stroke="#D3AE84" stroke-width="1.4"/></svg>';
   const ICON_COURSE = '<svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="16" r="8" stroke="#D3AE84" stroke-width="1.4"/><path d="M10 40c0-9 6-15 14-15s14 6 14 15" stroke="#D3AE84" stroke-width="1.4"/></svg>';
 
-  let produtos = []; // livros + cursos combinados, cada um com _tipoItem: 'livro' | 'curso'
-
-  function renderProdutos(filtro){
-    const grid = document.getElementById('productsGrid');
-    const lista = filtro && filtro !== 'todos' ? produtos.filter(p => p._tipoItem === filtro) : produtos;
-
-    if (!lista.length){
-      grid.innerHTML = '<p style="color:var(--ink-soft);grid-column:1/-1;">Em breve, novos materiais por aqui.</p>';
-      return;
-    }
-
-    grid.innerHTML = lista.map(item => {
-      const isLivro = item._tipoItem === 'livro';
-      const tag = isLivro ? (item.tipo === 'ebook' ? 'E-BOOK' : 'LIVRO FÍSICO') : 'CURSO';
-      const icon = isLivro ? ICON_BOOK : ICON_COURSE;
-      const descricao = item.descricao || '';
-      const acao = isLivro ? 'Comprar' : 'Ver curso';
-      const temCapa = !!item.capa_url;
-      const coverStyle = temCapa ? ` style="background-image:url('${item.capa_url}')"` : '';
-      return `
-        <div class="product-card" data-tipo="${item._tipoItem}" data-id="${item.id}">
-          <div class="product-cover${temCapa ? ' has-img' : ''}"${coverStyle}>
-            <span class="tag">${tag}</span>
-            ${temCapa ? '' : icon}
-          </div>
-          <div class="product-body">
-            <span class="cat">${CATEGORIA_LABEL[item.categoria] || item.categoria}</span>
-            <h4>${item.titulo}</h4>
-            <p>${descricao}</p>
-            <div class="product-foot"><span class="price">${formatPreco(item.preco)}</span><span class="mini-btn">${acao}</span></div>
-          </div>
-        </div>`;
-    }).join('');
-  }
-
-  async function carregarProdutos(){
-    try{
-      const [livrosRes, cursosRes] = await Promise.all([
-        fetch(API_URL + '/livros'),
-        fetch(API_URL + '/cursos')
-      ]);
-      const livros = livrosRes.ok ? await livrosRes.json() : [];
-      const cursos = cursosRes.ok ? await cursosRes.json() : [];
-      produtos = [
-        ...livros.map(l => ({ ...l, _tipoItem: 'livro' })),
-        ...cursos.map(c => ({ ...c, _tipoItem: 'curso' }))
-      ];
-      renderProdutos('todos');
-    }catch(err){
-      console.error('Erro ao carregar livros/cursos:', err);
-      document.getElementById('productsGrid').innerHTML = '<p style="color:var(--ink-soft);grid-column:1/-1;">Não foi possível carregar o conteúdo agora. Tente novamente em instantes.</p>';
-    }
-  }
-
-  async function carregarBlog(){
-    const grid = document.getElementById('blogGrid');
-    try{
-      const res = await fetch(API_URL + '/artigos');
-      if (!res.ok) throw new Error('Falha na resposta');
-      let artigos = await res.json();
-      artigos.sort((a, b) => new Date(b.data_publicacao || b.criado_em) - new Date(a.data_publicacao || a.criado_em));
-      artigos = artigos.slice(0, 3);
-
-      if (!artigos.length){
-        grid.innerHTML = '<p style="color:#AFC0C5;grid-column:1/-1;">Em breve, novos artigos por aqui.</p>';
-        return;
-      }
-
-      grid.innerHTML = artigos.map((art, i) => {
-        const temCapa = !!art.capa_url;
-        const coverStyle = temCapa ? ` style="background-image:url('${art.capa_url}')"` : '';
-        return `
-        <article class="post-card${i === 0 ? ' featured' : ''}" data-slug="${art.slug}">
-          <div class="post-thumb${temCapa ? ' has-img' : ''}"${coverStyle}><span class="cat-pill">${CATEGORIA_LABEL[art.categoria] || art.categoria}</span></div>
-          <div class="post-body">
-            <span class="date">${formatData(art.data_publicacao || art.criado_em)}</span>
-            <h3>${art.titulo}</h3>
-            ${i === 0 && art.resumo ? `<p>${art.resumo}</p>` : ''}
-          </div>
-        </article>`;
-      }).join('');
-    }catch(err){
-      console.error('Erro ao carregar artigos:', err);
-      grid.innerHTML = '<p style="color:#AFC0C5;grid-column:1/-1;">Não foi possível carregar os artigos agora. Tente novamente em instantes.</p>';
-    }
-  }
-
-  document.querySelectorAll('.shop-tab').forEach(tab => {
-    tab.addEventListener('click', () => {
-      document.querySelectorAll('.shop-tab').forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-      renderProdutos(tab.dataset.filter);
-    });
-  });
-
-  // clique num card de livro/curso -> abre página de detalhe
-  document.getElementById('productsGrid').addEventListener('click', (e) => {
-    const card = e.target.closest('.product-card');
-    if (!card) return;
-    location.hash = `${card.dataset.tipo}-${card.dataset.id}`;
-  });
-
-  // clique num post do blog -> abre página de detalhe
-  document.getElementById('blogGrid').addEventListener('click', (e) => {
-    const card = e.target.closest('.post-card');
-    if (!card) return;
-    location.hash = `artigo-${card.dataset.slug}`;
-  });
-
-  carregarProdutos();
-  carregarBlog();
-
   // ============= ROTEAMENTO DAS PÁGINAS DE DETALHE =============
   const homeContent = document.getElementById('homeContent');
   const detalheSection = document.getElementById('detalhe');
@@ -723,22 +880,47 @@
 
   function parseHash(){
     const h = decodeURIComponent(location.hash.replace('#', ''));
+    if (h === 'cadastro') return { tipo: 'cadastro', chave: null };
+    if (h === 'carrinho') return { tipo: 'carrinho', chave: null };
     if (h === 'blog-todos') return { tipo: 'blog-todos', chave: null };
     if (h === 'livros-todos') return { tipo: 'livros-todos', chave: null };
     if (h === 'cursos-todos') return { tipo: 'cursos-todos', chave: null };
+    // #blog-todos-trabalhista, #blog-todos-previdenciario, etc -> já abre filtrado
+    const mBlogCat = h.match(/^blog-todos-(trabalhista|previdenciario|noticias|artigos)$/);
+    if (mBlogCat) return { tipo: 'blog-todos', chave: mBlogCat[1] };
     const m = h.match(/^(livro|curso|artigo)-(.+)$/);
     return m ? { tipo: m[1], chave: m[2] } : null;
+  }
+
+  // Reinicia a animação CSS de entrada: precisa tirar a classe, forçar o
+  // navegador a "esquecer" (reflow) e colocar de novo — senão, trocando
+  // entre duas páginas de detalhe seguidas, a segunda não anima porque a
+  // classe já estava lá.
+  function animarEntrada(el){
+    el.classList.remove('page-anim');
+    void el.offsetWidth;
+    el.classList.add('page-anim');
   }
 
   function mostrarHome(){
     homeContent.style.display = '';
     detalheSection.style.display = 'none';
+    const cp = document.getElementById('cadastroPage');
+    if (cp) cp.style.display = 'none';
+    const crp = document.getElementById('carrinhoPage');
+    if (crp) crp.style.display = 'none';
+    animarEntrada(homeContent);
   }
 
   function mostrarDetalhe(){
     homeContent.style.display = 'none';
     detalheSection.style.display = '';
+    const cp = document.getElementById('cadastroPage');
+    if (cp) cp.style.display = 'none';
+    const crp = document.getElementById('carrinhoPage');
+    if (crp) crp.style.display = 'none';
     window.scrollTo(0, 0);
+    animarEntrada(detalheSection);
   }
 
   function escapeHtml(str){
@@ -769,7 +951,7 @@
     const item = await res.json();
     const coverStyle = item.capa_url ? ` style="background-image:url('${item.capa_url}')"` : '';
     const icon = tipo === 'livro' ? ICON_BOOK : ICON_COURSE;
-    const acao = tipo === 'livro' ? 'Comprar' : 'Inscrever-se';
+    const jaNoCarrinho = estaNoCarrinho(tipo, item.id);
     detalheConteudo.innerHTML = `
       ${BOTAO_VOLTAR}
       <div class="detalhe-cover"${coverStyle}>${item.capa_url ? '' : icon}</div>
@@ -778,12 +960,18 @@
       <div class="detalhe-corpo">${escapeHtml(item.descricao || 'Descrição em preparação.')}</div>
       <div class="detalhe-compra">
         <span class="price">${formatPreco(item.preco)}</span>
-        <a href="#contato" class="btn btn-gold">${acao}</a>
+        <button class="btn btn-gold" id="btnAddCarrinho" ${jaNoCarrinho ? 'disabled' : ''}>${jaNoCarrinho ? 'Já está no carrinho ✓' : 'Adicionar ao carrinho'}</button>
       </div>
     `;
+
+    document.getElementById('btnAddCarrinho').addEventListener('click', (e) => {
+      adicionarAoCarrinho(tipo, item.id, item.titulo, item.preco);
+      e.target.disabled = true;
+      e.target.textContent = 'Já está no carrinho ✓';
+    });
   }
 
-  async function renderBlogTodos(){
+  async function renderBlogTodos(categoriaInicial){
     detalheConteudo.style.maxWidth = '1120px';
     const res = await fetch(`${API_URL}/artigos`);
     if (!res.ok) throw new Error('Erro ao buscar artigos');
@@ -791,6 +979,11 @@
     artigos.sort((a, b) => new Date(b.data_publicacao || b.criado_em) - new Date(a.data_publicacao || a.criado_em));
 
     const categoriasPresentes = ['todos', ...new Set(artigos.map(a => a.categoria))];
+    // Se veio de um link de categoria específica (ex: dropdown do menu Blog)
+    // mas essa categoria não tem nenhum artigo ainda, cai de volta pra "todos".
+    const filtroInicial = (categoriaInicial && categoriasPresentes.includes(categoriaInicial))
+      ? categoriaInicial
+      : 'todos';
 
     function montarCard(art){
       const temCapa = !!art.capa_url;
@@ -819,11 +1012,11 @@
       <span class="detalhe-kicker">BLOG</span>
       <h1 class="detalhe-titulo" style="margin-bottom:28px;">Todos os artigos</h1>
       <div class="shop-tabs" id="blogTodosTabs">
-        ${categoriasPresentes.map(c => `<button class="shop-tab${c === 'todos' ? ' active' : ''}" data-cat="${c}">${c === 'todos' ? 'Todos' : (CATEGORIA_LABEL[c] || c)}</button>`).join('')}
+        ${categoriasPresentes.map(c => `<button class="shop-tab${c === filtroInicial ? ' active' : ''}" data-cat="${c}">${c === 'todos' ? 'Todos' : (CATEGORIA_LABEL[c] || c)}</button>`).join('')}
       </div>
       <div class="blog-grid" id="blogTodosGrid"></div>
     `;
-    renderLista('todos');
+    renderLista(filtroInicial);
 
     document.getElementById('blogTodosTabs').addEventListener('click', (e) => {
       const btn = e.target.closest('.shop-tab');
@@ -912,13 +1105,16 @@
     const rota = parseHash();
     if (!rota){ mostrarHome(); return; }
 
+    if (rota.tipo === 'cadastro'){ mostrarCadastro(); return; }
+    if (rota.tipo === 'carrinho'){ mostrarCarrinho(); return; }
+
     mostrarDetalhe();
     detalheConteudo.style.maxWidth = '760px';
     detalheConteudo.innerHTML = `${BOTAO_VOLTAR}<p style="color:var(--ink-soft);">Carregando…</p>`;
 
     try{
       if (rota.tipo === 'artigo') await renderDetalheArtigo(rota.chave);
-      else if (rota.tipo === 'blog-todos') await renderBlogTodos();
+      else if (rota.tipo === 'blog-todos') await renderBlogTodos(rota.chave);
       else if (rota.tipo === 'livros-todos') await renderCatalogoTodos('livro');
       else if (rota.tipo === 'cursos-todos') await renderCatalogoTodos('curso');
       else await renderDetalheProduto(rota.tipo, rota.chave);
@@ -932,8 +1128,418 @@
   }
 
   window.addEventListener('hashchange', route);
-  route(); // trata link direto pra uma página de detalhe (deep link)
+
+  // ================= CARRINHO =================
+  // Guardado no navegador da pessoa (localStorage) — simples, sem precisar
+  // de login pra ir montando a lista. Cada item: { tipo, id, titulo, preco }.
+  const CARRINHO_KEY = 'carrinho';
+
+  function getCarrinho(){
+    try{ return JSON.parse(localStorage.getItem(CARRINHO_KEY)) || []; }
+    catch(err){ return []; }
+  }
+  function salvarCarrinho(lista){
+    localStorage.setItem(CARRINHO_KEY, JSON.stringify(lista));
+    atualizarBadgeCarrinho();
+  }
+  function estaNoCarrinho(tipo, id){
+    return getCarrinho().some(i => i.tipo === tipo && i.id === id);
+  }
+  function adicionarAoCarrinho(tipo, id, titulo, preco){
+    const lista = getCarrinho();
+    if (lista.some(i => i.tipo === tipo && i.id === id)) return;
+    lista.push({ tipo, id, titulo, preco });
+    salvarCarrinho(lista);
+  }
+  function removerDoCarrinho(tipo, id){
+    salvarCarrinho(getCarrinho().filter(i => !(i.tipo === tipo && i.id === id)));
+    if (location.hash === '#carrinho') renderCarrinho();
+  }
+  function totalCarrinho(lista){
+    return lista.reduce((soma, i) => soma + Number(i.preco), 0);
+  }
+  function atualizarBadgeCarrinho(){
+    const badge = document.getElementById('badgeCarrinho');
+    if (!badge) return;
+    const qtd = getCarrinho().length;
+    badge.textContent = qtd;
+    badge.style.display = qtd > 0 ? 'flex' : 'none';
+  }
+
+  function renderCarrinho(){
+    const lista = getCarrinho();
+    const total = totalCarrinho(lista);
+
+    const itensHtml = lista.length ? lista.map(i => `
+      <div class="carrinho-item" data-tipo="${i.tipo}" data-id="${i.id}">
+        <div>
+          <span class="carrinho-item-tag">${i.tipo === 'livro' ? 'LIVRO' : 'CURSO'}</span>
+          <h4>${escapeHtml(i.titulo)}</h4>
+        </div>
+        <div class="carrinho-item-right">
+          <span class="price">${formatPreco(i.preco)}</span>
+          <button class="carrinho-remover" aria-label="Remover">✕</button>
+        </div>
+      </div>`).join('') : '<p style="color:var(--cream-2);">Seu carrinho está vazio.</p>';
+
+    const carrinhoConteudo = document.getElementById('carrinhoConteudo');
+    carrinhoConteudo.innerHTML = `
+      ${BOTAO_VOLTAR}
+      <div style="text-align:center;margin-bottom:40px;">
+        <h1 style="font-family:'Fraunces',serif;color:var(--cream);font-size:2.3rem;display:inline-block;border-bottom:3px solid var(--gold);padding-bottom:10px;">Carrinho</h1>
+      </div>
+      <div class="carrinho-layout">
+        <div class="carrinho-lista">${itensHtml}</div>
+        <div class="carrinho-resumo">
+          <div class="carrinho-resumo-linha">
+            <span>Total da Compra</span>
+            <span class="price" style="font-size:1.3rem;">${formatPreco(total)}</span>
+          </div>
+          <button class="btn btn-gold" id="btnFinalizarCompra" ${lista.length ? '' : 'disabled'}>Finalizar a Compra</button>
+          <a href="#livros-todos" class="btn btn-outline" style="justify-content:center;">Continuar Comprando</a>
+          <p class="carrinho-cupom">🏷️ Possui cupom de desconto? Você poderá usar na etapa de pagamento.</p>
+        </div>
+      </div>
+    `;
+
+    carrinhoConteudo.querySelectorAll('.carrinho-remover').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const card = e.target.closest('.carrinho-item');
+        removerDoCarrinho(card.dataset.tipo, Number(card.dataset.id));
+      });
+    });
+
+    const btnVoltarCarrinho = document.getElementById('btnVoltarDetalhe');
+    if (btnVoltarCarrinho) btnVoltarCarrinho.addEventListener('click', (e) => { e.preventDefault(); location.hash = ''; });
+
+    const btnFinalizar = document.getElementById('btnFinalizarCompra');
+    if (btnFinalizar) btnFinalizar.addEventListener('click', abrirCheckout);
+  }
+
+  function mostrarCarrinho(){
+    homeContent.style.display = 'none';
+    detalheSection.style.display = 'none';
+    const cadp = document.getElementById('cadastroPage');
+    if (cadp) cadp.style.display = 'none';
+    renderCarrinho();
+    carrinhoPage.style.display = '';
+    window.scrollTo(0, 0);
+    animarEntrada(carrinhoPage);
+  }
+  function esconderCarrinho(){ carrinhoPage.style.display = 'none'; }
+  const carrinhoPage = document.getElementById('carrinhoPage');
+
+  // ================= CHECKOUT (Mercado Pago) =================
+  const checkoutOverlay = document.getElementById('checkoutOverlay');
+  const checkoutItemEl = document.getElementById('checkoutItem');
+  const checkoutErroEl = document.getElementById('checkoutErro');
+  const checkoutNomeEl = document.getElementById('checkoutNome');
+  const checkoutEmailEl = document.getElementById('checkoutEmail');
+  const checkoutConfirmarBtn = document.getElementById('checkoutConfirmar');
+
+  function abrirCheckout(){
+    const lista = getCarrinho();
+    if (!lista.length) return;
+    const resumo = lista.length === 1
+      ? escapeHtml(lista[0].titulo)
+      : `${lista.length} itens`;
+    checkoutItemEl.innerHTML = `<b>${resumo}</b> — ${formatPreco(totalCarrinho(lista))}`;
+    checkoutErroEl.classList.remove('show');
+    checkoutErroEl.textContent = '';
+    checkoutNomeEl.value = '';
+    checkoutEmailEl.value = '';
+    checkoutOverlay.classList.add('open');
+  }
+
+  function fecharCheckout(){
+    checkoutOverlay.classList.remove('open');
+  }
+
+  document.getElementById('checkoutClose').addEventListener('click', fecharCheckout);
+  checkoutOverlay.addEventListener('click', (e) => { if (e.target === checkoutOverlay) fecharCheckout(); });
+
+  checkoutConfirmarBtn.addEventListener('click', async () => {
+    const lista = getCarrinho();
+    if (!lista.length) return;
+
+    const nome = checkoutNomeEl.value.trim();
+    const email = checkoutEmailEl.value.trim();
+
+    checkoutErroEl.classList.remove('show');
+
+    if (!nome || !email){
+      checkoutErroEl.textContent = 'Preencha nome e e-mail para continuar.';
+      checkoutErroEl.classList.add('show');
+      return;
+    }
+
+    checkoutConfirmarBtn.disabled = true;
+    checkoutConfirmarBtn.textContent = 'Preparando pagamento…';
+
+    try{
+      const res = await fetch(`${API_URL}/pagamentos/checkout`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          itens: lista.map(i => ({ tipo_item: i.tipo, item_id: i.id })),
+          comprador: { nome, email },
+        }),
+      });
+      const dados = await res.json();
+
+      if (!res.ok){
+        checkoutErroEl.textContent = dados.erro || 'Não foi possível iniciar o pagamento. Tente novamente.';
+        checkoutErroEl.classList.add('show');
+        checkoutConfirmarBtn.disabled = false;
+        checkoutConfirmarBtn.textContent = 'Ir para o pagamento';
+        return;
+      }
+
+      // Leva o comprador pra tela de pagamento do Mercado Pago.
+      window.location.href = dados.url_pagamento;
+    }catch(err){
+      console.error('Erro no checkout:', err);
+      checkoutErroEl.textContent = 'Não foi possível conectar ao servidor de pagamento. Tente novamente em instantes.';
+      checkoutErroEl.classList.add('show');
+      checkoutConfirmarBtn.disabled = false;
+      checkoutConfirmarBtn.textContent = 'Ir para o pagamento';
+    }
+  });
+
+  // ================= ÁREA DO ALUNO (cadastro / login) =================
+  const cadastroPage = document.getElementById('cadastroPage');
+  const cadastroErroEl = document.getElementById('cadastroErro');
+  const cadastroNomeEl = document.getElementById('cadastroNome');
+  const cadastroEmailEl = document.getElementById('cadastroEmail');
+  const cadastroTelefoneEl = document.getElementById('cadastroTelefone');
+  const cadastroSenhaEl = document.getElementById('cadastroSenha');
+  const cadastroSenhaConfirmarEl = document.getElementById('cadastroSenhaConfirmar');
+  const cadastroConfirmarBtn = document.getElementById('cadastroConfirmar');
+
+  const loginOverlay = document.getElementById('loginOverlay');
+  const loginErroEl = document.getElementById('loginErro');
+  const loginEmailEl = document.getElementById('loginEmail');
+  const loginSenhaEl = document.getElementById('loginSenha');
+  const loginConfirmarBtn = document.getElementById('loginConfirmar');
+
+  function atualizarIconeLogin(){
+    const nome = localStorage.getItem('nomeAluno');
+    const btn = document.getElementById('iconLogin');
+    if (!btn) return;
+    btn.title = nome ? `Olá, ${nome} (clique para sair)` : 'Entrar';
+  }
+
+  // A página de cadastro é tratada como mais uma "rota" (#cadastro), junto
+  // com home e as páginas de detalhe — por isso ela entra em mostrarCadastro/
+  // esconderCadastro, chamadas direto pelo route() lá embaixo.
+  function mostrarCadastro(emailPreenchido){
+    cadastroErroEl.classList.remove('show');
+    cadastroErroEl.textContent = '';
+    cadastroNomeEl.value = '';
+    cadastroEmailEl.value = emailPreenchido || '';
+    cadastroTelefoneEl.value = '';
+    cadastroSenhaEl.value = '';
+    cadastroSenhaConfirmarEl.value = '';
+    homeContent.style.display = 'none';
+    detalheSection.style.display = 'none';
+    const crp = document.getElementById('carrinhoPage');
+    if (crp) crp.style.display = 'none';
+    cadastroPage.style.display = '';
+    window.scrollTo(0, 0);
+    animarEntrada(cadastroPage);
+  }
+  function esconderCadastro(){ cadastroPage.style.display = 'none'; }
+
+  function abrirLogin(emailPreenchido){
+    loginErroEl.classList.remove('show');
+    loginErroEl.textContent = '';
+    loginEmailEl.value = emailPreenchido || '';
+    loginSenhaEl.value = '';
+    loginOverlay.classList.add('open');
+  }
+  function fecharLogin(){ loginOverlay.classList.remove('open'); }
+
+  document.getElementById('iconCadastro').addEventListener('click', () => { location.hash = 'cadastro'; });
+  document.getElementById('iconLogin').addEventListener('click', () => {
+    if (localStorage.getItem('tokenAluno')){
+      localStorage.removeItem('tokenAluno');
+      localStorage.removeItem('nomeAluno');
+      atualizarIconeLogin();
+      return;
+    }
+    abrirLogin();
+  });
+  document.getElementById('iconCarrinho').addEventListener('click', () => { location.hash = 'carrinho'; });
+
+  document.getElementById('irParaLogin').addEventListener('click', (e) => { e.preventDefault(); abrirLogin(cadastroEmailEl.value.trim()); });
+
+  document.getElementById('loginClose').addEventListener('click', fecharLogin);
+  loginOverlay.addEventListener('click', (e) => { if (e.target === loginOverlay) fecharLogin(); });
+  document.getElementById('irParaCadastro').addEventListener('click', (e) => { e.preventDefault(); fecharLogin(); location.hash = 'cadastro'; });
+
+  cadastroConfirmarBtn.addEventListener('click', async () => {
+    const nome = cadastroNomeEl.value.trim();
+    const email = cadastroEmailEl.value.trim();
+    const telefone = cadastroTelefoneEl.value.trim();
+    const senha = cadastroSenhaEl.value;
+    const senhaConfirmar = cadastroSenhaConfirmarEl.value;
+
+    cadastroErroEl.classList.remove('show');
+    if (!nome || !email || !senha || !senhaConfirmar){
+      cadastroErroEl.textContent = 'Preencha nome, e-mail e senha para continuar.';
+      cadastroErroEl.classList.add('show');
+      return;
+    }
+    if (senha !== senhaConfirmar){
+      cadastroErroEl.textContent = 'As senhas não são iguais.';
+      cadastroErroEl.classList.add('show');
+      return;
+    }
+
+    cadastroConfirmarBtn.disabled = true;
+    cadastroConfirmarBtn.textContent = 'Criando conta…';
+    try{
+      const res = await fetch(`${API_URL}/alunos/cadastro`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ nome, email, senha, telefone: telefone || undefined }),
+      });
+      const dados = await res.json();
+      if (!res.ok){
+        cadastroErroEl.textContent = dados.erro || 'Não foi possível criar sua conta. Tente novamente.';
+        cadastroErroEl.classList.add('show');
+        return;
+      }
+      location.hash = '';
+      abrirLogin(email);
+      loginErroEl.textContent = 'Conta criada! Faça login com sua senha.';
+      loginErroEl.classList.add('show');
+    }catch(err){
+      console.error('Erro no cadastro:', err);
+      cadastroErroEl.textContent = 'Não foi possível conectar ao servidor. Tente novamente em instantes.';
+      cadastroErroEl.classList.add('show');
+    }finally{
+      cadastroConfirmarBtn.disabled = false;
+      cadastroConfirmarBtn.textContent = 'Criar conta';
+    }
+  });
+
+  loginConfirmarBtn.addEventListener('click', async () => {
+    const email = loginEmailEl.value.trim();
+    const senha = loginSenhaEl.value;
+
+    loginErroEl.classList.remove('show');
+    if (!email || !senha){
+      loginErroEl.textContent = 'Preencha e-mail e senha para continuar.';
+      loginErroEl.classList.add('show');
+      return;
+    }
+
+    loginConfirmarBtn.disabled = true;
+    loginConfirmarBtn.textContent = 'Entrando…';
+    try{
+      const res = await fetch(`${API_URL}/alunos/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, senha }),
+      });
+      const dados = await res.json();
+      if (!res.ok){
+        if (dados.precisa_cadastro){
+          fecharLogin();
+          location.hash = 'cadastro';
+          setTimeout(() => {
+            cadastroEmailEl.value = email;
+            cadastroErroEl.textContent = 'Finalize seu cadastro criando uma senha.';
+            cadastroErroEl.classList.add('show');
+          }, 0);
+          return;
+        }
+        loginErroEl.textContent = dados.erro || 'Não foi possível entrar. Verifique seus dados.';
+        loginErroEl.classList.add('show');
+        return;
+      }
+      localStorage.setItem('tokenAluno', dados.token);
+      localStorage.setItem('nomeAluno', dados.nome);
+      atualizarIconeLogin();
+      fecharLogin();
+    }catch(err){
+      console.error('Erro no login:', err);
+      loginErroEl.textContent = 'Não foi possível conectar ao servidor. Tente novamente em instantes.';
+      loginErroEl.classList.add('show');
+    }finally{
+      loginConfirmarBtn.disabled = false;
+      loginConfirmarBtn.textContent = 'Entrar';
+    }
+  });
+
+  atualizarIconeLogin();
+  atualizarBadgeCarrinho();
+  route(); // trata link direto pra uma página de detalhe/cadastro/carrinho (deep link)
+
+  // ================= TELA DE CARREGAMENTO =================
+  (function(){
+    const splash = document.getElementById('splash');
+    const TEMPO_MINIMO = 1100; // ms — garante que dê tempo de ler "Bem-vindo", mesmo com conexão rápida
+    const inicio = Date.now();
+
+    function esconderSplash(){
+      const passou = Date.now() - inicio;
+      const espera = Math.max(0, TEMPO_MINIMO - passou);
+      setTimeout(() => {
+        splash.classList.add('splash-hide');
+        setTimeout(() => splash.remove(), 600); // some do DOM só depois do fade terminar
+      }, espera);
+    }
+
+    if (document.readyState === 'complete') esconderSplash();
+    else window.addEventListener('load', esconderSplash);
+  })();
+
+  // ================= RETORNO DO PAGAMENTO =================
+  // O Mercado Pago traz o comprador de volta com ?pagamento=sucesso|erro|pendente
+  (function mostrarRetornoPagamento(){
+    const params = new URLSearchParams(window.location.search);
+    const status = params.get('pagamento');
+    if (!status) return;
+
+    const MENSAGENS = {
+      sucesso: { classe: 'sucesso', texto: '✓ Pagamento aprovado! Em instantes você recebe a confirmação por e-mail.' },
+      pendente: { classe: 'pendente', texto: 'Pagamento em análise. Assim que for confirmado, você recebe um aviso por e-mail.' },
+      erro: { classe: 'erro', texto: 'Não foi possível concluir o pagamento. Nenhum valor foi cobrado — tente novamente.' },
+    };
+    const msg = MENSAGENS[status];
+    if (!msg) return;
+
+    // O pedido já foi criado no servidor nesses dois casos — limpa o
+    // carrinho do navegador pra não ficar oferecendo pra comprar de novo.
+    if (status === 'sucesso' || status === 'pendente') salvarCarrinho([]);
+
+    const banner = document.createElement('div');
+    banner.className = `pagamento-banner ${msg.classe} container`;
+    banner.style.marginTop = '24px';
+    banner.textContent = msg.texto;
+    homeContent.insertBefore(banner, homeContent.firstChild);
+
+    // Limpa o parâmetro da URL pra não reaparecer se a pessoa recarregar a página.
+    const urlLimpa = window.location.pathname + window.location.hash;
+    window.history.replaceState({}, '', urlLimpa);
+  })();
 </script>
+
+<!-- ================= WHATSAPP FLUTUANTE ================= -->
+<a
+  class="whatsapp-float"
+  href="https://wa.me/5511975751984?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20um%20advogado."
+  target="_blank"
+  rel="noopener"
+  aria-label="Falar no WhatsApp"
+>
+  <svg viewBox="0 0 32 32" fill="#fff" xmlns="http://www.w3.org/2000/svg">
+    <path d="M16.004 3C9.377 3 4 8.373 4 15c0 2.34.66 4.527 1.804 6.388L4 29l7.797-1.77A11.93 11.93 0 0016.004 27C22.63 27 28 21.627 28 15S22.63 3 16.004 3zm0 21.75a9.7 9.7 0 01-4.95-1.356l-.355-.21-4.627 1.05 1.08-4.512-.232-.37A9.69 9.69 0 016.25 15c0-5.38 4.375-9.75 9.754-9.75S25.75 9.62 25.75 15s-4.372 9.75-9.746 9.75z"/>
+    <path d="M21.44 17.47c-.29-.145-1.717-.846-1.983-.943-.266-.097-.46-.145-.653.146-.193.29-.75.942-.92 1.137-.17.194-.34.218-.63.073-.29-.146-1.224-.45-2.332-1.436-.862-.767-1.444-1.715-1.613-2.005-.17-.29-.018-.447.128-.59.13-.13.29-.34.435-.51.145-.17.193-.29.29-.483.097-.194.048-.363-.024-.508-.072-.146-.653-1.572-.895-2.153-.236-.566-.476-.49-.653-.5l-.556-.01c-.193 0-.508.073-.774.363-.266.29-1.015.991-1.015 2.418 0 1.427 1.039 2.805 1.183 2.998.145.194 2.046 3.123 4.957 4.38.692.299 1.233.478 1.654.611.695.221 1.327.19 1.827.115.557-.083 1.717-.701 1.958-1.378.242-.676.242-1.256.17-1.378-.073-.121-.266-.194-.556-.339z"/>
+  </svg>
+</a>
 
 </body>
 </html>
