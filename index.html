@@ -108,6 +108,22 @@
     align-items:center;justify-content:center;line-height:1;padding:0 3px;
   }
 
+  /* ---------- MINHAS COMPRAS ---------- */
+  .compras-topo{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:34px;}
+  .compras-topo h1{font-family:'Fraunces',serif;color:var(--cream);font-size:2.3rem;display:inline-block;border-bottom:3px solid var(--gold);padding-bottom:10px;}
+  .compras-topo p{color:var(--cream-2);margin-top:12px;}
+  .compra-item{
+    display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
+    background:var(--navy-panel);border:1px solid var(--navy-line);border-radius:12px;padding:18px 20px;margin-bottom:14px;
+  }
+  .compra-item h4{color:var(--cream);font-size:1.05rem;margin:2px 0 4px;}
+  .compra-meta{color:var(--cream-2);font-size:0.85rem;}
+  .compra-status{color:var(--gold-light);font-size:0.88rem;font-weight:600;}
+  .compras-vazio{
+    background:var(--navy-panel);border:1px solid var(--navy-line);border-radius:16px;padding:36px 28px;text-align:center;color:var(--cream-2);
+  }
+  .compras-vazio .btn{margin-top:18px;}
+
   /* ---------- CARRINHO ---------- */
   .carrinho-layout{display:grid;grid-template-columns:1fr 320px;gap:36px;align-items:start;}
   .carrinho-lista{display:flex;flex-direction:column;gap:14px;}
@@ -315,7 +331,7 @@
   .product-cover svg{width:52px;height:52px;opacity:0.85;}
   .product-body{padding:18px;flex:1;display:flex;flex-direction:column;}
   .product-body .cat{font-size:0.72rem;color:var(--gold);font-weight:700;letter-spacing:0.03em;margin-bottom:6px;}
-  .product-body h4{font-family:'Fraunces',serif;font-weight:500;font-size:1.05rem;margin-bottom:8px;color:var(--ink);}
+  .product-body h4{font-family:'Fraunces',serif;font-weight:500;font-size:1.05rem;margin-bottom:8px;color:var(--ink);overflow-wrap:anywhere;}
   .product-body p{
     font-size:0.86rem;color:var(--ink-soft);flex:1;margin-bottom:14px;
     display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;
@@ -347,7 +363,7 @@
   }
   .post-body{padding:22px;}
   .post-body .date{font-size:0.76rem;color:#8FA3A9;margin-bottom:10px;display:block;}
-  .post-body h3{color:var(--cream);font-size:1.15rem;margin-bottom:10px;line-height:1.3;}
+  .post-body h3{color:var(--cream);font-size:1.15rem;margin-bottom:10px;line-height:1.3;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden;}
   .post-card.featured .post-body h3{font-size:1.5rem;}
   .post-body p{
     color:#AFC0C5;font-size:0.9rem;
@@ -371,9 +387,9 @@
   }
   .detalhe-cover svg{width:64px;height:64px;opacity:0.85;}
   .detalhe-kicker{color:var(--gold);font-weight:700;font-size:0.8rem;letter-spacing:0.04em;}
-  .detalhe-titulo{font-size:2.1rem;margin:14px 0 20px;color:var(--ink);}
+  .detalhe-titulo{font-size:2.1rem;margin:14px 0 20px;color:var(--ink);overflow-wrap:anywhere;}
   .detalhe-meta{font-size:0.85rem;color:var(--ink-soft);margin-bottom:26px;}
-  .detalhe-corpo{color:var(--ink-soft);font-size:1.02rem;white-space:pre-line;margin-bottom:32px;}
+  .detalhe-corpo{color:var(--ink-soft);font-size:1.02rem;white-space:pre-line;margin-bottom:32px;overflow-wrap:anywhere;line-height:1.75;}
   .detalhe-compra{
     display:flex;align-items:center;gap:24px;flex-wrap:wrap;
     padding-top:28px;border-top:1px solid #E1D9C8;
@@ -729,6 +745,11 @@
   <div class="container" id="carrinhoConteudo" style="max-width:980px;"></div>
 </section>
 
+<!-- ================= PÁGINA MINHAS COMPRAS ================= -->
+<section id="comprasPage" style="display:none;background:var(--navy-deep);padding:76px 0 100px;">
+  <div class="container" id="comprasConteudo" style="max-width:860px;"></div>
+</section>
+
 <!-- ================= MODAL LOGIN (ALUNO) ================= -->
 <div class="checkout-overlay" id="loginOverlay">
   <div class="checkout-box checkout-box-dark">
@@ -971,6 +992,7 @@
     if (h === 'trabalhista' || h === 'previdenciario' || h === 'oab-1fase' || h === 'oab-2fase') return { tipo: 'servico', chave: h };
     if (h === 'cadastro') return { tipo: 'cadastro', chave: null };
     if (h === 'carrinho') return { tipo: 'carrinho', chave: null };
+    if (h === 'minhas-compras') return { tipo: 'minhas-compras', chave: null };
     if (h === 'blog-todos') return { tipo: 'blog-todos', chave: null };
     if (h === 'livros-todos') return { tipo: 'livros-todos', chave: null };
     if (h === 'cursos-todos') return { tipo: 'cursos-todos', chave: null };
@@ -1324,10 +1346,13 @@
 
   async function route(){
     const rota = parseHash();
+    const comprasPg = document.getElementById('comprasPage');
+    if (comprasPg) comprasPg.style.display = 'none';
     if (!rota){ mostrarHome(); return; }
 
     if (rota.tipo === 'cadastro'){ mostrarCadastro(); return; }
     if (rota.tipo === 'carrinho'){ mostrarCarrinho(); return; }
+    if (rota.tipo === 'minhas-compras'){ mostrarCompras(); return; }
 
     mostrarDetalhe();
     detalheConteudo.style.maxWidth = '760px';
@@ -1436,6 +1461,115 @@
 
     const btnFinalizar = document.getElementById('btnFinalizarCompra');
     if (btnFinalizar) btnFinalizar.addEventListener('click', abrirCheckout);
+  }
+
+  // ================= MINHAS COMPRAS (área do aluno) =================
+  function urlSegura(u){
+    return /^https?:\/\//i.test(u || '') ? u : '';
+  }
+
+  async function mostrarCompras(){
+    homeContent.style.display = 'none';
+    detalheSection.style.display = 'none';
+    ['cadastroPage', 'carrinhoPage'].forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
+    const page = document.getElementById('comprasPage');
+    const box = document.getElementById('comprasConteudo');
+    page.style.display = '';
+    window.scrollTo(0, 0);
+    animarEntrada(page);
+
+    const voltar = () => {
+      const b = document.getElementById('btnVoltarDetalhe');
+      if (b) b.addEventListener('click', (e) => { e.preventDefault(); location.hash = ''; });
+    };
+
+    const token = localStorage.getItem('tokenAluno');
+    if (!token){
+      box.innerHTML = `
+        ${BOTAO_VOLTAR}
+        <div class="compras-topo"><div><h1>Minhas compras</h1></div></div>
+        <div class="compras-vazio">
+          <p>Entre na sua conta para ver os livros e cursos que você comprou.</p>
+          <p style="font-size:0.88rem;margin-top:10px;">Comprou sem criar conta? Use <a href="#cadastro" style="color:var(--gold);">Criar conta</a> com o mesmo e-mail da compra para definir sua senha.</p>
+          <button class="btn btn-gold" id="comprasEntrar">Entrar</button>
+        </div>`;
+      voltar();
+      document.getElementById('comprasEntrar').addEventListener('click', () => abrirLogin());
+      return;
+    }
+
+    box.innerHTML = `${BOTAO_VOLTAR}<p style="color:var(--cream-2);">Carregando suas compras…</p>`;
+    voltar();
+
+    let compras;
+    try{
+      const res = await fetch(`${API_URL}/alunos/minhas-compras`, { headers: { Authorization: `Bearer ${token}` } });
+      if (res.status === 401){
+        localStorage.removeItem('tokenAluno');
+        localStorage.removeItem('nomeAluno');
+        atualizarIconeLogin();
+        mostrarCompras();
+        return;
+      }
+      if (!res.ok) throw new Error('Falha ao buscar compras');
+      compras = await res.json();
+    }catch(err){
+      console.error('Erro em minhas compras:', err);
+      box.innerHTML = `${BOTAO_VOLTAR}<p style="color:var(--cream-2);">Não foi possível carregar suas compras agora. Tente novamente em instantes.</p>`;
+      voltar();
+      return;
+    }
+
+    const nome = localStorage.getItem('nomeAluno') || '';
+    const itensHtml = compras.length ? compras.map(c => {
+      let tag, acao;
+      if (c.tipo_item === 'curso'){
+        tag = 'CURSO';
+        acao = '<span class="compra-status">Inscrição confirmada</span>';
+      } else if (c.tipo_livro === 'ebook'){
+        tag = 'E-BOOK';
+        const link = urlSegura(c.arquivo_url);
+        acao = link
+          ? `<a class="btn btn-gold" href="${escapeHtml(link)}" target="_blank" rel="noopener">Baixar e-book</a>`
+          : '<span class="compra-status">Arquivo em preparação</span>';
+      } else {
+        tag = 'LIVRO FÍSICO';
+        acao = '<span class="compra-status">Pedido confirmado</span>';
+      }
+      const data = new Date(c.criado_em).toLocaleDateString('pt-BR');
+      return `
+        <div class="compra-item">
+          <div>
+            <span class="carrinho-item-tag">${tag}</span>
+            <h4>${escapeHtml(c.titulo || 'Item')}</h4>
+            <span class="compra-meta">Comprado em ${data} · ${formatPreco(c.valor)}</span>
+          </div>
+          <div>${acao}</div>
+        </div>`;
+    }).join('') : `
+      <div class="compras-vazio">
+        <p>Você ainda não tem compras confirmadas.</p>
+        <p style="font-size:0.88rem;margin-top:10px;">Se acabou de pagar, o item aparece aqui assim que o pagamento for confirmado.</p>
+        <a href="#livros-todos" class="btn btn-gold">Ver livros e cursos</a>
+      </div>`;
+
+    box.innerHTML = `
+      ${BOTAO_VOLTAR}
+      <div class="compras-topo">
+        <div>
+          <h1>Minhas compras</h1>
+          ${nome ? `<p>Olá, ${escapeHtml(nome)}</p>` : ''}
+        </div>
+        <button class="btn btn-outline" id="comprasSair">Sair da conta</button>
+      </div>
+      ${itensHtml}`;
+    voltar();
+    document.getElementById('comprasSair').addEventListener('click', () => {
+      localStorage.removeItem('tokenAluno');
+      localStorage.removeItem('nomeAluno');
+      atualizarIconeLogin();
+      location.hash = '';
+    });
   }
 
   function mostrarCarrinho(){
@@ -1548,7 +1682,7 @@
     const nome = localStorage.getItem('nomeAluno');
     const btn = document.getElementById('iconLogin');
     if (!btn) return;
-    btn.title = nome ? `Olá, ${nome} (clique para sair)` : 'Entrar';
+    btn.title = nome ? `Olá, ${nome} — Minhas compras` : 'Entrar';
   }
 
   // A página de cadastro é tratada como mais uma "rota" (#cadastro), junto
@@ -1584,9 +1718,8 @@
   document.getElementById('iconCadastro').addEventListener('click', () => { location.hash = 'cadastro'; });
   document.getElementById('iconLogin').addEventListener('click', () => {
     if (localStorage.getItem('tokenAluno')){
-      localStorage.removeItem('tokenAluno');
-      localStorage.removeItem('nomeAluno');
-      atualizarIconeLogin();
+      if (location.hash === '#minhas-compras') mostrarCompras();
+      else location.hash = 'minhas-compras';
       return;
     }
     abrirLogin();
@@ -1685,6 +1818,7 @@
       localStorage.setItem('nomeAluno', dados.nome);
       atualizarIconeLogin();
       fecharLogin();
+      if (location.hash === '#minhas-compras') mostrarCompras();
     }catch(err){
       console.error('Erro no login:', err);
       loginErroEl.textContent = 'Não foi possível conectar ao servidor. Tente novamente em instantes.';
@@ -1726,8 +1860,8 @@
     if (!status) return;
 
     const MENSAGENS = {
-      sucesso: { classe: 'sucesso', texto: '✓ Pagamento aprovado! Em instantes você recebe a confirmação por e-mail.' },
-      pendente: { classe: 'pendente', texto: 'Pagamento em análise. Assim que for confirmado, você recebe um aviso por e-mail.' },
+      sucesso: { classe: 'sucesso', texto: '✓ Pagamento aprovado! Em instantes sua compra aparece em Minhas compras.' },
+      pendente: { classe: 'pendente', texto: 'Pagamento em análise. Assim que for confirmado, sua compra aparece em Minhas compras.' },
       erro: { classe: 'erro', texto: 'Não foi possível concluir o pagamento. Nenhum valor foi cobrado — tente novamente.' },
     };
     const msg = MENSAGENS[status];
@@ -1741,6 +1875,13 @@
     banner.className = `pagamento-banner ${msg.classe} container`;
     banner.style.marginTop = '24px';
     banner.textContent = msg.texto;
+    if (status !== 'erro'){
+      const lnk = document.createElement('a');
+      lnk.href = '#minhas-compras';
+      lnk.textContent = ' Ver minhas compras';
+      lnk.style.cssText = 'text-decoration:underline;font-weight:600;margin-left:6px;';
+      banner.appendChild(lnk);
+    }
     homeContent.insertBefore(banner, homeContent.firstChild);
 
     // Limpa o parâmetro da URL pra não reaparecer se a pessoa recarregar a página.
