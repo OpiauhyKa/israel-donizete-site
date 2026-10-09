@@ -100,6 +100,11 @@
   }
   .icon-btn svg{width:21px;height:21px;}
   .icon-btn:hover{color:var(--gold-light);transform:translateY(-1px);}
+  .top-link-aluno{color:var(--gold-light) !important;}
+  @media (min-width:961px) and (max-width:1180px){
+    nav.main-nav ul{gap:16px;}
+    nav.main-nav a.top-link{white-space:nowrap;font-size:0.9rem;}
+  }
   .icon-cart{color:var(--gold);}
   .icon-cart:hover{color:var(--gold-light);}
   .icon-badge{
@@ -644,6 +649,9 @@
       gap:0;
     }
     nav.main-nav.open{transform:translateX(0);}
+    /* o blur do header "prende" o menu fixo dentro dele; no celular usamos fundo sólido */
+    header{backdrop-filter:none;-webkit-backdrop-filter:none;background:var(--navy-deep);}
+    nav.main-nav{height:100vh;height:100dvh;overflow-y:auto;z-index:50;}
     .nav-backdrop{
       display:none;position:fixed;inset:0;background:rgba(10,18,22,0.55);z-index:45;
     }
@@ -722,6 +730,7 @@
         </li>
         <li><a class="top-link" href="#sobre">Sobre</a></li>
         <li><a class="top-link" href="#contato">Contato</a></li>
+        <li><a class="top-link top-link-aluno" href="#portal">Área do aluno</a></li>
       </ul>
     </nav>
 
