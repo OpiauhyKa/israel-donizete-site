@@ -19,7 +19,7 @@
     --ink-soft:#4B5D63;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
-  html{scroll-behavior:smooth;background:var(--navy-deep);}
+  html{scroll-behavior:smooth;background:var(--navy-deep);overflow-x:clip;}
   body{
     font-family:'Source Sans 3', sans-serif;
     color:var(--ink);
@@ -123,6 +123,79 @@
     background:var(--navy-panel);border:1px solid var(--navy-line);border-radius:16px;padding:36px 28px;text-align:center;color:var(--cream-2);
   }
   .compras-vazio .btn{margin-top:18px;}
+
+  /* ---------- PORTAL DO ALUNO ---------- */
+  .portal-abas{display:flex;gap:6px;overflow-x:auto;border-bottom:1px solid var(--navy-line);margin-bottom:30px;scrollbar-width:none;}
+  .portal-abas::-webkit-scrollbar{display:none;}
+  .portal-abas a{
+    flex:none;padding:11px 16px;color:var(--cream-2);font-size:0.92rem;font-weight:600;
+    border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap;
+  }
+  .portal-abas a:hover{color:var(--cream);}
+  .portal-abas a.ativa{color:var(--gold-light);border-bottom-color:var(--gold);}
+  .portal-cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;}
+  .portal-card{
+    display:block;background:var(--navy-panel);border:1px solid var(--navy-line);border-radius:14px;padding:22px;
+    transition:border-color .18s ease, transform .18s ease;
+  }
+  .portal-card:hover{border-color:var(--gold);transform:translateY(-2px);}
+  .portal-card .num{font-family:'Fraunces',serif;font-size:2rem;color:var(--gold-light);line-height:1;}
+  .portal-card h4{color:var(--cream);font-size:1rem;margin:10px 0 4px;}
+  .portal-card p{color:var(--cream-2);font-size:0.85rem;}
+  .portal-painel{background:var(--navy-panel);border:1px solid var(--navy-line);border-radius:14px;padding:24px;margin-bottom:18px;}
+  .portal-painel h3{font-family:'Fraunces',serif;color:var(--cream);font-size:1.3rem;margin-bottom:6px;}
+  .portal-painel > p{color:var(--cream-2);font-size:0.9rem;margin-bottom:18px;}
+  .portal-form{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px;}
+  .portal-form .checkout-field{margin:0;}
+  .portal-form .checkout-field label,
+  .portal-painel .checkout-field label{color:var(--gold-light);font-size:0.74rem;letter-spacing:0.04em;text-transform:uppercase;}
+  .portal-painel input:not([type=file]), .portal-painel select, .portal-painel textarea{
+    width:100%;background:var(--navy-deep);border:1px solid var(--navy-line);color:var(--cream);
+    border-radius:8px;padding:11px 12px;font:inherit;font-size:0.92rem;
+  }
+  .portal-painel input:focus, .portal-painel select:focus, .portal-painel textarea:focus{outline:none;border-color:var(--gold);}
+  .portal-painel input[readonly]{opacity:0.65;}
+  .portal-painel textarea{min-height:80px;resize:vertical;}
+  .portal-acoes{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:18px;}
+  .portal-msg{font-size:0.86rem;}
+  .portal-msg.ok{color:#8FCB9B;}
+  .portal-msg.erro{color:#E58B7E;}
+  .compra-capa{width:56px;height:56px;border-radius:8px;background:var(--navy-deep) center/cover no-repeat;flex:none;border:1px solid var(--navy-line);}
+  .compra-info{display:flex;gap:14px;align-items:center;min-width:0;}
+  .compra-info > div{min-width:0;}
+  .prov-novo{display:flex;gap:12px;flex-wrap:wrap;}
+  .prov-novo select{flex:1;min-width:220px;}
+  .prov-topo{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:14px;}
+  .prov-topo h3{margin:0;}
+  .prov-status{font-size:0.75rem;font-weight:700;letter-spacing:0.04em;padding:5px 10px;border-radius:20px;background:var(--navy-deep);color:var(--gold-light);border:1px solid var(--navy-line);white-space:nowrap;}
+  .prov-status.enviado,.prov-status.em_analise{color:#9CC8E8;}
+  .prov-status.concluido{color:#8FCB9B;}
+  .prov-parte{margin-top:16px;}
+  .prov-parte h4{color:var(--gold-light);font-size:0.8rem;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:8px;}
+  .prov-slot{
+    display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+    background:var(--navy-deep);border:1px solid var(--navy-line);border-radius:10px;padding:12px 14px;margin-bottom:8px;
+  }
+  .prov-slot.feito{border-color:#3E6B57;}
+  .prov-slot b{color:var(--cream);font-size:0.92rem;display:block;}
+  .prov-slot span{color:var(--cream-2);font-size:0.82rem;overflow-wrap:anywhere;}
+  .prov-slot-acoes{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+  .mini-acao{
+    background:none;border:1px solid var(--navy-line);color:var(--cream-2);border-radius:8px;
+    padding:7px 12px;font:inherit;font-size:0.82rem;cursor:pointer;
+  }
+  .mini-acao:hover{border-color:var(--gold);color:var(--gold-light);}
+  .mini-acao.principal{background:var(--gold);border-color:var(--gold);color:var(--navy-deep);font-weight:600;}
+  .mini-acao.principal:hover{background:var(--gold-light);color:var(--navy-deep);}
+  .mini-acao:disabled{opacity:0.5;cursor:default;}
+  .prov-resposta{margin-top:14px;padding:14px;border-left:3px solid var(--gold);background:var(--navy-deep);border-radius:6px;color:var(--cream);font-size:0.9rem;white-space:pre-line;}
+  .prov-resposta small{display:block;color:var(--gold-light);font-weight:700;margin-bottom:4px;}
+  .prov-ajuda{color:var(--cream-2);font-size:0.86rem;margin-top:6px;}
+  .servico-portal{display:flex;justify-content:space-between;align-items:center;gap:18px;flex-wrap:wrap;}
+  @media (max-width:640px){
+    .portal-form{grid-template-columns:1fr;}
+    .portal-painel{padding:18px;}
+  }
 
   /* ---------- CARRINHO ---------- */
   .carrinho-layout{display:grid;grid-template-columns:1fr 320px;gap:36px;align-items:start;}
@@ -747,7 +820,7 @@
 
 <!-- ================= PÁGINA MINHAS COMPRAS ================= -->
 <section id="comprasPage" style="display:none;background:var(--navy-deep);padding:76px 0 100px;">
-  <div class="container" id="comprasConteudo" style="max-width:860px;"></div>
+  <div class="container" id="comprasConteudo" style="max-width:940px;"></div>
 </section>
 
 <!-- ================= MODAL LOGIN (ALUNO) ================= -->
@@ -992,7 +1065,10 @@
     if (h === 'trabalhista' || h === 'previdenciario' || h === 'oab-1fase' || h === 'oab-2fase') return { tipo: 'servico', chave: h };
     if (h === 'cadastro') return { tipo: 'cadastro', chave: null };
     if (h === 'carrinho') return { tipo: 'carrinho', chave: null };
-    if (h === 'minhas-compras') return { tipo: 'minhas-compras', chave: null };
+    if (h === 'minhas-compras') return { tipo: 'portal', chave: 'livros' };
+    if (h === 'portal') return { tipo: 'portal', chave: 'inicio' };
+    const mPortal = h.match(/^portal-(conta|livros|cursos|provimento)$/);
+    if (mPortal) return { tipo: 'portal', chave: mPortal[1] };
     if (h === 'blog-todos') return { tipo: 'blog-todos', chave: null };
     if (h === 'livros-todos') return { tipo: 'livros-todos', chave: null };
     if (h === 'cursos-todos') return { tipo: 'cursos-todos', chave: null };
@@ -1108,6 +1184,15 @@
           <li><b>Acompanhamento.</b> Você recebe atualizações durante todo o andamento.</li>
         </ol>
       </div>
+
+      ${chave === 'oab-2fase' ? `
+      <div class="servico-bloco servico-portal">
+        <div>
+          <h2>Envie sua prova pelo portal do aluno</h2>
+          <p class="servico-intro" style="margin:0;">Escolha a disciplina e anexe a peça processual (Parte A) e as 4 questões discursivas (Parte B). Você acompanha a análise por lá.</p>
+        </div>
+        <a class="btn btn-gold" href="#portal-provimento">Enviar minha prova</a>
+      </div>` : ''}
 
       <div class="servico-bloco servico-docs">
         <h2>Documentos para enviar</h2>
@@ -1352,7 +1437,7 @@
 
     if (rota.tipo === 'cadastro'){ mostrarCadastro(); return; }
     if (rota.tipo === 'carrinho'){ mostrarCarrinho(); return; }
-    if (rota.tipo === 'minhas-compras'){ mostrarCompras(); return; }
+    if (rota.tipo === 'portal'){ mostrarPortal(rota.chave); return; }
 
     mostrarDetalhe();
     detalheConteudo.style.maxWidth = '760px';
@@ -1468,7 +1553,58 @@
     return /^https?:\/\//i.test(u || '') ? u : '';
   }
 
-  async function mostrarCompras(){
+  // ================= PORTAL DO ALUNO =================
+  // Abas: Início, Minha conta, Meus livros, Meus cursos e Provimento OAB 2ª fase.
+  // Cada aba tem seu endereço (#portal, #portal-conta, #portal-livros...),
+  // então o botão "voltar" do navegador funciona normalmente.
+  const PORTAL_ABAS = [
+    { id: 'inicio', nome: 'Início', hash: 'portal' },
+    { id: 'conta', nome: 'Minha conta', hash: 'portal-conta' },
+    { id: 'livros', nome: 'Meus livros', hash: 'portal-livros' },
+    { id: 'cursos', nome: 'Meus cursos', hash: 'portal-cursos' },
+    { id: 'provimento', nome: 'Provimento OAB 2ª fase', hash: 'portal-provimento' },
+  ];
+
+  function escAttr(str){
+    return String(str == null ? '' : str).replace(/[&<>"']/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;' }[c]));
+  }
+  function tamanhoLegivel(b){
+    return b >= 1048576 ? (b / 1048576).toFixed(1).replace('.', ',') + ' MB' : Math.max(1, Math.round(b / 1024)) + ' KB';
+  }
+
+  function sairDaConta(){
+    localStorage.removeItem('tokenAluno');
+    localStorage.removeItem('nomeAluno');
+    atualizarIconeLogin();
+  }
+
+  // fetch com o token do aluno. Se a sessão venceu, desloga e mostra o "Entrar".
+  async function apiAluno(caminho, opcoes = {}){
+    const token = localStorage.getItem('tokenAluno');
+    const headers = Object.assign({ Authorization: `Bearer ${token}` }, opcoes.headers || {});
+    if (opcoes.json !== undefined){
+      headers['Content-Type'] = 'application/json';
+      opcoes.body = JSON.stringify(opcoes.json);
+    }
+    const res = await fetch(`${API_URL}${caminho}`, { method: opcoes.method || 'GET', headers, body: opcoes.body });
+    if (res.status === 401){
+      sairDaConta();
+      const rota = parseHash();
+      mostrarPortal(rota && rota.tipo === 'portal' ? rota.chave : 'inicio');
+      const e = new Error('Sua sessão expirou. Entre novamente.');
+      e.sessao = true;
+      throw e;
+    }
+    if (opcoes.blob){
+      if (!res.ok) throw new Error('Não foi possível baixar o arquivo.');
+      return res.blob();
+    }
+    const dados = res.status === 204 ? null : await res.json().catch(() => null);
+    if (!res.ok) throw new Error((dados && dados.erro) || 'Não foi possível completar a ação.');
+    return dados;
+  }
+
+  function mostrarPortal(aba){
     homeContent.style.display = 'none';
     detalheSection.style.display = 'none';
     ['cadastroPage', 'carrinhoPage'].forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
@@ -1477,98 +1613,359 @@
     page.style.display = '';
     window.scrollTo(0, 0);
     animarEntrada(page);
+    if (!PORTAL_ABAS.some(a => a.id === aba)) aba = 'inicio';
 
-    const voltar = () => {
-      const b = document.getElementById('btnVoltarDetalhe');
-      if (b) b.addEventListener('click', (e) => { e.preventDefault(); location.hash = ''; });
-    };
-
-    const token = localStorage.getItem('tokenAluno');
-    if (!token){
+    if (!localStorage.getItem('tokenAluno')){
       box.innerHTML = `
         ${BOTAO_VOLTAR}
-        <div class="compras-topo"><div><h1>Minhas compras</h1></div></div>
+        <div class="compras-topo"><div><h1>Portal do aluno</h1></div></div>
         <div class="compras-vazio">
-          <p>Entre na sua conta para ver os livros e cursos que você comprou.</p>
-          <p style="font-size:0.88rem;margin-top:10px;">Comprou sem criar conta? Use <a href="#cadastro" style="color:var(--gold);">Criar conta</a> com o mesmo e-mail da compra para definir sua senha.</p>
-          <button class="btn btn-gold" id="comprasEntrar">Entrar</button>
+          <p>Entre na sua conta para ver seus livros, seus cursos e enviar sua prova da OAB 2ª fase.</p>
+          <p style="font-size:0.88rem;margin-top:10px;">Ainda não tem conta? <a href="#cadastro" style="color:var(--gold);">Crie sua conta</a>. Se comprou sem conta, use o mesmo e-mail da compra.</p>
+          <button class="btn btn-gold" id="portalEntrar">Entrar</button>
         </div>`;
-      voltar();
-      document.getElementById('comprasEntrar').addEventListener('click', () => abrirLogin());
-      return;
-    }
-
-    box.innerHTML = `${BOTAO_VOLTAR}<p style="color:var(--cream-2);">Carregando suas compras…</p>`;
-    voltar();
-
-    let compras;
-    try{
-      const res = await fetch(`${API_URL}/alunos/minhas-compras`, { headers: { Authorization: `Bearer ${token}` } });
-      if (res.status === 401){
-        localStorage.removeItem('tokenAluno');
-        localStorage.removeItem('nomeAluno');
-        atualizarIconeLogin();
-        mostrarCompras();
-        return;
-      }
-      if (!res.ok) throw new Error('Falha ao buscar compras');
-      compras = await res.json();
-    }catch(err){
-      console.error('Erro em minhas compras:', err);
-      box.innerHTML = `${BOTAO_VOLTAR}<p style="color:var(--cream-2);">Não foi possível carregar suas compras agora. Tente novamente em instantes.</p>`;
-      voltar();
+      ligarVoltar();
+      document.getElementById('portalEntrar').addEventListener('click', () => abrirLogin());
       return;
     }
 
     const nome = localStorage.getItem('nomeAluno') || '';
-    const itensHtml = compras.length ? compras.map(c => {
+    box.innerHTML = `
+      ${BOTAO_VOLTAR}
+      <div class="compras-topo">
+        <div>
+          <h1>Portal do aluno</h1>
+          ${nome ? `<p>Olá, ${escapeHtml(nome)}</p>` : ''}
+        </div>
+        <button class="btn btn-outline" id="portalSair">Sair da conta</button>
+      </div>
+      <nav class="portal-abas">
+        ${PORTAL_ABAS.map(a => `<a href="#${a.hash}" class="${a.id === aba ? 'ativa' : ''}">${a.nome}</a>`).join('')}
+      </nav>
+      <div id="portalAba"><p style="color:var(--cream-2);">Carregando…</p></div>`;
+    ligarVoltar();
+    document.getElementById('portalSair').addEventListener('click', () => { sairDaConta(); location.hash = ''; });
+
+    const alvo = document.getElementById('portalAba');
+    const render = { inicio: portalInicio, conta: portalConta, livros: portalLivros, cursos: portalCursos, provimento: portalProvimento }[aba];
+    render(alvo).catch(err => {
+      if (err.sessao) return;
+      console.error('Erro no portal:', err);
+      alvo.innerHTML = `<p style="color:var(--cream-2);">${escapeHtml(err.message || 'Não foi possível carregar agora. Tente novamente em instantes.')}</p>`;
+    });
+
+    function ligarVoltar(){
+      const b = document.getElementById('btnVoltarDetalhe');
+      if (b) b.addEventListener('click', (e) => { e.preventDefault(); location.hash = ''; });
+    }
+  }
+
+  // ---------- Início ----------
+  async function portalInicio(alvo){
+    const [compras, provs] = await Promise.all([
+      apiAluno('/alunos/minhas-compras'),
+      apiAluno('/provimentos').catch(() => []),
+    ]);
+    const nLivros = compras.filter(c => c.tipo_item === 'livro').length;
+    const nCursos = compras.filter(c => c.tipo_item === 'curso').length;
+    const abertos = provs.filter(p => p.status !== 'concluido').length;
+    alvo.innerHTML = `
+      <div class="portal-cards">
+        <a class="portal-card" href="#portal-livros"><div class="num">${nLivros}</div><h4>Meus livros</h4><p>E-books para baixar e livros físicos comprados.</p></a>
+        <a class="portal-card" href="#portal-cursos"><div class="num">${nCursos}</div><h4>Meus cursos</h4><p>Cursos em que você está inscrito.</p></a>
+        <a class="portal-card" href="#portal-provimento"><div class="num">${abertos}</div><h4>Provimento OAB 2ª fase</h4><p>Envie sua peça e suas questões e acompanhe a análise.</p></a>
+        <a class="portal-card" href="#portal-conta"><div class="num">✎</div><h4>Minha conta</h4><p>Seus dados e sua senha.</p></a>
+      </div>`;
+  }
+
+  // ---------- Minha conta ----------
+  async function portalConta(alvo){
+    const eu = await apiAluno('/alunos/me');
+    alvo.innerHTML = `
+      <div class="portal-painel">
+        <h3>Meus dados</h3>
+        <p>Cliente desde ${new Date(eu.criado_em).toLocaleDateString('pt-BR')}.</p>
+        <form id="formConta" class="portal-form">
+          <div class="checkout-field"><label for="contaNome">Nome</label><input id="contaNome" maxlength="120" value="${escAttr(eu.nome)}" required></div>
+          <div class="checkout-field"><label for="contaTel">Telefone / WhatsApp</label><input id="contaTel" maxlength="30" value="${escAttr(eu.telefone || '')}" placeholder="(11) 90000-0000"></div>
+          <div class="checkout-field" style="grid-column:1/-1;"><label for="contaEmail">E-mail</label><input id="contaEmail" value="${escAttr(eu.email)}" readonly></div>
+        </form>
+        <div class="portal-acoes"><button class="btn btn-gold" id="contaSalvar">Salvar dados</button><span class="portal-msg" id="contaMsg"></span></div>
+      </div>
+      <div class="portal-painel">
+        <h3>Trocar senha</h3>
+        <p>Use pelo menos 6 caracteres.</p>
+        <form id="formSenha" class="portal-form">
+          <div class="checkout-field" style="grid-column:1/-1;"><label for="senhaAtual">Senha atual</label><input id="senhaAtual" type="password" autocomplete="current-password"></div>
+          <div class="checkout-field"><label for="senhaNova">Nova senha</label><input id="senhaNova" type="password" autocomplete="new-password"></div>
+          <div class="checkout-field"><label for="senhaNova2">Repita a nova senha</label><input id="senhaNova2" type="password" autocomplete="new-password"></div>
+        </form>
+        <div class="portal-acoes"><button class="btn btn-outline" id="senhaSalvar">Trocar senha</button><span class="portal-msg" id="senhaMsg"></span></div>
+      </div>`;
+
+    const msg = (id, texto, ok) => { const el = document.getElementById(id); el.textContent = texto; el.className = 'portal-msg ' + (ok ? 'ok' : 'erro'); };
+
+    document.getElementById('contaSalvar').addEventListener('click', async () => {
+      const nome = document.getElementById('contaNome').value.trim();
+      if (!nome) return msg('contaMsg', 'Informe seu nome.', false);
+      try{
+        const r = await apiAluno('/alunos/me', { method: 'PUT', json: { nome, telefone: document.getElementById('contaTel').value.trim() } });
+        localStorage.setItem('nomeAluno', r.nome);
+        atualizarIconeLogin();
+        msg('contaMsg', 'Dados salvos.', true);
+      }catch(err){ if (!err.sessao) msg('contaMsg', err.message, false); }
+    });
+
+    document.getElementById('senhaSalvar').addEventListener('click', async () => {
+      const atual = document.getElementById('senhaAtual').value;
+      const nova = document.getElementById('senhaNova').value;
+      const nova2 = document.getElementById('senhaNova2').value;
+      if (!atual || !nova) return msg('senhaMsg', 'Preencha a senha atual e a nova.', false);
+      if (nova.length < 6) return msg('senhaMsg', 'A nova senha precisa ter pelo menos 6 caracteres.', false);
+      if (nova !== nova2) return msg('senhaMsg', 'As duas senhas novas não são iguais.', false);
+      try{
+        await apiAluno('/alunos/me/senha', { method: 'PUT', json: { senha_atual: atual, nova_senha: nova } });
+        document.getElementById('formSenha').reset();
+        msg('senhaMsg', 'Senha alterada.', true);
+      }catch(err){ if (!err.sessao) msg('senhaMsg', err.message, false); }
+    });
+  }
+
+  function capaCompra(c){
+    const u = urlSegura(c.capa_url);
+    return `<div class="compra-capa"${u ? ` style="background-image:url('${escAttr(u)}')"` : ''}></div>`;
+  }
+
+  // ---------- Meus livros ----------
+  async function portalLivros(alvo){
+    const livros = (await apiAluno('/alunos/minhas-compras')).filter(c => c.tipo_item === 'livro');
+    if (!livros.length){
+      alvo.innerHTML = `
+        <div class="compras-vazio">
+          <p>Você ainda não tem livros confirmados.</p>
+          <p style="font-size:0.88rem;margin-top:10px;">Se acabou de pagar, o livro aparece aqui assim que o pagamento for confirmado.</p>
+          <a href="#livros-todos" class="btn btn-gold">Ver livros</a>
+        </div>`;
+      return;
+    }
+    alvo.innerHTML = livros.map(c => {
       let tag, acao;
-      if (c.tipo_item === 'curso'){
-        tag = 'CURSO';
-        acao = '<span class="compra-status">Inscrição confirmada</span>';
-      } else if (c.tipo_livro === 'ebook'){
+      if (c.tipo_livro === 'ebook'){
         tag = 'E-BOOK';
         const link = urlSegura(c.arquivo_url);
         acao = link
-          ? `<a class="btn btn-gold" href="${escapeHtml(link)}" target="_blank" rel="noopener">Baixar e-book</a>`
+          ? `<a class="btn btn-gold" href="${escAttr(link)}" target="_blank" rel="noopener">Baixar e-book</a>`
           : '<span class="compra-status">Arquivo em preparação</span>';
       } else {
         tag = 'LIVRO FÍSICO';
         acao = '<span class="compra-status">Pedido confirmado</span>';
       }
-      const data = new Date(c.criado_em).toLocaleDateString('pt-BR');
       return `
         <div class="compra-item">
-          <div>
-            <span class="carrinho-item-tag">${tag}</span>
-            <h4>${escapeHtml(c.titulo || 'Item')}</h4>
-            <span class="compra-meta">Comprado em ${data} · ${formatPreco(c.valor)}</span>
+          <div class="compra-info">
+            ${capaCompra(c)}
+            <div>
+              <span class="carrinho-item-tag">${tag}</span>
+              <h4>${escapeHtml(c.titulo || 'Livro')}</h4>
+              <span class="compra-meta">Comprado em ${new Date(c.criado_em).toLocaleDateString('pt-BR')} · ${formatPreco(c.valor)}</span>
+            </div>
           </div>
           <div>${acao}</div>
         </div>`;
-    }).join('') : `
-      <div class="compras-vazio">
-        <p>Você ainda não tem compras confirmadas.</p>
-        <p style="font-size:0.88rem;margin-top:10px;">Se acabou de pagar, o item aparece aqui assim que o pagamento for confirmado.</p>
-        <a href="#livros-todos" class="btn btn-gold">Ver livros e cursos</a>
-      </div>`;
+    }).join('');
+  }
 
-    box.innerHTML = `
-      ${BOTAO_VOLTAR}
-      <div class="compras-topo">
-        <div>
-          <h1>Minhas compras</h1>
-          ${nome ? `<p>Olá, ${escapeHtml(nome)}</p>` : ''}
+  // ---------- Meus cursos ----------
+  async function portalCursos(alvo){
+    const cursos = (await apiAluno('/alunos/minhas-compras')).filter(c => c.tipo_item === 'curso');
+    if (!cursos.length){
+      alvo.innerHTML = `
+        <div class="compras-vazio">
+          <p>Você ainda não está inscrito em nenhum curso.</p>
+          <p style="font-size:0.88rem;margin-top:10px;">Se acabou de pagar, o curso aparece aqui assim que o pagamento for confirmado.</p>
+          <a href="#cursos-todos" class="btn btn-gold">Ver cursos</a>
+        </div>`;
+      return;
+    }
+    const wa = WA_BASE + encodeURIComponent('Olá! Comprei um curso pelo site e gostaria de saber como acessar.');
+    alvo.innerHTML = cursos.map(c => {
+      const detalhes = [
+        c.carga_horaria ? escapeHtml(c.carga_horaria) : '',
+        c.certificado ? 'Com certificado' : '',
+        'Inscrito em ' + new Date(c.criado_em).toLocaleDateString('pt-BR'),
+      ].filter(Boolean).join(' · ');
+      return `
+        <div class="compra-item">
+          <div class="compra-info">
+            ${capaCompra(c)}
+            <div>
+              <span class="carrinho-item-tag">CURSO</span>
+              <h4>${escapeHtml(c.titulo || 'Curso')}</h4>
+              <span class="compra-meta">${detalhes}</span>
+            </div>
+          </div>
+          <div><span class="compra-status">Inscrição confirmada</span></div>
+        </div>`;
+    }).join('') + `
+      <p class="prov-ajuda" style="margin-top:14px;">As instruções de acesso às aulas são enviadas pelo Dr. Israel. Dúvidas? <a href="${wa}" target="_blank" rel="noopener" style="color:var(--gold-light);">Fale pelo WhatsApp</a>.</p>`;
+  }
+
+  // ---------- Provimento OAB 2ª fase ----------
+  let PROV_CONFIG = null;
+  const PROV_EXTENSOES = /\.(pdf|docx?|jpe?g|png)$/i;
+
+  async function portalProvimento(alvo){
+    if (!PROV_CONFIG){
+      const r = await fetch(`${API_URL}/provimentos/config`);
+      if (!r.ok) throw new Error('Não foi possível carregar agora. Tente novamente em instantes.');
+      PROV_CONFIG = await r.json();
+    }
+    const cfg = PROV_CONFIG;
+    const envios = await apiAluno('/provimentos');
+    const partes = Object.keys(cfg.partes);
+
+    const slotHtml = (p, s) => {
+      const arq = p.arquivos.find(a => a.parte === s.parte && a.item === s.item);
+      const editavel = p.status === 'rascunho';
+      const info = arq
+        ? `<span>${escapeHtml(arq.nome_original)} · ${tamanhoLegivel(arq.tamanho)}</span>`
+        : `<span>${editavel ? 'Nenhum arquivo ainda' : 'Não enviado'}</span>`;
+      const acoes = [];
+      if (arq) acoes.push(`<button class="mini-acao" data-acao="baixar" data-prov="${p.id}" data-arq="${arq.id}" data-nome="${escAttr(arq.nome_original)}">Baixar</button>`);
+      if (editavel){
+        acoes.push(`<label class="mini-acao ${arq ? '' : 'principal'}">${arq ? 'Trocar' : 'Escolher arquivo'}<input type="file" hidden accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" data-acao="subir" data-prov="${p.id}" data-parte="${s.parte}" data-item="${s.item}"></label>`);
+        if (arq) acoes.push(`<button class="mini-acao" data-acao="remover" data-prov="${p.id}" data-arq="${arq.id}">Remover</button>`);
+      }
+      return `
+        <div class="prov-slot ${arq ? 'feito' : ''}">
+          <div><b>${arq ? '✓ ' : ''}${escapeHtml(s.rotulo)}</b>${info}</div>
+          <div class="prov-slot-acoes">${acoes.join('')}</div>
+        </div>`;
+    };
+
+    const envioHtml = (p) => {
+      const editavel = p.status === 'rascunho';
+      const total = cfg.arquivos.length;
+      const feitos = cfg.arquivos.filter(s => p.arquivos.some(a => a.parte === s.parte && a.item === s.item)).length;
+      const data = p.enviado_em
+        ? 'Enviado em ' + new Date(p.enviado_em).toLocaleDateString('pt-BR')
+        : `${feitos} de ${total} arquivos`;
+      return `
+        <div class="portal-painel" id="prov-${p.id}">
+          <div class="prov-topo">
+            <div><h3>${escapeHtml(p.disciplina_nome)}</h3><span class="compra-meta">${data}</span></div>
+            <span class="prov-status ${escAttr(p.status)}">${escapeHtml(p.status_nome)}</span>
+          </div>
+          ${partes.map(pt => `
+            <div class="prov-parte">
+              <h4>${escapeHtml(cfg.partes[pt])}</h4>
+              ${cfg.arquivos.filter(s => s.parte === pt).map(s => slotHtml(p, s)).join('')}
+            </div>`).join('')}
+          ${editavel ? `
+            <div class="checkout-field" style="margin-top:16px;">
+              <label for="obs-${p.id}">Recado para o Dr. Israel (opcional)</label>
+              <textarea id="obs-${p.id}" maxlength="3000" placeholder="Ex.: número de inscrição, observações sobre a correção…">${escapeHtml(p.observacao || '')}</textarea>
+            </div>
+            <div class="portal-acoes">
+              <button class="btn btn-gold" data-acao="enviar" data-prov="${p.id}" ${feitos < total ? 'disabled style="opacity:.55;cursor:default;"' : ''}>Enviar para análise</button>
+              <button class="mini-acao" data-acao="salvar-obs" data-prov="${p.id}">Salvar recado</button>
+              <button class="mini-acao" data-acao="descartar" data-prov="${p.id}">Descartar</button>
+              <span class="portal-msg" id="provMsg-${p.id}"></span>
+            </div>
+            ${feitos < total ? '<p class="prov-ajuda">O botão "Enviar para análise" libera quando todos os arquivos estiverem anexados. Depois de enviar, não dá mais para trocar os arquivos.</p>' : ''}`
+          : `
+            ${p.observacao ? `<div class="prov-resposta"><small>Seu recado</small>${escapeHtml(p.observacao)}</div>` : ''}
+            ${p.resposta ? `<div class="prov-resposta"><small>Resposta do Dr. Israel</small>${escapeHtml(p.resposta)}</div>` : ''}
+            <span class="portal-msg" id="provMsg-${p.id}"></span>`}
+        </div>`;
+    };
+
+    // Um container novo a cada renderização: assim os "ouvintes" de clique
+    // não se acumulam quando a aba recarrega depois de cada ação.
+    const wrap = document.createElement('div');
+    alvo.replaceChildren(wrap);
+    wrap.innerHTML = `
+      <div class="portal-painel">
+        <h3>Enviar prova da OAB 2ª fase</h3>
+        <p>Escolha a disciplina e anexe seus arquivos: ${escapeHtml(cfg.partes.A || '')} e ${escapeHtml(cfg.partes.B || '')}.
+          Aceita ${escapeHtml(cfg.tipos_aceitos)}, até ${cfg.tamanho_maximo_mb} MB por arquivo. Os arquivos são sigilosos: só você e o Dr. Israel têm acesso.</p>
+        <div class="prov-novo">
+          <select id="provDisciplina" aria-label="Disciplina">
+            <option value="">Escolha a disciplina…</option>
+            ${cfg.disciplinas.map(d => `<option value="${escAttr(d.id)}">${escapeHtml(d.nome)}</option>`).join('')}
+          </select>
+          <button class="btn btn-gold" id="provComecar">Começar</button>
         </div>
-        <button class="btn btn-outline" id="comprasSair">Sair da conta</button>
+        <span class="portal-msg" id="provNovoMsg"></span>
       </div>
-      ${itensHtml}`;
-    voltar();
-    document.getElementById('comprasSair').addEventListener('click', () => {
-      localStorage.removeItem('tokenAluno');
-      localStorage.removeItem('nomeAluno');
-      atualizarIconeLogin();
-      location.hash = '';
+      ${envios.length ? envios.map(envioHtml).join('') : '<p class="prov-ajuda">Você ainda não enviou nenhuma prova.</p>'}`;
+
+    const recarregar = (focoId) => portalProvimento(alvo).then(() => {
+      const el = focoId && document.getElementById('prov-' + focoId);
+      if (el) el.scrollIntoView({ block: 'nearest' });
+    }).catch(err => { if (!err.sessao) alert(err.message); });
+    const msg = (id, texto, ok) => { const el = document.getElementById('provMsg-' + id); if (el){ el.textContent = texto; el.className = 'portal-msg ' + (ok ? 'ok' : 'erro'); } };
+
+    document.getElementById('provComecar').addEventListener('click', async () => {
+      const disciplina = document.getElementById('provDisciplina').value;
+      const m = document.getElementById('provNovoMsg');
+      if (!disciplina){ m.textContent = 'Escolha a disciplina primeiro.'; m.className = 'portal-msg erro'; return; }
+      try{
+        const p = await apiAluno('/provimentos', { method: 'POST', json: { disciplina } });
+        recarregar(p.id);
+      }catch(err){ if (!err.sessao){ m.textContent = err.message; m.className = 'portal-msg erro'; } }
+    });
+
+    wrap.addEventListener('change', async (e) => {
+      const inp = e.target.closest('input[data-acao="subir"]');
+      if (!inp || !inp.files[0]) return;
+      const f = inp.files[0];
+      const id = inp.dataset.prov;
+      if (!PROV_EXTENSOES.test(f.name)) return msg(id, 'Formato não aceito. Envie PDF, Word, JPG ou PNG.', false);
+      if (f.size > cfg.tamanho_maximo_mb * 1048576) return msg(id, `Arquivo grande demais (máximo ${cfg.tamanho_maximo_mb} MB).`, false);
+      msg(id, 'Enviando arquivo…', true);
+      try{
+        await apiAluno(`/provimentos/${id}/arquivos/${inp.dataset.parte}/${inp.dataset.item}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': f.type || 'application/octet-stream', 'X-Nome-Arquivo': encodeURIComponent(f.name) },
+          body: f,
+        });
+        recarregar(id);
+      }catch(err){ if (!err.sessao) msg(id, err.message, false); }
+    });
+
+    wrap.addEventListener('click', async (e) => {
+      const b = e.target.closest('button[data-acao]');
+      if (!b) return;
+      const id = b.dataset.prov;
+      try{
+        if (b.dataset.acao === 'baixar'){
+          const blob = await apiAluno(`/provimentos/${id}/arquivos/${b.dataset.arq}`, { blob: true });
+          const url = URL.createObjectURL(blob);
+          const a = document.createElement('a');
+          a.href = url; a.download = b.dataset.nome || 'arquivo';
+          document.body.appendChild(a); a.click(); a.remove();
+          setTimeout(() => URL.revokeObjectURL(url), 2000);
+        } else if (b.dataset.acao === 'remover'){
+          await apiAluno(`/provimentos/${id}/arquivos/${b.dataset.arq}`, { method: 'DELETE' });
+          recarregar(id);
+        } else if (b.dataset.acao === 'salvar-obs'){
+          await apiAluno(`/provimentos/${id}`, { method: 'PUT', json: { observacao: document.getElementById('obs-' + id).value } });
+          msg(id, 'Recado salvo.', true);
+        } else if (b.dataset.acao === 'descartar'){
+          if (!confirm('Descartar este envio e apagar os arquivos anexados?')) return;
+          await apiAluno(`/provimentos/${id}`, { method: 'DELETE' });
+          recarregar();
+        } else if (b.dataset.acao === 'enviar'){
+          if (b.disabled) return;
+          if (!confirm('Enviar para análise? Depois disso não será possível trocar os arquivos.')) return;
+          const obs = document.getElementById('obs-' + id);
+          if (obs) await apiAluno(`/provimentos/${id}`, { method: 'PUT', json: { observacao: obs.value } });
+          await apiAluno(`/provimentos/${id}/enviar`, { method: 'POST' });
+          await recarregar(id);
+          msg(id, 'Enviado! O Dr. Israel vai analisar e você acompanha o status por aqui.', true);
+        }
+      }catch(err){ if (!err.sessao) msg(id, err.message, false); }
     });
   }
 
@@ -1682,7 +2079,7 @@
     const nome = localStorage.getItem('nomeAluno');
     const btn = document.getElementById('iconLogin');
     if (!btn) return;
-    btn.title = nome ? `Olá, ${nome} — Minhas compras` : 'Entrar';
+    btn.title = nome ? `Olá, ${nome} — Portal do aluno` : 'Entrar';
   }
 
   // A página de cadastro é tratada como mais uma "rota" (#cadastro), junto
@@ -1718,8 +2115,8 @@
   document.getElementById('iconCadastro').addEventListener('click', () => { location.hash = 'cadastro'; });
   document.getElementById('iconLogin').addEventListener('click', () => {
     if (localStorage.getItem('tokenAluno')){
-      if (location.hash === '#minhas-compras') mostrarCompras();
-      else location.hash = 'minhas-compras';
+      if (location.hash === '#portal') mostrarPortal('inicio');
+      else location.hash = 'portal';
       return;
     }
     abrirLogin();
@@ -1818,7 +2215,9 @@
       localStorage.setItem('nomeAluno', dados.nome);
       atualizarIconeLogin();
       fecharLogin();
-      if (location.hash === '#minhas-compras') mostrarCompras();
+      const rotaAtual = parseHash();
+      if (rotaAtual && rotaAtual.tipo === 'portal') mostrarPortal(rotaAtual.chave);
+      else location.hash = 'portal';
     }catch(err){
       console.error('Erro no login:', err);
       loginErroEl.textContent = 'Não foi possível conectar ao servidor. Tente novamente em instantes.';
@@ -1877,8 +2276,8 @@
     banner.textContent = msg.texto;
     if (status !== 'erro'){
       const lnk = document.createElement('a');
-      lnk.href = '#minhas-compras';
-      lnk.textContent = ' Ver minhas compras';
+      lnk.href = '#portal';
+      lnk.textContent = ' Ver no portal do aluno';
       lnk.style.cssText = 'text-decoration:underline;font-weight:600;margin-left:6px;';
       banner.appendChild(lnk);
     }
