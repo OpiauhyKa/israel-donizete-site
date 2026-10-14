@@ -174,8 +174,11 @@
   .prov-topo h3{margin:0;}
   .prov-status{font-size:0.75rem;font-weight:700;letter-spacing:0.04em;padding:5px 10px;border-radius:20px;background:var(--navy-deep);color:var(--gold-light);border:1px solid var(--navy-line);white-space:nowrap;}
   .prov-status.enviado,.prov-status.em_analise{color:#9CC8E8;}
+  .prov-status.aguardando_pagamento{color:#E8C27A;}
   .prov-status.concluido{color:#8FCB9B;}
   .prov-parte{margin-top:16px;}
+  .prov-ab{display:grid;grid-template-columns:1fr 1fr;gap:0 10px;}
+  @media (max-width:640px){ .prov-ab{grid-template-columns:1fr;} }
   .prov-parte h4{color:var(--gold-light);font-size:0.8rem;letter-spacing:0.05em;text-transform:uppercase;margin-bottom:8px;}
   .prov-slot{
     display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
@@ -1198,7 +1201,7 @@
       <div class="servico-bloco servico-portal">
         <div>
           <h2>Envie sua prova pelo portal do aluno</h2>
-          <p class="servico-intro" style="margin:0;">Escolha a disciplina e anexe a peça processual (Parte A) e as 4 questões discursivas (Parte B). Você acompanha a análise por lá.</p>
+          <p class="servico-intro" style="margin:0;">Escolha a disciplina e anexe a peça processual e as questões discursivas, cada questão com item A e item B. Você acompanha a análise por lá.</p>
         </div>
         <a class="btn btn-gold" href="#portal-provimento">Enviar minha prova</a>
       </div>` : ''}
@@ -1243,6 +1246,14 @@
     `;
   }
 
+  // Livro vendido em loja parceira (link de afiliado cadastrado no painel).
+  function linkExterno(item){
+    return /^https:\/\//i.test(item.link_compra || '') ? item.link_compra : '';
+  }
+  function rotuloLoja(item){
+    return item.plataforma ? `Comprar na ${item.plataforma}` : 'Comprar';
+  }
+
   async function renderDetalheProduto(tipo, id){
     const endpoint = tipo === 'livro' ? 'livros' : 'cursos';
     const res = await fetch(`${API_URL}/${endpoint}/${encodeURIComponent(id)}`);
@@ -1251,6 +1262,7 @@
     const coverStyle = item.capa_url ? ` style="background-image:url('${item.capa_url}')"` : '';
     const icon = tipo === 'livro' ? ICON_BOOK : ICON_COURSE;
     const jaNoCarrinho = estaNoCarrinho(tipo, item.id);
+    const externo = tipo === 'livro' && linkExterno(item);
     detalheConteudo.innerHTML = `
       ${BOTAO_VOLTAR}
       <div class="detalhe-cover"${coverStyle}>${item.capa_url ? '' : icon}</div>
@@ -1259,10 +1271,14 @@
       <div class="detalhe-corpo">${escapeHtml(item.descricao || 'Descrição em preparação.')}</div>
       <div class="detalhe-compra">
         <span class="price">${formatPreco(item.preco)}</span>
-        <button class="btn btn-gold" id="btnAddCarrinho" ${jaNoCarrinho ? 'disabled' : ''}>${jaNoCarrinho ? 'Já está no carrinho ✓' : 'Adicionar ao carrinho'}</button>
+        ${externo
+          ? `<a class="btn btn-gold" href="${escAttr(externo)}" target="_blank" rel="noopener sponsored">${escapeHtml(rotuloLoja(item))} ↗</a>`
+          : `<button class="btn btn-gold" id="btnAddCarrinho" ${jaNoCarrinho ? 'disabled' : ''}>${jaNoCarrinho ? 'Já está no carrinho ✓' : 'Adicionar ao carrinho'}</button>`}
       </div>
+      ${externo ? `<p class="detalhe-meta" style="margin-top:12px;">A compra e a entrega são feitas pela ${escapeHtml(item.plataforma || 'loja parceira')}.</p>` : ''}
     `;
 
+    if (externo) return;
     document.getElementById('btnAddCarrinho').addEventListener('click', (e) => {
       adicionarAoCarrinho(tipo, item.id, item.titulo, item.preco);
       e.target.disabled = true;
@@ -1374,7 +1390,10 @@
       const isLivro = tipoItem === 'livro';
       const tag = isLivro ? (item.tipo === 'ebook' ? 'E-BOOK' : 'LIVRO FÍSICO') : 'CURSO';
       const icon = isLivro ? ICON_BOOK : ICON_COURSE;
-      const acao = isLivro ? 'Comprar' : 'Ver curso';
+      const externo = isLivro && linkExterno(item);
+      const acao = externo
+        ? `<a class="mini-btn" href="${escAttr(externo)}" target="_blank" rel="noopener sponsored">${escapeHtml(rotuloLoja(item))}</a>`
+        : `<span class="mini-btn">${isLivro ? 'Comprar' : 'Ver curso'}</span>`;
       const temCapa = !!item.capa_url;
       const coverStyle = temCapa ? ` style="background-image:url('${item.capa_url}')"` : '';
       return `
@@ -1387,7 +1406,7 @@
             <span class="cat">${CATEGORIA_LABEL[item.categoria] || item.categoria}</span>
             <h4>${escapeHtml(item.titulo)}</h4>
             <p>${escapeHtml(item.descricao || '')}</p>
-            <div class="product-foot"><span class="price">${formatPreco(item.preco)}</span><span class="mini-btn">${acao}</span></div>
+            <div class="product-foot"><span class="price">${formatPreco(item.preco)}</span>${acao}</div>
           </div>
         </div>`;
     }
@@ -1432,6 +1451,7 @@
     });
 
     document.getElementById('catalogoTodosGrid').addEventListener('click', (e) => {
+      if (e.target.closest('a.mini-btn')) return; // link da loja (Amazon, Hotmart...) abre sozinho
       const card = e.target.closest('.product-card');
       if (!card) return;
       location.hash = `${card.dataset.tipo}-${card.dataset.id}`;
@@ -1821,19 +1841,26 @@
 
   // ---------- Provimento OAB 2ª fase ----------
   let PROV_CONFIG = null;
+  function descreverPedido(cfg){
+    const pecas = cfg.grupos.filter(g => /^Peça/.test(g.titulo)).length;
+    const questoes = cfg.grupos.length - pecas;
+    const ab = cfg.grupos.some(g => g.arquivos.length > 1);
+    const partes = [];
+    if (pecas) partes.push(pecas === 1 ? 'a peça processual' : `as ${pecas} peças processuais`);
+    if (questoes) partes.push((questoes === 1 ? 'a questão discursiva' : `as ${questoes} questões discursivas`) + (ab ? ' (cada uma com item A e item B)' : ''));
+    return partes.join(' e ');
+  }
   const PROV_EXTENSOES = /\.(pdf|docx?|jpe?g|png)$/i;
 
   async function portalProvimento(alvo){
-    if (!PROV_CONFIG){
-      const r = await fetch(`${API_URL}/provimentos/config`);
-      if (!r.ok) throw new Error('Não foi possível carregar agora. Tente novamente em instantes.');
-      PROV_CONFIG = await r.json();
-    }
-    const cfg = PROV_CONFIG;
+    // Sempre busca de novo: o Dr. Israel pode mudar quantidades e valor pelo painel.
+    const r = await fetch(`${API_URL}/provimentos/config`);
+    if (!r.ok) throw new Error('Não foi possível carregar agora. Tente novamente em instantes.');
+    const cfg = PROV_CONFIG = await r.json();
     const envios = await apiAluno('/provimentos');
-    const partes = Object.keys(cfg.partes);
+    const todosArquivos = cfg.grupos.flatMap(g => g.arquivos);
 
-    const slotHtml = (p, s) => {
+    const slotHtml = (p, s, rotulo) => {
       const arq = p.arquivos.find(a => a.parte === s.parte && a.item === s.item);
       const editavel = p.status === 'rascunho';
       const info = arq
@@ -1847,28 +1874,33 @@
       }
       return `
         <div class="prov-slot ${arq ? 'feito' : ''}">
-          <div><b>${arq ? '✓ ' : ''}${escapeHtml(s.rotulo)}</b>${info}</div>
+          <div><b>${arq ? '✓ ' : ''}${escapeHtml(rotulo)}</b>${info}</div>
           <div class="prov-slot-acoes">${acoes.join('')}</div>
         </div>`;
     };
 
     const envioHtml = (p) => {
       const editavel = p.status === 'rascunho';
-      const total = cfg.arquivos.length;
-      const feitos = cfg.arquivos.filter(s => p.arquivos.some(a => a.parte === s.parte && a.item === s.item)).length;
+      const aguardando = p.status === 'aguardando_pagamento';
+      const total = todosArquivos.length;
+      const feitos = todosArquivos.filter(s => p.arquivos.some(a => a.parte === s.parte && a.item === s.item)).length;
       const data = p.enviado_em
         ? 'Enviado em ' + new Date(p.enviado_em).toLocaleDateString('pt-BR')
         : `${feitos} de ${total} arquivos`;
+      const cobra = Number(cfg.valor) > 0;
+      const rotuloEnviar = cobra ? `Pagar ${formatPreco(cfg.valor)} e enviar` : 'Enviar para análise';
       return `
         <div class="portal-painel" id="prov-${p.id}">
           <div class="prov-topo">
             <div><h3>${escapeHtml(p.disciplina_nome)}</h3><span class="compra-meta">${data}</span></div>
             <span class="prov-status ${escAttr(p.status)}">${escapeHtml(p.status_nome)}</span>
           </div>
-          ${partes.map(pt => `
+          ${cfg.grupos.map(g => `
             <div class="prov-parte">
-              <h4>${escapeHtml(cfg.partes[pt])}</h4>
-              ${cfg.arquivos.filter(s => s.parte === pt).map(s => slotHtml(p, s)).join('')}
+              <h4>${escapeHtml(g.titulo)}</h4>
+              <div class="${g.arquivos.length > 1 ? 'prov-ab' : ''}">
+                ${g.arquivos.map(s => slotHtml(p, s, g.arquivos.length > 1 ? 'Item ' + s.parte : s.rotulo)).join('')}
+              </div>
             </div>`).join('')}
           ${editavel ? `
             <div class="checkout-field" style="margin-top:16px;">
@@ -1876,12 +1908,19 @@
               <textarea id="obs-${p.id}" maxlength="3000" placeholder="Ex.: número de inscrição, observações sobre a correção…">${escapeHtml(p.observacao || '')}</textarea>
             </div>
             <div class="portal-acoes">
-              <button class="btn btn-gold" data-acao="enviar" data-prov="${p.id}" ${feitos < total ? 'disabled style="opacity:.55;cursor:default;"' : ''}>Enviar para análise</button>
+              <button class="btn btn-gold" data-acao="enviar" data-prov="${p.id}" ${feitos < total ? 'disabled style="opacity:.55;cursor:default;"' : ''}>${rotuloEnviar}</button>
               <button class="mini-acao" data-acao="salvar-obs" data-prov="${p.id}">Salvar recado</button>
               <button class="mini-acao" data-acao="descartar" data-prov="${p.id}">Descartar</button>
               <span class="portal-msg" id="provMsg-${p.id}"></span>
             </div>
-            ${feitos < total ? '<p class="prov-ajuda">O botão "Enviar para análise" libera quando todos os arquivos estiverem anexados. Depois de enviar, não dá mais para trocar os arquivos.</p>' : ''}`
+            ${feitos < total ? `<p class="prov-ajuda">O botão "${rotuloEnviar}" libera quando todos os arquivos estiverem anexados. Depois de enviar, não dá mais para trocar os arquivos.</p>` : ''}`
+          : aguardando ? `
+            <div class="prov-resposta"><small>Aguardando pagamento</small>Assim que o Mercado Pago confirmar o pagamento${p.valor ? ' de ' + formatPreco(p.valor) : ''}, seu envio segue para análise. Se você já pagou, pode levar alguns minutos.</div>
+            <div class="portal-acoes">
+              <button class="btn btn-gold" data-acao="enviar" data-prov="${p.id}">Pagar agora</button>
+              <button class="mini-acao" data-acao="voltar" data-prov="${p.id}">Voltar a editar</button>
+              <span class="portal-msg" id="provMsg-${p.id}"></span>
+            </div>`
           : `
             ${p.observacao ? `<div class="prov-resposta"><small>Seu recado</small>${escapeHtml(p.observacao)}</div>` : ''}
             ${p.resposta ? `<div class="prov-resposta"><small>Resposta do Dr. Israel</small>${escapeHtml(p.resposta)}</div>` : ''}
@@ -1896,8 +1935,11 @@
     wrap.innerHTML = `
       <div class="portal-painel">
         <h3>Enviar prova da OAB 2ª fase</h3>
-        <p>Escolha a disciplina e anexe seus arquivos: ${escapeHtml(cfg.partes.A || '')} e ${escapeHtml(cfg.partes.B || '')}.
-          Aceita ${escapeHtml(cfg.tipos_aceitos)}, até ${cfg.tamanho_maximo_mb} MB por arquivo. Os arquivos são sigilosos: só você e o Dr. Israel têm acesso.</p>
+        <p>Escolha a disciplina do recurso e anexe ${escapeHtml(descreverPedido(cfg))}, cada um no seu campo.
+          Aceita ${escapeHtml(cfg.tipos_aceitos)}, até ${cfg.tamanho_maximo_mb} MB por arquivo.
+          ${Number(cfg.valor) > 0 ? `Valor por disciplina: <b style="color:var(--gold-light);">${formatPreco(cfg.valor)}</b>.` : ''}
+          Os arquivos são sigilosos: só você e o Dr. Israel têm acesso.</p>
+        ${cfg.instrucoes ? `<p style="white-space:pre-line;">${escapeHtml(cfg.instrucoes)}</p>` : ''}
         <div class="prov-novo">
           <select id="provDisciplina" aria-label="Disciplina">
             <option value="">Escolha a disciplina…</option>
@@ -1967,12 +2009,23 @@
           recarregar();
         } else if (b.dataset.acao === 'enviar'){
           if (b.disabled) return;
-          if (!confirm('Enviar para análise? Depois disso não será possível trocar os arquivos.')) return;
+          const pagando = Number(PROV_CONFIG && PROV_CONFIG.valor) > 0;
+          if (b.textContent.trim() !== 'Pagar agora' && !confirm(pagando
+            ? 'Você será levado ao Mercado Pago. Depois do pagamento, o envio segue para análise e os arquivos não podem mais ser trocados. Continuar?'
+            : 'Enviar para análise? Depois disso não será possível trocar os arquivos.')) return;
           const obs = document.getElementById('obs-' + id);
           if (obs) await apiAluno(`/provimentos/${id}`, { method: 'PUT', json: { observacao: obs.value } });
-          await apiAluno(`/provimentos/${id}/enviar`, { method: 'POST' });
+          const resp = await apiAluno(`/provimentos/${id}/enviar`, { method: 'POST' });
+          if (resp && resp.url_pagamento){
+            msg(id, 'Abrindo o pagamento…', true);
+            window.location.href = resp.url_pagamento;
+            return;
+          }
           await recarregar(id);
           msg(id, 'Enviado! O Dr. Israel vai analisar e você acompanha o status por aqui.', true);
+        } else if (b.dataset.acao === 'voltar'){
+          await apiAluno(`/provimentos/${id}/voltar`, { method: 'POST' });
+          recarregar(id);
         }
       }catch(err){ if (!err.sessao) msg(id, err.message, false); }
     });
