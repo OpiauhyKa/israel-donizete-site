@@ -101,9 +101,15 @@
   .icon-btn svg{width:21px;height:21px;}
   .icon-btn:hover{color:var(--gold-light);transform:translateY(-1px);}
   .top-link-aluno{color:var(--gold-light) !important;}
-  @media (min-width:961px) and (max-width:1180px){
+  nav.main-nav a.top-link{white-space:nowrap;}
+  @media (min-width:961px){ .so-mobile{display:none;} }
+  @media (min-width:961px) and (max-width:1360px){
     nav.main-nav ul{gap:16px;}
-    nav.main-nav a.top-link{white-space:nowrap;font-size:0.9rem;}
+    nav.main-nav a.top-link{font-size:0.88rem;}
+  }
+  @media (min-width:961px) and (max-width:1100px){
+    nav.main-nav ul{gap:12px;}
+    nav.main-nav a.top-link{font-size:0.84rem;}
   }
   .icon-cart{color:var(--gold);}
   .icon-cart:hover{color:var(--gold-light);}
@@ -121,7 +127,8 @@
     display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;
     background:var(--navy-panel);border:1px solid var(--navy-line);border-radius:12px;padding:18px 20px;margin-bottom:14px;
   }
-  .compra-item h4{color:var(--cream);font-size:1.05rem;margin:2px 0 4px;}
+  .compra-item h4{color:var(--cream);font-size:1.05rem;margin:2px 0 4px;overflow-wrap:anywhere;}
+  .compra-item > div:first-child{min-width:0;}
   .compra-meta{color:var(--cream-2);font-size:0.85rem;}
   .compra-status{color:var(--gold-light);font-size:0.88rem;font-weight:600;}
   .compras-vazio{
@@ -174,8 +181,41 @@
   .prov-topo h3{margin:0;}
   .prov-status{font-size:0.75rem;font-weight:700;letter-spacing:0.04em;padding:5px 10px;border-radius:20px;background:var(--navy-deep);color:var(--gold-light);border:1px solid var(--navy-line);white-space:nowrap;}
   .prov-status.enviado,.prov-status.em_analise{color:#9CC8E8;}
-  .prov-status.aguardando_pagamento{color:#E8C27A;}
+  .prov-status.aguardando_pagamento,.prov-status.viavel{color:#E8C27A;}
+  .prov-status.inviavel{color:#E58B7E;}
+  .prov-status.em_elaboracao{color:#9CC8E8;}
+  .prov-resposta.prov-ok{border-left-color:#8FCB9B;}
+  .prov-resposta.prov-neg{border-left-color:#E58B7E;}
+  .prov-termos{display:flex;gap:10px;align-items:flex-start;color:var(--cream-2);font-size:0.9rem;margin-top:16px;cursor:pointer;}
+  .prov-termos input{margin-top:3px;width:auto;flex:none;}
+  .prov-termos a{color:var(--gold-light);text-decoration:underline;}
+  .prov-termos-texto{margin-top:10px;max-height:260px;overflow:auto;background:var(--navy-deep);border:1px solid var(--navy-line);border-radius:8px;padding:14px;color:var(--cream-2);font-size:0.84rem;white-space:pre-line;}
+  .prov-enviados{margin-top:16px;}
+  .prov-enviados > summary{cursor:pointer;color:var(--gold-light);font-size:0.88rem;font-weight:600;}
+  .prov-etapas{color:var(--cream-2);font-size:0.9rem;margin:0 0 16px 18px;}
+  .prov-etapas li{margin-bottom:6px;}
+  .prov-etapas b{color:var(--cream);}
+  .aulas-titulo{font-family:'Fraunces',serif;color:var(--cream);font-weight:500;font-size:1.5rem;margin-bottom:16px;}
+  .aulas-layout{display:grid;grid-template-columns:1fr 280px;gap:22px;align-items:start;}
+  .aula-nome{color:var(--cream);font-size:1.1rem;margin:14px 0 6px;}
+  .aula-desc{color:var(--cream-2);font-size:0.92rem;white-space:pre-line;}
+  .aulas-lista{list-style:none;background:var(--navy-panel);border:1px solid var(--navy-line);border-radius:12px;padding:8px;max-height:520px;overflow:auto;}
+  .aulas-lista button{display:flex;gap:10px;width:100%;text-align:left;background:none;border:none;color:var(--cream-2);font:inherit;font-size:0.9rem;padding:10px;border-radius:8px;cursor:pointer;}
+  .aulas-lista button span{color:var(--gold-light);font-weight:700;min-width:18px;}
+  .aulas-lista button:hover{background:var(--navy-deep);color:var(--cream);}
+  .aulas-lista button.ativa{background:var(--navy-deep);color:var(--gold-light);}
+  @media (max-width:820px){ .aulas-layout{grid-template-columns:1fr;} }
+  .linha-tempo{list-style:none;border-left:2px solid var(--navy-line);margin:6px 0 0 6px;padding-left:18px;}
+  .linha-tempo li{position:relative;margin-bottom:16px;}
+  .linha-tempo li::before{content:'';position:absolute;left:-25px;top:4px;width:10px;height:10px;border-radius:50%;background:var(--gold);}
+  .linha-tempo .lt-data{color:var(--gold-light);font-size:0.8rem;font-weight:700;}
+  .linha-tempo p{color:var(--cream);font-size:0.92rem;margin-top:2px;white-space:pre-line;}
+  .prov-video{margin-bottom:16px;}
+  .prov-video > summary{cursor:pointer;color:var(--gold-light);font-weight:600;font-size:0.92rem;}
+  .prov-video-box{position:relative;aspect-ratio:16/9;margin-top:12px;border-radius:10px;overflow:hidden;background:#000;}
+  .prov-video-box iframe{position:absolute;inset:0;width:100%;height:100%;border:0;}
   .prov-status.concluido{color:#8FCB9B;}
+  .prov-status.cancelado{color:#E58B7E;}
   .prov-parte{margin-top:16px;}
   .prov-ab{display:grid;grid-template-columns:1fr 1fr;gap:0 10px;}
   @media (max-width:640px){ .prov-ab{grid-template-columns:1fr;} }
@@ -424,7 +464,7 @@
   }
   .product-card{cursor:pointer;transition:transform .15s ease, box-shadow .15s ease;}
   .product-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(20,38,47,0.10);}
-  .product-cover.has-img{background-size:cover;background-position:center;}
+  .product-cover.has-img{background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#E9E2D3;}
   .product-cover.has-img svg{display:none;}
 
   /* ---------- BLOG ---------- */
@@ -453,7 +493,47 @@
   .blog-more{margin-top:40px;text-align:center;}
   .post-card{cursor:pointer;transition:transform .15s ease, box-shadow .15s ease;}
   .post-card:hover{transform:translateY(-3px);box-shadow:0 10px 28px rgba(0,0,0,0.18);}
-  .post-thumb.has-img{background-size:cover;background-position:center;}
+  .post-thumb.has-img{background-size:contain;background-repeat:no-repeat;background-position:center;background-color:#E9E2D3;}
+
+  .paginacao{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:34px;}
+  .pag-btn{min-width:40px;height:40px;border-radius:8px;border:1px solid #D8CFBD;background:#fff;color:var(--ink);font:inherit;font-weight:600;cursor:pointer;}
+  .pag-btn:hover:not(:disabled){border-color:var(--gold);color:#7A5B3A;}
+  .pag-btn.ativa{background:var(--navy-deep);border-color:var(--navy-deep);color:var(--cream);}
+  .pag-btn:disabled{opacity:0.4;cursor:default;}
+
+  /* ---------- FAQ / ENVIAR DOCUMENTOS ---------- */
+  .faq-item{border:1px solid #E1D9C8;border-radius:10px;background:#fff;margin-bottom:10px;}
+  .faq-item summary{cursor:pointer;padding:16px 18px;font-weight:600;color:var(--ink);list-style:none;display:flex;justify-content:space-between;gap:12px;}
+  .faq-item summary::-webkit-details-marker{display:none;}
+  .faq-item summary::after{content:'+';color:var(--gold);font-size:1.3rem;line-height:1;}
+  .faq-item[open] summary::after{content:'–';}
+  .faq-item p{padding:0 18px 18px;color:var(--ink-soft);white-space:pre-line;}
+  .docs-areas{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;}
+  .form-publico{background:#fff;border:1px solid #E1D9C8;border-radius:14px;padding:24px;position:relative;}
+  .form-publico-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 18px;}
+  .form-publico textarea{width:100%;border:1px solid #D8CFBD;border-radius:8px;padding:11px 12px;font:inherit;}
+  .form-publico textarea:focus{outline:none;border-color:var(--gold);}
+  .form-aceite{display:flex;gap:10px;align-items:flex-start;font-size:0.88rem;color:var(--ink-soft);margin:6px 0 14px;}
+  .form-aceite input{margin-top:3px;width:auto;}
+  .form-aceite a{color:#7A5B3A;text-decoration:underline;}
+  @media (max-width:640px){ .form-publico-grid{grid-template-columns:1fr;} .form-publico{padding:18px;} }
+  .outras-areas{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:26px 0 6px;}
+  .outras-areas span{color:var(--ink-soft);font-weight:600;font-size:0.9rem;margin-right:4px;}
+  .outras-areas a{border:1px solid #D8CFBD;border-radius:30px;padding:8px 16px;font-size:0.9rem;color:var(--ink);background:#fff;}
+  .outras-areas a:hover{border-color:var(--gold);color:#7A5B3A;}
+  .texto-legal h2{font-family:'Fraunces',serif;font-weight:500;font-size:1.25rem;margin:28px 0 10px;color:var(--ink);}
+  .texto-legal p, .texto-legal li{color:var(--ink-soft);font-size:0.98rem;margin-bottom:10px;}
+  .texto-legal ul{padding-left:22px;margin-bottom:10px;}
+  .cv-bloco{border-left:3px solid var(--gold);padding:4px 0 4px 18px;margin-bottom:18px;}
+  .cv-bloco b{color:var(--ink);display:block;}
+  .cv-bloco span{color:var(--ink-soft);font-size:0.92rem;display:block;}
+  .cv-bloco small{color:#7A5B3A;font-weight:700;font-size:0.8rem;letter-spacing:0.03em;}
+  .docs-detalhe{margin:6px 0 22px;}
+  .docs-detalhe h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.15rem;margin-bottom:6px;}
+  .docs-lista{padding:0 18px 16px 34px;color:var(--ink-soft);font-size:0.9rem;}
+  .docs-lista li{margin-bottom:7px;overflow-wrap:anywhere;}
+  .docs-lista li b{color:var(--ink);font-weight:600;}
+  .docs-lista li.docs-sub{list-style:none;margin:12px 0 6px -16px;font-weight:700;color:#7A5B3A;font-size:0.82rem;letter-spacing:0.02em;text-transform:uppercase;}
 
   /* ---------- DETAIL PAGE ---------- */
   .detalhe-voltar{
@@ -463,13 +543,21 @@
   .detalhe-cover{
     width:100%;aspect-ratio:21/9;border-radius:2px;margin-bottom:32px;
     background:linear-gradient(155deg,var(--navy-panel),var(--navy-deep));
-    background-size:cover;background-position:center;
+    background-size:contain;background-repeat:no-repeat;background-position:center;
     display:flex;align-items:center;justify-content:center;
   }
   .detalhe-cover svg{width:64px;height:64px;opacity:0.85;}
   .detalhe-kicker{color:var(--gold);font-weight:700;font-size:0.8rem;letter-spacing:0.04em;}
   .detalhe-titulo{font-size:2.1rem;margin:14px 0 20px;color:var(--ink);overflow-wrap:anywhere;}
   .detalhe-meta{font-size:0.85rem;color:var(--ink-soft);margin-bottom:26px;}
+  .artigo-html{white-space:normal;}
+  .artigo-html p{margin-bottom:14px;}
+  .artigo-html h2{font-family:'Fraunces',serif;font-weight:500;font-size:1.45rem;color:var(--ink);margin:26px 0 10px;}
+  .artigo-html h3{font-size:1.15rem;color:var(--ink);margin:20px 0 8px;}
+  .artigo-html ul,.artigo-html ol{padding-left:24px;margin-bottom:14px;}
+  .artigo-html blockquote{border-left:3px solid var(--gold);padding:6px 0 6px 16px;margin:16px 0;font-style:italic;}
+  .artigo-html a{color:#7A5B3A;text-decoration:underline;}
+  .artigo-html img{max-width:100%;height:auto;border-radius:6px;margin:10px 0;}
   .detalhe-corpo{color:var(--ink-soft);font-size:1.02rem;white-space:pre-line;margin-bottom:32px;overflow-wrap:anywhere;line-height:1.75;}
   .detalhe-compra{
     display:flex;align-items:center;gap:24px;flex-wrap:wrap;
@@ -704,15 +792,25 @@
     <nav class="main-nav" id="mainNav">
       <button class="nav-close" id="navClose" aria-label="Fechar menu">✕</button>
       <ul>
-        <li><a class="top-link" href="#inicio">Início</a></li>
+        <li class="so-mobile"><a class="top-link" href="#inicio">Início</a></li>
         <li>
           <a class="top-link" href="#advocacia">Advocacia <span class="caret">▾</span></a>
           <div class="dropdown">
             <a href="#trabalhista">Direito do Trabalho</a>
             <a href="#previdenciario">Direito Previdenciário</a>
-            <a href="#oab-1fase">OAB 1ª fase</a>
-            <a href="#oab-2fase">OAB 2ª fase (Provimento)</a>
-            <a href="#advocacia">Atendimento</a>
+            <a href="#consumidor">Direito do Consumidor</a>
+            <a href="#bancario">Direito Bancário</a>
+            <a href="#civil">Direito Civil</a>
+            <a href="#imobiliario">Direito Imobiliário</a>
+            <a href="#empresarial">Direito Empresarial</a>
+            <a href="#enviar-documentos">Enviar documentos</a>
+            <a href="#contato">Assessoria jurídica (contato)</a>
+          </div>
+        </li>
+        <li>
+          <a class="top-link" href="#oab-2fase">Concursos <span class="caret">▾</span></a>
+          <div class="dropdown">
+            <a href="#oab-2fase">OAB — Recursos da 2ª fase (Provimento)</a>
           </div>
         </li>
         <li>
@@ -727,11 +825,23 @@
           <div class="dropdown">
             <a href="#blog-todos-trabalhista">Trabalhista</a>
             <a href="#blog-todos-previdenciario">Previdenciário</a>
+            <a href="#blog-todos">Todos</a>
+            <a href="#blog-todos-artigos">Artigos científicos</a>
             <a href="#blog-todos-noticias">Notícias</a>
-            <a href="#blog-todos-artigos">Artigos</a>
           </div>
         </li>
-        <li><a class="top-link" href="#sobre">Sobre</a></li>
+        <li>
+          <a class="top-link" href="#sobre">Sobre <span class="caret">▾</span></a>
+          <div class="dropdown">
+            <a href="#sobre">O escritório</a>
+            <a href="#curriculo">Currículo do Dr. Israel</a>
+            <a href="#portal-processos">Cliente — acompanhar meu processo</a>
+            <a href="#seja-parceiro">Seja parceiro</a>
+            <a href="#trabalhe-conosco">Currículos — trabalhe conosco</a>
+            <a href="#faq">Dúvidas frequentes (FAQ)</a>
+            <a href="#" id="linkMidia" target="_blank" rel="noopener" style="display:none">Mídia — canal no YouTube</a>
+          </div>
+        </li>
         <li><a class="top-link" href="#contato">Contato</a></li>
         <li><a class="top-link top-link-aluno" href="#portal">Área do aluno</a></li>
       </ul>
@@ -923,20 +1033,43 @@
       </div>
     </div>
 
+    <div class="outras-areas">
+      <span>Outras áreas:</span>
+      <a href="#consumidor">Consumidor</a>
+      <a href="#bancario">Bancário</a>
+      <a href="#civil">Civil</a>
+      <a href="#imobiliario">Imobiliário</a>
+      <a href="#empresarial">Empresarial</a>
+    </div>
+
     <div class="oab-grid">
       <div class="oab-strip">
         <div>
-          <h3>OAB 1ª fase</h3>
-          <p>Prestação de serviço para candidatos na 1ª fase do Exame de Ordem.</p>
+          <h3>Concursos — OAB 2ª fase (Provimento)</h3>
+          <p>Recursos para candidatos da 2ª fase do Exame de Ordem. Envie sua prova pela área do aluno.</p>
         </div>
-        <a href="#oab-1fase" class="btn btn-outline-dark">Saiba mais</a>
+        <a href="#oab-2fase" class="btn btn-outline-dark">Saiba mais</a>
       </div>
       <div class="oab-strip">
         <div>
-          <h3>OAB 2ª fase (Provimento)</h3>
-          <p>Prestação de serviço para candidatos na 2ª fase do Exame de Ordem.</p>
+          <h3>Enviar documentos</h3>
+          <p>Veja a lista de documentos da sua área e envie pelo WhatsApp ou por e-mail.</p>
         </div>
-        <a href="#oab-2fase" class="btn btn-outline-dark">Saiba mais</a>
+        <a href="#enviar-documentos" class="btn btn-outline-dark">Enviar documentos</a>
+      </div>
+      <div class="oab-strip">
+        <div>
+          <h3>Seja parceiro</h3>
+          <p>É advogado ou escritório e quer atuar em parceria? Envie sua proposta.</p>
+        </div>
+        <a href="#seja-parceiro" class="btn btn-outline-dark">Quero ser parceiro</a>
+      </div>
+      <div class="oab-strip">
+        <div>
+          <h3>Currículos</h3>
+          <p>Advogados, estagiários e profissionais: envie seu currículo.</p>
+        </div>
+        <a href="#trabalhe-conosco" class="btn btn-outline-dark">Enviar currículo</a>
       </div>
     </div>
   </div>
@@ -959,6 +1092,7 @@
       A Israel Donizete da Silva Sociedade Individual de Advocacia atua com foco em Direito do Trabalho e Direito Previdenciário,
       acompanhando cada cliente com atenção individual — da análise inicial do caso até o desfecho do processo.
     </p>
+    <a href="#curriculo" class="btn btn-outline-dark" style="margin-top:22px;">Conheça a formação do Dr. Israel</a>
   </div>
 </section>
 
@@ -982,8 +1116,16 @@
         <ul>
           <li><a href="#trabalhista">Direito do Trabalho</a></li>
           <li><a href="#previdenciario">Direito Previdenciário</a></li>
-          <li><a href="#oab-1fase">OAB 1ª fase</a></li>
-          <li><a href="#oab-2fase">OAB 2ª fase (Provimento)</a></li>
+          <li><a href="#consumidor">Direito do Consumidor</a></li>
+          <li><a href="#bancario">Direito Bancário</a></li>
+          <li><a href="#civil">Direito Civil</a></li>
+          <li><a href="#imobiliario">Direito Imobiliário</a></li>
+          <li><a href="#empresarial">Direito Empresarial</a></li>
+          <li><a href="#oab-2fase">Concursos — OAB (Provimento)</a></li>
+          <li><a href="#enviar-documentos">Enviar documentos</a></li>
+          <li><a href="#faq">Dúvidas frequentes</a></li>
+          <li><a href="#seja-parceiro">Seja parceiro</a></li>
+          <li><a href="#trabalhe-conosco">Trabalhe conosco</a></li>
           <li><a href="#contato">Atendimento</a></li>
         </ul>
       </div>
@@ -1007,7 +1149,7 @@
       <img src="data:image/png;base64,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" alt="Bandeiras aceitas: MasterCard, Visa, Elo, American Express, Diners Club, Discover, Aura, JCB e Hipercard">
     </div>
     <div class="footer-bottom">
-      <p>© 2026 Israel Donizete da Silva Sociedade Individual de Advocacia.</p>
+      <p>© 2026 Israel Donizete da Silva Sociedade Individual de Advocacia. · <a href="#privacidade" style="color:inherit;text-decoration:underline;">Política de Privacidade</a> · <a href="#termos" style="color:inherit;text-decoration:underline;">Termos de Uso</a></p>
       <p class="oab-badge">CNPJ 63.450.164/0001-30</p>
     </div>
   </div>
@@ -1049,7 +1191,7 @@
     trabalhista: "Direito do Trabalho",
     previdenciario: "Direito Previdenciário",
     noticias: "Notícias",
-    artigos: "Artigos"
+    artigos: "Artigos científicos"
   };
 
   function formatPreco(valor){
@@ -1074,12 +1216,18 @@
 
   function parseHash(){
     const h = decodeURIComponent(location.hash.replace('#', ''));
-    if (h === 'trabalhista' || h === 'previdenciario' || h === 'oab-1fase' || h === 'oab-2fase') return { tipo: 'servico', chave: h };
+    if (Object.prototype.hasOwnProperty.call(SERVICOS, h)) return { tipo: 'servico', chave: h };
     if (h === 'cadastro') return { tipo: 'cadastro', chave: null };
+    if (h === 'faq') return { tipo: 'faq', chave: null };
+    if (h === 'curriculo' || h === 'privacidade' || h === 'termos') return { tipo: 'pagina', chave: h };
+    if (h === 'seja-parceiro' || h === 'trabalhe-conosco') return { tipo: 'formulario', chave: h };
+    if (h === 'enviar-documentos') return { tipo: 'enviar-documentos', chave: null };
     if (h === 'carrinho') return { tipo: 'carrinho', chave: null };
     if (h === 'minhas-compras') return { tipo: 'portal', chave: 'livros' };
     if (h === 'portal') return { tipo: 'portal', chave: 'inicio' };
-    const mPortal = h.match(/^portal-(conta|livros|cursos|provimento)$/);
+    const mCursoAulas = h.match(/^portal-curso-(\d+)$/);
+    if (mCursoAulas) return { tipo: 'portal', chave: 'cursos', extra: mCursoAulas[1] };
+    const mPortal = h.match(/^portal-(conta|livros|cursos|provimento|financeiro|processos)$/);
     if (mPortal) return { tipo: 'portal', chave: mPortal[1] };
     if (h === 'blog-todos') return { tipo: 'blog-todos', chave: null };
     if (h === 'livros-todos') return { tipo: 'livros-todos', chave: null };
@@ -1134,6 +1282,9 @@
   const EMAIL_ADV = 'israeldonizete@adv.oabsp.org.br';
   const WA_BASE = 'https://wa.me/5511975751984?text=';
 
+  // Listas completas de documentos por tipo de caso (enviadas pelo Dr. Israel).
+  const DOCS_DETALHADOS = {"consumidor": [{"titulo": "Documentos Gerais e de Representação", "itens": ["Documentos pessoais do cliente: RG, CPF ou CNH atualizada;", "Comprovante de residência atualizado: emitido nos últimos 90 dias (contas de consumo como água, luz, gás ou internet em nome do titular ou com declaração de residência anexa);", "Declaração de Hipossuficiência Financeira e documentos comprobatórios de renda (CTPS, holerites recentes, extratos bancários dos últimos 3 meses ou declaração de IRPF), caso seja pleiteada a Gratuidade da Justiça (art. 98 do CPC)."]}, {"titulo": "Comprovação da Relação de Consumo e do Vínculo Contratual", "itens": ["Instrumento contratual ou termo de adesão: contrato assinado, apólice, contrato eletrônico, proposta comercial ou termo de abertura de conta;", "Comprovantes de pagamento e faturamento: notas fiscais, cupons fiscais, recibos, comprovantes de transferência/PIX, faturas de cartão de crédito e extratos bancários demonstrando os lançamentos/débitos impugnados."]}, {"titulo": "Prova da Tentativa de Solução Extrajudicial", "itens": ["Protocolos de atendimento: números de protocolos do SAC, ouvidoria, gravações de chamadas telefônicas (com data, hora e nome do atendente);", "Registros em órgãos e plataformas oficiais: reclamações registradas no PROCON, na plataforma Consumidor.gov.br, no Banco Central (Bacen) ou em sites como Reclame Aqui;", "Comunicações diretas: cópias/telas integrais de conversas via WhatsApp, chat do aplicativo, e-mails trocados, notificações extrajudiciais ou cartas com Aviso de Recebimento (AR)."], "nota": "Embora o esgotamento da via administrativa não seja condição obrigatória de acesso à justiça (art. 5º, XXXV, da CF), a demonstração de resistência injustificada do fornecedor é fundamental para afastar teses defensivas de mero aborrecimento e reforçar o pleito indenizatório:"}, {"titulo": "Fraudes Bancárias, Golpes (ex.: PIX/Boleto Falso) e Empréstimos Não Contratados (RMC/RCC)", "itens": ["Boletim de Ocorrência (B.O.): detalhando a dinâmica do fato, dados de eventuais contas recebedoras e horários;", "Extratos bancários completos: demonstrando a movimentação atípica e os saldos anteriores e posteriores à fraude;", "Histórico de Créditos/Extrato de Empréstimos Consignados (HISCRE/INSS): indispensável para ações envolvendo aposentados/pensionistas lesados por contratos fraudulentos;", "Comprovante de solicitação do MED (Mecanismo Especial de Devolução): nos casos de transferências via PIX;", "Comprovante de contestação formal perante a instituição bancária: com negativa de ressarcimento ou ausência de resposta."]}, {"titulo": "Negativação Indevida em Órgãos de Proteção ao Crédito (SPC / Serasa / SCPC)", "itens": ["Extrato oficial de consulta aos órgãos restritivos: extrato completo e detalhado (emitido no balcão do órgão ou via portal oficial autenticado), contendo data de inclusão, valor da dívida, credor e número do contrato apontado;", "Histórico de anotações (ausência de negativações preexistentes): certidão demonstrando a inexistência de outros apontamentos legítimos na data da inscrição indevida, a fim de afastar a incidência da Súmula 385 do STJ;", "Comprovante de adimplemento ou declaração de inexistência de relação jurídica: comprovante de quitação (se a dívida foi paga) ou prova de encerramento do contrato."]}, {"titulo": "Vício ou Defeito do Produto e Falha na Prestação do Serviço", "itens": ["Fotografias e vídeos nítidos: registrando o defeito, o estado do produto, etiquetas de série e data/hora;", "Ordem de Serviço (O.S.): comprovante de entrada e saída na assistência técnica autorizada, demonstrando o decurso do prazo de 30 dias sem saneamento do vício (art. 18, § 1º, do CDC);", "Laudo técnico independente ou orçamentos: atestando a extensão do dano e o custo de reparo;", "Comprovante de recusa de troca/reparo pelo fornecedor."]}, {"titulo": "Atraso, Cancelamento de Voo ou Extravio de Bagagem", "itens": ["Bilhetes de passagem e cartões de embarque (físicos ou digitais): demonstrando o trecho originalmente contratado e o efetivamente realizado;", "Declaração de Contingência / Declaração de Atraso ou Cancelamento emitida pela Cia Aérea: documento fornecido no balcão do aeroporto explicando o motivo da alteração;", "Registro de Irregularidade de Bagagem (RIB / PIR): comprovante lavrado perante a companhia aérea no momento do extravio;", "Comprovantes de despesas emergenciais (dano material): notas fiscais de alimentação, hospedagem, transporte e itens de primeira necessidade adquiridos em razão do atraso/extravio."]}, {"titulo": "Planos de Saúde (Negativa de Cobertura, Medicamentos ou Cirurgias)", "itens": ["Relatório médico circunstanciado e atualizado: assinado e carimbado pelo médico assistente, com indicação do CID, histórico clínico, urgência/emergência do procedimento e justificativa expressa da inadequação dos tratamentos convencionais;", "Prescrição médica e laudos de exames complementares;", "Comprovante formal de negativa de cobertura: documento emitido pela operadora indicando o motivo da recusa (ou protocolo comprovando que a solicitação não foi respondida no prazo regulamentar da ANS);", "Comprovante de pagamento das mensalidades: demonstrando a adimplência contratual."]}], "bancario": [{"titulo": "Documentos Gerais de Identificação e Representação", "itens": ["Documento oficial de identificação com foto e CPF: RG, CNH ou Carteira de Órgão de Classe (atentar para a data de emissão em caso de suspeita de fraude documental).", "Comprovante de residência atualizado: emitido nos últimos 90 dias (contas de consumo como água, luz, gás ou telefonia).", {"sub": "Comprovantes de hipossuficiência econômica (para instruir pedido de Justiça Gratuita)"}, "Últimas três declarações de Imposto de Renda da Pessoa Física (DIRPF) com recibo de entrega (ou certidão de isenção da Receita Federal);", "Últimos três holerites, contracheques ou extratos de benefício previdenciário (INSS);", "Carteira de Trabalho Digital (CTPS) ou extrato do CNIS, em caso de desemprego."]}, {"titulo": "Ações Revisionais (Empréstimos Pessoais, Financiamento de Veículos, Capital de Giro, Cheque Especial)", "itens": ["Planilha de evolução da dívida / extrato de liquidação antecipada;", "Comprovantes de pagamento das parcelas (boletos, extratos bancários de débito automático ou recibos);", "Extratos bancários completos do período contratual (especialmente em conta corrente para apuração de capitalização diária/mensal de juros em cheque especial e rotativo)."], "nota": "Cópia integral do contrato de abertura de crédito/financiamento com as cláusulas gerais e o quadro resumo (onde constam taxas de juros mensal e anual, CET - Custo Efetivo Total, tarifas administrativas, seguros agregados etc.);"}, {"titulo": "Empréstimo Consignado Indevido / Fraude na Contratação / RMC e RCC", "itens": ["Histórico de Créditos (HisCre) e Extrato de Pagamento de Benefício (Maciça): obtidos pelo portal Meu INSS;", "Histórico de Empréstimos Consignados (HisCon): detalha todas as averbações, contratos ativos, suspensos e encerrados, bancos consignatários e parcelas;", "Extrato da conta corrente onde o benefício é creditado: para comprovar se houve ou não o depósito/ted do valor supostamente contratado (e respectivo estorno, se for o caso);", "Cópia do contrato físico ou digital com biometria facial/assinatura eletrônica (se fornecido administrativamente pelo banco)."]}, {"titulo": "Fraudes Bancárias, Golpes (PIX, Boleto Falso, Invasão de Conta, Engenharia Social)", "itens": ["Boletim de Ocorrência (BO): detalhado, lavrado imediatamente após a ciência da fraude;", "Extratos bancários com a movimentação fraudulenta destacada (data, horário exato, valor, chave PIX e dados do recebedor/instituição favorecida);", "Comprovantes de transferência/pagamento de boletos falsificados;", "Prints e registros das comunicações: conversas no WhatsApp, e-mails fraudulentos, histórico de chamadas telefônicas recebidas;", "Protocolos e gravações do contato com o banco: abertura do MED (Mecanismo Especial de Devolução) do PIX, pedidos de bloqueio cautelar e cancelamento de cartões/contas."]}, {"titulo": "Superendividamento (Lei nº 14.181/2021)", "itens": ["Relatório do Sistema de Informações de Crédito (SCR/Bacen / Registrato): relatório completo de dívidas e operações de crédito;", "Relatório de Contas e Relacionamentos (CCS/Bacen);", "Relação detalhada de todos os credores e contratos: valores totais, valor das parcelas mensais e prazos restantes;", "Planilha de despesas mínimas de subsistência acompanhada dos respectivos comprovantes (alimentação, moradia, luz, água, medicamentos, plano de saúde, educação)."]}, {"titulo": "Negativação Indevida / Dívida Inexistente / Limpeza de Nome", "itens": ["Comprovante de consulta aos órgãos de proteção ao crédito: extrato emitido por Serasa, SPC Brasil, Boa Vista/SCPC contendo a data da inclusão, credor originário e valor cobrado;", "Extrato do SCR/Registrato: caso o apontamento indevido conste como prejuízo financeiro no Banco Central;", "Comprovante de inexistência de relação jurídica ou de quitação: termo de quitação da dívida, comprovante do pagamento pontual do débito que originou a negativação."]}, {"titulo": "Busca e Apreensão / Alienação Fiduciária (Defesa do Devedor)", "itens": ["Contrato de financiamento garantido por alienação fiduciária;", "Notificação extrajudicial de constituição em mora (comprovante de envio via Cartório de Registro de Títulos e Documentos com AR);", "Comprovantes de todas as parcelas já adimplidas;", "Certificado de Registro e Licenciamento do Veículo (CRLV)."]}, {"titulo": "Provas de Tentativa de Solução Extrajudicial", "itens": ["Protocolos de atendimento SAC e Ouvidoria do Banco: com data, horário e resumo da reclamação;", "Reclamações registradas no portal Consumidor.gov.br ou no PROCON, com o parecer final/resposta da instituição;", "Reclamação formal registrada perante o Banco Central do Brasil (Bacen);", "Notificação extrajudicial enviada ao banco: com comprovante de entrega (AR ou protocolo digital de recebimento)."]}], "civil": [{"titulo": "Documentos Gerais e de Qualificação", "itens": [{"sub": "Pessoa Física"}, "Documento oficial de identificação com foto e CPF: RG, CNH, carteira profissional ou passaporte.", "Comprovante de residência atualizado: contas de consumo (água, luz, telefone fixo/móvel, gás) emitidas nos últimos 90 dias, em nome do cliente (ou acompanhadas de declaração de residência, se em nome de terceiro).", "Certidão de estado civil: certidão de nascimento (se solteiro) ou certidão de casamento (com eventuais averbações de divórcio/separação) atualizada, indispensável especialmente se a ação envolver direitos reais sobre bens imóveis (art. 73 do CPC — vênia conjugal/litisconsórcio).", {"sub": "Pessoa Jurídica"}, "Atos constitutivos: Contrato Social / Estatuto Social consolidado e eventuais alterações contratuais.", "Comprovante de Inscrição e Situação Cadastral no CNPJ.", "Ata de eleição da diretoria ou documento de representação: para demonstrar que o subscritor da procuração detém poderes de administração.", "Documento pessoal e comprovante de residência do sócio/administrador que assina pela sociedade."]}, {"titulo": "Documentos para Pedido de Gratuidade da Justiça (Art. 98 e seguintes do CPC)", "itens": ["Declaração de hipossuficiência econômica assinada pelo próprio cliente (ou pelo advogado com poderes específicos na procuração).", "Comprovantes de rendimentos: últimos 3 holerites / contracheques, extrato de benefício previdenciário ou extrato bancário dos últimos 3 meses.", "Declaração de Imposto de Renda Pessoa Física (DIRPF): última declaração completa acompanhada do respectivo recibo de entrega (ou certidão de isenção/negativa expedida pela Receita Federal).", "Comprovantes de despesas extraordinárias: gastos com medicamentos, tratamentos de saúde, mensalidades escolares, aluguel, dívidas contraídas, demonstrando o comprometimento da renda."], "nota": "Caso o cliente pleiteie a concessão dos benefícios da justiça gratuita, é prudente instruir a petição com início de prova material para afastar indeferimentos sumários:"}, {"titulo": "Contratos, Inadimplemento e Cobrança / Execução (Arts. 389 e 784 do CPC)", "itens": ["Cópia integral do contrato assinado (físico ou via certificado digital) e seus aditivos.", "Título executivo extrajudicial original ou cópia autenticada/digitalizada legível (nota promissória, cheque, duplicata, confissão de dívida assinada por duas testemunhas, etc.).", "Comprovantes da contraprestação cumprida (notas fiscais, termos de entrega de mercadoria/conclusão de serviço, medições).", "Notificação extrajudicial de constituição em mora (comprovante de envio/AR ou certidão de cartório de títulos e documentos).", "Extratos bancários demonstrando transferências/PIX ou recibos de pagamento parcial.", "Memória de cálculo discriminada e atualizada do débito (índice de correção, juros e termo inicial)."]}, {"titulo": "Responsabilidade Civil e Ações Indenizatórias (Dano Material, Moral e Estético)", "itens": [{"sub": "Comprovação do fato / conduta"}, "Boletim de Ocorrência (BO) ou Termo Circunstanciado.", "Relatórios técnicos, vistorias, laudos de trânsito.", "Registros audiovisuais (fotos de avarias, vídeos de câmeras de segurança).", "Comunicações entre as partes (e-mails, mensagens de WhatsApp com ata notarial ou relatório de autenticidade/hash).", {"sub": "Comprovação do dano material (dano emergente e lucros cessantes)"}, "Orçamentos para reparo (no mínimo três, para demonstrar razoabilidade de mercado).", "Notas fiscais de despesas já custeadas (medicamentos, próteses, consertos, guincho).", "Comprovação de faturamento anterior à lesão (para apuração de lucros cessantes).", {"sub": "Dano corporal / estético / à saúde"}, "Prontuários médicos, relatórios de internação, receitas, laudos periciais prévios e fotos das lesões/cicatrizes."]}, {"titulo": "Direito Imobiliário, Posse e Propriedade", "itens": ["Contrato de locação, vistorias de entrada e saída, notificações de denúncia cheia/vazia (em ações locatícias / despejo).", "Em ações possessórias e usucapião: comprovantes de posse mansa e pacífica contínua (contas de consumo antigas e sucessivas, comprovantes de pagamento de IPTU ao longo dos anos, notas de reformas/benfeitorias, planta/memorial descritivo e rol de confrontantes)."], "nota": "Carnê de IPTU ou certidão de dados cadastrais do imóvel junto à Prefeitura (útil inclusive para atribuição do valor da causa, conforme art. 292, II, do CPC)."}, {"titulo": "Direito de Família e Sucessões", "itens": [{"sub": "Divórcio / Dissolução de União Estável e Partilha"}, "Certidão de casamento atualizada ou escritura pública/declaração de união estável.", "Pacto antenupcial (se houver) registrado em livro próprio.", "Relação e comprovação da titularidade de todos os bens do casal (matrículas de imóveis, CRLV de veículos, extratos de contas correntes, investimentos, previdência privada, quotas sociais).", "Relação e comprovação de dívidas comuns contraídas na constância da união.", {"sub": "Alimentos, Guarda e Convivência"}, "Certidão de nascimento dos filhos menores/incapazes.", "Comprovação das necessidades do alimentando (mensalidade escolar, plano de saúde, gastos fixos, atividades extracurriculares).", "Indícios ou provas da capacidade econômica do alimentante (sinais exteriores de riqueza, posts públicos em redes sociais, empresas em que figura como sócio, holerites se conhecidos).", {"sub": "Inventário e Partilha"}, "Certidão de óbito do de cujus.", "Certidão de inexistência de testamento emitida pelo CENSEC / CNJ.", "Certidões negativas de débitos tributários federais, estaduais e municipais em nome do falecido.", "Certidão de casamento do cônjuge sobrevivente e certidões de nascimento/casamento dos herdeiros.", "Títulos de propriedade de todos os bens do espólio."]}], "previdenciario": [{"titulo": "Documentos Gerais e de Representação", "itens": ["Documento oficial de identificação com foto: RG, CNH ou CTPS digital/física, constando o número do CPF.", "Comprovante de residência atualizado: Contas de consumo (água, luz, telefone/internet) emitidas nos últimos 3 meses em nome do cliente ou declaração de residência firmada pelo titular.", "Certidão de estado civil atualizada: Certidão de casamento, nascimento ou declaração de união estável.", "Comprovante de rendimentos/Declaração de IRPF: Contracheque recente, extrato de benefício ou declaração de isenção de IRPF (para lastrear o pedido de gratuidade de justiça)."]}, {"titulo": "Documentos Previdenciários Fundamentais (Histórico Contributivo e Processo Administrativo)", "itens": ["Cópia integral do Processo Administrativo Previdenciário (PAP): Cópia completa do processo no INSS (contendo requerimento, decisões, relatórios de perícia médica SABI, comunicados de decisão e eventuais recursos à JR/CRPS).", "Extrato do Cadastro Nacional de Informações Sociais (CNIS): Versão completa com detalhamento de remunerações e indicadores de pendências (ex.: PREM-RET, PEXT, ACI, IREC-LC123).", "Carteiras de Trabalho e Previdência Social (CTPS): Todas as vias físicas originais (frente, verso, contratos, anotações gerais, férias e alterações salariais), além do extrato da CTPS Digital.", "Extrato Analítico do FGTS: Fornecido pela Caixa Econômica Federal, fundamental para suprir omissões de vínculos ou divergências de datas e remunerações no CNIS.", "Guias da Previdência Social (GPS / Carnês de Recolhimento): Comprovantes de recolhimento como contribuinte individual, facultativo ou autônomo, sobretudo para períodos anteriores a 1985 ou sem migração para o CNIS.", "Carta de Concessão e Memória de Cálculo: Caso a demanda verse sobre revisão, restabelecimento ou conversão de benefício ativo ou pretérito."]}, {"titulo": "Benefícios por Incapacidade (Auxílio por Incapacidade Temporária, Aposentadoria por Incapacidade Permanente e Auxílio-Acidente)", "itens": ["Laudos e relatórios médicos circunstanciados: Emitidos preferencialmente por médicos especialistas, contendo diagnóstico, CID-10/CID-11, descrição detalhada das limitações funcionais, prognóstico e justificativa da incapacidade laborativa (total, parcial, temporária ou permanente).", "Exames complementares e prontuários: Ressonâncias, tomografias, radiografias, audiometrias, relatórios cirúrgicos e prontuários de atendimento hospitalar/ambulatorial.", "Receituários médicos: Prescrições atualizadas que comprovem o tratamento contínuo e uso de fármacos controlados.", "Comunicação de Acidente de Trabalho (CAT): Emitida pelo empregador, sindicato ou médico, indispensável se a incapacidade for de origem acidentária ou ocupacional.", "Atestados de Saúde Ocupacional (ASO): Exames admissionais, periódicos, de retorno ao trabalho e demissionais.", "Declaração de Último Dia Trabalhado (DUT): Emitida pela empresa para fixação da Data de Início da Incapacidade (DII) e do Benefício (DIB)."]}, {"titulo": "Aposentadoria Especial (Exposição a Agentes Nocivos / Insalubridade e Periculosidade)", "itens": ["Perfil Profissiográfico Previdenciário (PPP): Emitido pela empresa ou síndico da massa falida, assinado pelo responsável legal e indicando os responsáveis pelos registros ambientais (médico do trabalho ou engenheiro de segurança).", "Laudo Técnico das Condições Ambientais de Trabalho (LTCAT): Laudo base utilizado para confecção do PPP.", "Formulários pretéritos (para períodos anteriores a 01/01/2004): SB-40, DISES-BE 5235, DSS-8030, DIRBEN-8030.", "Programas de Prevenção e Saúde: PPRA, PCMSO, PGR e fichas de entrega de EPI (com indicação do CA e eficácia).", "Holerites com adicional de insalubridade/periculosidade: Úteis como início de prova material do labor nocivo.", "Laudos periciais emprestados ou processos trabalhistas: Perícias realizadas na mesma empresa, em paradigma funcional ou ações com reconhecimento de condições especiais."]}, {"titulo": "Aposentadoria Rural / Segurado Especial e Regime de Economia Familiar", "itens": ["Documentos da propriedade ou posse: Escritura pública, certidão de matrícula do imóvel, contrato de arrendamento, comodato, parceria rural, meeiro ou posseiro, declaração de ITR e CCIR/INCRA.", "Notas fiscais e comprovantes de comercialização: Notas de produtor rural, blocos de notas, comprovantes de entrega de mercadorias em cooperativas ou Ceasa.", "Certidões civis antigas: Certidões de casamento, nascimento dos filhos, batismo, óbito e alistamento militar com qualificação profissional como \"lavrador\", \"agricultor\" ou \"trabalhador rural\".", "Declarações sindicais e cadastrais: Ficha de associação em Sindicato dos Trabalhadores Rurais (STR), carteira de filiação, DAP/CAF (Declaração de Aptidão ao Pronaf / Cadastro Nacional da Agricultura Familiar).", "Comprovantes escolares: Histórico escolar em escola rural do segurado ou de seus filhos.", "Autodeclaração do Segurado Especial Rural: Preenchida e assinada conforme os modelos oficiais do INSS."]}, {"titulo": "Aposentadoria da Pessoa com Deficiência (Lei Complementar nº 142/2013)", "itens": ["Laudos e exames históricos: Documentação médica contemporânea a cada período de trabalho que comprove a existência da deficiência e sua evolução (leve, moderada ou grave) ao longo da vida contributiva.", "Laudos de avaliação biopsicossocial prévios: Avaliações periciais do INSS (IF-BrA) realizadas anteriormente.", "Prontuários de tratamentos e cirurgias antigas: Documentos que fixem a data de início da deficiência (DID).", "Comprovantes de enquadramento funcional: Contrato de trabalho ou anotação em CTPS na condição de PCD (vaga reservada pela Lei de Cotas)."]}, {"titulo": "Pensão por Morte e Auxílio-Reclusão", "itens": ["Comprovação da qualidade de segurado do instituidor à data do fato gerador: CNIS, CTPS, guias GPS ou comprovação de que o falecido preenchia os requisitos para aposentadoria antes de falecer.", {"sub": "Comprovação da dependência econômica e união estável (Rol do art. 22 do Decreto 3.048/99)"}, "Certidão de casamento ou escritura pública de união estável;", "Comprovante de endereço conjunto;", "Conta bancária conjunta, cartões de crédito adicionais ou declaração de IRPF constando como dependente;", "Apólice de seguro de vida ou plano de saúde em que figure como beneficiário;", "Certidões de nascimento de filhos em comum;", "Contratos de locação ou aquisição de bens em conjunto;", "Testamento ou disposições de última vontade;", "Comprovantes de transferências bancárias ou pagamento de despesas regulares (para dependentes de 2ª e 3ª classe: pais e irmãos)."], "nota": "Certidão de óbito do instituidor (ou certidão de efetivo recolhimento à prisão / certidão carcerária, no caso de auxílio-reclusão)."}, {"titulo": "Benefício de Prestação Continuada (BPC/LOAS - Idoso ou Pessoa com Deficiência)", "itens": ["Comprovante de inscrição e atualização no Cadastro Único (CadÚnico): Folha Resumo do CadÚnico atualizada nos últimos 24 meses, contendo a composição familiar e renda per capita.", "Documentos pessoais e comprovantes de renda de todos os membros do grupo familiar: RG, CPF, CTPS e holerites/extratos de benefícios de quem reside no mesmo domicílio.", "Comprovantes de despesas médicas continuadas: Receitas, notas fiscais de medicamentos, fraldas, tratamentos e alimentação especial não fornecidos pelo SUS (para dedução da renda bruta familiar nos termos da Lei 8.742/93).", "Laudos e relatórios médicos (BPC Deficiência): Comprovação do impedimento de longo prazo (mínimo de 2 anos) de natureza física, mental, intelectual ou sensorial."]}, {"titulo": "Ações Revisionais de Benefício", "itens": ["Carta de concessão e memória de cálculo do benefício originário.", "Cópia do Processo Administrativo de Concessão (contendo a planilha de salários de contribuição considerados).", {"sub": "Documentos para teses específicas"}, "Revisão da Vida Toda: Microfichas do INSS ou carteiras/holerites com salários de contribuição anteriores a julho de 1994;", "Inclusão de Período Trabalhista: Cópia integral da Reclamação Trabalhista (petição inicial, ata de audiência, sentença, acórdão e certidão de trânsito em julgado com cálculos homologados);", "Atividades Concomitantes: Holerites e CNIS dos múltiplos vínculos simultâneos."]}], "trabalhista": [{"titulo": "Documentos Pessoais, de Representação e Gratuidade da Justiça", "itens": ["Documento de identificação oficial com foto: RG, CNH ou Carteira de Trabalho Digital com número do CPF.", "Comprovante de residência atualizado: Conta de água, luz, gás, telefone ou contrato de locação (emitido há menos de 90 dias).", "Certidão de Nascimento/Casamento: Necessária caso haja alteração de nome, dependentes previdenciários ou para fins de salário-família e dedução de imposto de renda.", "Declaração de Hipossuficiência Financeira: Para fins de concessão dos benefícios da Justiça Gratuita (art. 790, §§ 3º e 4º, da CLT c/c art. 99 do CPC).", "Extrato do Cadastro Único (CadÚnico) ou declaração de Imposto de Renda (IRPF): Documentos complementares para afastar eventual impugnação à gratuidade da justiça."]}, {"titulo": "Documentos da Relação Contratual e Histórico Funcional", "itens": [{"sub": "Carteira de Trabalho e Previdência Social (CTPS)"}, "CTPS física (cópia das páginas de identificação, qualificação, foto, contrato de trabalho objeto da lide, anotações de férias, alterações salariais e anotações gerais); ou", "Relatório em PDF gerado pelo aplicativo oficial da CTPS Digital (demonstrando admissão, cargo, salário contratual, anotações e eventuais retificações).", {"sub": "Extrato Completo do CNIS (Cadastro Nacional de Informações Sociais)"}, "Extraído via portal \"Meu INSS\", essencial para conferência das remunerações recolhidas, vínculos pretéritos, divergências de períodos e verificação de eventuais recolhimentos em atraso ou omissos.", {"sub": "Contrato Individual de Trabalho e Termos Aditivos"}, "Contrato de experiência, termos de alteração de jornada/função, termos de confidencialidade, acordos de compensação/banco de horas, teletrabalho (home office) e pactos de não concorrência.", "Crachá funcional, cartões de visita corporativos ou credenciais funcionais: Úteis para comprovação de cargo, função exercida e representação institucional."]}, {"titulo": "Documentos Financeiros, Remuneratórios e Bancários", "itens": [{"sub": "Holerites / Contracheques / Recibos de Pagamento"}, "Todos os demonstrativos de pagamento do período imprescrito (últimos 5 anos), com atenção a: salário-base, horas extras, adicionais (noturno, periculosidade, insalubridade), comissões, prêmios, gorjetas, gratificações, ajudas de custo e descontos.", {"sub": "Extratos Bancários Integrais da Conta Salário / Corrente"}, "Comprovantes de depósito da remuneração e identificação de pagamentos realizados \"por fora\" (depósitos de terceiros, TED/PIX da empresa ou de sócios).", {"sub": "Comprovantes de Comissões, Metas e Bônus"}, "Relatórios de vendas, espelhos de sistema de faturamento, e-mails de fechamento de metas e demonstrativos de comissões não integradas formalmente ao salário (salário complessivo / integração ao cálculo de DSR e reflexos).", {"sub": "Comprovantes de Descontos Indevidos"}, "Recibos e notificações de avarias em veículos, perdas de ferramentas, cheques sem fundo repassados ao empregado, vales não autorizados ou seguros não contratados."]}, {"titulo": "Controle de Frequência, Jornada de Trabalho e Descansos", "itens": [{"sub": "Espelhos de Ponto / Cartões de Ponto / Folhas de Frequência"}, "Cópia física ou eletrônica dos registros de controle de jornada assinados ou emitidos eletronicamente.", {"sub": "Comprovações Paralelas de Jornada"}, "Relatórios de bordo, discos de tacógrafo, rastreadores veiculares (GPS), diários de viagem (especialmente para motoristas e ajudantes).", "Logs de acesso ao sistema corporativo, horários de envio de e-mails, relatórios de VPN, relatórios de chamadas telefônicas ou de aplicativos de mensagens fora do horário contratual (para comprovação de sobreaviso, prontidão e trabalho extraordinário).", "Escalas de trabalho, escalas de revezamento (12x36, 6x1) e avisos de plantão.", {"sub": "Avisos e Recibos de Férias"}, "Notificações de concessão de férias (art. 135 da CLT) e respectivos recibos de quitação (art. 145 da CLT), demonstrando eventual pagamento fora do prazo legal ou gozo extemporâneo (Súmula 450 do TST)."]}, {"titulo": "Documentos Rescisórios e Fundiários", "itens": [{"sub": "Termo de Rescisão do Contrato de Trabalho (TRCT) e Termo de Homologação/Quitação"}, "Vias do TRCT contendo a discriminação das verbas, códigos de saque e campos de ressalva sindical, se houver.", {"sub": "Aviso Prévio"}, "Cópia da comunicação do aviso prévio (trabalhado ou indenizado), com registro de data e horário de recebimento, bem como opção de redução da jornada (art. 488 da CLT).", {"sub": "Extrato Analítico Atualizado da Conta Vinculada do FGTS"}, "Emitido pela Caixa Econômica Federal (ou aplicativo FGTS), permitindo a apuração mês a mês dos depósitos devidos, recolhimento da multa rescisória de 40% e eventuais meses em aberto.", {"sub": "Guias de Recolhimento Rescisório do FGTS (GRRF) e Comprovante de Pagamento"}, "Demonstração do recolhimento da indenização compensatória de 40% e depósitos rescisórios.", {"sub": "Comunicação de Dispensa (CD) e Requerimento do Seguro-Desemprego (SD)"}, "Para verificação da entrega tempestiva das guias e eventuais óbices ao recebimento do benefício perante o Ministério do Trabalho e Emprego."]}, {"titulo": "Insalubridade, Periculosidade e Acidente de Trabalho / Doença Ocupacional", "itens": ["LTCAT, PPRA / PGR e PCMSO: Se o trabalhador possuir cópia, ou indicação para requerimento de exibição de documentos pela reclamada (art. 396 do CPC).", "Ficha de Entrega de Equipamentos de Proteção Individual (EPI): Registros de entrega, periodicidade, certificados de aprovação (CA) e treinamentos.", "Comunicação de Acidente de Trabalho (CAT): Emitida pela empresa, pelo sindicato ou por médico assistente.", {"sub": "Prontuários Médicos, Laudos, Exames e Atestados"}, "Relatórios médicos com CID, exames de imagem (ressonâncias, radiografias), receitas de medicamentos de uso contínuo, comprovantes de fisioterapia e despesas médicas/farmacêuticas.", {"sub": "Histórico de Benefícios Previdenciários (INSS)"}, "Cartas de concessão/memória de cálculo de benefícios por incapacidade temporária acidentária (B91) ou previdenciária (B31), laudos da Perícia Médica Federal (SABI/PMF) e decisões de recursos no CRPS.", "Atestados de Saúde Ocupacional (ASO): Admissional, periódicos, de retorno ao trabalho, mudança de risco ocupacional e demissional."]}, {"titulo": "Reconhecimento de Vínculo Empregatício (\"Pejotização\" / Trabalho Informal / Cooperativas)", "itens": ["Contratos de Prestação de Serviços / Parcerias: Contratos firmados por pessoa jurídica (MEI/EIRELI/LTDA), cooperativas ou como autônomo.", "Notas Fiscais Emitidas: Relação sequencial de todas as notas fiscais emitidas pelo trabalhador para comprovar habitualidade e exclusividade/dependência econômica.", {"sub": "Comprovantes de Subordinação Jurídica e Pessoalidade"}, "Mensagens de texto (WhatsApp, Telegram, Teams, Slack), e-mails com ordens diretas, cobrança de metas, advertências, imposição de escalas e fiscalização de trabalho.", "Comprovantes de reembolso de despesas corporativas ou fornecimento de ferramentas de trabalho pelo tomador."]}, {"titulo": "Equiparação Salarial e Desvio / Acúmulo de Função", "itens": ["Identificação do Paradigma (Equiparação): Nome completo do colega apontado como paradigma, número da CTPS ou CPF (se disponível), comprovantes de exercício simultâneo da mesma função com idêntica produtividade e perfeição técnica.", "Quadro de Carreira ou Plano de Cargos e Salários (PCCS): Caso a empresa possua estrutura formal homologada ou praticada.", "Provas da Função Real: Ordens de serviço, relatórios assinados, chamados atendidos (tickets), organogramas e descrições de cargo fornecidas pela empresa."]}, {"titulo": "Estabilidade Provisória e Rescisão Indireta", "itens": ["Gestante: Exames laboratoriais de gravidez (Beta-HCG), ultrassonografias obstétricas que atestem a idade gestacional e certidão de nascimento do filho.", "Cipeiro: Atas de eleição e posse na CIPA, inscrição de candidatura e protocolo de entrega do comunicado de posse ao empregador.", "Dirigente Sindical: Registro de candidatura, ata de eleição/posse e comprovante de notificação formal do empregador no prazo legal (art. 543, § 5º, da CLT).", "Rescisão Indireta (art. 483 da CLT): Notificações extrajudiciais enviadas ao empregador denunciando o descumprimento contratual (falta de recolhimento de FGTS, atraso salarial contumaz, assédio moral), boletins de ocorrência, relatórios de canal de denúncia ou perícias médicas."]}, {"titulo": "Provas Digitais e Registro de Testemunhas", "itens": [{"sub": "Ata Notarial ou Relatórios de Certificação Digital"}, "Para conversas de aplicativos (WhatsApp, Telegram) e e-mails de alta relevância, preservando metadados e cadeia de custódia (ou utilização de plataformas forenses de verificação de autenticidade).", {"sub": "Mídias Digitais"}, "Gravações de áudio e vídeo em que o cliente tenha participado da conversa (gravação clandestina lícita conforme Tema 237 do STF) comprovando assédio moral, ordens abusivas ou jornadas extraordinárias.", {"sub": "Qualificação Completa de Testemunhas (art. 821 e 825 da CLT)"}, "Nome completo, CPF, RG, endereço residencial atualizado, telefone, profissão e resumo claro dos fatos que cada uma presenciou diretamente (jornada, assédio, função, ausência de intervalos)."]}], "imobiliario": [{"titulo": "Imóvel Urbano", "itens": ["Matrícula Atualizada com Certidão de Ônus Reais e Ações Reipersecutórias: expedida pelo Cartório de Registro de Imóveis (CRI) competente (validade recomendada de até 30 dias). Essencial para verificar a titularidade do domínio, averbações de penhora, hipoteca, alienação fiduciária, usufruto ou indisponibilidade de bens.", "Certidão de Dados Cadastrais / Espelho do IPTU: para conferência da metragem cadastrada, titularidade fiscal e valor venal/valor venal de referência.", "Certidão Negativa de Débitos Tributários Municipais (CND do IPTU): emitida pela Prefeitura local, atestando a inexistência de débitos fiscais de natureza propter rem.", "Declaração de Inexistência de Débitos Condominiais: subscrita pelo síndico ou pela administradora, acompanhada da ata de eleição do síndico (se o imóvel for unidade autônoma em condomínio edilício).", "Contas de Consumo Recentes: comprovantes de quitação de água/esgoto, energia elétrica e gás encanado.", "Habite-se e Planta Aprovada: especialmente em imóveis recém-construídos ou que passaram por reformas estruturais."]}, {"titulo": "Imóvel Rural (adicionais indispensáveis)", "itens": ["Certificado de Cadastro de Imóvel Rural (CCIR): emitido pelo INCRA, com taxa de serviço quitada.", "Certidão Negativa de Débitos do ITR: emitida pela Secretaria da Receita Federal do Brasil.", "Inscrição no Cadastro Ambiental Rural (CAR): recibo de inscrição e relatório de situação da Reserva Legal e APP.", "Georreferenciamento e Certificação no SIGEF/INCRA: conforme os prazos e exigências da Lei nº 10.267/2001."]}, {"titulo": "Pessoa Física (Comprador, Vendedor, Locador, Locatário, Fiador ou Cônjuge)", "itens": ["Documento de Identificação Oficial: RG, CNH ou Carteira Funcional (com foto e número de CPF).", {"sub": "Comprovante de Estado Civil Atualizado"}, "Solteiro: Certidão de Nascimento atualizada (útil para verificar eventual união estável registrada).", "Casado: Certidão de Casamento (se sob regime de comunhão universal, separação total convencional ou participação final nos aquestos, exigir a Escritura Pública de Pacto Antenupcial com a respectiva certidão de registro no CRI do domicílio do casal).", "Divorciado/Separado: Certidão de Casamento com a competente averbação do divórcio/separação e da partilha de bens.", "Viúvo: Certidão de Casamento com averbação do óbito e formal de partilha/escritura de inventário.", "União Estável: Escritura Pública ou Termo Declaratório de União Estável.", "Comprovante de Residência Atualizado.", "Comprovante de Renda / Capacidade Financeira: holerites, extratos bancários e Declaração de Imposto de Renda (imprescindível em locações ou promessas de compra a prazo)."]}, {"titulo": "Pessoa Jurídica", "itens": ["Contrato Social, Estatuto Social ou Requerimento de Empresário: última consolidação e alterações contratuais posteriores.", "Ata de Eleição da Diretoria / Administração Atual: devidamente registrada na Junta Comercial ou RCPJ.", "Cartão CNPJ Atualizado: emitido no sítio da Receita Federal.", "Documentos Pessoais dos Sócios Administradores/Representantes Legais (com procuração pública caso atuem por mandatário, conferindo poderes específicos para dispor ou gravar bens)."]}, {"titulo": "Certidões para Auditoria Preventiva (Due Diligence do Vendedor/Proprietário)", "itens": ["Certidão Negativa da Justiça Federal (Ações Cíveis, Criminais e Fiscais da respectiva Subseção/Região).", "Certidão Negativa da Justiça do Trabalho (Ações Trabalhistas de 1º e 2º Graus).", "Certidão Negativa de Débitos Trabalhistas (CNDT): emitida pelo TST (art. 642-A da CLT).", "Certidão Conjunta Negativa de Débitos Relativos a Tributos Federais e à Dívida Ativa da União (PGFN/RFB).", "Certidão dos Cartórios de Protesto de Títulos: abrangendo o período de 5 (cinco) anos.", "Certidão Negativa da Central Nacional de Indisponibilidade de Bens (CNIB)."], "nota": "Certidão Negativa da Justiça Estadual (Cível, Família, Falências e Recuperações Judiciais, Execuções Fiscais Estaduais/Municipais)."}, {"titulo": "Documentos Específicos por Tipo de Procedimento", "itens": [{"sub": "Usucapião (Judicial ou Extrajudicial - art. 216-A da LRP)"}, "Justo título (se houver: contrato de gaveta, cessão de direitos, recibos de quitação).", "Planta e memorial descritivo assinados por profissional habilitado (com ART/RRT) e confrontantes.", "Comprovantes do tempo de posse contínua e incontestada (contas antigas de água/luz, fotos com data, comprovantes de reformas, IPTUs antigos pagos).", "Certidões vintenárias/quinzenárias cíveis em nome do requerente e dos antecessores (para soma de posses).", {"sub": "Ações Possessórias / Reivindicatórias"}, "Boletim de Ocorrência policial (para fixar a data do esbulho/turbação).", "Notificações extrajudiciais com aviso de recebimento (AR).", "Fotografias, laudos de constatação e indicação de testemunhas do fato.", {"sub": "Inventário com Partilha de Imóveis"}, "Certidão de óbito do autor da herança.", "Certidão Negativa de Testamento (CENSEC).", "Certidões negativas fiscais em nome do falecido (Municipal, Estadual e Federal).", "Títulos de aquisição dos imóveis inventariados."]}], "empresarial": [{"titulo": "Atos Societários e de Representação Legal", "itens": ["Contrato Social ou Estatuto Social consolidado: e todas as alterações contratuais posteriores devidamente registradas na Junta Comercial (ou Cartório de Registro Civil das Pessoas Jurídicas).", "Cartão CNPJ atualizado: obtido no sítio da Receita Federal do Brasil, para verificar a situação cadastral, atividade econômica principal/secundárias (CNAEs) e endereço.", "Certidão Simplificada e Certidão de Breve Relato: emitidas pela Junta Comercial competente (para constatação de atos arquivados e titulares atuais).", "Atas de Assembleia Geral / Reunião de Sócios: especialmente de eleição/destituição de administradores, aprovação de contas e autorizações societárias para atos de disposição patrimonial.", "Acordo de Sócios ou de Acionistas: instrumento parassocial indispensável para conferir direitos de preferência, quóruns qualificados, regras de saída, tag along, drag along e cláusulas de solução de controvérsias (mediação/arbitragem).", "Documentos Pessoais dos Sócios e Administradores: RG, CPF/CNH, comprovante de residência e certidão de estado civil (com eventual pacto antenupcial)."], "nota": "Documentos indispensáveis para verificar a existência jurídica, capacidade civil, limites de poderes dos administradores e legitimidade processual ou contratual:"}, {"titulo": "Documentação Contábil e Fiscal", "itens": ["Demonstrações Contábeis: Balanço Patrimonial (BP), Demonstração do Resultado do Exercício (DRE), Demonstração dos Lucros ou Prejuízos Acumulados (DLPA) e Balancetes de Verificação recentes, assinados por contador habilitado.", "Livros Contábeis e Fiscais: Livro Diário, Livro Razão, Livro de Registro de Duplicatas e Livro de Registro de Atas/Ações (nas S/A).", "Declarações Fiscais Oficiais: ECF (Escrituração Contábil Fiscal), ECD (Escrituração Contábil Digital), PGDAS-D ou DEFIS (se optante pelo Simples Nacional), DCTF e EFD-Reinf/EFD-Contribuições.", {"sub": "Certidões Negativas de Débitos (CNDs) ou Positivas com Efeito de Negativa"}, "Tributos Federais e Dívida Ativa da União (RFB/PGFN);", "Tributos Estaduais (Secretaria da Fazenda Estadual);", "Tributos Municipais (ISS/Taxas);", "Regularidade do FGTS (CRF da Caixa Econômica Federal);", "Certidão Negativa de Débitos Trabalhistas (CNDT)."], "nota": "Essenciais para apuração de haveres, cobranças, execuções, defesas contra desconsideração da personalidade jurídica, litígios societários ou recuperação judicial:"}, {"titulo": "Contratos e Relações Operacionais", "itens": [{"sub": "Para análise de passivos, inadimplemento ou rescisões contratuais"}, "Contratos com Fornecedores e Prestadores de Serviços: instrumentos principais, anexos, ordens de compra e termos de aditamento vigentes.", "Contratos com Clientes e Distribuidores: minutas-padrão de venda, termos de garantia, contratos de prestação de serviços e termos de entrega/aceite de produtos.", "Contratos Financeiros e Bancários: cédulas de crédito bancário (CCB), contratos de mútuo, alienação fiduciária, arrendamento mercantil (leasing) e instrumentos de garantia (aval/fiança).", "Contratos de Locação: contratos de locação dos imóveis operacionais, filiais e sede (verificando prazos para eventual ação renovatória e garantias prestadas)."]}, {"titulo": "Propriedade Intelectual e Ativos Imateriais", "itens": ["Certificados de Registro de Marcas e Patentes: expedidos pelo INPI, bem como comprovantes de pedidos de depósito em andamento e prazos de vigência/renovação.", "Contratos de Licenciamento e Franquia (Franchising): inclusive a Circular de Oferta de Franquia (COF), se aplicável.", "Contratos de Cessão de Direitos e Termos de Confidencialidade (NDA): firmados com colaboradores, desenvolvedores e parceiros estratégicos."]}, {"titulo": "Documentos para Contencioso Cível/Empresarial Específico", "itens": [{"sub": "Caso a demanda envolva cobrança, dissolução de sociedade, execução ou responsabilidade civil"}, "Títulos de Crédito e Faturamento: duplicatas (físicas ou virtuais com comprovante de aceite e entrega da mercadoria/canhoto assinado), notas fiscais, cheques, notas promissórias e comprovantes bancários de transferência.", "Comunicações e Notificações Extrajudiciais: e-mails corporativos, mensagens de aplicativos com ata notarial (ou certificação idônea) e notificações enviadas via Cartório de Registro de Títulos e Documentos com aviso de recebimento (AR).", "Relatório de Contingências e Processos em Andamento: listagem de ações judiciais e administrativas em curso (cíveis, trabalhistas, tributárias e ambientais), com a respectiva classificação de risco (provável, possível ou remoto)."]}]};
+
   const SERVICOS = {
     'trabalhista': {
       kicker: 'DIREITO DO TRABALHO',
@@ -1151,6 +1302,46 @@
       docs: ['RG','CPF','Comprovante de endereço atualizado','Carteira de Trabalho (CTPS)','Extrato do CNIS (histórico de contribuições)','Carta de concessão ou indeferimento do INSS, se houver','Laudos e atestados médicos, em casos de incapacidade','Outros documentos ligados ao seu caso'],
       msg: 'Olá! Vim pelo site e gostaria de falar sobre um caso de Direito Previdenciário.'
     },
+    'consumidor': {
+      kicker: 'DIREITO DO CONSUMIDOR',
+      titulo: 'Direito do Consumidor',
+      intro: 'Atuação em problemas na relação com empresas e prestadores de serviço: cobranças e negativações indevidas, produtos com defeito, golpes, voos e planos de saúde.',
+      itens: ['Fraudes bancárias e golpes (Pix, boleto falso)','Negativação indevida (SPC/Serasa)','Produto com defeito e falha na prestação de serviço','Atraso, cancelamento de voo e extravio de bagagem','Negativa de cobertura de plano de saúde','Defesas administrativas no PROCON','Juizados Especiais e Justiça Comum'],
+      docs: ['RG e CPF','Comprovante de endereço atualizado','Contrato, nota fiscal ou comprovante da compra','Comprovantes de pagamento','Protocolos de atendimento e conversas com a empresa','Fotos, prints e outros documentos ligados ao caso'],
+      msg: 'Olá! Vim pelo site e gostaria de falar sobre um caso de Direito do Consumidor.'
+    },
+    'bancario': {
+      kicker: 'DIREITO BANCÁRIO',
+      titulo: 'Direito Bancário',
+      intro: 'Orientação e atuação em conflitos com bancos e financeiras: contratos com juros abusivos, consignados não contratados, golpes, superendividamento e negativações.',
+      itens: ['Revisão de empréstimos e financiamentos','Empréstimo consignado não contratado (RMC/RCC)','Fraudes bancárias e golpes','Superendividamento (Lei 14.181/2021)','Negativação indevida e limpeza de nome','Defesa em busca e apreensão de veículo','Negociação com instituições financeiras'],
+      docs: ['RG e CPF','Comprovante de endereço atualizado','Contrato do empréstimo ou financiamento','Extratos bancários do período','Extrato de empréstimos do INSS (no caso de consignado)','Protocolos de reclamação no banco'],
+      msg: 'Olá! Vim pelo site e gostaria de falar sobre um caso de Direito Bancário.'
+    },
+    'civil': {
+      kicker: 'DIREITO CIVIL',
+      titulo: 'Direito Civil',
+      intro: 'Atuação nas relações do dia a dia entre pessoas e empresas: contratos, cobranças, indenizações, família e sucessões.',
+      itens: ['Contratos: elaboração, revisão e cobrança','Indenizações por danos materiais, morais e estéticos','Execução e cobrança de dívidas','Família: divórcio, pensão, guarda e partilha','Inventário e sucessões','Notificações extrajudiciais'],
+      docs: ['RG e CPF','Comprovante de endereço atualizado','Certidão de nascimento ou de casamento','Contratos e comprovantes ligados ao caso','Fotos, mensagens e outros documentos que mostrem o que aconteceu'],
+      msg: 'Olá! Vim pelo site e gostaria de falar sobre um caso de Direito Civil.'
+    },
+    'imobiliario': {
+      kicker: 'DIREITO IMOBILIÁRIO',
+      titulo: 'Direito Imobiliário',
+      intro: 'Segurança jurídica para comprar, vender, alugar e regularizar imóveis, e atuação em conflitos de locação, condomínio e posse.',
+      itens: ['Compra e venda com análise da documentação','Locação: contratos, despejo e revisão de aluguel','Usucapião judicial e extrajudicial','Regularização de imóveis em cartório','Conflitos de condomínio e vizinhança','Atraso na entrega de imóvel na planta'],
+      docs: ['RG e CPF','Comprovante de endereço e certidão de estado civil','Matrícula atualizada do imóvel','Escritura ou contrato de compra e venda ou de locação','Carnê ou certidão do IPTU','Comprovantes de pagamento ligados ao imóvel'],
+      msg: 'Olá! Vim pelo site e gostaria de falar sobre um caso de Direito Imobiliário.'
+    },
+    'empresarial': {
+      kicker: 'DIREITO EMPRESARIAL',
+      titulo: 'Direito Empresarial',
+      intro: 'Apoio jurídico para empresas: contratos, relação entre sócios, cobranças e proteção de marcas e informações.',
+      itens: ['Contratos com clientes, fornecedores e parceiros','Questões entre sócios e acordo de sócios','Cobrança e execução de títulos','Marcas, licenciamento e confidencialidade','Defesa em ações cíveis empresariais'],
+      docs: ['Contrato social e alterações','Cartão CNPJ','Documentos dos sócios administradores','Contratos ligados ao caso','Notas fiscais, títulos e comprovantes','Notificações e comunicações trocadas'],
+      msg: 'Olá! Vim pelo site e gostaria de falar sobre uma questão de Direito Empresarial.'
+    },
     'oab-1fase': {
       kicker: 'SERVIÇO PARA CANDIDATOS',
       titulo: 'OAB 1ª fase',
@@ -1162,12 +1353,293 @@
     'oab-2fase': {
       kicker: 'SERVIÇO PARA CANDIDATOS',
       titulo: 'OAB 2ª fase (Provimento)',
-      intro: 'Prestação de serviço para candidatos que estão na 2ª fase do Exame de Ordem. Fale com o Dr. Israel para entender como funciona no seu caso.',
-      itens: ['Atendimento individual','Análise da sua situação','Orientação durante o serviço','Acompanhamento até a conclusão'],
-      docs: ['RG','CPF','Comprovante de endereço atualizado','Comprovante de inscrição no Exame de Ordem','Documentos da 2ª fase relacionados ao serviço contratado'],
+      intro: 'Recurso para candidatos da 2ª fase do Exame de Ordem, em duas etapas: primeiro a análise de viabilidade da sua prova e, se couber recurso, a elaboração da minuta. Todo o envio é feito pela área do aluno.',
+      itens: ['Análise de viabilidade da peça e das questões','Elaboração da minuta do recurso (se viável)','Recurso disponível na área do aluno e no seu e-mail','Avisos por e-mail em cada etapa','Atende as 7 disciplinas da 2ª fase'],
+      docs: ['Folhas de resposta da peça prático-profissional (todas)','Folhas de resposta das questões discursivas, cada questão com item A e item B','Espelho de correção oficial da FGV','Seus dados de examinando (inscrição, exame e seccional)'],
       msg: 'Olá! Vim pelo site e gostaria de saber mais sobre o serviço para a OAB 2ª fase (Provimento).'
     }
   };
+
+  // ---------- Formulários: Seja parceiro / Trabalhe conosco ----------
+  function renderFormulario(chave){
+    detalheConteudo.style.maxWidth = '760px';
+    const parceiro = chave === 'seja-parceiro';
+    const campo = (id, rotulo, tipo = 'text', extra = '') => `
+      <div class="checkout-field"><label for="${id}">${rotulo}</label><input id="${id}" type="${tipo}" ${extra}></div>`;
+    detalheConteudo.innerHTML = `
+      ${BOTAO_VOLTAR}
+      <span class="detalhe-kicker" style="display:block;">${parceiro ? 'PARCERIAS' : 'TRABALHE CONOSCO'}</span>
+      <h1 class="detalhe-titulo">${parceiro ? 'Seja parceiro' : 'Envie seu currículo'}</h1>
+      <p class="servico-intro">${parceiro
+        ? 'Advogados e escritórios que querem atuar em parceria (correspondência, indicação de casos ou atuação conjunta) podem enviar sua proposta. Retornamos pelo e-mail ou telefone informado.'
+        : 'Advogados, estagiários e profissionais da área podem enviar o currículo. Ele fica guardado para futuras oportunidades.'}</p>
+      <form id="formPublico" class="form-publico" novalidate>
+        <div class="form-publico-grid">
+          ${campo('fNome', 'Nome completo *', 'text', 'maxlength="150" required')}
+          ${campo('fEmail', 'E-mail *', 'email', 'maxlength="160" required')}
+          ${campo('fTelefone', 'Telefone / WhatsApp', 'tel', 'maxlength="40"')}
+          ${campo('fCidade', 'Cidade / UF', 'text', 'maxlength="100"')}
+          ${campo('fOab', parceiro ? 'OAB (número e seccional)' : 'OAB (se tiver)', 'text', 'maxlength="40"')}
+          ${campo('fArea', parceiro ? 'Áreas de atuação' : 'Área de interesse / cargo', 'text', 'maxlength="150"')}
+        </div>
+        <div class="checkout-field"><label for="fMensagem">${parceiro ? 'Sua proposta de parceria' : 'Fale um pouco sobre você'}</label><textarea id="fMensagem" maxlength="5000" rows="5"></textarea></div>
+        ${parceiro ? '' : `<div class="checkout-field"><label for="fArquivo">Currículo (PDF ou Word, até 5 MB)</label><input id="fArquivo" type="file" accept=".pdf,.doc,.docx"></div>`}
+        <input type="text" name="site_url" id="fIsca" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true">
+        <label class="form-aceite"><input type="checkbox" id="fAceite"> Concordo com o uso dos meus dados para este contato, conforme a <a href="#privacidade">Política de Privacidade</a>.</label>
+        <p class="checkout-erro" id="fErro"></p>
+        <button class="btn btn-gold" type="submit" id="fEnviar">Enviar</button>
+      </form>`;
+    const form = document.getElementById('formPublico');
+    const erro = (m) => { const e = document.getElementById('fErro'); e.textContent = m; e.classList.toggle('show', !!m); };
+    const lerBase64 = (f) => new Promise((ok, falha) => {
+      const r = new FileReader();
+      r.onload = () => ok(String(r.result).split(',')[1] || '');
+      r.onerror = falha;
+      r.readAsDataURL(f);
+    });
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      erro('');
+      const v = (id) => (document.getElementById(id) || {}).value || '';
+      if (!v('fNome').trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('fEmail').trim())) return erro('Preencha seu nome e um e-mail válido.');
+      if (!document.getElementById('fAceite').checked) return erro('Marque que concorda com o uso dos dados para este contato.');
+      const corpo = {
+        tipo: parceiro ? 'parceiro' : 'curriculo', nome: v('fNome'), email: v('fEmail'), telefone: v('fTelefone'),
+        cidade: v('fCidade'), oab: v('fOab'), area: v('fArea'), mensagem: v('fMensagem'), site_url: v('fIsca'),
+      };
+      const arq = document.getElementById('fArquivo');
+      if (arq && arq.files[0]){
+        const f = arq.files[0];
+        if (!/\.(pdf|docx?)$/i.test(f.name)) return erro('Envie o currículo em PDF ou Word.');
+        if (f.size > 5 * 1048576) return erro('Arquivo grande demais (máximo 5 MB).');
+        corpo.arquivo_base64 = await lerBase64(f);
+        corpo.arquivo_nome = f.name;
+      }
+      const btn = document.getElementById('fEnviar');
+      btn.disabled = true; btn.textContent = 'Enviando…';
+      try{
+        const r = await fetch(`${API_URL}/formularios`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(corpo) });
+        const d = await r.json().catch(() => ({}));
+        if (!r.ok) throw new Error(d.erro || 'Não foi possível enviar agora.');
+        form.outerHTML = `<div class="servico-bloco servico-portal"><div><h2>Recebido, obrigado!</h2><p class="servico-intro" style="margin:0;">${parceiro ? 'Sua proposta chegou ao Dr. Israel. O retorno é feito pelo contato informado.' : 'Seu currículo foi recebido e fica guardado para futuras oportunidades.'}</p></div></div>`;
+      }catch(err){
+        erro(err.message || 'Não foi possível enviar agora.');
+        btn.disabled = false; btn.textContent = 'Enviar';
+      }
+    });
+  }
+
+  // ---------- Páginas de texto: currículo, privacidade e termos ----------
+  const CV = {
+    formacao: [
+      ['Mestrado em Comunicação (em andamento)', 'Universidade Paulista (UNIP) · bolsista CAPES', 'Pesquisa: abordagem da mídia digital sobre medicamentos antirretrovirais e canetas emagrecedoras.'],
+      ['Mestrado em Direito Intelectual', 'Faculdade de Direito da USP (FDUSP) · 2024', 'Trabalho: Licenciamento compulsório da patente.'],
+      ['Especialização em Direito do Trabalho (360h)', 'Faculdade Legale · 2023', ''],
+      ['Graduação em Direito', 'Universidade Paulista (UNIP) · 2015–2021', 'Trabalho de conclusão: A divergência dos laudos médicos e a responsabilidade indenizatória no âmbito da Previdência Social — o "limbo jurídico" previdenciário e trabalhista.'],
+      ['Especialização em Educação a Distância (360h)', 'Universidade Paulista (UNIP) · 2017–2018', ''],
+      ['Especialização em Gestão de Negócios (360h)', 'Universidade Cidade de São Paulo (UNICID) · 2011–2012', ''],
+      ['Graduação em Logística', 'Universidade Cidade de São Paulo (UNICID) · 2008–2010', ''],
+      ['Técnico em Transações Imobiliárias (960h)', 'Instituto Monitor · 2013–2018', ''],
+    ],
+    atuacao: [
+      ['Advocacia', 'Atuação nas áreas Trabalhista e Previdenciária', ''],
+      ['Tutor de Educação a Distância', 'Universidade Paulista (UNIP) · desde 2014', 'Suporte aos alunos do curso superior de Tecnologia em Logística.'],
+      ['Estágio', 'Tribunal Regional Federal da 3ª Região · 2020', ''],
+    ],
+    producao: [
+      ['Artigo aceito para publicação', 'INTERCOM · 2026', 'A desinformação midiática e a judicialização da saúde.'],
+      ['Apresentação de trabalho', 'Seminário · 2024', 'Licenciamento compulsório da patente.'],
+      ['Projeto de ensino (coordenador)', 'UNIP · 2015–2021', 'A divergência dos laudos médicos e a responsabilidade indenizatória no âmbito da Previdência Social.'],
+    ],
+  };
+  const cvLista = (lista) => lista.map(([t, onde, det]) => `
+    <div class="cv-bloco"><b>${t}</b><span>${onde}</span>${det ? `<span>${det}</span>` : ''}</div>`).join('');
+
+  const TEXTO_PRIVACIDADE = `
+    <p><b>Última atualização:</b> outubro de 2026.</p>
+    <p>Esta política explica como a Israel Donizete da Silva Sociedade Individual de Advocacia (CNPJ 63.450.164/0001-30) trata os dados pessoais de quem usa este site, em conformidade com a Lei Geral de Proteção de Dados (Lei 13.709/2018 — LGPD).</p>
+    <h2>1. Quais dados coletamos</h2>
+    <ul>
+      <li><b>Cadastro na área do aluno:</b> nome, e-mail, telefone e senha (guardada de forma criptografada).</li>
+      <li><b>Compras:</b> itens comprados, valores e situação do pagamento. Os dados de cartão são digitados diretamente no Mercado Pago e não passam pelo nosso servidor.</li>
+      <li><b>Provimento OAB 2ª fase:</b> dados de examinando (nome, inscrição, exame, seccional e nota, se informada) e os arquivos da prova enviados pelo aluno.</li>
+      <li><b>Atendimento:</b> informações e documentos que você nos envia por WhatsApp ou e-mail para análise do seu caso.</li>
+      <li><b>Dados técnicos:</b> registros de acesso (endereço IP, data e hora), mantidos por obrigação legal (Marco Civil da Internet).</li>
+    </ul>
+    <h2>2. Para que usamos</h2>
+    <ul>
+      <li>Prestar os serviços jurídicos e educacionais contratados e entregar livros, cursos e recursos comprados;</li>
+      <li>Processar pagamentos e manter a central financeira da sua conta;</li>
+      <li>Enviar avisos sobre o andamento do que você contratou (por exemplo, resultado da análise de viabilidade e recurso pronto);</li>
+      <li>Responder dúvidas e solicitações;</li>
+      <li>Cumprir obrigações legais e regulatórias, inclusive as do exercício da advocacia.</li>
+    </ul>
+    <h2>3. Bases legais</h2>
+    <p>Tratamos dados para executar o contrato com você, cumprir obrigações legais, exercer direitos em processos e, quando necessário, com o seu consentimento — que pode ser revogado a qualquer momento.</p>
+    <h2>4. Compartilhamento</h2>
+    <p>Não vendemos dados. Eles podem ser compartilhados apenas com quem é necessário para o funcionamento do serviço: o Mercado Pago (pagamentos), a empresa de hospedagem do site e do servidor, o provedor de e-mail usado para os avisos e, quando exigido, autoridades e o Poder Judiciário. Livros vendidos em lojas parceiras (como Amazon ou Hotmart) são comprados no site da própria loja, que tem política de privacidade própria.</p>
+    <h2>5. Sigilo e segurança</h2>
+    <p>Documentos e informações de clientes são protegidos pelo sigilo profissional da advocacia. Os arquivos enviados pela área do aluno ficam em área restrita do servidor, acessível somente ao próprio aluno e ao escritório, com conexão criptografada (HTTPS).</p>
+    <h2>6. Por quanto tempo guardamos</h2>
+    <p>Pelo tempo necessário para a finalidade de cada dado e para cumprir prazos legais (por exemplo, registros de acesso por 6 meses e documentos ligados a serviços jurídicos pelo prazo exigido por lei ou para defesa de direitos).</p>
+    <h2>7. Seus direitos</h2>
+    <p>Você pode pedir a confirmação e o acesso aos seus dados, a correção de dados incompletos ou desatualizados, a anonimização, o bloqueio ou a eliminação de dados desnecessários, a portabilidade, informações sobre compartilhamento e a revogação do consentimento (art. 18 da LGPD).</p>
+    <h2>8. Armazenamento no navegador</h2>
+    <p>O site guarda no seu próprio navegador apenas o necessário para funcionar: o login da área do aluno e o carrinho de compras. Não usamos cookies de publicidade.</p>
+    <h2>9. Contato</h2>
+    <p>Para exercer seus direitos ou tirar dúvidas sobre esta política, escreva para <a href="mailto:israeldonizete@adv.oabsp.org.br">israeldonizete@adv.oabsp.org.br</a>.</p>`;
+
+  const TEXTO_TERMOS = `
+    <p><b>Última atualização:</b> outubro de 2026.</p>
+    <p>Ao usar este site, você concorda com estes termos. Leia com atenção.</p>
+    <h2>1. Sobre o site</h2>
+    <p>Este site é mantido pela Israel Donizete da Silva Sociedade Individual de Advocacia (CNPJ 63.450.164/0001-30) e reúne informações sobre as áreas de atuação do escritório, artigos, livros, cursos e o serviço de recursos da OAB 2ª fase (Provimento).</p>
+    <h2>2. Conteúdo informativo</h2>
+    <p>Artigos e textos do site têm caráter informativo e não substituem uma consulta jurídica. Cada caso deve ser analisado individualmente.</p>
+    <h2>3. Conta na área do aluno</h2>
+    <p>Você é responsável pelos dados informados no cadastro e por manter sua senha em sigilo. Informe dados corretos e atualizados.</p>
+    <h2>4. Compras</h2>
+    <ul>
+      <li>Os pagamentos feitos no site são processados pelo Mercado Pago, com Pix, cartão ou boleto.</li>
+      <li>E-books e cursos ficam disponíveis na área do aluno depois da confirmação do pagamento. Livros físicos são enviados conforme combinado no pedido.</li>
+      <li>Livros vendidos em lojas parceiras (como Amazon ou Hotmart) são comprados, pagos e entregues pela própria loja, de acordo com as regras dela.</li>
+      <li>O direito de arrependimento segue o Código de Defesa do Consumidor (art. 49): até 7 dias da compra feita pela internet, nos termos da lei.</li>
+    </ul>
+    <h2>5. Provimento OAB 2ª fase</h2>
+    <p>O serviço de recursos tem termos próprios, que o aluno lê e aceita na área do aluno antes de enviar a prova. O protocolo do recurso na FGV é sempre feito pelo próprio candidato, e o serviço não garante aumento de nota ou aprovação.</p>
+    <h2>6. Propriedade intelectual</h2>
+    <p>Textos, artigos, livros, cursos, marcas e materiais do site pertencem ao escritório ou aos seus autores. É proibido copiar, revender ou distribuir sem autorização.</p>
+    <h2>7. Responsabilidades</h2>
+    <p>O escritório se esforça para manter o site disponível e as informações atualizadas, mas pode haver interrupções para manutenção ou por falhas de terceiros (internet, hospedagem, meios de pagamento).</p>
+    <h2>8. Privacidade</h2>
+    <p>O tratamento dos seus dados segue a nossa <a href="#privacidade">Política de Privacidade</a>.</p>
+    <h2>9. Alterações e foro</h2>
+    <p>Estes termos podem ser atualizados, com a data de atualização indicada no topo. Fica eleito o foro do domicílio do consumidor para resolver eventuais questões.</p>
+    <h2>10. Contato</h2>
+    <p><a href="mailto:israeldonizete@adv.oabsp.org.br">israeldonizete@adv.oabsp.org.br</a> · (11) 97575-1984</p>`;
+
+  function renderPagina(chave){
+    detalheConteudo.style.maxWidth = '820px';
+    if (chave === 'curriculo'){
+      detalheConteudo.innerHTML = `
+        ${BOTAO_VOLTAR}
+        <span class="detalhe-kicker" style="display:block;">SOBRE</span>
+        <h1 class="detalhe-titulo">Dr. Israel Donizete da Silva</h1>
+        <p class="servico-intro">Advogado com atuação nas áreas Trabalhista e Previdenciária · OAB/SP 528153</p>
+        <div class="servico-bloco"><h2>Formação acadêmica</h2>${cvLista(CV.formacao)}</div>
+        <div class="servico-bloco"><h2>Atuação profissional</h2>${cvLista(CV.atuacao)}</div>
+        <div class="servico-bloco"><h2>Produção acadêmica</h2>${cvLista(CV.producao)}</div>`;
+      return;
+    }
+    const titulo = chave === 'privacidade' ? 'Política de Privacidade' : 'Termos de Uso';
+    detalheConteudo.innerHTML = `
+      ${BOTAO_VOLTAR}
+      <span class="detalhe-kicker" style="display:block;">INSTITUCIONAL</span>
+      <h1 class="detalhe-titulo">${titulo}</h1>
+      <div class="texto-legal">${chave === 'privacidade' ? TEXTO_PRIVACIDADE : TEXTO_TERMOS}</div>`;
+  }
+
+  // ---------- Configurações do site (YouTube, FAQ) — editáveis no painel ----------
+  let SITE_CONFIG = null;
+  async function carregarSiteConfig(){
+    if (SITE_CONFIG) return SITE_CONFIG;
+    try{
+      const r = await fetch(`${API_URL}/site/config`);
+      SITE_CONFIG = r.ok ? await r.json() : { youtube_url: '', faq: [] };
+    }catch(e){ SITE_CONFIG = { youtube_url: '', faq: [] }; }
+    return SITE_CONFIG;
+  }
+  carregarSiteConfig().then(c => {
+    const a = document.getElementById('linkMidia');
+    if (a && /^https:\/\//i.test(c.youtube_url || '')){ a.href = c.youtube_url; a.style.display = ''; }
+  });
+
+  async function renderFaq(){
+    detalheConteudo.style.maxWidth = '820px';
+    const c = await carregarSiteConfig();
+    const wa = WA_BASE + encodeURIComponent('Olá! Vim pelo site e tenho uma dúvida.');
+    detalheConteudo.innerHTML = `
+      ${BOTAO_VOLTAR}
+      <span class="detalhe-kicker" style="display:block;">AJUDA</span>
+      <h1 class="detalhe-titulo">Dúvidas frequentes</h1>
+      ${(c.faq || []).length ? c.faq.map(f => `
+        <details class="faq-item"><summary>${escapeHtml(f.pergunta)}</summary><p>${escapeHtml(f.resposta)}</p></details>`).join('')
+        : '<p style="color:var(--ink-soft);">Em breve.</p>'}
+      <div class="servico-bloco" style="margin-top:28px;">
+        <h2>Não encontrou sua dúvida?</h2>
+        <p class="servico-intro" style="margin-bottom:16px;">Fale direto com o Dr. Israel.</p>
+        <a class="btn btn-gold" href="${wa}" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+      </div>`;
+  }
+
+  function renderEnviarDocumentos(){
+    detalheConteudo.style.maxWidth = '860px';
+    const areas = Object.entries(SERVICOS).filter(([k]) => !k.startsWith('oab-'));
+    detalheConteudo.innerHTML = `
+      ${BOTAO_VOLTAR}
+      <span class="detalhe-kicker" style="display:block;">DOCUMENTOS</span>
+      <h1 class="detalhe-titulo">Enviar documentos</h1>
+      <p class="servico-intro">Escolha a área do seu caso para ver a lista de documentos e enviar pelo WhatsApp ou por e-mail.</p>
+      <div class="docs-areas" id="docsAreas">
+        ${areas.map(([k, sv], i) => `<button class="shop-tab${i === 0 ? ' active' : ''}" data-area="${k}">${sv.titulo}</button>`).join('')}
+        <a class="shop-tab" href="#portal-provimento">OAB 2ª fase (prova para recurso)</a>
+      </div>
+      <div id="docsLista"></div>`;
+    const mostrar = (chave) => {
+      const sv = SERVICOS[chave];
+      const waDocs = WA_BASE + encodeURIComponent('Olá! Vim pelo site (' + sv.titulo + ') e quero enviar meus documentos.');
+      const mail = 'mailto:' + EMAIL_ADV + '?subject=' + encodeURIComponent('Documentos - ' + sv.titulo);
+      document.getElementById('docsLista').innerHTML = `
+        <div class="servico-bloco servico-docs">
+          <h2>Documentos — ${sv.titulo}</h2>
+          <ul class="servico-checks">${sv.docs.map(d => `<li>${d}</li>`).join('')}</ul>
+          ${docsDetalhadosHtml(chave)}
+          <div class="servico-envio">
+            <div class="servico-canal">
+              <h4>Pelo WhatsApp</h4>
+              <p>Tire uma foto nítida ou escaneie cada documento e envie na conversa.</p>
+              <a class="btn btn-gold" href="${waDocs}" target="_blank" rel="noopener">Enviar pelo WhatsApp</a>
+            </div>
+            <div class="servico-canal">
+              <h4>Por e-mail</h4>
+              <p>${EMAIL_ADV}<br>Anexe os documentos em PDF ou foto.</p>
+              <a class="btn btn-outline" href="${mail}">Enviar por e-mail</a>
+            </div>
+          </div>
+          <p class="servico-nota">A lista pode variar conforme o caso. Os documentos são tratados com sigilo profissional.</p>
+        </div>`;
+    };
+    mostrar(areas[0][0]);
+    document.getElementById('docsAreas').addEventListener('click', (e) => {
+      const b = e.target.closest('button[data-area]');
+      if (!b) return;
+      document.querySelectorAll('#docsAreas .shop-tab').forEach(t => t.classList.remove('active'));
+      b.classList.add('active');
+      mostrar(b.dataset.area);
+    });
+  }
+
+  // Itens no formato "Nome: explicação" ficam com o nome em negrito.
+  function itemDoc(t){
+    const i = t.indexOf(':');
+    if (i > 0 && i < 110) return `<li><b>${escapeHtml(t.slice(0, i))}:</b>${escapeHtml(t.slice(i + 1))}</li>`;
+    return `<li>${escapeHtml(t)}</li>`;
+  }
+  function docsDetalhadosHtml(chave){
+    const grupos = DOCS_DETALHADOS[chave];
+    if (!grupos || !grupos.length) return '';
+    return `
+      <div class="docs-detalhe">
+        <h3>Lista completa por tipo de caso</h3>
+        <p class="servico-nota" style="margin:0 0 12px;">Não precisa ter tudo: envie o que tiver e o Dr. Israel orienta sobre o restante.</p>
+        ${grupos.map(g => `
+          <details class="faq-item">
+            <summary>${escapeHtml(g.titulo)}</summary>
+            ${g.nota ? `<p>${escapeHtml(g.nota)}</p>` : ''}
+            <ul class="docs-lista">${g.itens.map(x => typeof x === 'string' ? itemDoc(x) : `<li class="docs-sub">${escapeHtml(x.sub)}</li>`).join('')}</ul>
+          </details>`).join('')}
+      </div>`;
+  }
 
   function renderServico(chave){
     const sv = SERVICOS[chave];
@@ -1190,10 +1662,15 @@
       <div class="servico-bloco">
         <h2>Como funciona</h2>
         <ol class="servico-passos">
+          ${chave === 'oab-2fase' ? `
+          <li><b>Crie sua conta.</b> Entre na Área do aluno do site.</li>
+          <li><b>Envie sua prova.</b> Escolha a disciplina e anexe cada arquivo no seu campo: peça, questões (item A e item B) e espelho da FGV.</li>
+          <li><b>Análise de viabilidade.</b> O Dr. Israel avalia se cabe recurso e você recebe o resultado por e-mail.</li>
+          <li><b>Elaboração do recurso.</b> Se for viável, o recurso é elaborado e fica disponível na área do aluno e no seu e-mail. O protocolo na FGV é feito por você.</li>` : `
           <li><b>Fale com a gente.</b> Chame pelo WhatsApp e conte rapidamente a sua situação.</li>
           <li><b>Envie seus documentos.</b> Você manda as cópias pelo WhatsApp ou por e-mail, como preferir.</li>
           <li><b>Análise do caso.</b> O advogado avalia o material e explica os próximos passos.</li>
-          <li><b>Acompanhamento.</b> Você recebe atualizações durante todo o andamento.</li>
+          <li><b>Acompanhamento.</b> Você recebe atualizações durante todo o andamento.</li>`}
         </ol>
       </div>
 
@@ -1201,7 +1678,7 @@
       <div class="servico-bloco servico-portal">
         <div>
           <h2>Envie sua prova pelo portal do aluno</h2>
-          <p class="servico-intro" style="margin:0;">Escolha a disciplina e anexe a peça processual e as questões discursivas, cada questão com item A e item B. Você acompanha a análise por lá.</p>
+          <p class="servico-intro" style="margin:0;">Escolha a disciplina, anexe a peça, as questões (item A e item B) e o espelho da FGV, e acompanhe a análise e o recurso por lá.</p>
         </div>
         <a class="btn btn-gold" href="#portal-provimento">Enviar minha prova</a>
       </div>` : ''}
@@ -1209,7 +1686,12 @@
       <div class="servico-bloco servico-docs">
         <h2>Documentos para enviar</h2>
         <ul class="servico-checks">${sv.docs.map(d => `<li>${d}</li>`).join('')}</ul>
-        <div class="servico-envio">
+        ${docsDetalhadosHtml(chave)}
+        ${chave === 'oab-2fase' ? `
+        <p class="servico-intro" style="margin:8px 0 16px;">A prova é enviada somente pela área do aluno. Arquivos mandados por e-mail ou WhatsApp não são aceitos.</p>
+        <a class="btn btn-gold" href="#portal-provimento">Enviar minha prova</a>
+        <div class="servico-envio" style="display:none">` : `
+        <div class="servico-envio">`}
           <div class="servico-canal">
             <h4>Pelo WhatsApp</h4>
             <p>Tire uma foto nítida ou escaneie cada documento e envie na conversa.</p>
@@ -1231,6 +1713,39 @@
     `;
   }
 
+  // Artigos feitos no editor do painel vêm em HTML. Antes de mostrar, tudo
+  // passa por uma "peneira": só ficam tags de texto simples, links seguros e
+  // imagens enviadas pelo próprio painel. Scripts, estilos e eventos somem.
+  function limparHtmlArtigo(html){
+    const PERMITIDAS = new Set(['P','BR','B','STRONG','I','EM','U','H2','H3','UL','OL','LI','A','BLOCKQUOTE','IMG']);
+    const doc = new DOMParser().parseFromString(`<div>${html}</div>`, 'text/html');
+    const raiz = doc.body.firstChild;
+    const limpar = (no) => {
+      [...no.childNodes].forEach(filho => {
+        if (filho.nodeType === 3) return;
+        if (filho.nodeType !== 1 || !PERMITIDAS.has(filho.tagName)){
+          if (filho.nodeType === 1 && !['SCRIPT','STYLE','IFRAME','OBJECT','EMBED','TEMPLATE'].includes(filho.tagName)){
+            limpar(filho);
+            filho.replaceWith(...filho.childNodes);
+          } else filho.remove();
+          return;
+        }
+        const href = filho.getAttribute('href'), src = filho.getAttribute('src'), alt = filho.getAttribute('alt');
+        [...filho.attributes].forEach(a => filho.removeAttribute(a.name));
+        if (filho.tagName === 'A'){
+          if (href && /^(https:\/\/|mailto:)/i.test(href)){ filho.setAttribute('href', href); filho.setAttribute('target', '_blank'); filho.setAttribute('rel', 'noopener'); }
+        }
+        if (filho.tagName === 'IMG'){
+          if (src && src.startsWith(API_URL + '/uploads/')){ filho.setAttribute('src', src); filho.setAttribute('alt', alt || ''); filho.setAttribute('loading', 'lazy'); }
+          else { filho.remove(); return; }
+        }
+        limpar(filho);
+      });
+    };
+    limpar(raiz);
+    return raiz.innerHTML;
+  }
+
   async function renderDetalheArtigo(slug){
     const res = await fetch(`${API_URL}/artigos/${encodeURIComponent(slug)}`);
     if (!res.ok) throw new Error('Artigo não encontrado');
@@ -1242,7 +1757,9 @@
       <span class="detalhe-kicker">${CATEGORIA_LABEL[art.categoria] || art.categoria}</span>
       <h1 class="detalhe-titulo">${escapeHtml(art.titulo)}</h1>
       <span class="detalhe-meta">${formatData(art.data_publicacao || art.criado_em)}</span>
-      <div class="detalhe-corpo">${escapeHtml(art.conteudo || art.resumo || 'Conteúdo em preparação.')}</div>
+      ${art.formato === 'html'
+        ? `<div class="detalhe-corpo artigo-html">${limparHtmlArtigo(art.conteudo || '')}</div>`
+        : `<div class="detalhe-corpo">${escapeHtml(art.conteudo || art.resumo || 'Conteúdo em preparação.')}</div>`}
     `;
   }
 
@@ -1313,7 +1830,10 @@
     let artigos = await res.json();
     artigos.sort((a, b) => new Date(b.data_publicacao || b.criado_em) - new Date(a.data_publicacao || a.criado_em));
 
-    const categoriasPresentes = ['todos', ...new Set(artigos.map(a => a.categoria))];
+    // Ordem fixa das abas: Todos, Artigos científicos, Trabalho, Previdenciário, Notícias
+    const ORDEM_BLOG = ['artigos', 'trabalhista', 'previdenciario', 'noticias'];
+    const presentes = new Set(artigos.map(a => a.categoria));
+    const categoriasPresentes = ['todos', ...ORDEM_BLOG.filter(c => presentes.has(c)), ...[...presentes].filter(c => !ORDEM_BLOG.includes(c))];
     // Se veio de um link de categoria específica (ex: dropdown do menu Blog)
     // mas essa categoria não tem nenhum artigo ainda, cai de volta pra "todos".
     const filtroInicial = (categoriaInicial && categoriasPresentes.includes(categoriaInicial))
@@ -1336,16 +1856,26 @@
 
     let filtroAtual = filtroInicial;
     let buscaAtual = '';
+    let paginaAtual = 1;
+    const POR_PAGINA = 9;
 
     function renderLista(){
       let lista = filtroAtual === 'todos' ? artigos : artigos.filter(a => a.categoria === filtroAtual);
       if (buscaAtual){
         lista = lista.filter(a => normalizarBusca([a.titulo, a.resumo, CATEGORIA_LABEL[a.categoria] || a.categoria].join(' ')).includes(buscaAtual));
       }
+      const totalPaginas = Math.max(1, Math.ceil(lista.length / POR_PAGINA));
+      if (paginaAtual > totalPaginas) paginaAtual = totalPaginas;
+      const pagina = lista.slice((paginaAtual - 1) * POR_PAGINA, paginaAtual * POR_PAGINA);
       const grid = document.getElementById('blogTodosGrid');
-      grid.innerHTML = lista.length
-        ? lista.map(montarCard).join('')
+      grid.innerHTML = pagina.length
+        ? pagina.map(montarCard).join('')
         : `<p style="color:var(--ink-soft);grid-column:1/-1;">${buscaAtual ? 'Nenhum artigo encontrado para essa busca.' : 'Nenhum artigo nessa categoria ainda.'}</p>`;
+      const pag = document.getElementById('blogPaginacao');
+      pag.innerHTML = totalPaginas > 1 ? `
+        <button class="pag-btn" data-pag="${paginaAtual - 1}" ${paginaAtual === 1 ? 'disabled' : ''} aria-label="Página anterior">‹</button>
+        ${Array.from({ length: totalPaginas }, (_, i) => i + 1).map(n => `<button class="pag-btn${n === paginaAtual ? ' ativa' : ''}" data-pag="${n}">${n}</button>`).join('')}
+        <button class="pag-btn" data-pag="${paginaAtual + 1}" ${paginaAtual === totalPaginas ? 'disabled' : ''} aria-label="Próxima página">›</button>` : '';
     }
 
     detalheConteudo.innerHTML = `
@@ -1357,9 +1887,17 @@
         ${categoriasPresentes.map(c => `<button class="shop-tab${c === filtroInicial ? ' active' : ''}" data-cat="${c}">${c === 'todos' ? 'Todos' : (CATEGORIA_LABEL[c] || c)}</button>`).join('')}
       </div>
       <div class="blog-grid" id="blogTodosGrid"></div>
+      <div class="paginacao" id="blogPaginacao"></div>
     `;
     renderLista();
-    ligarBusca('buscaBlog', (texto) => { buscaAtual = texto; renderLista(); });
+    ligarBusca('buscaBlog', (texto) => { buscaAtual = texto; paginaAtual = 1; renderLista(); });
+    document.getElementById('blogPaginacao').addEventListener('click', (e) => {
+      const b = e.target.closest('.pag-btn');
+      if (!b || b.disabled) return;
+      paginaAtual = Number(b.dataset.pag);
+      renderLista();
+      document.getElementById('blogTodosTabs').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
 
     document.getElementById('blogTodosTabs').addEventListener('click', (e) => {
       const btn = e.target.closest('.shop-tab');
@@ -1367,6 +1905,7 @@
       document.querySelectorAll('#blogTodosTabs .shop-tab').forEach(t => t.classList.remove('active'));
       btn.classList.add('active');
       filtroAtual = btn.dataset.cat;
+      paginaAtual = 1;
       renderLista();
     });
 
@@ -1466,7 +2005,7 @@
 
     if (rota.tipo === 'cadastro'){ mostrarCadastro(); return; }
     if (rota.tipo === 'carrinho'){ mostrarCarrinho(); return; }
-    if (rota.tipo === 'portal'){ mostrarPortal(rota.chave); return; }
+    if (rota.tipo === 'portal'){ mostrarPortal(rota.chave, rota.extra); return; }
 
     mostrarDetalhe();
     detalheConteudo.style.maxWidth = '760px';
@@ -1474,6 +2013,10 @@
 
     try{
       if (rota.tipo === 'servico') renderServico(rota.chave);
+      else if (rota.tipo === 'faq') await renderFaq();
+      else if (rota.tipo === 'pagina') renderPagina(rota.chave);
+      else if (rota.tipo === 'formulario') renderFormulario(rota.chave);
+      else if (rota.tipo === 'enviar-documentos') renderEnviarDocumentos();
       else if (rota.tipo === 'artigo') await renderDetalheArtigo(rota.chave);
       else if (rota.tipo === 'blog-todos') await renderBlogTodos(rota.chave);
       else if (rota.tipo === 'livros-todos') await renderCatalogoTodos('livro');
@@ -1591,7 +2134,9 @@
     { id: 'conta', nome: 'Minha conta', hash: 'portal-conta' },
     { id: 'livros', nome: 'Meus livros', hash: 'portal-livros' },
     { id: 'cursos', nome: 'Meus cursos', hash: 'portal-cursos' },
+    { id: 'financeiro', nome: 'Financeiro', hash: 'portal-financeiro' },
     { id: 'provimento', nome: 'Provimento OAB 2ª fase', hash: 'portal-provimento' },
+    { id: 'processos', nome: 'Meus processos', hash: 'portal-processos' },
   ];
 
   function escAttr(str){
@@ -1633,7 +2178,7 @@
     return dados;
   }
 
-  function mostrarPortal(aba){
+  function mostrarPortal(aba, extra){
     homeContent.style.display = 'none';
     detalheSection.style.display = 'none';
     ['cadastroPage', 'carrinhoPage'].forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
@@ -1676,8 +2221,8 @@
     document.getElementById('portalSair').addEventListener('click', () => { sairDaConta(); location.hash = ''; });
 
     const alvo = document.getElementById('portalAba');
-    const render = { inicio: portalInicio, conta: portalConta, livros: portalLivros, cursos: portalCursos, provimento: portalProvimento }[aba];
-    render(alvo).catch(err => {
+    const render = { inicio: portalInicio, conta: portalConta, livros: portalLivros, cursos: portalCursos, financeiro: portalFinanceiro, provimento: portalProvimento, processos: portalProcessos }[aba];
+    (aba === 'cursos' && extra ? portalAulas(alvo, extra) : render(alvo)).catch(err => {
       if (err.sessao) return;
       console.error('Erro no portal:', err);
       alvo.innerHTML = `<p style="color:var(--cream-2);">${escapeHtml(err.message || 'Não foi possível carregar agora. Tente novamente em instantes.')}</p>`;
@@ -1697,12 +2242,14 @@
     ]);
     const nLivros = compras.filter(c => c.tipo_item === 'livro').length;
     const nCursos = compras.filter(c => c.tipo_item === 'curso').length;
-    const abertos = provs.filter(p => p.status !== 'concluido').length;
+    const abertos = provs.filter(p => !['concluido', 'inviavel'].includes(p.status)).length;
     alvo.innerHTML = `
       <div class="portal-cards">
         <a class="portal-card" href="#portal-livros"><div class="num">${nLivros}</div><h4>Meus livros</h4><p>E-books para baixar e livros físicos comprados.</p></a>
         <a class="portal-card" href="#portal-cursos"><div class="num">${nCursos}</div><h4>Meus cursos</h4><p>Cursos em que você está inscrito.</p></a>
         <a class="portal-card" href="#portal-provimento"><div class="num">${abertos}</div><h4>Provimento OAB 2ª fase</h4><p>Envie sua peça e suas questões e acompanhe a análise.</p></a>
+        <a class="portal-card" href="#portal-processos"><div class="num">§</div><h4>Meus processos</h4><p>Acompanhe o andamento dos seus processos.</p></a>
+        <a class="portal-card" href="#portal-financeiro"><div class="num">R$</div><h4>Financeiro</h4><p>Seus pedidos e pagamentos.</p></a>
         <a class="portal-card" href="#portal-conta"><div class="num">✎</div><h4>Minha conta</h4><p>Seus dados e sua senha.</p></a>
       </div>`;
   }
@@ -1804,6 +2351,38 @@
     }).join('');
   }
 
+  // ---------- Central financeira ----------
+  async function portalFinanceiro(alvo){
+    const pedidos = await apiAluno('/alunos/meus-pedidos');
+    if (!pedidos.length){
+      alvo.innerHTML = `<div class="compras-vazio"><p>Você ainda não tem pedidos.</p><a href="#livros-todos" class="btn btn-gold">Ver livros e cursos</a></div>`;
+      return;
+    }
+    const ST = { pago: ['Pago', 'concluido'], pendente: ['Aguardando pagamento', 'aguardando_pagamento'], cancelado: ['Cancelado / recusado', 'cancelado'] };
+    const TIPO = { livro: 'LIVRO', curso: 'CURSO', provimento: 'PROVIMENTO · ANÁLISE', provimento_minuta: 'PROVIMENTO · RECURSO' };
+    const totalPago = pedidos.filter(p => p.status === 'pago').reduce((n, p) => n + Number(p.valor || 0), 0);
+    alvo.innerHTML = `
+      <div class="portal-painel" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
+        <div><h3 style="margin:0;">Central financeira</h3><p style="margin:4px 0 0;color:var(--cream-2);font-size:0.9rem;">Acompanhe todos os seus pedidos e pagamentos.</p></div>
+        <div style="text-align:right;"><span class="compra-meta">Total pago</span><div style="font-family:'Fraunces',serif;color:var(--gold-light);font-size:1.5rem;">${formatPreco(totalPago)}</div></div>
+      </div>
+      ${pedidos.map(p => {
+        const [rotulo, classe] = ST[p.status] || [p.status, ''];
+        const acao = p.status === 'pendente' && p.tipo_item.startsWith('provimento')
+          ? `<a class="mini-acao" href="#portal-provimento">Ver envio</a>` : '';
+        return `
+          <div class="compra-item">
+            <div>
+              <span class="carrinho-item-tag">${TIPO[p.tipo_item] || escapeHtml(p.tipo_item)} · PEDIDO #${Number(p.id)}</span>
+              <h4>${escapeHtml(p.titulo || 'Item')}</h4>
+              <span class="compra-meta">${new Date(p.criado_em).toLocaleDateString('pt-BR')} · ${formatPreco(p.valor)}</span>
+            </div>
+            <div style="display:flex;gap:10px;align-items:center;">${acao}<span class="prov-status ${classe}">${rotulo}</span></div>
+          </div>`;
+      }).join('')}
+      <p class="prov-ajuda">Pagamentos por Pix e cartão costumam ser confirmados em poucos minutos; boleto pode levar até 3 dias úteis.</p>`;
+  }
+
   // ---------- Meus cursos ----------
   async function portalCursos(alvo){
     const cursos = (await apiAluno('/alunos/minhas-compras')).filter(c => c.tipo_item === 'curso');
@@ -1833,27 +2412,138 @@
               <span class="compra-meta">${detalhes}</span>
             </div>
           </div>
-          <div><span class="compra-status">Inscrição confirmada</span></div>
+          <div><a class="btn btn-gold" href="#portal-curso-${Number(c.item_id)}">Assistir aulas</a></div>
         </div>`;
     }).join('') + `
-      <p class="prov-ajuda" style="margin-top:14px;">As instruções de acesso às aulas são enviadas pelo Dr. Israel. Dúvidas? <a href="${wa}" target="_blank" rel="noopener" style="color:var(--gold-light);">Fale pelo WhatsApp</a>.</p>`;
+      <p class="prov-ajuda" style="margin-top:14px;">Dúvidas sobre algum curso? <a href="${wa}" target="_blank" rel="noopener" style="color:var(--gold-light);">Fale pelo WhatsApp</a>.</p>`;
+  }
+
+  // ---------- Aulas de um curso comprado ----------
+  async function portalAulas(alvo, cursoId){
+    const { curso, aulas } = await apiAluno(`/cursos/${encodeURIComponent(cursoId)}/aulas`);
+    const wa = WA_BASE + encodeURIComponent(`Olá! Tenho uma dúvida sobre o curso "${curso.titulo}".`);
+    if (!aulas.length){
+      alvo.innerHTML = `
+        <a href="#portal-cursos" class="detalhe-voltar" style="margin-bottom:18px;">← Meus cursos</a>
+        <div class="compras-vazio"><p>As aulas de <b>${escapeHtml(curso.titulo)}</b> ainda estão sendo publicadas.</p>
+        <p style="font-size:0.88rem;margin-top:10px;">Assim que estiverem disponíveis, aparecem aqui. Dúvidas? <a href="${wa}" target="_blank" rel="noopener" style="color:var(--gold-light);">Fale pelo WhatsApp</a>.</p></div>`;
+      return;
+    }
+    let atual = 0;
+    const desenhar = () => {
+      const a = aulas[atual];
+      alvo.innerHTML = `
+        <a href="#portal-cursos" class="detalhe-voltar" style="margin-bottom:18px;">← Meus cursos</a>
+        <h2 class="aulas-titulo">${escapeHtml(curso.titulo)}</h2>
+        <div class="aulas-layout">
+          <div>
+            <div class="prov-video-box">${a.video_embed ? `<iframe src="${escAttr(a.video_embed)}" title="${escAttr(a.titulo)}" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>` : ''}</div>
+            <h3 class="aula-nome">Aula ${atual + 1} — ${escapeHtml(a.titulo)}</h3>
+            ${a.descricao ? `<p class="aula-desc">${escapeHtml(a.descricao)}</p>` : ''}
+            <div class="portal-acoes">
+              <button class="mini-acao" data-ir="${atual - 1}" ${atual === 0 ? 'disabled' : ''}>‹ Aula anterior</button>
+              <button class="mini-acao principal" data-ir="${atual + 1}" ${atual === aulas.length - 1 ? 'disabled' : ''}>Próxima aula ›</button>
+            </div>
+          </div>
+          <ol class="aulas-lista">
+            ${aulas.map((x, i) => `<li><button data-ir="${i}" class="${i === atual ? 'ativa' : ''}"><span>${i + 1}</span>${escapeHtml(x.titulo)}</button></li>`).join('')}
+          </ol>
+        </div>`;
+    };
+    desenhar();
+    alvo.onclick = (e) => {
+      const b = e.target.closest('button[data-ir]');
+      if (!b || b.disabled) return;
+      atual = Math.max(0, Math.min(aulas.length - 1, Number(b.dataset.ir)));
+      desenhar();
+      alvo.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+  }
+
+  // ---------- Meus processos (área do cliente) ----------
+  async function portalProcessos(alvo){
+    const processos = await apiAluno('/processos');
+    const wa = WA_BASE + encodeURIComponent('Olá! Sou cliente e quero falar sobre o meu processo.');
+    if (!processos.length){
+      alvo.innerHTML = `
+        <div class="compras-vazio">
+          <p>Nenhum processo vinculado à sua conta ainda.</p>
+          <p style="font-size:0.88rem;margin-top:10px;">Se você é cliente do escritório, o Dr. Israel cadastra seu processo com o mesmo e-mail desta conta e você acompanha cada andamento por aqui.</p>
+          <a href="${wa}" target="_blank" rel="noopener" class="btn btn-gold">Falar com o Dr. Israel</a>
+        </div>`;
+      return;
+    }
+    alvo.innerHTML = processos.map(p => `
+      <div class="portal-painel">
+        <div class="prov-topo">
+          <div>
+            <h3>${escapeHtml(p.titulo)}</h3>
+            <span class="compra-meta">${[p.numero ? 'Nº ' + escapeHtml(p.numero) : '', p.area ? escapeHtml(p.area) : '', p.orgao ? escapeHtml(p.orgao) : ''].filter(Boolean).join(' · ')}</span>
+          </div>
+          <span class="prov-status ${p.status === 'encerrado' ? 'concluido' : p.status === 'suspenso' ? 'aguardando_pagamento' : 'enviado'}">${escapeHtml(p.status_nome)}</span>
+        </div>
+        ${p.andamentos.length ? `
+          <ol class="linha-tempo">
+            ${p.andamentos.map(a => `<li><span class="lt-data">${new Date(String(a.data).slice(0, 10) + 'T12:00:00').toLocaleDateString('pt-BR')}</span><p>${escapeHtml(a.descricao)}</p></li>`).join('')}
+          </ol>` : '<p class="prov-ajuda">Ainda não há andamentos registrados.</p>'}
+      </div>`).join('') + `<p class="prov-ajuda">Dúvidas sobre o seu processo? <a href="${wa}" target="_blank" rel="noopener" style="color:var(--gold-light);">Fale pelo WhatsApp</a>.</p>`;
   }
 
   // ---------- Provimento OAB 2ª fase ----------
   let PROV_CONFIG = null;
-  function descreverPedido(cfg){
-    const pecas = cfg.grupos.filter(g => /^Peça/.test(g.titulo)).length;
-    const questoes = cfg.grupos.length - pecas;
-    const ab = cfg.grupos.some(g => g.arquivos.length > 1);
-    const partes = [];
-    if (pecas) partes.push(pecas === 1 ? 'a peça processual' : `as ${pecas} peças processuais`);
-    if (questoes) partes.push((questoes === 1 ? 'a questão discursiva' : `as ${questoes} questões discursivas`) + (ab ? ' (cada uma com item A e item B)' : ''));
-    return partes.join(' e ');
-  }
   const PROV_EXTENSOES = /\.(pdf|docx?|jpe?g|png)$/i;
 
+  function descreverPedido(cfg){
+    const pecas = cfg.grupos.filter(g => /^Peça/.test(g.titulo)).length;
+    const questoes = cfg.grupos.filter(g => /^Questão/.test(g.titulo)).length;
+    const ab = cfg.grupos.some(g => g.arquivos.length > 1);
+    const espelho = cfg.grupos.some(g => /^Espelho/.test(g.titulo));
+    const partes = [];
+    if (pecas) partes.push(pecas === 1 ? 'a peça processual (todas as folhas)' : `as ${pecas} peças processuais`);
+    if (questoes) partes.push((questoes === 1 ? 'a questão discursiva' : `as ${questoes} questões discursivas`) + (ab ? ' (cada uma com item A e item B)' : ''));
+    if (espelho) partes.push('o espelho de correção da FGV');
+    return partes.length > 1 ? partes.slice(0, -1).join(', ') + ' e ' + partes.at(-1) : (partes[0] || '');
+  }
+
+  // O que aparece no topo de cada envio, conforme a etapa.
+  function blocoEtapa(p, cfg){
+    const resp = p.resposta ? `<div class="prov-resposta"><small>Recado do Dr. Israel</small>${escapeHtml(p.resposta)}</div>` : '';
+    const msgSpan = `<span class="portal-msg" id="provMsg-${p.id}"></span>`;
+    switch (p.status){
+      case 'aguardando_pagamento': return `
+        <div class="prov-resposta"><small>Aguardando pagamento da análise</small>Assim que o Mercado Pago confirmar o pagamento${p.valor ? ' de ' + formatPreco(p.valor) : ''}, sua prova segue para a análise de viabilidade. Se você já pagou, pode levar alguns minutos.</div>
+        <div class="portal-acoes">
+          <button class="btn btn-gold" data-acao="enviar" data-prov="${p.id}" data-direto="1">Pagar agora</button>
+          <button class="mini-acao" data-acao="voltar" data-prov="${p.id}">Voltar a editar</button>
+          ${msgSpan}
+        </div>`;
+      case 'enviado': return `<div class="prov-resposta"><small>Prova recebida</small>Sua prova está na fila da análise de viabilidade. Você recebe o resultado por e-mail e aqui.</div>${resp}${msgSpan}`;
+      case 'em_analise': return `<div class="prov-resposta"><small>Em análise</small>O Dr. Israel está analisando se o recurso é viável. Você recebe o resultado por e-mail e aqui.</div>${resp}${msgSpan}`;
+      case 'inviavel': return `<div class="prov-resposta prov-neg"><small>Resultado da análise</small>Depois da análise, entendemos que não há viabilidade técnica para recurso nesta prova.</div>${resp}${msgSpan}`;
+      case 'viavel': {
+        const cobra = Number(cfg.valor_minuta) > 0;
+        return `
+          <div class="prov-resposta prov-ok"><small>Resultado da análise</small>O recurso da sua prova é <b>viável</b>. ${cobra ? `Para começarmos a elaboração, faça o pagamento de ${formatPreco(cfg.valor_minuta)} o quanto antes, para dar tempo de protocolar dentro do prazo da FGV.` : 'Confirme abaixo para começarmos a elaboração.'}</div>
+          ${resp}
+          <div class="portal-acoes">
+            <button class="btn btn-gold" data-acao="pagar-recurso" data-prov="${p.id}">${cobra ? `Pagar ${formatPreco(cfg.valor_minuta)} e solicitar o recurso` : 'Solicitar o recurso'}</button>
+            ${msgSpan}
+          </div>`;
+      }
+      case 'em_elaboracao': return `<div class="prov-resposta"><small>Recurso em elaboração</small>Pagamento confirmado. Seu recurso está sendo escrito e, quando ficar pronto, aparece aqui e chega no seu e-mail.</div>${resp}${msgSpan}`;
+      case 'concluido': return `
+        <div class="prov-resposta prov-ok"><small>Recurso pronto</small>Baixe o seu recurso abaixo. O protocolo no site da FGV (oab.fgv.br) é feito por você, dentro do prazo do edital.</div>
+        ${resp}
+        <div class="portal-acoes">
+          ${p.recurso ? `<button class="btn btn-gold" data-acao="baixar" data-prov="${p.id}" data-arq="${p.recurso.id}" data-nome="${escAttr(p.recurso.nome_original)}">Baixar recurso</button>` : ''}
+          ${msgSpan}
+        </div>`;
+      default: return msgSpan;
+    }
+  }
+
   async function portalProvimento(alvo){
-    // Sempre busca de novo: o Dr. Israel pode mudar quantidades e valor pelo painel.
+    // Sempre busca de novo: o Dr. Israel pode mudar quantidades e valores pelo painel.
     const r = await fetch(`${API_URL}/provimentos/config`);
     if (!r.ok) throw new Error('Não foi possível carregar agora. Tente novamente em instantes.');
     const cfg = PROV_CONFIG = await r.json();
@@ -1879,54 +2569,76 @@
         </div>`;
     };
 
+    const gruposHtml = (p) => cfg.grupos.map(g => `
+      <div class="prov-parte">
+        <h4>${escapeHtml(g.titulo)}</h4>
+        <div class="${g.arquivos.length > 1 ? 'prov-ab' : ''}">
+          ${g.arquivos.map(s => slotHtml(p, s, g.arquivos.length > 1 ? 'Item ' + s.parte : s.rotulo)).join('')}
+        </div>
+      </div>`).join('');
+
+    const perfilHtml = (p) => `
+      <div class="prov-parte">
+        <h4>Seus dados de examinando</h4>
+        <div class="portal-form">
+          ${cfg.campos_perfil.map(c => `
+            <div class="checkout-field">
+              <label for="pf-${p.id}-${c.id}">${escapeHtml(c.rotulo)}${c.obrigatorio ? '' : ' (opcional)'}</label>
+              <input id="pf-${p.id}-${c.id}" data-perfil="${c.id}" maxlength="150" value="${escAttr((p.perfil || {})[c.id] || '')}">
+            </div>`).join('')}
+        </div>
+      </div>`;
+
+    const lerPerfil = (id) => {
+      const out = {};
+      document.querySelectorAll(`#prov-${id} [data-perfil]`).forEach(i => { out[i.dataset.perfil] = i.value.trim(); });
+      return out;
+    };
+
     const envioHtml = (p) => {
       const editavel = p.status === 'rascunho';
-      const aguardando = p.status === 'aguardando_pagamento';
       const total = todosArquivos.length;
       const feitos = todosArquivos.filter(s => p.arquivos.some(a => a.parte === s.parte && a.item === s.item)).length;
       const data = p.enviado_em
         ? 'Enviado em ' + new Date(p.enviado_em).toLocaleDateString('pt-BR')
         : `${feitos} de ${total} arquivos`;
-      const cobra = Number(cfg.valor) > 0;
-      const rotuloEnviar = cobra ? `Pagar ${formatPreco(cfg.valor)} e enviar` : 'Enviar para análise';
+      const cobra = Number(cfg.valor_analise) > 0;
+      const rotuloEnviar = cobra ? `Pagar ${formatPreco(cfg.valor_analise)} e enviar para análise` : 'Enviar para análise';
       return `
         <div class="portal-painel" id="prov-${p.id}">
           <div class="prov-topo">
             <div><h3>${escapeHtml(p.disciplina_nome)}</h3><span class="compra-meta">${data}</span></div>
             <span class="prov-status ${escAttr(p.status)}">${escapeHtml(p.status_nome)}</span>
           </div>
-          ${cfg.grupos.map(g => `
-            <div class="prov-parte">
-              <h4>${escapeHtml(g.titulo)}</h4>
-              <div class="${g.arquivos.length > 1 ? 'prov-ab' : ''}">
-                ${g.arquivos.map(s => slotHtml(p, s, g.arquivos.length > 1 ? 'Item ' + s.parte : s.rotulo)).join('')}
-              </div>
-            </div>`).join('')}
           ${editavel ? `
+            ${perfilHtml(p)}
+            ${gruposHtml(p)}
             <div class="checkout-field" style="margin-top:16px;">
               <label for="obs-${p.id}">Recado para o Dr. Israel (opcional)</label>
-              <textarea id="obs-${p.id}" maxlength="3000" placeholder="Ex.: número de inscrição, observações sobre a correção…">${escapeHtml(p.observacao || '')}</textarea>
+              <textarea id="obs-${p.id}" maxlength="3000" placeholder="Ex.: observações sobre a correção…">${escapeHtml(p.observacao || '')}</textarea>
             </div>
+            <label class="prov-termos"><input type="checkbox" id="termos-${p.id}"> Li e aceito os <a href="#" data-acao="ver-termos" data-prov="${p.id}">termos do serviço</a>.</label>
+            <div class="prov-termos-texto" id="termosTexto-${p.id}" hidden>${escapeHtml(cfg.termos)}</div>
             <div class="portal-acoes">
               <button class="btn btn-gold" data-acao="enviar" data-prov="${p.id}" ${feitos < total ? 'disabled style="opacity:.55;cursor:default;"' : ''}>${rotuloEnviar}</button>
-              <button class="mini-acao" data-acao="salvar-obs" data-prov="${p.id}">Salvar recado</button>
+              <button class="mini-acao" data-acao="salvar" data-prov="${p.id}">Salvar</button>
               <button class="mini-acao" data-acao="descartar" data-prov="${p.id}">Descartar</button>
               <span class="portal-msg" id="provMsg-${p.id}"></span>
             </div>
             ${feitos < total ? `<p class="prov-ajuda">O botão "${rotuloEnviar}" libera quando todos os arquivos estiverem anexados. Depois de enviar, não dá mais para trocar os arquivos.</p>` : ''}`
-          : aguardando ? `
-            <div class="prov-resposta"><small>Aguardando pagamento</small>Assim que o Mercado Pago confirmar o pagamento${p.valor ? ' de ' + formatPreco(p.valor) : ''}, seu envio segue para análise. Se você já pagou, pode levar alguns minutos.</div>
-            <div class="portal-acoes">
-              <button class="btn btn-gold" data-acao="enviar" data-prov="${p.id}">Pagar agora</button>
-              <button class="mini-acao" data-acao="voltar" data-prov="${p.id}">Voltar a editar</button>
-              <span class="portal-msg" id="provMsg-${p.id}"></span>
-            </div>`
           : `
-            ${p.observacao ? `<div class="prov-resposta"><small>Seu recado</small>${escapeHtml(p.observacao)}</div>` : ''}
-            ${p.resposta ? `<div class="prov-resposta"><small>Resposta do Dr. Israel</small>${escapeHtml(p.resposta)}</div>` : ''}
-            <span class="portal-msg" id="provMsg-${p.id}"></span>`}
+            ${blocoEtapa(p, cfg)}
+            <details class="prov-enviados"><summary>Arquivos enviados (${p.arquivos.length})</summary>${gruposHtml(p)}
+              ${p.observacao ? `<div class="prov-resposta"><small>Seu recado</small>${escapeHtml(p.observacao)}</div>` : ''}
+            </details>`}
         </div>`;
     };
+
+    const etapas = (Number(cfg.valor_analise) > 0 || Number(cfg.valor_minuta) > 0) ? `
+      <ol class="prov-etapas">
+        <li><b>Análise de viabilidade${Number(cfg.valor_analise) > 0 ? ' — ' + formatPreco(cfg.valor_analise) : ''}.</b> Você envia a prova e o Dr. Israel avalia se cabe recurso.</li>
+        <li><b>Elaboração do recurso${Number(cfg.valor_minuta) > 0 ? ' — ' + formatPreco(cfg.valor_minuta) : ''}.</b> Só se o recurso for viável. O recurso pronto fica disponível aqui e chega no seu e-mail.</li>
+      </ol>` : '';
 
     // Um container novo a cada renderização: assim os "ouvintes" de clique
     // não se acumulam quando a aba recarrega depois de cada ação.
@@ -1934,12 +2646,12 @@
     alvo.replaceChildren(wrap);
     wrap.innerHTML = `
       <div class="portal-painel">
-        <h3>Enviar prova da OAB 2ª fase</h3>
-        <p>Escolha a disciplina do recurso e anexe ${escapeHtml(descreverPedido(cfg))}, cada um no seu campo.
-          Aceita ${escapeHtml(cfg.tipos_aceitos)}, até ${cfg.tamanho_maximo_mb} MB por arquivo.
-          ${Number(cfg.valor) > 0 ? `Valor por disciplina: <b style="color:var(--gold-light);">${formatPreco(cfg.valor)}</b>.` : ''}
-          Os arquivos são sigilosos: só você e o Dr. Israel têm acesso.</p>
+        <h3>Recurso da OAB 2ª fase</h3>
+        <p>Escolha a disciplina e anexe ${escapeHtml(descreverPedido(cfg))}, cada arquivo no seu campo, para não misturar disciplinas nem questões.
+          Aceita ${escapeHtml(cfg.tipos_aceitos)}, até ${cfg.tamanho_maximo_mb} MB por arquivo. Os arquivos são sigilosos.</p>
+        ${etapas}
         ${cfg.instrucoes ? `<p style="white-space:pre-line;">${escapeHtml(cfg.instrucoes)}</p>` : ''}
+        ${cfg.video_embed ? `<details class="prov-video"><summary>Assistir ao vídeo: como enviar sua prova</summary><div class="prov-video-box"><iframe src="${escAttr(cfg.video_embed)}" title="Vídeo tutorial" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div></details>` : ''}
         <div class="prov-novo">
           <select id="provDisciplina" aria-label="Disciplina">
             <option value="">Escolha a disciplina…</option>
@@ -1956,6 +2668,18 @@
       if (el) el.scrollIntoView({ block: 'nearest' });
     }).catch(err => { if (!err.sessao) alert(err.message); });
     const msg = (id, texto, ok) => { const el = document.getElementById('provMsg-' + id); if (el){ el.textContent = texto; el.className = 'portal-msg ' + (ok ? 'ok' : 'erro'); } };
+    const salvarRascunho = (id) => {
+      const obs = document.getElementById('obs-' + id);
+      return apiAluno(`/provimentos/${id}`, { method: 'PUT', json: { observacao: obs ? obs.value : '', perfil: lerPerfil(id) } });
+    };
+    const irPagar = (resp, id) => {
+      if (resp && resp.url_pagamento){
+        msg(id, 'Abrindo o pagamento…', true);
+        window.location.href = resp.url_pagamento;
+        return true;
+      }
+      return false;
+    };
 
     document.getElementById('provComecar').addEventListener('click', async () => {
       const disciplina = document.getElementById('provDisciplina').value;
@@ -1976,6 +2700,7 @@
       if (f.size > cfg.tamanho_maximo_mb * 1048576) return msg(id, `Arquivo grande demais (máximo ${cfg.tamanho_maximo_mb} MB).`, false);
       msg(id, 'Enviando arquivo…', true);
       try{
+        await salvarRascunho(id); // não perde o que já foi digitado no perfil
         await apiAluno(`/provimentos/${id}/arquivos/${inp.dataset.parte}/${inp.dataset.item}`, {
           method: 'PUT',
           headers: { 'Content-Type': f.type || 'application/octet-stream', 'X-Nome-Arquivo': encodeURIComponent(f.name) },
@@ -1986,11 +2711,15 @@
     });
 
     wrap.addEventListener('click', async (e) => {
-      const b = e.target.closest('button[data-acao]');
-      if (!b) return;
+      const b = e.target.closest('[data-acao]');
+      if (!b || b.tagName === 'INPUT') return;
       const id = b.dataset.prov;
       try{
-        if (b.dataset.acao === 'baixar'){
+        if (b.dataset.acao === 'ver-termos'){
+          e.preventDefault();
+          const t = document.getElementById('termosTexto-' + id);
+          t.hidden = !t.hidden;
+        } else if (b.dataset.acao === 'baixar'){
           const blob = await apiAluno(`/provimentos/${id}/arquivos/${b.dataset.arq}`, { blob: true });
           const url = URL.createObjectURL(blob);
           const a = document.createElement('a');
@@ -1998,34 +2727,41 @@
           document.body.appendChild(a); a.click(); a.remove();
           setTimeout(() => URL.revokeObjectURL(url), 2000);
         } else if (b.dataset.acao === 'remover'){
+          await salvarRascunho(id);
           await apiAluno(`/provimentos/${id}/arquivos/${b.dataset.arq}`, { method: 'DELETE' });
           recarregar(id);
-        } else if (b.dataset.acao === 'salvar-obs'){
-          await apiAluno(`/provimentos/${id}`, { method: 'PUT', json: { observacao: document.getElementById('obs-' + id).value } });
-          msg(id, 'Recado salvo.', true);
+        } else if (b.dataset.acao === 'salvar'){
+          await salvarRascunho(id);
+          msg(id, 'Salvo.', true);
         } else if (b.dataset.acao === 'descartar'){
           if (!confirm('Descartar este envio e apagar os arquivos anexados?')) return;
           await apiAluno(`/provimentos/${id}`, { method: 'DELETE' });
           recarregar();
-        } else if (b.dataset.acao === 'enviar'){
-          if (b.disabled) return;
-          const pagando = Number(PROV_CONFIG && PROV_CONFIG.valor) > 0;
-          if (b.textContent.trim() !== 'Pagar agora' && !confirm(pagando
-            ? 'Você será levado ao Mercado Pago. Depois do pagamento, o envio segue para análise e os arquivos não podem mais ser trocados. Continuar?'
-            : 'Enviar para análise? Depois disso não será possível trocar os arquivos.')) return;
-          const obs = document.getElementById('obs-' + id);
-          if (obs) await apiAluno(`/provimentos/${id}`, { method: 'PUT', json: { observacao: obs.value } });
-          const resp = await apiAluno(`/provimentos/${id}/enviar`, { method: 'POST' });
-          if (resp && resp.url_pagamento){
-            msg(id, 'Abrindo o pagamento…', true);
-            window.location.href = resp.url_pagamento;
-            return;
-          }
-          await recarregar(id);
-          msg(id, 'Enviado! O Dr. Israel vai analisar e você acompanha o status por aqui.', true);
         } else if (b.dataset.acao === 'voltar'){
           await apiAluno(`/provimentos/${id}/voltar`, { method: 'POST' });
           recarregar(id);
+        } else if (b.dataset.acao === 'enviar'){
+          if (b.disabled) return;
+          const direto = b.dataset.direto === '1'; // "Pagar agora" de um envio que já aguarda pagamento
+          if (!direto){
+            const termos = document.getElementById('termos-' + id);
+            if (!termos || !termos.checked){ msg(id, 'Para enviar, marque que leu e aceita os termos do serviço.', false); return; }
+            await salvarRascunho(id);
+            const cobra = Number(cfg.valor_analise) > 0;
+            if (!confirm(cobra
+              ? 'Você será levado ao Mercado Pago para pagar a análise de viabilidade. Depois do pagamento, os arquivos não podem mais ser trocados. Continuar?'
+              : 'Enviar para análise? Depois disso não será possível trocar os arquivos.')) return;
+          }
+          const resp = await apiAluno(`/provimentos/${id}/enviar`, { method: 'POST', json: { aceite_termos: true } });
+          if (irPagar(resp, id)) return;
+          await recarregar(id);
+          msg(id, 'Enviado! Você recebe o resultado da análise por e-mail e aqui.', true);
+        } else if (b.dataset.acao === 'pagar-recurso'){
+          const cobra = Number(cfg.valor_minuta) > 0;
+          if (cobra && !confirm(`Você será levado ao Mercado Pago para pagar ${formatPreco(cfg.valor_minuta)} pela elaboração do recurso. Continuar?`)) return;
+          const resp = await apiAluno(`/provimentos/${id}/pagar-recurso`, { method: 'POST' });
+          if (irPagar(resp, id)) return;
+          await recarregar(id);
         }
       }catch(err){ if (!err.sessao) msg(id, err.message, false); }
     });
