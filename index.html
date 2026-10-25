@@ -312,6 +312,9 @@
     width:640px;height:640px;opacity:0.14;pointer-events:none;
   }
   .hero-content{position:relative;max-width:620px;}
+  .hero-foto{position:absolute;right:6%;top:50%;transform:translateY(-50%);width:min(34%,420px);max-height:78%;object-fit:cover;border-radius:10px;border:1px solid var(--navy-line);box-shadow:0 18px 50px rgba(0,0,0,.35);}
+  .hero.com-foto .hero-watermark{display:none;}
+  @media (max-width:900px){ .hero-foto{position:static;transform:none;display:block;width:calc(100% - 40px);max-width:460px;max-height:320px;margin:34px auto 0;} }
   .hero-eyebrow{
     color:var(--gold-light);font-size:0.85rem;font-weight:600;
     display:flex;align-items:center;gap:10px;margin-bottom:22px;
@@ -430,6 +433,19 @@
   .busca-limpar:hover{background:#E1D9C8;}
 
   /* ---------- BOOKS & COURSES ---------- */
+  .midias-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:8px;}
+  .midia-card{background:#fff;border:1px solid #E1D9C8;border-radius:6px;overflow:hidden;display:flex;flex-direction:column;}
+  .midia-player{background:#0E1B22;}
+  .midia-player iframe,.midia-player video{display:block;width:100%;border:0;}
+  .midia-player.video iframe,.midia-player.video video{aspect-ratio:16/9;}
+  .midia-player.podcast iframe{height:232px;}
+  .midia-player audio{display:block;width:100%;padding:14px;box-sizing:border-box;background:#14262F;}
+  .midia-capa{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;}
+  .midia-info{padding:16px 18px 20px;}
+  .midia-info .cat{font-size:0.72rem;color:var(--gold);font-weight:700;letter-spacing:0.03em;}
+  .midia-info h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.12rem;margin:6px 0 8px;color:var(--ink);overflow-wrap:anywhere;}
+  .midia-info p{font-size:0.9rem;color:var(--ink-soft);margin:0;white-space:pre-line;}
+  @media (max-width:760px){ .midias-grid{grid-template-columns:1fr;} }
   .shop-tabs{display:flex;gap:8px;margin-bottom:36px;}
   .shop-tab{
     padding:9px 18px;border-radius:20px;font-size:0.86rem;font-weight:600;
@@ -517,6 +533,10 @@
   .form-aceite input{margin-top:3px;width:auto;}
   .form-aceite a{color:#7A5B3A;text-decoration:underline;}
   @media (max-width:640px){ .form-publico-grid{grid-template-columns:1fr;} .form-publico{padding:18px;} }
+  .docs-upload{margin:22px 0 6px;color:var(--ink);}
+  .docs-upload h3{margin:0 0 6px;font-size:1.15rem;color:var(--ink);}
+  .servico-docs .docs-upload .servico-nota{color:var(--ink-soft);}
+  .docs-upload .checkout-field label{color:var(--ink);}
   .outras-areas{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:26px 0 6px;}
   .outras-areas span{color:var(--ink-soft);font-weight:600;font-size:0.9rem;margin-right:4px;}
   .outras-areas a{border:1px solid #D8CFBD;border-radius:30px;padding:8px 16px;font-size:0.9rem;color:var(--ink);background:#fff;}
@@ -798,19 +818,14 @@
           <div class="dropdown">
             <a href="#trabalhista">Direito do Trabalho</a>
             <a href="#previdenciario">Direito Previdenciário</a>
-            <a href="#consumidor">Direito do Consumidor</a>
-            <a href="#bancario">Direito Bancário</a>
-            <a href="#civil">Direito Civil</a>
-            <a href="#imobiliario">Direito Imobiliário</a>
-            <a href="#empresarial">Direito Empresarial</a>
-            <a href="#enviar-documentos">Enviar documentos</a>
-            <a href="#contato">Assessoria jurídica (contato)</a>
           </div>
         </li>
         <li>
-          <a class="top-link" href="#oab-2fase">Concursos <span class="caret">▾</span></a>
+          <a class="top-link" href="#oab-1fase">OAB <span class="caret">▾</span></a>
           <div class="dropdown">
-            <a href="#oab-2fase">OAB — Recursos da 2ª fase (Provimento)</a>
+            <a href="#oab-1fase">OAB 1ª fase</a>
+            <a href="#oab-2fase">OAB 2ª fase — Provimento</a>
+            <a href="#ouvidoria">Ouvidoria</a>
           </div>
         </li>
         <li>
@@ -830,6 +845,7 @@
             <a href="#blog-todos-noticias">Notícias</a>
           </div>
         </li>
+        <li><a class="top-link" href="#midias">Vídeos e Podcast</a></li>
         <li>
           <a class="top-link" href="#sobre">Sobre <span class="caret">▾</span></a>
           <div class="dropdown">
@@ -975,28 +991,29 @@
     <path d="M60 150c8-6 20-8 40-8s32 2 40 8" stroke="#AD815B" stroke-width="1.4" stroke-linecap="round"/>
   </svg>
   <div class="container hero-content">
-    <div class="hero-eyebrow"><span class="rule"></span> OAB/SP 528153</div>
-    <h1>Defendendo seus direitos trabalhistas e previdenciários com clareza e segurança.</h1>
-    <p class="lead">Atendimento humanizado e técnico para quem precisa de um advogado de confiança — da reclamação trabalhista à revisão de aposentadoria.</p>
+    <div class="hero-eyebrow"><span class="rule"></span> <span id="homeEyebrow">OAB/SP 528153</span></div>
+    <h1 id="homeTitulo">Defendendo seus direitos trabalhistas e previdenciários com clareza e segurança.</h1>
+    <p class="lead" id="homeTexto">Atendimento humanizado e técnico para quem precisa de um advogado de confiança — da reclamação trabalhista à revisão de aposentadoria.</p>
     <div class="hero-actions">
-      <a href="https://wa.me/5511975751984?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20um%20advogado." target="_blank" rel="noopener" class="btn btn-gold">Falar com um advogado</a>
-      <a href="#advocacia" class="btn btn-outline">Ver áreas de atuação</a>
+      <a href="https://wa.me/5511975751984?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20um%20advogado." target="_blank" rel="noopener" class="btn btn-gold" id="homeBotao1">Falar com um advogado</a>
+      <a href="#advocacia" class="btn btn-outline" id="homeBotao2">Ver áreas de atuação</a>
     </div>
-    <div class="hero-meta">
+    <div class="hero-meta" id="homeStats">
       <div><span class="num">2</span><span class="label">Áreas de atuação</span></div>
       <div><span class="num">14</span><span class="label">Serviços especializados</span></div>
       <div><span class="num">100%</span><span class="label">Atendimento digital</span></div>
     </div>
   </div>
+  <img class="hero-foto" id="homeFoto" alt="" style="display:none">
 </section>
 
 <!-- ================= ADVOCACIA ================= -->
 <section class="section" id="advocacia">
   <div class="container">
     <div class="section-head">
-      <span class="kicker">CAMPO DE ATUAÇÃO</span>
-      <h2>Onde podemos ajudar você</h2>
-      <p>Atuação direta em Direito do Trabalho e Direito Previdenciário, com atendimento próximo em cada etapa do processo.</p>
+      <span class="kicker" id="homeAreasKicker">CAMPO DE ATUAÇÃO</span>
+      <h2 id="homeAreasTitulo">Onde podemos ajudar você</h2>
+      <p id="homeAreasTexto">Atuação direta em Direito do Trabalho e Direito Previdenciário, com atendimento próximo em cada etapa do processo.</p>
     </div>
 
     <div class="areas-grid">
@@ -1033,20 +1050,11 @@
       </div>
     </div>
 
-    <div class="outras-areas">
-      <span>Outras áreas:</span>
-      <a href="#consumidor">Consumidor</a>
-      <a href="#bancario">Bancário</a>
-      <a href="#civil">Civil</a>
-      <a href="#imobiliario">Imobiliário</a>
-      <a href="#empresarial">Empresarial</a>
-    </div>
-
     <div class="oab-grid">
       <div class="oab-strip">
         <div>
-          <h3>Concursos — OAB 2ª fase (Provimento)</h3>
-          <p>Recursos para candidatos da 2ª fase do Exame de Ordem. Envie sua prova pela área do aluno.</p>
+          <h3>OAB — 1ª fase e 2ª fase (Provimento)</h3>
+          <p>Preparação para a 1ª fase e recursos da 2ª fase do Exame de Ordem. Envie sua prova pela área do aluno.</p>
         </div>
         <a href="#oab-2fase" class="btn btn-outline-dark">Saiba mais</a>
       </div>
@@ -1078,21 +1086,21 @@
 <!-- ================= CTA STRIP ================= -->
 <div class="cta-strip">
   <div class="container cta-inner">
-    <h2>Precisa entender seus direitos antes de decidir? Marque uma conversa.</h2>
-    <a href="https://wa.me/5511975751984?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20um%20advogado." target="_blank" rel="noopener" class="btn btn-outline-dark">Agendar atendimento</a>
+    <h2 id="homeCtaTitulo">Precisa entender seus direitos antes de decidir? Marque uma conversa.</h2>
+    <a href="https://wa.me/5511975751984?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20com%20um%20advogado." target="_blank" rel="noopener" class="btn btn-outline-dark" id="homeCtaBotao">Agendar atendimento</a>
   </div>
 </div>
 
 <!-- ================= SOBRE ================= -->
 <section class="section" id="sobre">
   <div class="container" style="max-width:760px;">
-    <span class="kicker">SOBRE</span>
-    <h2 style="font-size:2rem;margin:14px 0 20px;">Atendimento próximo, do primeiro contato à solução do seu caso</h2>
-    <p style="color:var(--ink-soft);font-size:1.02rem;">
+    <span class="kicker" id="homeSobreKicker">SOBRE</span>
+    <h2 id="homeSobreTitulo" style="font-size:2rem;margin:14px 0 20px;">Atendimento próximo, do primeiro contato à solução do seu caso</h2>
+    <p id="homeSobreTexto" style="color:var(--ink-soft);font-size:1.02rem;">
       A Israel Donizete da Silva Sociedade Individual de Advocacia atua com foco em Direito do Trabalho e Direito Previdenciário,
       acompanhando cada cliente com atenção individual — da análise inicial do caso até o desfecho do processo.
     </p>
-    <a href="#curriculo" class="btn btn-outline-dark" style="margin-top:22px;">Conheça a formação do Dr. Israel</a>
+    <a href="#curriculo" class="btn btn-outline-dark" id="homeSobreBotao" style="margin-top:22px;">Conheça a formação do Dr. Israel</a>
   </div>
 </section>
 
@@ -1116,12 +1124,9 @@
         <ul>
           <li><a href="#trabalhista">Direito do Trabalho</a></li>
           <li><a href="#previdenciario">Direito Previdenciário</a></li>
-          <li><a href="#consumidor">Direito do Consumidor</a></li>
-          <li><a href="#bancario">Direito Bancário</a></li>
-          <li><a href="#civil">Direito Civil</a></li>
-          <li><a href="#imobiliario">Direito Imobiliário</a></li>
-          <li><a href="#empresarial">Direito Empresarial</a></li>
-          <li><a href="#oab-2fase">Concursos — OAB (Provimento)</a></li>
+          <li><a href="#oab-1fase">OAB 1ª fase</a></li>
+          <li><a href="#oab-2fase">OAB 2ª fase (Provimento)</a></li>
+          <li><a href="#ouvidoria">Ouvidoria</a></li>
           <li><a href="#enviar-documentos">Enviar documentos</a></li>
           <li><a href="#faq">Dúvidas frequentes</a></li>
           <li><a href="#seja-parceiro">Seja parceiro</a></li>
@@ -1134,6 +1139,7 @@
         <ul>
           <li><a href="#livros-todos">Livros</a></li>
           <li><a href="#cursos-todos">Cursos</a></li>
+          <li><a href="#midias">Vídeos e Podcast</a></li>
         </ul>
       </div>
       <div class="footer-col">
@@ -1199,6 +1205,14 @@
     return n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   }
 
+  // Descrição de livro/curso: texto puro, ou HTML (feito no editor do painel).
+  function descTexto(item){
+    const d = item && item.descricao ? String(item.descricao) : '';
+    if (!d || !item.descricao_html) return d;
+    const el = new DOMParser().parseFromString(d.replace(/<\/(p|h2|h3|li|blockquote)>/gi, ' </$1>'), 'text/html').body;
+    return (el.textContent || '').replace(/\s+/g, ' ').trim();
+  }
+
   function formatData(dataStr){
     if(!dataStr) return '';
     const d = new Date(dataStr);
@@ -1220,8 +1234,9 @@
     if (h === 'cadastro') return { tipo: 'cadastro', chave: null };
     if (h === 'faq') return { tipo: 'faq', chave: null };
     if (h === 'curriculo' || h === 'privacidade' || h === 'termos') return { tipo: 'pagina', chave: h };
-    if (h === 'seja-parceiro' || h === 'trabalhe-conosco') return { tipo: 'formulario', chave: h };
+    if (h === 'seja-parceiro' || h === 'trabalhe-conosco' || h === 'ouvidoria') return { tipo: 'formulario', chave: h };
     if (h === 'enviar-documentos') return { tipo: 'enviar-documentos', chave: null };
+    if (h === 'midias') return { tipo: 'midias', chave: null };
     if (h === 'carrinho') return { tipo: 'carrinho', chave: null };
     if (h === 'minhas-compras') return { tipo: 'portal', chave: 'livros' };
     if (h === 'portal') return { tipo: 'portal', chave: 'inicio' };
@@ -1355,7 +1370,7 @@
       titulo: 'OAB 2ª fase (Provimento)',
       intro: 'Recurso para candidatos da 2ª fase do Exame de Ordem, em duas etapas: primeiro a análise de viabilidade da sua prova e, se couber recurso, a elaboração da minuta. Todo o envio é feito pela área do aluno.',
       itens: ['Análise de viabilidade da peça e das questões','Elaboração da minuta do recurso (se viável)','Recurso disponível na área do aluno e no seu e-mail','Avisos por e-mail em cada etapa','Atende as 7 disciplinas da 2ª fase'],
-      docs: ['Folhas de resposta da peça prático-profissional (todas)','Folhas de resposta das questões discursivas, cada questão com item A e item B','Espelho de correção oficial da FGV','Seus dados de examinando (inscrição, exame e seccional)'],
+      docs: ['Folhas de resposta da peça prático-profissional (todas)','Folhas de resposta das questões discursivas (questões 1, 2, 3 e 4, cada uma em um arquivo)','Seus dados de examinando (inscrição, exame e seccional)'],
       msg: 'Olá! Vim pelo site e gostaria de saber mais sobre o serviço para a OAB 2ª fase (Provimento).'
     }
   };
@@ -1363,14 +1378,17 @@
   // ---------- Formulários: Seja parceiro / Trabalhe conosco ----------
   function renderFormulario(chave){
     detalheConteudo.style.maxWidth = '760px';
+    const ouvidoria = chave === 'ouvidoria';
     const parceiro = chave === 'seja-parceiro';
     const campo = (id, rotulo, tipo = 'text', extra = '') => `
       <div class="checkout-field"><label for="${id}">${rotulo}</label><input id="${id}" type="${tipo}" ${extra}></div>`;
     detalheConteudo.innerHTML = `
       ${BOTAO_VOLTAR}
-      <span class="detalhe-kicker" style="display:block;">${parceiro ? 'PARCERIAS' : 'TRABALHE CONOSCO'}</span>
-      <h1 class="detalhe-titulo">${parceiro ? 'Seja parceiro' : 'Envie seu currículo'}</h1>
-      <p class="servico-intro">${parceiro
+      <span class="detalhe-kicker" style="display:block;">${ouvidoria ? 'OUVIDORIA' : parceiro ? 'PARCERIAS' : 'TRABALHE CONOSCO'}</span>
+      <h1 class="detalhe-titulo">${ouvidoria ? 'Ouvidoria' : parceiro ? 'Seja parceiro' : 'Envie seu currículo'}</h1>
+      <p class="servico-intro">${ouvidoria
+        ? 'Canal para elogios, sugestões, reclamações e denúncias sobre o atendimento, os serviços e o site. Sua manifestação é tratada com sigilo profissional e respondida pelo e-mail informado.'
+        : parceiro
         ? 'Advogados e escritórios que querem atuar em parceria (correspondência, indicação de casos ou atuação conjunta) podem enviar sua proposta. Retornamos pelo e-mail ou telefone informado.'
         : 'Advogados, estagiários e profissionais da área podem enviar o currículo. Ele fica guardado para futuras oportunidades.'}</p>
       <form id="formPublico" class="form-publico" novalidate>
@@ -1379,11 +1397,11 @@
           ${campo('fEmail', 'E-mail *', 'email', 'maxlength="160" required')}
           ${campo('fTelefone', 'Telefone / WhatsApp', 'tel', 'maxlength="40"')}
           ${campo('fCidade', 'Cidade / UF', 'text', 'maxlength="100"')}
-          ${campo('fOab', parceiro ? 'OAB (número e seccional)' : 'OAB (se tiver)', 'text', 'maxlength="40"')}
-          ${campo('fArea', parceiro ? 'Áreas de atuação' : 'Área de interesse / cargo', 'text', 'maxlength="150"')}
+          ${ouvidoria ? `<div class="checkout-field"><label for="fArea">Tipo de manifestação *</label><select id="fArea"><option>Elogio</option><option>Sugestão</option><option selected>Reclamação</option><option>Denúncia</option><option>Dúvida</option></select></div>` : `${campo('fOab', parceiro ? 'OAB (número e seccional)' : 'OAB (se tiver)', 'text', 'maxlength="40"')}
+          ${campo('fArea', parceiro ? 'Áreas de atuação' : 'Área de interesse / cargo', 'text', 'maxlength="150"')}`}
         </div>
-        <div class="checkout-field"><label for="fMensagem">${parceiro ? 'Sua proposta de parceria' : 'Fale um pouco sobre você'}</label><textarea id="fMensagem" maxlength="5000" rows="5"></textarea></div>
-        ${parceiro ? '' : `<div class="checkout-field"><label for="fArquivo">Currículo (PDF ou Word, até 5 MB)</label><input id="fArquivo" type="file" accept=".pdf,.doc,.docx"></div>`}
+        <div class="checkout-field"><label for="fMensagem">${ouvidoria ? 'Escreva sua manifestação *' : parceiro ? 'Sua proposta de parceria' : 'Fale um pouco sobre você'}</label><textarea id="fMensagem" maxlength="5000" rows="${ouvidoria ? 7 : 5}"></textarea></div>
+        ${parceiro || ouvidoria ? '' : `<div class="checkout-field"><label for="fArquivo">Currículo (PDF ou Word, até 5 MB)</label><input id="fArquivo" type="file" accept=".pdf,.doc,.docx"></div>`}
         <input type="text" name="site_url" id="fIsca" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true">
         <label class="form-aceite"><input type="checkbox" id="fAceite"> Concordo com o uso dos meus dados para este contato, conforme a <a href="#privacidade">Política de Privacidade</a>.</label>
         <p class="checkout-erro" id="fErro"></p>
@@ -1403,8 +1421,9 @@
       const v = (id) => (document.getElementById(id) || {}).value || '';
       if (!v('fNome').trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('fEmail').trim())) return erro('Preencha seu nome e um e-mail válido.');
       if (!document.getElementById('fAceite').checked) return erro('Marque que concorda com o uso dos dados para este contato.');
+      if (ouvidoria && v('fMensagem').trim().length < 10) return erro('Escreva sua manifestação (pelo menos algumas palavras).');
       const corpo = {
-        tipo: parceiro ? 'parceiro' : 'curriculo', nome: v('fNome'), email: v('fEmail'), telefone: v('fTelefone'),
+        tipo: ouvidoria ? 'ouvidoria' : parceiro ? 'parceiro' : 'curriculo', nome: v('fNome'), email: v('fEmail'), telefone: v('fTelefone'),
         cidade: v('fCidade'), oab: v('fOab'), area: v('fArea'), mensagem: v('fMensagem'), site_url: v('fIsca'),
       };
       const arq = document.getElementById('fArquivo');
@@ -1421,7 +1440,7 @@
         const r = await fetch(`${API_URL}/formularios`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(corpo) });
         const d = await r.json().catch(() => ({}));
         if (!r.ok) throw new Error(d.erro || 'Não foi possível enviar agora.');
-        form.outerHTML = `<div class="servico-bloco servico-portal"><div><h2>Recebido, obrigado!</h2><p class="servico-intro" style="margin:0;">${parceiro ? 'Sua proposta chegou ao Dr. Israel. O retorno é feito pelo contato informado.' : 'Seu currículo foi recebido e fica guardado para futuras oportunidades.'}</p></div></div>`;
+        form.outerHTML = `<div class="servico-bloco servico-portal"><div><h2>Recebido, obrigado!</h2><p class="servico-intro" style="margin:0;">${ouvidoria ? 'Sua manifestação chegou à Ouvidoria. A resposta é enviada pelo e-mail informado.' : parceiro ? 'Sua proposta chegou ao Dr. Israel. O retorno é feito pelo contato informado.' : 'Seu currículo foi recebido e fica guardado para futuras oportunidades.'}</p></div></div>`;
       }catch(err){
         erro(err.message || 'Não foi possível enviar agora.');
         btn.disabled = false; btn.textContent = 'Enviar';
@@ -1549,7 +1568,31 @@
     }catch(e){ SITE_CONFIG = { youtube_url: '', faq: [] }; }
     return SITE_CONFIG;
   }
+  // Página inicial: textos, números, foto e tamanho vêm do painel (aba Página inicial).
+  function aplicarHome(h){
+    if (!h) return;
+    const txt = (id, v) => { const el = document.getElementById(id); if (el && v) el.textContent = v; };
+    txt('homeEyebrow', h.hero_eyebrow); txt('homeTitulo', h.hero_titulo); txt('homeTexto', h.hero_texto);
+    txt('homeBotao1', h.hero_botao1); txt('homeBotao2', h.hero_botao2);
+    txt('homeAreasKicker', h.areas_kicker); txt('homeAreasTitulo', h.areas_titulo); txt('homeAreasTexto', h.areas_texto);
+    txt('homeCtaTitulo', h.cta_titulo); txt('homeCtaBotao', h.cta_botao);
+    txt('homeSobreKicker', h.sobre_kicker); txt('homeSobreTitulo', h.sobre_titulo); txt('homeSobreTexto', h.sobre_texto); txt('homeSobreBotao', h.sobre_botao);
+    const st = document.getElementById('homeStats');
+    if (st && Array.isArray(h.stats) && h.stats.length){
+      st.innerHTML = '';
+      h.stats.forEach(e => {
+        const d = document.createElement('div'), n = document.createElement('span'), l = document.createElement('span');
+        n.className = 'num'; n.textContent = e.num; l.className = 'label'; l.textContent = e.rotulo;
+        d.append(n, l); st.appendChild(d);
+      });
+    }
+    const foto = document.getElementById('homeFoto'), hero = document.getElementById('inicio');
+    if (foto && /^https:\/\//i.test(h.hero_imagem || '')){ foto.src = h.hero_imagem; foto.style.display = ''; hero.classList.add('com-foto'); }
+    else if (foto){ foto.removeAttribute('src'); foto.style.display = 'none'; hero.classList.remove('com-foto'); }
+    document.documentElement.style.fontSize = ({ pequeno: '90%', grande: '112%' })[h.escala] || '';
+  }
   carregarSiteConfig().then(c => {
+    aplicarHome(c.home);
     const a = document.getElementById('linkMidia');
     if (a && /^https:\/\//i.test(c.youtube_url || '')){ a.href = c.youtube_url; a.style.display = ''; }
   });
@@ -1594,6 +1637,8 @@
           <h2>Documentos — ${sv.titulo}</h2>
           <ul class="servico-checks">${sv.docs.map(d => `<li>${d}</li>`).join('')}</ul>
           ${docsDetalhadosHtml(chave)}
+          ${docsUploadHtml()}
+          <p class="servico-nota" style="margin:22px 0 10px;"><b>Se preferir, envie por outro canal:</b></p>
           <div class="servico-envio">
             <div class="servico-canal">
               <h4>Pelo WhatsApp</h4>
@@ -1608,6 +1653,7 @@
           </div>
           <p class="servico-nota">A lista pode variar conforme o caso. Os documentos são tratados com sigilo profissional.</p>
         </div>`;
+      ligarDocsUpload(chave);
     };
     mostrar(areas[0][0]);
     document.getElementById('docsAreas').addEventListener('click', (e) => {
@@ -1641,6 +1687,124 @@
       </div>`;
   }
 
+  // ---------- Envio de documentos do cliente pelo site ----------
+  function docsUploadHtml(){
+    return `
+      <div class="docs-upload form-publico">
+        <h3>Enviar os documentos pelo site</h3>
+        <p class="servico-nota" style="margin:0 0 14px;">Anexe PDF, Word, JPG ou PNG (até 10 MB cada, no máximo 10 arquivos). Os arquivos ficam em área privada e só o escritório acessa.</p>
+        <form id="formDocs" novalidate>
+          <div class="form-publico-grid">
+            <div class="checkout-field"><label for="dNome">Nome completo *</label><input id="dNome" type="text" maxlength="150"></div>
+            <div class="checkout-field"><label for="dEmail">E-mail *</label><input id="dEmail" type="email" maxlength="160"></div>
+            <div class="checkout-field"><label for="dTelefone">Telefone / WhatsApp</label><input id="dTelefone" type="tel" maxlength="40"></div>
+          </div>
+          <div class="checkout-field"><label for="dMensagem">Conte rapidamente o seu caso (opcional)</label><textarea id="dMensagem" maxlength="3000" rows="3"></textarea></div>
+          <div class="checkout-field"><label for="dArquivos">Documentos *</label><input id="dArquivos" type="file" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"></div>
+          <input type="text" id="dIsca" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true">
+          <label class="form-aceite"><input type="checkbox" id="dAceite"> Concordo com o uso dos meus dados e documentos para o atendimento do meu caso, conforme a <a href="#privacidade">Política de Privacidade</a>.</label>
+          <p class="checkout-erro" id="dErro"></p>
+          <button class="btn btn-gold" type="submit" id="dEnviar">Enviar documentos</button>
+        </form>
+      </div>`;
+  }
+  function ligarDocsUpload(area){
+    const form = document.getElementById('formDocs');
+    if (!form) return;
+    const erro = (m) => { const e = document.getElementById('dErro'); e.textContent = m; e.classList.toggle('show', !!m); };
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      erro('');
+      const v = (id) => (document.getElementById(id) || {}).value || '';
+      const arqs = [...document.getElementById('dArquivos').files];
+      if (!v('dNome').trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('dEmail').trim())) return erro('Preencha seu nome e um e-mail válido.');
+      if (!arqs.length) return erro('Anexe ao menos um documento.');
+      if (arqs.length > 10) return erro('Envie no máximo 10 arquivos por vez.');
+      for (const f of arqs){
+        if (!/\.(pdf|docx?|jpe?g|png)$/i.test(f.name)) return erro('Formato não aceito: ' + f.name + '. Use PDF, Word, JPG ou PNG.');
+        if (f.size > 10 * 1048576) return erro('Arquivo grande demais (máximo 10 MB): ' + f.name);
+      }
+      if (!document.getElementById('dAceite').checked) return erro('Marque que concorda com o uso dos dados e documentos.');
+      const btn = document.getElementById('dEnviar');
+      btn.disabled = true; btn.textContent = 'Enviando…';
+      try{
+        const r = await fetch(`${API_URL}/documentos`, { method: 'POST', headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ area, nome: v('dNome'), email: v('dEmail'), telefone: v('dTelefone'), mensagem: v('dMensagem'), site_url: v('dIsca') }) });
+        const d = await r.json().catch(() => ({}));
+        if (!r.ok) throw new Error(d.erro || 'Não foi possível enviar agora.');
+        for (let i = 0; i < arqs.length; i++){
+          btn.textContent = `Enviando arquivo ${i + 1} de ${arqs.length}…`;
+          const ru = await fetch(`${API_URL}/documentos/${d.id}/arquivo?chave=${d.chave}&nome=${encodeURIComponent(arqs[i].name)}`,
+            { method: 'POST', headers: { 'Content-Type': 'application/octet-stream' }, body: arqs[i] });
+          const du = await ru.json().catch(() => ({}));
+          if (!ru.ok) throw new Error((du.erro || 'Falha ao enviar') + ' (' + arqs[i].name + ')');
+        }
+        const rc = await fetch(`${API_URL}/documentos/${d.id}/concluir?chave=${d.chave}`, { method: 'POST' });
+        const dc = await rc.json().catch(() => ({}));
+        if (!rc.ok) throw new Error(dc.erro || 'Não foi possível finalizar o envio.');
+        form.outerHTML = `<div class="servico-bloco servico-portal"><div><h2>Documentos recebidos, obrigado!</h2><p class="servico-intro" style="margin:0;">Recebemos ${arqs.length} arquivo${arqs.length > 1 ? 's' : ''}. O escritório vai analisar e retornar pelo contato informado.</p></div></div>`;
+      }catch(err){
+        erro(err.message || 'Não foi possível enviar agora.');
+        btn.disabled = false; btn.textContent = 'Enviar documentos';
+      }
+    });
+  }
+
+  // ---------- Vídeos e Podcast ----------
+  async function renderMidias(){
+    detalheConteudo.style.maxWidth = '1040px';
+    detalheConteudo.innerHTML = `
+      ${BOTAO_VOLTAR}
+      <span class="detalhe-kicker" style="display:block;">MÍDIA</span>
+      <h1 class="detalhe-titulo">Vídeos e Podcast</h1>
+      <p class="servico-intro">Conteúdo em vídeo e áudio sobre Direito do Trabalho, Direito Previdenciário e o Exame de Ordem.</p>
+      <div class="shop-tabs" id="midiaTabs">
+        <button class="shop-tab active" data-t="">Todos</button>
+        <button class="shop-tab" data-t="video">Vídeos</button>
+        <button class="shop-tab" data-t="podcast">Podcast</button>
+      </div>
+      <div class="midias-grid" id="midiasGrid"><p style="color:var(--ink-soft);">Carregando…</p></div>`;
+    let lista = [];
+    try{
+      const r = await fetch(`${API_URL}/midias`);
+      lista = r.ok ? await r.json() : [];
+    }catch(e){ lista = []; }
+    const grid = document.getElementById('midiasGrid');
+    const mostrar = (tipo) => {
+      const itens = lista.filter(m => !tipo || m.tipo === tipo);
+      if (!itens.length){ grid.innerHTML = `<p style="color:var(--ink-soft);grid-column:1/-1;">${lista.length ? 'Nada nesta categoria ainda.' : 'Em breve, novos vídeos e episódios.'}</p>`; return; }
+      grid.innerHTML = itens.map(m => {
+        let player = '';
+        if (m.embed && /^https:\/\//i.test(m.embed)){
+          player = `<iframe src="${escAttr(m.embed)}" title="${escAttr(m.titulo)}" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen; clipboard-write" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>`;
+        } else if (m.arquivo_url && /^https:\/\//i.test(m.arquivo_url)){
+          player = m.tipo === 'video' || /\.mp4$/i.test(m.arquivo_url)
+            ? `<video controls preload="metadata" playsinline${m.capa_url && /^https:\/\//i.test(m.capa_url) ? ` poster="${escAttr(m.capa_url)}"` : ''} src="${escAttr(m.arquivo_url)}"></video>`
+            : `<audio controls preload="none" src="${escAttr(m.arquivo_url)}"></audio>`;
+        }
+        const capa = !m.embed && m.tipo === 'podcast' && m.capa_url && /^https:\/\//i.test(m.capa_url) ? `<img class="midia-capa" loading="lazy" alt="" src="${escAttr(m.capa_url)}">` : '';
+        return `
+          <article class="midia-card">
+            ${capa}
+            <div class="midia-player ${m.tipo}">${player}</div>
+            <div class="midia-info">
+              <span class="cat">${m.tipo === 'video' ? 'VÍDEO' : 'PODCAST'}</span>
+              <h3>${escapeHtml(m.titulo)}</h3>
+              ${m.descricao ? `<p>${escapeHtml(m.descricao)}</p>` : ''}
+            </div>
+          </article>`;
+      }).join('');
+    };
+    mostrar('');
+    document.getElementById('midiaTabs').addEventListener('click', (e) => {
+      const b = e.target.closest('button[data-t]');
+      if (!b) return;
+      document.querySelectorAll('#midiaTabs .shop-tab').forEach(t => t.classList.remove('active'));
+      b.classList.add('active');
+      mostrar(b.dataset.t);
+    });
+  }
+
   function renderServico(chave){
     const sv = SERVICOS[chave];
     if (!sv){ location.hash = ''; return; }
@@ -1664,7 +1828,7 @@
         <ol class="servico-passos">
           ${chave === 'oab-2fase' ? `
           <li><b>Crie sua conta.</b> Entre na Área do aluno do site.</li>
-          <li><b>Envie sua prova.</b> Escolha a disciplina e anexe cada arquivo no seu campo: peça, questões (item A e item B) e espelho da FGV.</li>
+          <li><b>Envie sua prova.</b> Escolha a disciplina e anexe cada arquivo no seu campo: peça e questões 1, 2, 3 e 4.</li>
           <li><b>Análise de viabilidade.</b> O Dr. Israel avalia se cabe recurso e você recebe o resultado por e-mail.</li>
           <li><b>Elaboração do recurso.</b> Se for viável, o recurso é elaborado e fica disponível na área do aluno e no seu e-mail. O protocolo na FGV é feito por você.</li>` : `
           <li><b>Fale com a gente.</b> Chame pelo WhatsApp e conte rapidamente a sua situação.</li>
@@ -1678,7 +1842,7 @@
       <div class="servico-bloco servico-portal">
         <div>
           <h2>Envie sua prova pelo portal do aluno</h2>
-          <p class="servico-intro" style="margin:0;">Escolha a disciplina, anexe a peça, as questões (item A e item B) e o espelho da FGV, e acompanhe a análise e o recurso por lá.</p>
+          <p class="servico-intro" style="margin:0;">Escolha a disciplina, anexe a peça e as questões 1, 2, 3 e 4 (cada uma em um arquivo), e acompanhe a análise e o recurso por lá.</p>
         </div>
         <a class="btn btn-gold" href="#portal-provimento">Enviar minha prova</a>
       </div>` : ''}
@@ -1687,10 +1851,12 @@
         <h2>Documentos para enviar</h2>
         <ul class="servico-checks">${sv.docs.map(d => `<li>${d}</li>`).join('')}</ul>
         ${docsDetalhadosHtml(chave)}
+        ${chave.startsWith('oab-') ? '' : docsUploadHtml()}
         ${chave === 'oab-2fase' ? `
         <p class="servico-intro" style="margin:8px 0 16px;">A prova é enviada somente pela área do aluno. Arquivos mandados por e-mail ou WhatsApp não são aceitos.</p>
         <a class="btn btn-gold" href="#portal-provimento">Enviar minha prova</a>
         <div class="servico-envio" style="display:none">` : `
+        ${chave.startsWith('oab-') ? '' : '<p class="servico-nota" style="margin:22px 0 10px;"><b>Se preferir, envie por outro canal:</b></p>'}
         <div class="servico-envio">`}
           <div class="servico-canal">
             <h4>Pelo WhatsApp</h4>
@@ -1711,6 +1877,7 @@
         <a class="btn btn-outline-dark" href="#advocacia">Ver outras áreas</a>
       </div>
     `;
+    if (!chave.startsWith('oab-')) ligarDocsUpload(chave);
   }
 
   // Artigos feitos no editor do painel vêm em HTML. Antes de mostrar, tudo
@@ -1785,7 +1952,9 @@
       <div class="detalhe-cover"${coverStyle}>${item.capa_url ? '' : icon}</div>
       <span class="detalhe-kicker">${CATEGORIA_LABEL[item.categoria] || item.categoria}</span>
       <h1 class="detalhe-titulo">${escapeHtml(item.titulo)}</h1>
-      <div class="detalhe-corpo">${escapeHtml(item.descricao || 'Descrição em preparação.')}</div>
+      ${item.descricao && item.descricao_html
+        ? `<div class="detalhe-corpo artigo-html">${limparHtmlArtigo(item.descricao)}</div>`
+        : `<div class="detalhe-corpo">${escapeHtml(item.descricao || 'Descrição em preparação.')}</div>`}
       <div class="detalhe-compra">
         <span class="price">${formatPreco(item.preco)}</span>
         ${externo
@@ -1944,7 +2113,7 @@
           <div class="product-body">
             <span class="cat">${CATEGORIA_LABEL[item.categoria] || item.categoria}</span>
             <h4>${escapeHtml(item.titulo)}</h4>
-            <p>${escapeHtml(item.descricao || '')}</p>
+            <p>${escapeHtml(descTexto(item))}</p>
             <div class="product-foot"><span class="price">${formatPreco(item.preco)}</span>${acao}</div>
           </div>
         </div>`;
@@ -1956,7 +2125,7 @@
     function renderLista(){
       let lista = filtroAtual === 'todos' ? itens : itens.filter(i => i.categoria === filtroAtual);
       if (buscaAtual){
-        lista = lista.filter(i => normalizarBusca([i.titulo, i.descricao, CATEGORIA_LABEL[i.categoria] || i.categoria].join(' ')).includes(buscaAtual));
+        lista = lista.filter(i => normalizarBusca([i.titulo, descTexto(i), CATEGORIA_LABEL[i.categoria] || i.categoria].join(' ')).includes(buscaAtual));
       }
       const grid = document.getElementById('catalogoTodosGrid');
       grid.innerHTML = lista.length
@@ -2017,6 +2186,7 @@
       else if (rota.tipo === 'pagina') renderPagina(rota.chave);
       else if (rota.tipo === 'formulario') renderFormulario(rota.chave);
       else if (rota.tipo === 'enviar-documentos') renderEnviarDocumentos();
+      else if (rota.tipo === 'midias') await renderMidias();
       else if (rota.tipo === 'artigo') await renderDetalheArtigo(rota.chave);
       else if (rota.tipo === 'blog-todos') await renderBlogTodos(rota.chave);
       else if (rota.tipo === 'livros-todos') await renderCatalogoTodos('livro');
