@@ -175,6 +175,12 @@
   .compra-capa{width:56px;height:56px;border-radius:8px;background:var(--navy-deep) center/cover no-repeat;flex:none;border:1px solid var(--navy-line);}
   .compra-info{display:flex;gap:14px;align-items:center;min-width:0;}
   .compra-info > div{min-width:0;}
+  .prov-disc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin-top:16px;}
+  .prov-disc{display:flex;flex-direction:column;align-items:flex-start;gap:8px;text-align:left;padding:14px 16px;border-radius:12px;background:var(--navy-deep);color:var(--cream, #F4EFE5);border:1px solid var(--navy-line);cursor:pointer;font:inherit;font-weight:600;transition:border-color .15s,transform .15s;}
+  .prov-disc:hover{border-color:var(--gold);transform:translateY(-1px);}
+  .prov-disc small{font-size:0.78rem;font-weight:600;color:var(--gold-light);}
+  .prov-disc small.prov-status{font-size:0.72rem;}
+  .prov-voltar-disc{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:14px;}
   .prov-novo{display:flex;gap:12px;flex-wrap:wrap;}
   .prov-novo select{flex:1;min-width:220px;}
   .prov-topo{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap;margin-bottom:14px;}
@@ -544,6 +550,12 @@
   .texto-legal h2{font-family:'Fraunces',serif;font-weight:500;font-size:1.25rem;margin:28px 0 10px;color:var(--ink);}
   .texto-legal p, .texto-legal li{color:var(--ink-soft);font-size:0.98rem;margin-bottom:10px;}
   .texto-legal ul{padding-left:22px;margin-bottom:10px;}
+  .texto-editavel{margin-bottom:38px;}
+  .texto-legal ol{padding-left:22px;margin-bottom:10px;}
+  .texto-legal h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.1rem;margin:20px 0 8px;color:var(--ink);}
+  .texto-legal blockquote{border-left:3px solid var(--gold);padding:4px 0 4px 16px;margin:14px 0;color:var(--ink-soft);}
+  .texto-legal a{color:var(--gold);text-decoration:underline;}
+  .texto-legal img{max-width:100%;height:auto;}
   .cv-bloco{border-left:3px solid var(--gold);padding:4px 0 4px 18px;margin-bottom:18px;}
   .cv-bloco b{color:var(--ink);display:block;}
   .cv-bloco span{color:var(--ink-soft);font-size:0.92rem;display:block;}
@@ -1235,7 +1247,8 @@
     if (h === 'faq') return { tipo: 'faq', chave: null };
     if (h === 'curriculo' || h === 'privacidade' || h === 'termos') return { tipo: 'pagina', chave: h };
     if (h === 'seja-parceiro' || h === 'trabalhe-conosco' || h === 'ouvidoria') return { tipo: 'formulario', chave: h };
-    if (h === 'enviar-documentos') return { tipo: 'enviar-documentos', chave: null };
+    const mDocs = h.match(/^enviar-documentos(?:-(trabalhista|previdenciario))?$/);
+    if (mDocs) return { tipo: 'enviar-documentos', chave: mDocs[1] || null };
     if (h === 'midias') return { tipo: 'midias', chave: null };
     if (h === 'carrinho') return { tipo: 'carrinho', chave: null };
     if (h === 'minhas-compras') return { tipo: 'portal', chave: 'livros' };
@@ -1360,8 +1373,8 @@
     'oab-1fase': {
       kicker: 'SERVIÇO PARA CANDIDATOS',
       titulo: 'OAB 1ª fase',
-      intro: 'Prestação de serviço para candidatos que estão na 1ª fase do Exame de Ordem. Fale com o Dr. Israel para entender como funciona no seu caso.',
-      itens: ['Atendimento individual','Análise da sua situação','Orientação durante o serviço','Acompanhamento até a conclusão'],
+      intro: 'Na 1ª fase do Exame de Ordem, o candidato é quem protocola o recurso no site da FGV. Aqui no site você encontra os recursos da 1ª fase disponibilizados pelo Dr. Israel e os artigos publicados sobre a prova.',
+      itens: ['Recursos da 1ª fase disponibilizados no site','Artigos sobre a prova da 1ª fase','O protocolo do recurso no site da FGV é feito por você','Tire dúvidas pelo WhatsApp'],
       docs: ['RG','CPF','Comprovante de endereço atualizado','Comprovante de inscrição no Exame de Ordem','Documentos da 1ª fase relacionados ao serviço contratado'],
       msg: 'Olá! Vim pelo site e gostaria de saber mais sobre o serviço para a OAB 1ª fase.'
     },
@@ -1375,38 +1388,53 @@
     }
   };
 
+  // ---------- Textos das páginas editáveis no painel ("Páginas do site") ----------
+  const pagOv = (chave) => ((SITE_CONFIG && SITE_CONFIG.paginas) || {})[chave] || null;
+  const textoEditavel = (html) => `<div class="texto-legal texto-editavel">${limparHtmlArtigo(html)}</div>`;
+
   // ---------- Formulários: Seja parceiro / Trabalhe conosco ----------
   function renderFormulario(chave){
     detalheConteudo.style.maxWidth = '760px';
     const ouvidoria = chave === 'ouvidoria';
     const parceiro = chave === 'seja-parceiro';
+    const ov = pagOv(chave);
     const campo = (id, rotulo, tipo = 'text', extra = '') => `
       <div class="checkout-field"><label for="${id}">${rotulo}</label><input id="${id}" type="${tipo}" ${extra}></div>`;
     detalheConteudo.innerHTML = `
       ${BOTAO_VOLTAR}
-      <span class="detalhe-kicker" style="display:block;">${ouvidoria ? 'OUVIDORIA' : parceiro ? 'PARCERIAS' : 'TRABALHE CONOSCO'}</span>
-      <h1 class="detalhe-titulo">${ouvidoria ? 'Ouvidoria' : parceiro ? 'Seja parceiro' : 'Envie seu currículo'}</h1>
-      <p class="servico-intro">${ouvidoria
-        ? 'Canal para elogios, sugestões, reclamações e denúncias sobre o atendimento, os serviços e o site. Sua manifestação é tratada com sigilo profissional e respondida pelo e-mail informado.'
+      <span class="detalhe-kicker" style="display:block;">${ouvidoria ? 'OAB · SERVIÇO PARA CANDIDATOS' : parceiro ? 'PARCERIAS' : 'TRABALHE CONOSCO'}</span>
+      <h1 class="detalhe-titulo">${escapeHtml((ov && ov.titulo) || (ouvidoria ? 'Ouvidoria — recurso ao Conselho Federal da OAB' : parceiro ? 'Seja parceiro' : 'Envie seu currículo'))}</h1>
+      ${ov && ov.html ? textoEditavel(ov.html) : `<p class="servico-intro">${ouvidoria
+        ? 'Serviço para o candidato que já recorreu na FGV e quer questionar a correção da prova no Conselho Federal da OAB, a última instância. O Dr. Israel elabora o recurso e você o baixa e protocola no site do Conselho Federal.'
         : parceiro
         ? 'Advogados e escritórios que querem atuar em parceria (correspondência, indicação de casos ou atuação conjunta) podem enviar sua proposta. Retornamos pelo e-mail ou telefone informado.'
-        : 'Advogados, estagiários e profissionais da área podem enviar o currículo. Ele fica guardado para futuras oportunidades.'}</p>
+        : 'Advogados, estagiários e profissionais da área podem enviar o currículo. Ele fica guardado para futuras oportunidades.'}</p>`}
+      ${ouvidoria ? `
+        <div class="servico-bloco" style="margin:18px 0;"><h2 style="margin-top:0;">Valor do serviço</h2><p class="servico-intro" style="margin:0;" id="ouvValor">Consulte o valor com o escritório.</p><p class="servico-intro" style="margin:8px 0 0;white-space:pre-line;" id="ouvTexto"></p></div>
+        <p class="servico-intro" style="margin:0 0 6px;">Preencha o pedido abaixo. O escritório entra em contato pelo e-mail ou telefone informado para combinar o pagamento e os próximos passos.</p>` : ''}
       <form id="formPublico" class="form-publico" novalidate>
         <div class="form-publico-grid">
           ${campo('fNome', 'Nome completo *', 'text', 'maxlength="150" required')}
           ${campo('fEmail', 'E-mail *', 'email', 'maxlength="160" required')}
           ${campo('fTelefone', 'Telefone / WhatsApp', 'tel', 'maxlength="40"')}
           ${campo('fCidade', 'Cidade / UF', 'text', 'maxlength="100"')}
-          ${ouvidoria ? `<div class="checkout-field"><label for="fArea">Tipo de manifestação *</label><select id="fArea"><option>Elogio</option><option>Sugestão</option><option selected>Reclamação</option><option>Denúncia</option><option>Dúvida</option></select></div>` : `${campo('fOab', parceiro ? 'OAB (número e seccional)' : 'OAB (se tiver)', 'text', 'maxlength="40"')}
+          ${ouvidoria ? campo('fArea', 'Exame e fase (ex.: 2ª fase do 42º Exame) *', 'text', 'maxlength="150"') : `${campo('fOab', parceiro ? 'OAB (número e seccional)' : 'OAB (se tiver)', 'text', 'maxlength="40"')}
           ${campo('fArea', parceiro ? 'Áreas de atuação' : 'Área de interesse / cargo', 'text', 'maxlength="150"')}`}
         </div>
-        <div class="checkout-field"><label for="fMensagem">${ouvidoria ? 'Escreva sua manifestação *' : parceiro ? 'Sua proposta de parceria' : 'Fale um pouco sobre você'}</label><textarea id="fMensagem" maxlength="5000" rows="${ouvidoria ? 7 : 5}"></textarea></div>
+        <div class="checkout-field"><label for="fMensagem">${ouvidoria ? 'Conte o seu caso e o resultado do recurso na FGV *' : parceiro ? 'Sua proposta de parceria' : 'Fale um pouco sobre você'}</label><textarea id="fMensagem" maxlength="5000" rows="${ouvidoria ? 7 : 5}"></textarea></div>
         ${parceiro || ouvidoria ? '' : `<div class="checkout-field"><label for="fArquivo">Currículo (PDF ou Word, até 5 MB)</label><input id="fArquivo" type="file" accept=".pdf,.doc,.docx"></div>`}
         <input type="text" name="site_url" id="fIsca" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true">
         <label class="form-aceite"><input type="checkbox" id="fAceite"> Concordo com o uso dos meus dados para este contato, conforme a <a href="#privacidade">Política de Privacidade</a>.</label>
         <p class="checkout-erro" id="fErro"></p>
-        <button class="btn btn-gold" type="submit" id="fEnviar">Enviar</button>
+        <button class="btn btn-gold" type="submit" id="fEnviar">${ouvidoria ? 'Solicitar o serviço' : 'Enviar'}</button>
       </form>`;
+    if (ouvidoria){
+      carregarSiteConfig().then(c => {
+        const o = (c && c.ouvidoria) || {};
+        if (Number(o.valor) > 0) document.getElementById('ouvValor').innerHTML = '<b>' + formatPreco(o.valor) + '</b>';
+        if (o.texto) document.getElementById('ouvTexto').textContent = o.texto;
+      }).catch(() => {});
+    }
     const form = document.getElementById('formPublico');
     const erro = (m) => { const e = document.getElementById('fErro'); e.textContent = m; e.classList.toggle('show', !!m); };
     const lerBase64 = (f) => new Promise((ok, falha) => {
@@ -1421,7 +1449,8 @@
       const v = (id) => (document.getElementById(id) || {}).value || '';
       if (!v('fNome').trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('fEmail').trim())) return erro('Preencha seu nome e um e-mail válido.');
       if (!document.getElementById('fAceite').checked) return erro('Marque que concorda com o uso dos dados para este contato.');
-      if (ouvidoria && v('fMensagem').trim().length < 10) return erro('Escreva sua manifestação (pelo menos algumas palavras).');
+      if (ouvidoria && v('fMensagem').trim().length < 10) return erro('Conte o seu caso (pelo menos algumas palavras).');
+      if (ouvidoria && !v('fArea').trim()) return erro('Informe o exame e a fase.');
       const corpo = {
         tipo: ouvidoria ? 'ouvidoria' : parceiro ? 'parceiro' : 'curriculo', nome: v('fNome'), email: v('fEmail'), telefone: v('fTelefone'),
         cidade: v('fCidade'), oab: v('fOab'), area: v('fArea'), mensagem: v('fMensagem'), site_url: v('fIsca'),
@@ -1440,7 +1469,7 @@
         const r = await fetch(`${API_URL}/formularios`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(corpo) });
         const d = await r.json().catch(() => ({}));
         if (!r.ok) throw new Error(d.erro || 'Não foi possível enviar agora.');
-        form.outerHTML = `<div class="servico-bloco servico-portal"><div><h2>Recebido, obrigado!</h2><p class="servico-intro" style="margin:0;">${ouvidoria ? 'Sua manifestação chegou à Ouvidoria. A resposta é enviada pelo e-mail informado.' : parceiro ? 'Sua proposta chegou ao Dr. Israel. O retorno é feito pelo contato informado.' : 'Seu currículo foi recebido e fica guardado para futuras oportunidades.'}</p></div></div>`;
+        form.outerHTML = `<div class="servico-bloco servico-portal"><div><h2>Recebido, obrigado!</h2><p class="servico-intro" style="margin:0;">${ouvidoria ? 'Seu pedido chegou ao escritório. O contato para combinar pagamento e próximos passos é feito pelo e-mail ou telefone informado.' : parceiro ? 'Sua proposta chegou ao Dr. Israel. O retorno é feito pelo contato informado.' : 'Seu currículo foi recebido e fica guardado para futuras oportunidades.'}</p></div></div>`;
       }catch(err){
         erro(err.message || 'Não foi possível enviar agora.');
         btn.disabled = false; btn.textContent = 'Enviar';
@@ -1539,23 +1568,25 @@
 
   function renderPagina(chave){
     detalheConteudo.style.maxWidth = '820px';
+    const ov = pagOv(chave);
     if (chave === 'curriculo'){
       detalheConteudo.innerHTML = `
         ${BOTAO_VOLTAR}
         <span class="detalhe-kicker" style="display:block;">SOBRE</span>
-        <h1 class="detalhe-titulo">Dr. Israel Donizete da Silva</h1>
+        <h1 class="detalhe-titulo">${escapeHtml((ov && ov.titulo) || 'Dr. Israel Donizete da Silva')}</h1>
+        ${ov && ov.html ? textoEditavel(ov.html) : `
         <p class="servico-intro">Advogado com atuação nas áreas Trabalhista e Previdenciária · OAB/SP 528153</p>
         <div class="servico-bloco"><h2>Formação acadêmica</h2>${cvLista(CV.formacao)}</div>
         <div class="servico-bloco"><h2>Atuação profissional</h2>${cvLista(CV.atuacao)}</div>
-        <div class="servico-bloco"><h2>Produção acadêmica</h2>${cvLista(CV.producao)}</div>`;
+        <div class="servico-bloco"><h2>Produção acadêmica</h2>${cvLista(CV.producao)}</div>`}`;
       return;
     }
-    const titulo = chave === 'privacidade' ? 'Política de Privacidade' : 'Termos de Uso';
+    const titulo = (ov && ov.titulo) || (chave === 'privacidade' ? 'Política de Privacidade' : 'Termos de Uso');
     detalheConteudo.innerHTML = `
       ${BOTAO_VOLTAR}
       <span class="detalhe-kicker" style="display:block;">INSTITUCIONAL</span>
-      <h1 class="detalhe-titulo">${titulo}</h1>
-      <div class="texto-legal">${chave === 'privacidade' ? TEXTO_PRIVACIDADE : TEXTO_TERMOS}</div>`;
+      <h1 class="detalhe-titulo">${escapeHtml(titulo)}</h1>
+      ${ov && ov.html ? textoEditavel(ov.html) : `<div class="texto-legal">${chave === 'privacidade' ? TEXTO_PRIVACIDADE : TEXTO_TERMOS}</div>`}`;
   }
 
   // ---------- Configurações do site (YouTube, FAQ) — editáveis no painel ----------
@@ -1615,16 +1646,17 @@
       </div>`;
   }
 
-  function renderEnviarDocumentos(){
+  function renderEnviarDocumentos(chaveInicial){
     detalheConteudo.style.maxWidth = '860px';
-    const areas = Object.entries(SERVICOS).filter(([k]) => !k.startsWith('oab-'));
+    const areas = Object.entries(SERVICOS).filter(([k]) => k === 'trabalhista' || k === 'previdenciario');
+    const iniciar = areas.some(([k]) => k === chaveInicial) ? chaveInicial : areas[0][0];
     detalheConteudo.innerHTML = `
       ${BOTAO_VOLTAR}
       <span class="detalhe-kicker" style="display:block;">DOCUMENTOS</span>
       <h1 class="detalhe-titulo">Enviar documentos</h1>
-      <p class="servico-intro">Escolha a área do seu caso para ver a lista de documentos e enviar pelo WhatsApp ou por e-mail.</p>
+      <p class="servico-intro">Escolha a área do seu caso, veja a lista de documentos e envie direto por aqui, pelo WhatsApp ou por e-mail.</p>
       <div class="docs-areas" id="docsAreas">
-        ${areas.map(([k, sv], i) => `<button class="shop-tab${i === 0 ? ' active' : ''}" data-area="${k}">${sv.titulo}</button>`).join('')}
+        ${areas.map(([k, sv]) => `<button class="shop-tab${k === iniciar ? ' active' : ''}" data-area="${k}">${sv.titulo}</button>`).join('')}
         <a class="shop-tab" href="#portal-provimento">OAB 2ª fase (prova para recurso)</a>
       </div>
       <div id="docsLista"></div>`;
@@ -1655,7 +1687,7 @@
         </div>`;
       ligarDocsUpload(chave);
     };
-    mostrar(areas[0][0]);
+    mostrar(iniciar);
     document.getElementById('docsAreas').addEventListener('click', (e) => {
       const b = e.target.closest('button[data-area]');
       if (!b) return;
@@ -1808,6 +1840,7 @@
   function renderServico(chave){
     const sv = SERVICOS[chave];
     if (!sv){ location.hash = ''; return; }
+    const ov = pagOv(chave);
     detalheConteudo.style.maxWidth = '860px';
     const wa = WA_BASE + encodeURIComponent(sv.msg);
     const waDocs = WA_BASE + encodeURIComponent('Olá! Vim pelo site (' + sv.titulo + ') e quero enviar meus documentos.');
@@ -1815,7 +1848,8 @@
     detalheConteudo.innerHTML = `
       ${BOTAO_VOLTAR}
       <span class="detalhe-kicker" style="display:block;">${sv.kicker}</span>
-      <h1 class="detalhe-titulo">${sv.titulo}</h1>
+      <h1 class="detalhe-titulo">${escapeHtml((ov && ov.titulo) || sv.titulo)}</h1>
+      ${ov && ov.html ? textoEditavel(ov.html) : `
       <p class="servico-intro">${sv.intro}</p>
 
       <div class="servico-bloco">
@@ -1826,7 +1860,10 @@
       <div class="servico-bloco">
         <h2>Como funciona</h2>
         <ol class="servico-passos">
-          ${chave === 'oab-2fase' ? `
+          ${chave === 'oab-1fase' ? `
+          <li><b>Acesse os recursos.</b> Os recursos da 1ª fase ficam disponíveis aqui no site.</li>
+          <li><b>Leia os artigos.</b> O Dr. Israel publica artigos sobre as questões e os pontos de recurso.</li>
+          <li><b>Protocole na FGV.</b> O recurso é protocolado por você, no site da FGV, dentro do prazo do edital.</li>` : chave === 'oab-2fase' ? `
           <li><b>Crie sua conta.</b> Entre na Área do aluno do site.</li>
           <li><b>Envie sua prova.</b> Escolha a disciplina e anexe cada arquivo no seu campo: peça e questões 1, 2, 3 e 4.</li>
           <li><b>Análise de viabilidade.</b> O Dr. Israel avalia se cabe recurso e você recebe o resultado por e-mail.</li>
@@ -1837,6 +1874,7 @@
           <li><b>Acompanhamento.</b> Você recebe atualizações durante todo o andamento.</li>`}
         </ol>
       </div>
+      `}
 
       ${chave === 'oab-2fase' ? `
       <div class="servico-bloco servico-portal">
@@ -1847,11 +1885,20 @@
         <a class="btn btn-gold" href="#portal-provimento">Enviar minha prova</a>
       </div>` : ''}
 
+      ${chave === 'oab-1fase' ? `
+      <div class="servico-bloco servico-portal">
+        <div>
+          <h2>Artigos e recursos da 1ª fase</h2>
+          <p class="servico-intro" style="margin:0;">Leia os artigos publicados pelo Dr. Israel sobre a prova e use os recursos disponibilizados para protocolar no site da FGV.</p>
+        </div>
+        <a class="btn btn-gold" href="#blog-todos">Ver artigos</a>
+      </div>` : ''}
+
+      ${chave === 'oab-2fase' ? `
       <div class="servico-bloco servico-docs">
         <h2>Documentos para enviar</h2>
         <ul class="servico-checks">${sv.docs.map(d => `<li>${d}</li>`).join('')}</ul>
         ${docsDetalhadosHtml(chave)}
-        ${chave.startsWith('oab-') ? '' : docsUploadHtml()}
         ${chave === 'oab-2fase' ? `
         <p class="servico-intro" style="margin:8px 0 16px;">A prova é enviada somente pela área do aluno. Arquivos mandados por e-mail ou WhatsApp não são aceitos.</p>
         <a class="btn btn-gold" href="#portal-provimento">Enviar minha prova</a>
@@ -1872,33 +1919,74 @@
         <p class="servico-nota">A lista pode variar conforme o caso. Os documentos são tratados com sigilo profissional.</p>
       </div>
 
+      ` : `
+      <div class="servico-bloco servico-portal">
+        <div>
+          <h2>Documentos do seu caso</h2>
+          <p class="servico-intro" style="margin:0;">Veja a lista de documentos e envie os arquivos com segurança, em uma página só para isso.</p>
+        </div>
+        <a class="btn btn-gold" href="#enviar-documentos-${chave}">Enviar documentos</a>
+      </div>
+      `}
+
       <div class="servico-cta">
         <a class="btn btn-gold" href="${wa}" target="_blank" rel="noopener">Falar com um advogado</a>
         <a class="btn btn-outline-dark" href="#advocacia">Ver outras áreas</a>
       </div>
     `;
-    if (!chave.startsWith('oab-')) ligarDocsUpload(chave);
   }
 
   // Artigos feitos no editor do painel vêm em HTML. Antes de mostrar, tudo
   // passa por uma "peneira": só ficam tags de texto simples, links seguros e
   // imagens enviadas pelo próprio painel. Scripts, estilos e eventos somem.
+  function estiloSeguro(estilo, tag) {
+  const pega = (p) => { const m = new RegExp("(?:^|;)\\s*" + p + "\\s*:\\s*([^;]+)", "i").exec(estilo || ""); return m ? m[1].trim().toLowerCase() : ""; };
+  const out = [];
+  if (["P", "H2", "H3", "LI", "BLOCKQUOTE"].includes(tag) && ["left", "center", "right", "justify"].includes(pega("text-align"))) out.push("text-align:" + pega("text-align"));
+  if (tag === "SPAN") {
+    const fs = pega("font-size");
+    if (["x-small", "small", "large", "x-large", "xx-large"].includes(fs)) out.push("font-size:" + fs);
+    const ff = pega("font-family");
+    if (/mono|courier|consolas/.test(ff)) out.push("font-family:'Courier New',Courier,monospace");
+    else if (/arial|helvetica|sans|verdana|calibri|tahoma|segoe|roboto/.test(ff)) out.push("font-family:Arial,Helvetica,sans-serif");
+    else if (/georgia|times|serif|garamond|palatino|cambria/.test(ff)) out.push("font-family:Georgia,'Times New Roman',serif");
+  }
+  return out.join(";");
+}
+// <font size=".." face=".."> (gerado por alguns navegadores) vira <span style="..">
+  function fontParaSpan(doc, f) {
+  const tam = { 1: "x-small", 2: "small", 4: "large", 5: "x-large", 6: "xx-large", 7: "xx-large" }[f.getAttribute("size")];
+  const st = [];
+  if (tam) st.push("font-size:" + tam);
+  if (f.getAttribute("face")) st.push("font-family:" + f.getAttribute("face"));
+  const sp = doc.createElement("span");
+  sp.setAttribute("style", st.join(";"));
+  sp.append(...f.childNodes);
+  f.replaceWith(sp);
+  return sp;
+}
+
   function limparHtmlArtigo(html){
-    const PERMITIDAS = new Set(['P','BR','B','STRONG','I','EM','U','H2','H3','UL','OL','LI','A','BLOCKQUOTE','IMG']);
+    const PERMITIDAS = new Set(['P','BR','B','STRONG','I','EM','U','H2','H3','UL','OL','LI','A','BLOCKQUOTE','IMG','SPAN']);
     const doc = new DOMParser().parseFromString(`<div>${html}</div>`, 'text/html');
     const raiz = doc.body.firstChild;
     const limpar = (no) => {
       [...no.childNodes].forEach(filho => {
         if (filho.nodeType === 3) return;
+        if (filho.nodeType === 1 && filho.tagName === 'FONT') filho = fontParaSpan(doc, filho);
         if (filho.nodeType !== 1 || !PERMITIDAS.has(filho.tagName)){
           if (filho.nodeType === 1 && !['SCRIPT','STYLE','IFRAME','OBJECT','EMBED','TEMPLATE'].includes(filho.tagName)){
             limpar(filho);
-            filho.replaceWith(...filho.childNodes);
+            if (filho.tagName === 'DIV'){ const p = doc.createElement('p'); const es = estiloSeguro(filho.getAttribute('style'), 'P'); if (es) p.setAttribute('style', es); p.append(...filho.childNodes); filho.replaceWith(p); }
+            else filho.replaceWith(...filho.childNodes);
           } else filho.remove();
           return;
         }
-        const href = filho.getAttribute('href'), src = filho.getAttribute('src'), alt = filho.getAttribute('alt');
+        const href = filho.getAttribute('href'), src = filho.getAttribute('src'), alt = filho.getAttribute('alt'), estilo = filho.getAttribute('style');
         [...filho.attributes].forEach(a => filho.removeAttribute(a.name));
+        const es = estiloSeguro(estilo, filho.tagName);
+        if (es) filho.setAttribute('style', es);
+        else if (filho.tagName === 'SPAN'){ limpar(filho); filho.replaceWith(...filho.childNodes); return; }
         if (filho.tagName === 'A'){
           if (href && /^(https:\/\/|mailto:)/i.test(href)){ filho.setAttribute('href', href); filho.setAttribute('target', '_blank'); filho.setAttribute('rel', 'noopener'); }
         }
@@ -2181,11 +2269,12 @@
     detalheConteudo.innerHTML = `${BOTAO_VOLTAR}<p style="color:var(--ink-soft);">Carregando…</p>`;
 
     try{
+      await carregarSiteConfig();
       if (rota.tipo === 'servico') renderServico(rota.chave);
       else if (rota.tipo === 'faq') await renderFaq();
       else if (rota.tipo === 'pagina') renderPagina(rota.chave);
       else if (rota.tipo === 'formulario') renderFormulario(rota.chave);
-      else if (rota.tipo === 'enviar-documentos') renderEnviarDocumentos();
+      else if (rota.tipo === 'enviar-documentos') renderEnviarDocumentos(rota.chave);
       else if (rota.tipo === 'midias') await renderMidias();
       else if (rota.tipo === 'artigo') await renderDetalheArtigo(rota.chave);
       else if (rota.tipo === 'blog-todos') await renderBlogTodos(rota.chave);
@@ -2661,6 +2750,7 @@
 
   // ---------- Provimento OAB 2ª fase ----------
   let PROV_CONFIG = null;
+  let PROV_DISC = null; // disciplina aberta no momento (só uma por vez na tela)
   const PROV_EXTENSOES = /\.(pdf|docx?|jpe?g|png)$/i;
 
   function descreverPedido(cfg){
@@ -2814,24 +2904,41 @@
     // não se acumulam quando a aba recarrega depois de cada ação.
     const wrap = document.createElement('div');
     alvo.replaceChildren(wrap);
-    wrap.innerHTML = `
-      <div class="portal-painel">
-        <h3>Recurso da OAB 2ª fase</h3>
-        <p>Escolha a disciplina e anexe ${escapeHtml(descreverPedido(cfg))}, cada arquivo no seu campo, para não misturar disciplinas nem questões.
-          Aceita ${escapeHtml(cfg.tipos_aceitos)}, até ${cfg.tamanho_maximo_mb} MB por arquivo. Os arquivos são sigilosos.</p>
-        ${etapas}
-        ${cfg.instrucoes ? `<p style="white-space:pre-line;">${escapeHtml(cfg.instrucoes)}</p>` : ''}
-        ${cfg.video_embed ? `<details class="prov-video"><summary>Assistir ao vídeo: como enviar sua prova</summary><div class="prov-video-box"><iframe src="${escAttr(cfg.video_embed)}" title="Vídeo tutorial" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div></details>` : ''}
-        <div class="prov-novo">
-          <select id="provDisciplina" aria-label="Disciplina">
-            <option value="">Escolha a disciplina…</option>
-            ${cfg.disciplinas.map(d => `<option value="${escAttr(d.id)}">${escapeHtml(d.nome)}</option>`).join('')}
-          </select>
-          <button class="btn btn-gold" id="provComecar">Começar</button>
+    // Lista de disciplinas: as oferecidas hoje + qualquer uma em que o aluno já tenha envio.
+    const listaDisc = cfg.disciplinas.map(d => ({ id: d.id, nome: d.nome }));
+    envios.forEach(e => { if (!listaDisc.some(d => d.id === e.disciplina)) listaDisc.push({ id: e.disciplina, nome: e.disciplina_nome }); });
+    const discAberta = listaDisc.find(d => d.id === PROV_DISC && envios.some(e => e.disciplina === d.id)) || null;
+    if (!discAberta) PROV_DISC = null;
+    const enviosDisc = discAberta ? envios.filter(e => e.disciplina === discAberta.id) : [];
+    const temRascunho = enviosDisc.some(e => e.status === 'rascunho');
+
+    if (discAberta){
+      wrap.innerHTML = `
+        <div class="prov-voltar-disc">
+          <button class="mini-acao" data-acao="trocar">← Trocar de disciplina</button>
+          <span class="compra-meta">Você está em: <b>${escapeHtml(discAberta.nome)}</b></span>
         </div>
-        <span class="portal-msg" id="provNovoMsg"></span>
-      </div>
-      ${envios.length ? envios.map(envioHtml).join('') : '<p class="prov-ajuda">Você ainda não enviou nenhuma prova.</p>'}`;
+        ${enviosDisc.map(envioHtml).join('')}
+        ${temRascunho ? '' : `<div class="portal-acoes" style="margin-top:14px;"><button class="mini-acao" data-acao="novo-envio">+ Novo envio desta disciplina</button><span class="portal-msg" id="provNovoMsg"></span></div>`}`;
+    } else {
+      wrap.innerHTML = `
+        <div class="portal-painel">
+          <h3>Recurso da OAB 2ª fase</h3>
+          <p>Clique na disciplina da sua prova e anexe ${escapeHtml(descreverPedido(cfg))}, cada arquivo no seu campo.
+            Aceita ${escapeHtml(cfg.tipos_aceitos)}, até ${cfg.tamanho_maximo_mb} MB por arquivo. Os arquivos são sigilosos.</p>
+          ${etapas}
+          ${cfg.instrucoes ? `<p style="white-space:pre-line;">${escapeHtml(cfg.instrucoes)}</p>` : ''}
+          ${cfg.video_embed ? `<details class="prov-video"><summary>Assistir ao vídeo: como enviar sua prova</summary><div class="prov-video-box"><iframe src="${escAttr(cfg.video_embed)}" title="Vídeo tutorial" loading="lazy" allow="accelerometer; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe></div></details>` : ''}
+          <div class="prov-disc-grid">
+            ${listaDisc.map(d => {
+              const dels = envios.filter(e => e.disciplina === d.id);
+              const ult = dels[0];
+              return `<button class="prov-disc" data-disc="${escAttr(d.id)}"><span>${escapeHtml(d.nome)}</span><small class="${ult ? 'prov-status ' + escAttr(ult.status) : ''}">${ult ? escapeHtml(ult.status_nome) : 'Começar'}</small></button>`;
+            }).join('')}
+          </div>
+          <span class="portal-msg" id="provNovoMsg"></span>
+        </div>`;
+    }
 
     const recarregar = (focoId) => portalProvimento(alvo).then(() => {
       const el = focoId && document.getElementById('prov-' + focoId);
@@ -2851,14 +2958,24 @@
       return false;
     };
 
-    document.getElementById('provComecar').addEventListener('click', async () => {
-      const disciplina = document.getElementById('provDisciplina').value;
-      const m = document.getElementById('provNovoMsg');
-      if (!disciplina){ m.textContent = 'Escolha a disciplina primeiro.'; m.className = 'portal-msg erro'; return; }
+    // Abre UMA disciplina por vez. Sem envio ainda: cria o rascunho e já abre.
+    const irAoTopo = () => window.scrollTo({ top: Math.max(0, alvo.getBoundingClientRect().top + window.scrollY - 90) });
+    const abrirDisciplina = async (disciplina, msgEl) => {
       try{
-        const p = await apiAluno('/provimentos', { method: 'POST', json: { disciplina } });
-        recarregar(p.id);
-      }catch(err){ if (!err.sessao){ m.textContent = err.message; m.className = 'portal-msg erro'; } }
+        PROV_DISC = disciplina;
+        if (!envios.some(e => e.disciplina === disciplina)){
+          const p = await apiAluno('/provimentos', { method: 'POST', json: { disciplina } });
+          await recarregar(p.id); return irAoTopo();
+        }
+        await recarregar(); return irAoTopo();
+      }catch(err){
+        PROV_DISC = null;
+        if (!err.sessao && msgEl){ msgEl.textContent = err.message; msgEl.className = 'portal-msg erro'; }
+      }
+    };
+    wrap.addEventListener('click', (e) => {
+      const d = e.target.closest('[data-disc]');
+      if (d) abrirDisciplina(d.dataset.disc, document.getElementById('provNovoMsg'));
     });
 
     wrap.addEventListener('change', async (e) => {
@@ -2903,6 +3020,12 @@
         } else if (b.dataset.acao === 'salvar'){
           await salvarRascunho(id);
           msg(id, 'Salvo.', true);
+        } else if (b.dataset.acao === 'trocar'){
+          PROV_DISC = null;
+          await recarregar(); irAoTopo();
+        } else if (b.dataset.acao === 'novo-envio'){
+          const p = await apiAluno('/provimentos', { method: 'POST', json: { disciplina: PROV_DISC } });
+          recarregar(p.id);
         } else if (b.dataset.acao === 'descartar'){
           if (!confirm('Descartar este envio e apagar os arquivos anexados?')) return;
           await apiAluno(`/provimentos/${id}`, { method: 'DELETE' });
