@@ -172,7 +172,7 @@
   .portal-msg{font-size:0.86rem;}
   .portal-msg.ok{color:#8FCB9B;}
   .portal-msg.erro{color:#E58B7E;}
-  .compra-capa{width:56px;height:56px;border-radius:8px;background:var(--navy-deep) center/cover no-repeat;flex:none;border:1px solid var(--navy-line);}
+  .compra-capa{width:56px;height:56px;border-radius:8px;background:var(--navy-deep) center/contain no-repeat;flex:none;border:1px solid var(--navy-line);}
   .compra-info{display:flex;gap:14px;align-items:center;min-width:0;}
   .compra-info > div{min-width:0;}
   .prov-disc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px;margin-top:16px;}
@@ -318,7 +318,7 @@
     width:640px;height:640px;opacity:0.14;pointer-events:none;
   }
   .hero-content{position:relative;max-width:620px;}
-  .hero-foto{position:absolute;right:6%;top:50%;transform:translateY(-50%);width:min(34%,420px);max-height:78%;object-fit:cover;border-radius:10px;border:1px solid var(--navy-line);box-shadow:0 18px 50px rgba(0,0,0,.35);}
+  .hero-foto{position:absolute;right:6%;top:50%;transform:translateY(-50%);width:min(34%,420px);max-height:78%;object-fit:contain;border-radius:10px;border:1px solid var(--navy-line);box-shadow:0 18px 50px rgba(0,0,0,.35);}
   .hero.com-foto .hero-watermark{display:none;}
   @media (max-width:900px){ .hero-foto{position:static;transform:none;display:block;width:calc(100% - 40px);max-width:460px;max-height:320px;margin:34px auto 0;} }
   .hero-eyebrow{
@@ -446,7 +446,7 @@
   .midia-player.video iframe,.midia-player.video video{aspect-ratio:16/9;}
   .midia-player.podcast iframe{height:232px;}
   .midia-player audio{display:block;width:100%;padding:14px;box-sizing:border-box;background:#14262F;}
-  .midia-capa{width:100%;aspect-ratio:16/9;object-fit:cover;display:block;}
+  .midia-capa{width:100%;aspect-ratio:16/9;object-fit:contain;background:#0F1D24;display:block;}
   .midia-info{padding:16px 18px 20px;}
   .midia-info .cat{font-size:0.72rem;color:var(--gold);font-weight:700;letter-spacing:0.03em;}
   .midia-info h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.12rem;margin:6px 0 8px;color:var(--ink);overflow-wrap:anywhere;}
@@ -579,6 +579,9 @@
     display:flex;align-items:center;justify-content:center;
   }
   .detalhe-cover svg{width:64px;height:64px;opacity:0.85;}
+  /* Capa com imagem: aparece inteira, no tamanho natural, sem cortar */
+  .detalhe-cover.has-img{aspect-ratio:auto;background:none;display:block;text-align:center;}
+  .detalhe-cover.has-img img{display:block;margin:0 auto;max-width:100%;max-height:560px;width:auto;height:auto;border-radius:4px;}
   .detalhe-kicker{color:var(--gold);font-weight:700;font-size:0.8rem;letter-spacing:0.04em;}
   .detalhe-titulo{font-size:2.1rem;margin:14px 0 20px;color:var(--ink);overflow-wrap:anywhere;}
   .detalhe-meta{font-size:0.85rem;color:var(--ink-soft);margin-bottom:26px;}
@@ -797,6 +800,313 @@
     .products-grid{grid-template-columns:1fr 1fr;}
     .cta-inner{flex-direction:column;align-items:flex-start;}
   }
+</style>
+<style id="visual-vivo">
+/* ===================== VISUAL VIVO (teste) =====================
+   Camada extra por cima do site: botões, cartões, cabeçalho, hero e animações.
+   Tudo respeita "reduzir movimento" do aparelho. */
+
+:root{
+  --ease:cubic-bezier(.2,.7,.2,1);
+  --cobre-1:#D9B68E;
+  --cobre-2:#B98E65;
+  --cobre-3:#9A7049;
+  --brilho:rgba(217,182,142,.42);
+}
+
+/* ---------- barra de progresso de leitura ---------- */
+#visualProgresso{
+  position:fixed;top:0;left:0;right:0;height:3px;z-index:120;pointer-events:none;
+  background:linear-gradient(90deg,var(--cobre-3),var(--cobre-1),#F1DDBF);
+  transform-origin:left;transform:scaleX(0);
+  box-shadow:0 0 12px var(--brilho);
+}
+
+/* ---------- BOTÕES ---------- */
+.btn{
+  position:relative;overflow:hidden;isolation:isolate;
+  transition:transform .25s var(--ease), box-shadow .3s ease, background-color .25s ease, color .25s ease, border-color .25s ease, background-size .4s var(--ease);
+  -webkit-tap-highlight-color:transparent;
+}
+.btn:focus-visible{outline:2px solid var(--cobre-1);outline-offset:3px;}
+.btn:active{transform:translateY(0) scale(.97);}
+
+/* dourado: metal escovado + brilho que passa */
+.btn-gold{
+  background:linear-gradient(135deg,var(--cobre-1) 0%,var(--cobre-2) 52%,var(--cobre-3) 100%);
+  color:var(--navy-deep);
+  box-shadow:0 1px 0 rgba(255,255,255,.35) inset, 0 6px 16px -6px rgba(154,112,73,.55);
+}
+.btn-gold::after{
+  content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:linear-gradient(105deg,transparent 34%,rgba(255,255,255,.55) 50%,transparent 66%);
+  transform:translateX(-130%);
+}
+.btn-gold:hover{
+  background:linear-gradient(135deg,#E6C7A3 0%,var(--cobre-1) 50%,var(--cobre-2) 100%);
+  transform:translateY(-3px);
+  box-shadow:0 1px 0 rgba(255,255,255,.4) inset, 0 14px 28px -8px rgba(185,142,101,.7);
+}
+.btn-gold:hover::after{transform:translateX(130%);transition:transform .75s var(--ease);}
+
+/* contorno: preenche da esquerda para a direita */
+.btn-outline,.btn-outline-dark{
+  background-image:linear-gradient(var(--cobre-2),var(--cobre-2));
+  background-repeat:no-repeat;background-position:left center;background-size:0% 100%;
+}
+.btn-outline:hover{
+  background-size:100% 100%;color:var(--navy-deep);border-color:var(--cobre-2);
+  transform:translateY(-3px);box-shadow:0 12px 24px -10px rgba(185,142,101,.55);
+}
+.btn-outline-dark{background-image:linear-gradient(var(--navy-deep),var(--navy-deep));}
+.btn-outline-dark:hover{
+  background-size:100% 100%;color:var(--cream);border-color:var(--navy-deep);
+  transform:translateY(-3px);box-shadow:0 12px 24px -10px rgba(20,38,47,.5);
+}
+.cta-strip .btn-outline-dark:hover{color:var(--cream);}
+
+/* chamada principal da página inicial respira de leve */
+body.hero-pronto .hero-actions .btn-gold:not(:hover){animation:visPulso 3.6s ease-out 2.2s infinite;}
+@keyframes visPulso{
+  0%{box-shadow:0 1px 0 rgba(255,255,255,.35) inset,0 6px 16px -6px rgba(154,112,73,.55),0 0 0 0 rgba(217,182,142,.38);}
+  70%,100%{box-shadow:0 1px 0 rgba(255,255,255,.35) inset,0 6px 16px -6px rgba(154,112,73,.55),0 0 0 14px rgba(217,182,142,0);}
+}
+
+/* ---------- CABEÇALHO ---------- */
+header{transition:background-color .35s ease, box-shadow .35s ease, border-color .35s ease;}
+header .nav-wrap{transition:padding .35s var(--ease);}
+header.header-compacto{
+  background:rgba(14,28,36,.88);
+  box-shadow:0 14px 34px -14px rgba(0,0,0,.55);
+  border-bottom-color:rgba(173,129,91,.45);
+}
+header.header-compacto .nav-wrap{padding:9px 0;}
+nav.main-nav a.top-link{position:relative;border-bottom:2px solid transparent !important;}
+nav.main-nav a.top-link::after{
+  content:"";position:absolute;left:50%;right:50%;bottom:0;height:2px;border-radius:2px;
+  background:linear-gradient(90deg,var(--cobre-3),var(--cobre-1));
+  transition:left .3s var(--ease), right .3s var(--ease);
+}
+nav.main-nav a.top-link:hover::after,
+nav.main-nav li.dd-open > a.top-link::after{left:0;right:0;}
+.dropdown{box-shadow:0 22px 44px -16px rgba(0,0,0,.6);border-radius:12px;transition:opacity .2s ease, transform .25s var(--ease), visibility .2s;}
+.dropdown a{border-radius:8px;transition:background-color .2s ease, color .2s ease, padding-left .25s var(--ease);}
+.dropdown a:hover{padding-left:18px;}
+.icon-btn:hover{transform:translateY(-2px) scale(1.08);color:var(--cobre-1);}
+
+/* ---------- HERO ---------- */
+.hero::before{
+  content:"";position:absolute;inset:-25%;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(38% 42% at 78% 30%, rgba(185,142,101,.22), transparent 70%),
+    radial-gradient(34% 40% at 18% 80%, rgba(46,76,91,.55), transparent 72%),
+    radial-gradient(28% 30% at 55% 55%, rgba(217,182,142,.10), transparent 70%);
+  animation:visAurora 22s ease-in-out infinite alternate;
+}
+@keyframes visAurora{
+  0%{transform:translate3d(-3%,-2%,0) scale(1);}
+  50%{transform:translate3d(3%,2%,0) scale(1.08);}
+  100%{transform:translate3d(-2%,3%,0) scale(1.03);}
+}
+.hero > .container, .hero .hero-foto, .hero .hero-watermark{position:relative;z-index:1;}
+.hero .hero-watermark{position:absolute;translate:0 var(--py,0px);animation:visFlutua 9s ease-in-out infinite;}
+@keyframes visFlutua{0%,100%{rotate:0deg;}50%{rotate:1.6deg;}}
+.hero-foto{animation:visFoto 1.1s var(--ease) both;}
+@keyframes visFoto{from{opacity:0;filter:blur(8px);}to{opacity:1;filter:none;}}
+.hero-eyebrow .rule{transform-origin:left;}
+html.vis-js .hero-eyebrow .rule{transform:scaleX(0);}
+body.hero-pronto .hero-eyebrow .rule{transform:scaleX(1);transition:transform .9s var(--ease) .1s;}
+
+/* título palavra por palavra (sobe de uma "máscara") */
+html.vis-js .hero h1 .pal{display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.12em;margin-bottom:-.12em;}
+html.vis-js .hero h1 .pal > span{display:inline-block;transform:translateY(112%);}
+body.hero-pronto .hero h1 .pal > span{transform:none;transition:transform .9s var(--ease);transition-delay:calc(var(--i) * 55ms + 150ms);}
+html.vis-js .hero p.lead, html.vis-js .hero-actions, html.vis-js .hero-meta{opacity:0;transform:translateY(16px);}
+body.hero-pronto .hero p.lead{opacity:1;transform:none;transition:opacity .8s ease .65s, transform .8s var(--ease) .65s;}
+body.hero-pronto .hero-actions{opacity:1;transform:none;transition:opacity .8s ease .85s, transform .8s var(--ease) .85s;}
+body.hero-pronto .hero-meta{opacity:1;transform:none;transition:opacity .8s ease 1.05s, transform .8s var(--ease) 1.05s;}
+.hero-meta div{position:relative;}
+.hero-meta div span.num{font-variant-numeric:tabular-nums;text-shadow:0 0 22px rgba(217,182,142,.35);}
+
+/* ---------- CARTÕES ---------- */
+.area-card{
+  transition:transform .4s var(--ease), box-shadow .4s ease, border-color .4s ease;
+  overflow:hidden;
+}
+.area-card::before{
+  content:"";position:absolute;left:0;right:0;top:0;height:3px;
+  background:linear-gradient(90deg,var(--cobre-3),var(--cobre-1),#F1DDBF);
+  transform:scaleX(0);transform-origin:left;transition:transform .6s var(--ease);
+}
+.area-card::after{
+  content:"";position:absolute;right:-60px;top:-60px;width:180px;height:180px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(217,182,142,.28),transparent 68%);
+  opacity:0;transform:scale(.6);transition:opacity .5s ease, transform .6s var(--ease);
+}
+.area-card:hover{
+  transform:translateY(-8px);border-color:#D7C3A5;
+  box-shadow:0 30px 56px -24px rgba(20,38,47,.45), 0 4px 10px -4px rgba(20,38,47,.12);
+}
+.area-card:hover::before{transform:scaleX(1);}
+.area-card:hover::after{opacity:1;transform:scale(1);}
+.area-card .icon{transition:transform .5s var(--ease);}
+.area-card:hover .icon{transform:rotate(-7deg) scale(1.1);}
+.area-card li{transition:transform .3s var(--ease), color .3s ease, border-color .3s ease;}
+.area-card li::before{transition:width .3s var(--ease), background-color .3s ease;}
+.area-card li:hover{transform:translateX(6px);color:var(--ink);border-bottom-color:#E4D3B8;}
+.area-card li:hover::before{width:14px;background:var(--cobre-2);}
+
+.post-card,.product-card,.oab-strip{transition:transform .4s var(--ease), box-shadow .4s ease, border-color .4s ease;}
+.post-card:hover{transform:translateY(-6px);border-color:var(--cobre-3);box-shadow:0 26px 48px -20px rgba(0,0,0,.55);}
+.product-card:hover{transform:translateY(-6px);border-color:#D7C3A5;box-shadow:0 26px 48px -22px rgba(20,38,47,.4);}
+.oab-strip:hover{transform:translateY(-4px);border-color:#D7C3A5;box-shadow:0 22px 44px -22px rgba(20,38,47,.35);}
+.shop-tab{transition:background-color .25s ease, color .25s ease, border-color .25s ease, transform .25s var(--ease);}
+.shop-tab:hover{transform:translateY(-2px);}
+
+/* ---------- FAIXA DE CHAMADA (cobre com brilho em movimento) ---------- */
+.cta-strip{
+  position:relative;overflow:hidden;
+  background:linear-gradient(120deg,#A47A55 0%,#B98E65 35%,#D3AE84 55%,#B98E65 72%,#A47A55 100%);
+  background-size:220% 100%;animation:visCobre 14s ease-in-out infinite alternate;
+  box-shadow:0 30px 60px -30px rgba(173,129,91,.55);
+}
+@keyframes visCobre{from{background-position:0% 0;}to{background-position:100% 0;}}
+.cta-strip .cta-inner{position:relative;z-index:1;}
+
+/* ---------- ENTRADA AO ROLAR (uma vez, curta) ---------- */
+.rv{opacity:0;transform:translateY(22px);}
+.rv.rv-in{opacity:1;transform:none;transition:opacity .75s ease var(--d,0ms), transform .85s var(--ease) var(--d,0ms);}
+
+/* ---------- PEQUENOS DETALHES ---------- */
+::selection{background:rgba(185,142,101,.35);color:inherit;}
+.whatsapp-float{transition:transform .3s var(--ease), box-shadow .3s ease;}
+.whatsapp-float:hover{transform:translateY(-4px) scale(1.08);box-shadow:0 14px 30px -6px rgba(37,211,102,.55);}
+.section-head .kicker{position:relative;padding-left:0;}
+.hero-eyebrow, .detalhe-kicker{letter-spacing:.02em;}
+
+@media (hover:none){
+  .area-card:hover,.post-card:hover,.product-card:hover,.oab-strip:hover,.btn:hover{transform:none;}
+}
+@media (prefers-reduced-motion:reduce){
+  .hero::before,.hero .hero-watermark,.cta-strip,.hero-foto{animation:none !important;}
+  html.vis-js .hero h1 .pal > span, html.vis-js .hero p.lead, html.vis-js .hero-actions, html.vis-js .hero-meta, html.vis-js .hero-eyebrow .rule{transform:none !important;opacity:1 !important;transition:none !important;}
+  .rv{opacity:1 !important;transform:none !important;}
+  .btn,.area-card,.post-card,.product-card,.oab-strip{transition:none !important;}
+  body.hero-pronto .hero-actions .btn-gold{animation:none !important;}
+}
+
+/* ===================== ROUND 2 ===================== */
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto;}}
+
+/* cartões secundários (OAB, documentos, parceiro, currículos): filete cobre que cresce */
+.oab-strip{position:relative;overflow:hidden;}
+.oab-strip::before{
+  content:"";position:absolute;left:0;top:18%;bottom:18%;width:3px;border-radius:0 3px 3px 0;
+  background:linear-gradient(180deg,var(--cobre-1),var(--cobre-3));
+  transform:scaleY(.25);transform-origin:center;opacity:.55;
+  transition:transform .5s var(--ease), opacity .4s ease, top .5s var(--ease), bottom .5s var(--ease);
+}
+.oab-strip:hover::before{transform:scaleY(1);opacity:1;top:0;bottom:0;}
+.oab-strip h3{transition:color .3s ease, transform .4s var(--ease);}
+.oab-strip:hover h3{transform:translateX(4px);}
+
+/* seção "Sobre": régua desenhada, aspas de fundo e respiro */
+#sobre{position:relative;overflow:hidden;}
+#sobre::before{
+  content:"\201C";position:absolute;left:max(4%,calc(50% - 560px));top:34px;
+  font-family:'Fraunces',Georgia,serif;font-size:min(34vw,380px);line-height:1;color:rgba(185,142,101,.10);
+  pointer-events:none;user-select:none;
+}
+#sobre .container{position:relative;}
+#sobre .kicker{display:inline-flex;align-items:center;gap:14px;}
+#sobre .kicker::before{
+  content:"";width:46px;height:2px;border-radius:2px;
+  background:linear-gradient(90deg,var(--cobre-3),var(--cobre-1));
+  transform-origin:left;transition:transform .9s var(--ease) .25s;
+}
+#sobre .container.rv:not(.rv-in) .kicker::before{transform:scaleX(0);}
+#sobre h2{max-width:28ch;}
+@media (max-width:700px){#sobre h2{max-width:none;}}
+
+/* título das seções: filete de cobre sob o texto, desenhado ao entrar */
+.section-head h2{position:relative;padding-bottom:16px;}
+.section-head h2::after{
+  content:"";position:absolute;left:0;bottom:0;width:56px;height:3px;border-radius:3px;
+  background:linear-gradient(90deg,var(--cobre-3),var(--cobre-1));
+  transform-origin:left;transition:transform .9s var(--ease) .3s;
+}
+.section-head.rv:not(.rv-in) h2::after{transform:scaleX(0);}
+
+/* rodapé */
+footer{position:relative;}
+footer::before{
+  content:"";position:absolute;left:0;right:0;top:0;height:2px;
+  background:linear-gradient(90deg,transparent,var(--cobre-3) 20%,var(--cobre-1) 50%,var(--cobre-3) 80%,transparent);
+  opacity:.8;
+}
+.footer-col a{position:relative;display:inline-block;transition:color .25s ease, transform .3s var(--ease);}
+.footer-col a::after{
+  content:"";position:absolute;left:0;right:100%;bottom:-2px;height:1px;background:var(--cobre-1);
+  transition:right .35s var(--ease);
+}
+.footer-col a:hover{transform:translateX(4px);}
+.footer-col a:hover::after{right:0;}
+.footer-brand img,.footer-brand svg{transition:transform .6s var(--ease);}
+.footer-brand:hover img,.footer-brand:hover svg{transform:rotate(-6deg) scale(1.06);}
+.footer-bottom a{transition:color .25s ease;}
+.footer-bottom a:hover{color:var(--cobre-1);}
+
+/* logotipo do topo */
+header .logo,header a.brand,header .brand{transition:transform .35s var(--ease);}
+header .brand:hover,header a.logo:hover{transform:translateX(2px);}
+
+/* campos de formulário: brilho suave ao focar */
+input:not([type=checkbox]):not([type=radio]):not([type=file]),select,textarea{
+  transition:border-color .25s ease, box-shadow .3s ease, background-color .25s ease;
+}
+input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus,textarea:focus{
+  border-color:var(--cobre-2) !important;box-shadow:0 0 0 4px rgba(185,142,101,.20) !important;outline:none;
+}
+
+/* WhatsApp: anel que respira de vez em quando */
+.whatsapp-float{position:fixed;}
+.whatsapp-float::before{
+  content:"";position:absolute;inset:0;border-radius:50%;z-index:-1;
+  box-shadow:0 0 0 0 rgba(37,211,102,.45);animation:visZap 5s ease-out 3s infinite;
+}
+@keyframes visZap{0%{box-shadow:0 0 0 0 rgba(37,211,102,.45);}30%,100%{box-shadow:0 0 0 18px rgba(37,211,102,0);}}
+
+/* voltar ao topo */
+#visualTopo{
+  position:fixed;right:22px;bottom:92px;z-index:90;width:46px;height:46px;border-radius:50%;
+  display:grid;place-items:center;cursor:pointer;border:1px solid rgba(217,182,142,.55);
+  background:rgba(14,28,36,.92);color:var(--cobre-1);
+  box-shadow:0 12px 26px -10px rgba(0,0,0,.55);
+  opacity:0;transform:translateY(14px) scale(.9);pointer-events:none;
+  transition:opacity .35s ease, transform .4s var(--ease), background-color .25s ease, color .25s ease;
+}
+#visualTopo.on{opacity:1;transform:none;pointer-events:auto;}
+#visualTopo:hover{background:var(--cobre-2);color:var(--navy-deep);transform:translateY(-3px);}
+#visualTopo:focus-visible{outline:2px solid var(--cobre-1);outline-offset:3px;}
+#visualTopo svg{width:20px;height:20px;}
+
+/* ao abrir uma página interna: entra suavemente (responde ao clique) */
+@keyframes visEntra{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:none;}}
+.vis-entra{animation:visEntra .55s var(--ease) both;}
+
+/* cartões de blog/livros: imagem aproxima de leve */
+.post-card img,.product-card img{transition:transform .8s var(--ease);}
+.post-card:hover img,.product-card:hover img{transform:scale(1.04);}
+
+@media (prefers-reduced-motion:reduce){
+  .whatsapp-float::before{animation:none;}
+  .vis-entra{animation:none;}
+  #visualTopo{transition:none;}
+  .oab-strip::before,.footer-col a,.footer-col a::after{transition:none !important;}
+}
+@media (hover:none){.oab-strip:hover h3,.footer-col a:hover,.post-card:hover img,.product-card:hover img{transform:none;}}
+
 </style>
 </head>
 <body>
@@ -2005,10 +2315,9 @@
     const res = await fetch(`${API_URL}/artigos/${encodeURIComponent(slug)}`);
     if (!res.ok) throw new Error('Artigo não encontrado');
     const art = await res.json();
-    const coverStyle = art.capa_url ? ` style="background-image:url('${art.capa_url}')"` : '';
     detalheConteudo.innerHTML = `
       ${BOTAO_VOLTAR}
-      <div class="detalhe-cover"${coverStyle}></div>
+      ${art.capa_url ? `<div class="detalhe-cover has-img"><img src="${escAttr(art.capa_url)}" alt=""></div>` : '<div class="detalhe-cover"></div>'}
       <span class="detalhe-kicker">${CATEGORIA_LABEL[art.categoria] || art.categoria}</span>
       <h1 class="detalhe-titulo">${escapeHtml(art.titulo)}</h1>
       <span class="detalhe-meta">${formatData(art.data_publicacao || art.criado_em)}</span>
@@ -2037,7 +2346,7 @@
     const externo = tipo === 'livro' && linkExterno(item);
     detalheConteudo.innerHTML = `
       ${BOTAO_VOLTAR}
-      <div class="detalhe-cover"${coverStyle}>${item.capa_url ? '' : icon}</div>
+      ${item.capa_url ? `<div class="detalhe-cover has-img"><img src="${escAttr(item.capa_url)}" alt=""></div>` : `<div class="detalhe-cover">${icon}</div>`}
       <span class="detalhe-kicker">${CATEGORIA_LABEL[item.categoria] || item.categoria}</span>
       <h1 class="detalhe-titulo">${escapeHtml(item.titulo)}</h1>
       ${item.descricao && item.descricao_html
@@ -3394,5 +3703,151 @@
   </svg>
 </a>
 
+<script id="visual-vivo-js">
+/* ===================== VISUAL VIVO (teste) — comportamento ===================== */
+(function () {
+  'use strict';
+  var docEl = document.documentElement;
+  var reduz = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var header = document.querySelector('header');
+  var watermark = document.querySelector('.hero-watermark');
+
+  // barra de progresso + cabeçalho compacto + leve paralaxe da marca d'água
+  var barra = document.createElement('div');
+  barra.id = 'visualProgresso';
+  document.body.appendChild(barra);
+  var agendado = false;
+  function aoRolar() {
+    agendado = false;
+    var y = window.pageYOffset || docEl.scrollTop;
+    var max = docEl.scrollHeight - docEl.clientHeight;
+    barra.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, y / max) : 0) + ')';
+    if (header) header.classList.toggle('header-compacto', y > 40);
+    if (watermark && !reduz) watermark.style.setProperty('--py', Math.min(y, 700) * -0.08 + 'px');
+  }
+  window.addEventListener('scroll', function () { if (!agendado) { agendado = true; requestAnimationFrame(aoRolar); } }, { passive: true });
+  aoRolar();
+
+  if (reduz) { document.body.classList.add('hero-pronto'); return; }
+  docEl.classList.add('vis-js');
+
+  // ----- título do hero: palavra por palavra -----
+  var titulo = document.getElementById('homeTitulo');
+  var dividindo = false;
+  function dividir() {
+    if (!titulo || dividindo) return;
+    if (titulo.querySelector('.pal')) return;
+    var texto = (titulo.textContent || '').trim();
+    if (!texto) return;
+    dividindo = true;
+    titulo.setAttribute('aria-label', texto);
+    titulo.textContent = '';
+    texto.split(/\s+/).forEach(function (palavra, i) {
+      var casca = document.createElement('span'); casca.className = 'pal'; casca.setAttribute('aria-hidden', 'true');
+      var dentro = document.createElement('span'); dentro.textContent = palavra; dentro.style.setProperty('--i', i);
+      casca.appendChild(dentro);
+      titulo.appendChild(casca);
+      titulo.appendChild(document.createTextNode(' '));
+    });
+    dividindo = false;
+  }
+  dividir();
+  if (titulo) new MutationObserver(function () { dividir(); }).observe(titulo, { childList: true, characterData: true });
+
+  // ----- números do hero: contam até o valor -----
+  var contados = new WeakSet();
+  function contar() {
+    document.querySelectorAll('#homeStats .num').forEach(function (el) {
+      if (contados.has(el)) return;
+      contados.add(el);
+      var m = /^(\D*)(\d+)(.*)$/.exec(el.textContent.trim());
+      if (!m) return;
+      var pre = m[1], alvo = parseInt(m[2], 10), pos = m[3], t0 = null, dur = 1500;
+      el.textContent = pre + '0' + pos;
+      function passo(t) {
+        if (t0 === null) t0 = t;
+        var p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3);
+        el.textContent = pre + Math.round(alvo * e) + pos;
+        if (p < 1) requestAnimationFrame(passo);
+      }
+      setTimeout(function () { requestAnimationFrame(passo); }, 1100);
+    });
+  }
+  var stats = document.getElementById('homeStats');
+  if (stats) new MutationObserver(function () { if (document.body.classList.contains('hero-pronto')) contar(); }).observe(stats, { childList: true, subtree: true });
+
+  // começa a animação do hero quando a tela de boas-vindas sai
+  var iniciou = false;
+  function iniciar() {
+    if (iniciou) return; iniciou = true;
+    document.body.classList.add('hero-pronto');
+    contar();
+  }
+  var splash = document.getElementById('splash');
+  if (splash) {
+    new MutationObserver(function () { if (splash.classList.contains('splash-hide')) iniciar(); }).observe(splash, { attributes: true, attributeFilter: ['class'] });
+    setTimeout(iniciar, 4500); // garantia
+  } else iniciar();
+
+  // ----- entrada ao rolar: títulos de seção e cartões (uma vez) -----
+  var alvos = '.section-head, .area-card, .post-card, .product-card, .oab-strip, #sobre .container, .cta-strip';
+  var io = 'IntersectionObserver' in window ? new IntersectionObserver(function (itens) {
+    itens.forEach(function (it) {
+      if (!it.isIntersecting) return;
+      var el = it.target; io.unobserve(el);
+      el.classList.add('rv-in');
+      // depois de aparecer, devolve o elemento ao CSS normal (para o hover funcionar sem atraso)
+      setTimeout(function () { el.classList.remove('rv', 'rv-in'); el.style.removeProperty('--d'); }, 1300 + (parseInt(el.style.getPropertyValue('--d')) || 0));
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -5% 0px' }) : null;
+  function marcar() {
+    if (!io) return;
+    var vistos = new Map();
+    document.querySelectorAll('#homeContent ' + alvos.split(',').join(', #homeContent ')).forEach(function (el) {
+      if (el.dataset.rv) return;
+      el.dataset.rv = '1';
+      var pai = el.parentElement, n = vistos.get(pai) || 0; vistos.set(pai, n + 1);
+      el.classList.add('rv'); el.style.setProperty('--d', Math.min(n, 4) * 90 + 'ms');
+      io.observe(el);
+    });
+  }
+  marcar();
+  var home = document.getElementById('homeContent');
+  var pend = false;
+  if (home) new MutationObserver(function () { if (pend) return; pend = true; requestAnimationFrame(function () { pend = false; marcar(); }); }).observe(home, { childList: true, subtree: true });
+})();
+
+/* ===================== ROUND 2 — comportamento ===================== */
+(function () {
+  'use strict';
+  var reduz = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // botão de voltar ao topo
+  var topo = document.createElement('button');
+  topo.id = 'visualTopo'; topo.type = 'button'; topo.setAttribute('aria-label', 'Voltar ao topo');
+  topo.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M5 12l7-7 7 7"/></svg>';
+  document.body.appendChild(topo);
+  topo.addEventListener('click', function () { window.scrollTo({ top: 0, behavior: reduz ? 'auto' : 'smooth' }); });
+  var ag = false;
+  function mostrar() { ag = false; topo.classList.toggle('on', (window.pageYOffset || 0) > 700); }
+  window.addEventListener('scroll', function () { if (!ag) { ag = true; requestAnimationFrame(mostrar); } }, { passive: true });
+  mostrar();
+
+  // páginas internas entram suavemente quando o conteúdo é trocado
+  if (reduz) return;
+  var alvo = document.getElementById('detalheConteudo');
+  var ultimo = '';
+  if (alvo) new MutationObserver(function () {
+    var h = location.hash;
+    if (h === ultimo) return;
+    if (!alvo.textContent || alvo.textContent.indexOf('Carregando') !== -1) return;
+    ultimo = h;
+    alvo.classList.remove('vis-entra'); void alvo.offsetWidth; alvo.classList.add('vis-entra');
+    window.scrollTo(0, 0);
+  }).observe(alvo, { childList: true });
+  window.addEventListener('hashchange', function () { if (!location.hash) ultimo = ''; });
+})();
+
+</script>
 </body>
 </html>
