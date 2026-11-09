@@ -687,6 +687,7 @@
     font-family:inherit;color:var(--ink);
   }
   .checkout-field input:focus{outline:none;border-color:var(--gold);}
+  .texto-rico p{margin:0 0 0.7em;} .texto-rico p:last-child{margin-bottom:0;} .texto-rico ul,.texto-rico ol{margin:0 0 0.7em 1.3em;}
   .checkout-erro{color:#B5493C;font-size:0.86rem;margin-bottom:14px;display:none;}
   .checkout-erro.show{display:block;}
   .checkout-box .btn{width:100%;justify-content:center;margin-top:6px;}
@@ -1332,6 +1333,8 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       <input type="password" id="loginSenha" placeholder="Sua senha">
     </div>
     <button class="btn btn-gold" id="loginConfirmar">Entrar</button>
+    <p class="checkout-item" style="margin-top:12px;text-align:center;"><a href="#" id="irEsqueci" style="color:var(--gold);">Esqueci minha senha</a></p>
+    <p class="checkout-erro" id="esqueciMsg" style="display:none;margin-top:8px;"></p>
     <p class="checkout-item" style="margin-top:14px;text-align:center;">Ainda não tem conta? <a href="#" id="irParaCadastro" style="color:var(--gold);">Criar conta</a></p>
   </div>
 </div>
@@ -1557,6 +1560,18 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
   const CATEGORIA_LABEL = {
     trabalhista: "Direito do Trabalho",
     previdenciario: "Direito Previdenciário",
+    civil: "Direito Civil",
+    penal: "Direito Penal",
+    familia: "Família e Sucessões",
+    tributario: "Direito Tributário",
+    empresarial: "Direito Empresarial",
+    consumidor: "Direito do Consumidor",
+    processual: "Processo Civil e Trabalhista",
+    constitucional: "Direito Constitucional",
+    administrativo: "Direito Administrativo",
+    concursos: "Concursos",
+    oab: "Exame da OAB",
+    outros: "Outros",
     noticias: "Notícias",
     artigos: "Artigos científicos"
   };
@@ -1607,6 +1622,8 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     if (mPar) return { tipo: 'parceiros', chave: mPar[1] };
     const mParPasta = h.match(/^parceiros-pasta-(\d+)$/);
     if (mParPasta) return { tipo: 'parceiros', chave: 'pastas', extra: mParPasta[1] };
+    const mRedef = h.match(/^redefinir-senha-([a-f0-9]{64})$/);
+    if (mRedef) return { tipo: 'redefinir-senha', chave: mRedef[1] };
     const mParConv = h.match(/^parceiro-convite-([a-f0-9]{48})$/);
     if (mParConv) return { tipo: 'parceiro-convite', chave: mParConv[1] };
     const mCursoAulas = h.match(/^portal-curso-(\d+)$/);
@@ -1969,11 +1986,27 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
   function aplicarHome(h){
     if (!h) return;
     const txt = (id, v) => { const el = document.getElementById(id); if (el && v) el.textContent = v; };
-    txt('homeEyebrow', h.hero_eyebrow); txt('homeTitulo', h.hero_titulo); txt('homeTexto', h.hero_texto);
+    // Texto formatado no painel (alinhamento, fonte, tamanho): o HTML é limpo aqui antes de ir para a tela.
+    // Em títulos, cada parágrafo vira um bloco <div> para não colocar <p> dentro de <h1>/<h2>.
+    const rico = (id, chave, titulo) => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const html = h[chave + '_html'];
+      if (html && h[chave]){
+        let limpo = limparHtmlArtigo(html);
+        if (titulo) limpo = limpo.replace(/<p(\s|>)/g, '<div$1').replace(/<\/p>/g, '</div>');
+        el.innerHTML = limpo;
+        el.classList.add('texto-rico');
+      } else {
+        el.classList.remove('texto-rico');
+        if (h[chave]) el.textContent = h[chave];
+      }
+    };
+    txt('homeEyebrow', h.hero_eyebrow); rico('homeTitulo', 'hero_titulo', true); rico('homeTexto', 'hero_texto');
     txt('homeBotao1', h.hero_botao1); txt('homeBotao2', h.hero_botao2);
-    txt('homeAreasKicker', h.areas_kicker); txt('homeAreasTitulo', h.areas_titulo); txt('homeAreasTexto', h.areas_texto);
-    txt('homeCtaTitulo', h.cta_titulo); txt('homeCtaBotao', h.cta_botao);
-    txt('homeSobreKicker', h.sobre_kicker); txt('homeSobreTitulo', h.sobre_titulo); txt('homeSobreTexto', h.sobre_texto); txt('homeSobreBotao', h.sobre_botao);
+    txt('homeAreasKicker', h.areas_kicker); rico('homeAreasTitulo', 'areas_titulo', true); rico('homeAreasTexto', 'areas_texto');
+    rico('homeCtaTitulo', 'cta_titulo', true); txt('homeCtaBotao', h.cta_botao);
+    txt('homeSobreKicker', h.sobre_kicker); rico('homeSobreTitulo', 'sobre_titulo', true); rico('homeSobreTexto', 'sobre_texto'); txt('homeSobreBotao', h.sobre_botao);
     const st = document.getElementById('homeStats');
     if (st && Array.isArray(h.stats) && h.stats.length){
       st.innerHTML = '';
@@ -2928,6 +2961,49 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     });
   }
 
+  // "Esqueci minha senha": pede o e-mail; o link recebido abre #redefinir-senha-<token>.
+  async function pedirNovaSenha(){
+    const email = loginEmailEl.value.trim();
+    const m = document.getElementById('esqueciMsg');
+    m.style.display = 'block';
+    if (!email){ m.className = 'checkout-erro show'; m.textContent = 'Digite seu e-mail acima e clique de novo em "Esqueci minha senha".'; return; }
+    m.className = 'checkout-erro show'; m.textContent = 'Enviando…';
+    try{
+      const res = await fetch(`${API_URL}/alunos/esqueci-senha`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email }) });
+      const d = await res.json().catch(() => null);
+      if (!res.ok) throw new Error((d && d.erro) || 'Não foi possível enviar agora.');
+      m.style.color = 'var(--gold-light)'; m.textContent = d.mensagem;
+    }catch(err){ m.style.color = ''; m.textContent = err.message; }
+  }
+
+  async function mostrarRedefinirSenha(token){
+    const box = parcPrepararPagina();
+    box.innerHTML = `${BOTAO_VOLTAR}<div class="compras-topo"><div><h1>Criar nova senha</h1></div></div>
+      <div class="portal-painel" style="max-width:520px;">
+        <p>Escolha uma senha com pelo menos 6 caracteres.</p>
+        <div class="portal-form">
+          <div class="checkout-field"><label for="rdSenha">Nova senha</label><input id="rdSenha" type="password" autocomplete="new-password" maxlength="100"></div>
+          <div class="checkout-field"><label for="rdSenha2">Repita a senha</label><input id="rdSenha2" type="password" autocomplete="new-password" maxlength="100"></div>
+        </div>
+        <div class="portal-acoes"><button class="btn btn-gold" id="rdSalvar">Salvar nova senha</button><span class="portal-msg" id="rdMsg" role="alert"></span></div>
+      </div>`;
+    parcLigarVoltar();
+    document.getElementById('rdSalvar').addEventListener('click', async (e) => {
+      const m = document.getElementById('rdMsg'), btn = e.currentTarget, senha = document.getElementById('rdSenha').value;
+      m.className = 'portal-msg erro';
+      if (senha.length < 6) return (m.textContent = 'A senha precisa ter pelo menos 6 caracteres.');
+      if (senha !== document.getElementById('rdSenha2').value) return (m.textContent = 'As senhas não são iguais.');
+      btn.disabled = true;
+      try{
+        const res = await fetch(`${API_URL}/alunos/redefinir-senha`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ token, senha }) });
+        const d = await res.json().catch(() => null);
+        if (!res.ok) throw new Error((d && d.erro) || 'Não foi possível trocar a senha agora.');
+        box.querySelector('.portal-painel').innerHTML = `<p>Senha alterada com sucesso.</p><div class="portal-acoes"><button class="btn btn-gold" id="rdEntrar">Entrar na minha conta</button></div>`;
+        document.getElementById('rdEntrar').addEventListener('click', () => { location.hash = ''; abrirLogin(); });
+      }catch(err){ m.textContent = err.message; btn.disabled = false; }
+    });
+  }
+
   async function route(){
     const rota = parseHash();
     const comprasPg = document.getElementById('comprasPage');
@@ -2939,6 +3015,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     if (rota.tipo === 'portal'){ mostrarPortal(rota.chave, rota.extra); return; }
     if (rota.tipo === 'parceiros'){ mostrarParceiros(rota.chave, rota.extra); return; }
     if (rota.tipo === 'parceiro-convite'){ mostrarConviteParceiro(rota.chave); return; }
+    if (rota.tipo === 'redefinir-senha'){ mostrarRedefinirSenha(rota.chave); return; }
 
     mostrarDetalhe();
     detalheConteudo.style.maxWidth = '760px';
@@ -3938,6 +4015,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     loginErroEl.textContent = '';
     loginEmailEl.value = emailPreenchido || '';
     loginSenhaEl.value = '';
+    const em = document.getElementById('esqueciMsg'); if (em){ em.style.display = 'none'; em.style.color = ''; }
     loginOverlay.classList.add('open');
   }
   function fecharLogin(){ loginOverlay.classList.remove('open'); }
@@ -3957,6 +4035,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
 
   document.getElementById('loginClose').addEventListener('click', fecharLogin);
   loginOverlay.addEventListener('click', (e) => { if (e.target === loginOverlay) fecharLogin(); });
+  document.getElementById('irEsqueci').addEventListener('click', (e) => { e.preventDefault(); pedirNovaSenha(); });
   document.getElementById('irParaCadastro').addEventListener('click', (e) => { e.preventDefault(); fecharLogin(); location.hash = 'cadastro'; });
 
   cadastroConfirmarBtn.addEventListener('click', async () => {
