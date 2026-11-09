@@ -165,11 +165,31 @@
     width:100%;background:var(--navy-deep);border:1px solid var(--navy-line);color:var(--cream);
     border-radius:8px;padding:11px 12px;font:inherit;font-size:0.92rem;
   }
+  .portal-painel input[type=checkbox], .portal-painel input[type=radio]{width:18px;height:18px;padding:0;flex:none;accent-color:var(--gold);}
+  .prov-servicos{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:0 0 18px;}
+  .prov-serv{border:1px solid var(--navy-line);border-radius:12px;padding:16px 18px;background:var(--navy-deep);position:relative;}
+  .prov-serv.s1{border-color:#8E6B47;}
+  .prov-serv .sel{display:inline-block;font-size:0.72rem;letter-spacing:0.05em;text-transform:uppercase;font-weight:700;color:var(--navy-deep);background:var(--gold-light);border-radius:20px;padding:3px 10px;margin-bottom:10px;}
+  .prov-serv.s2 .sel{background:transparent;color:var(--gold-light);border:1px solid var(--gold-light);}
+  .prov-serv h4{color:var(--cream);font-family:'Fraunces',serif;font-weight:500;font-size:1.05rem;margin:0 0 4px;}
+  .prov-serv .preco{color:var(--gold-light);font-weight:700;font-size:0.95rem;margin-bottom:6px;display:block;}
+  .prov-serv p{color:var(--cream-2);font-size:0.86rem;margin:0;}
+  .prov-seta{grid-column:1/-1;text-align:center;color:var(--cream-2);font-size:0.82rem;margin:-4px 0;}
+  .prov-selo{display:inline-block;font-size:0.72rem;letter-spacing:0.04em;text-transform:uppercase;font-weight:700;border-radius:20px;padding:3px 10px;margin-top:6px;background:var(--gold-light);color:var(--navy-deep);}
+  .prov-selo.s2{background:transparent;color:var(--gold-light);border:1px solid var(--gold-light);}
+  .prov-multi{display:grid;gap:8px;}
+  .prov-multi .prov-slot{margin:0;}
+  .prov-multi-cab{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;}
+  .prov-multi-cab span{color:var(--cream-2);font-size:0.82rem;}
+  .prov-contador{font-variant-numeric:tabular-nums;}
+  @media (max-width:700px){ .prov-servicos{grid-template-columns:1fr;} }
   .portal-painel input:focus, .portal-painel select:focus, .portal-painel textarea:focus{outline:none;border-color:var(--gold);}
   .portal-painel input[readonly]{opacity:0.65;}
   .portal-painel textarea{min-height:80px;resize:vertical;}
   .portal-acoes{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-top:18px;}
   .portal-msg{font-size:0.86rem;}
+  .parc-linha{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding:14px 0;border-bottom:1px solid var(--navy-line);}
+  .parc-linha:last-child{border-bottom:0;}
   .portal-msg.ok{color:#8FCB9B;}
   .portal-msg.erro{color:#E58B7E;}
   .compra-capa{width:56px;height:56px;border-radius:8px;background:var(--navy-deep) center/contain no-repeat;flex:none;border:1px solid var(--navy-line);}
@@ -551,6 +571,18 @@
   .texto-legal p, .texto-legal li{color:var(--ink-soft);font-size:0.98rem;margin-bottom:10px;}
   .texto-legal ul{padding-left:22px;margin-bottom:10px;}
   .texto-editavel{margin-bottom:38px;}
+  .cv-cabeca{display:flex;gap:28px;align-items:flex-end;margin-bottom:8px;}
+  .cv-cabeca > div{flex:1;min-width:0;}
+  .cv-foto{display:block;width:auto;max-width:210px;max-height:270px;height:auto;border-radius:14px;border:1px solid #D7C3A5;box-shadow:0 18px 40px -22px rgba(20,38,47,.5);background:#fff;padding:5px;}
+  @media (max-width:640px){ .cv-cabeca.com-foto{flex-direction:column;align-items:flex-start;} .cv-foto{max-width:170px;max-height:220px;} }
+  #sobre .sobre-grid{display:block;}
+  #sobre .sobre-foto{display:none;margin:0;}
+  #sobre.com-foto .container{max-width:1000px !important;}
+  #sobre.com-foto .sobre-grid{display:grid;grid-template-columns:minmax(0,300px) 1fr;gap:48px;align-items:center;}
+  #sobre.com-foto .sobre-foto{display:block;position:relative;}
+  #sobre.com-foto .sobre-foto img{display:block;width:100%;height:auto;border-radius:16px;border:1px solid #D7C3A5;background:#fff;padding:6px;box-shadow:0 30px 60px -30px rgba(20,38,47,.55);position:relative;z-index:1;}
+  #sobre.com-foto .sobre-foto::before{content:"";position:absolute;inset:18px -14px -14px 18px;border-radius:18px;border:2px solid var(--cobre-2,#B98E65);opacity:.55;z-index:0;}
+  @media (max-width:820px){ #sobre.com-foto .sobre-grid{grid-template-columns:1fr;gap:30px;} #sobre.com-foto .sobre-foto{max-width:260px;} }
   .texto-legal ol{padding-left:22px;margin-bottom:10px;}
   .texto-legal h3{font-family:'Fraunces',serif;font-weight:500;font-size:1.1rem;margin:20px 0 8px;color:var(--ink);}
   .texto-legal blockquote{border-left:3px solid var(--gold);padding:4px 0 4px 16px;margin:14px 0;color:var(--ink-soft);}
@@ -1175,6 +1207,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
             <a href="#curriculo">Currículo do Dr. Israel</a>
             <a href="#portal-processos">Cliente — acompanhar meu processo</a>
             <a href="#seja-parceiro">Seja parceiro</a>
+            <a href="#parceiros">Área do advogado parceiro</a>
             <a href="#trabalhe-conosco">Currículos — trabalhe conosco</a>
             <a href="#faq">Dúvidas frequentes (FAQ)</a>
             <a href="#" id="linkMidia" target="_blank" rel="noopener" style="display:none">Mídia — canal no YouTube</a>
@@ -1416,6 +1449,9 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
 <!-- ================= SOBRE ================= -->
 <section class="section" id="sobre">
   <div class="container" style="max-width:760px;">
+   <div class="sobre-grid">
+    <figure class="sobre-foto" id="homeSobreFotoBox"><img id="homeSobreFoto" alt="Dr. Israel Donizete da Silva" loading="lazy"></figure>
+    <div class="sobre-texto">
     <span class="kicker" id="homeSobreKicker">SOBRE</span>
     <h2 id="homeSobreTitulo" style="font-size:2rem;margin:14px 0 20px;">Atendimento próximo, do primeiro contato à solução do seu caso</h2>
     <p id="homeSobreTexto" style="color:var(--ink-soft);font-size:1.02rem;">
@@ -1423,6 +1459,8 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       acompanhando cada cliente com atenção individual — da análise inicial do caso até o desfecho do processo.
     </p>
     <a href="#curriculo" class="btn btn-outline-dark" id="homeSobreBotao" style="margin-top:22px;">Conheça a formação do Dr. Israel</a>
+    </div>
+   </div>
   </div>
 </section>
 
@@ -1452,6 +1490,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
           <li><a href="#enviar-documentos">Enviar documentos</a></li>
           <li><a href="#faq">Dúvidas frequentes</a></li>
           <li><a href="#seja-parceiro">Seja parceiro</a></li>
+          <li><a href="#parceiros">Área do advogado parceiro</a></li>
           <li><a href="#trabalhe-conosco">Trabalhe conosco</a></li>
           <li><a href="#contato">Atendimento</a></li>
         </ul>
@@ -1563,6 +1602,13 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     if (h === 'carrinho') return { tipo: 'carrinho', chave: null };
     if (h === 'minhas-compras') return { tipo: 'portal', chave: 'livros' };
     if (h === 'portal') return { tipo: 'portal', chave: 'inicio' };
+    if (h === 'parceiros') return { tipo: 'parceiros', chave: 'inicio' };
+    const mPar = h.match(/^parceiros-(pastas|honorarios|ferramentas|conta)$/);
+    if (mPar) return { tipo: 'parceiros', chave: mPar[1] };
+    const mParPasta = h.match(/^parceiros-pasta-(\d+)$/);
+    if (mParPasta) return { tipo: 'parceiros', chave: 'pastas', extra: mParPasta[1] };
+    const mParConv = h.match(/^parceiro-convite-([a-f0-9]{48})$/);
+    if (mParConv) return { tipo: 'parceiro-convite', chave: mParConv[1] };
     const mCursoAulas = h.match(/^portal-curso-(\d+)$/);
     if (mCursoAulas) return { tipo: 'portal', chave: 'cursos', extra: mCursoAulas[1] };
     const mPortal = h.match(/^portal-(conta|livros|cursos|provimento|financeiro|processos)$/);
@@ -1691,9 +1737,13 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     'oab-2fase': {
       kicker: 'SERVIÇO PARA CANDIDATOS',
       titulo: 'OAB 2ª fase (Provimento)',
-      intro: 'Recurso para candidatos da 2ª fase do Exame de Ordem, em duas etapas: primeiro a análise de viabilidade da sua prova e, se couber recurso, a elaboração da minuta. Todo o envio é feito pela área do aluno.',
-      itens: ['Análise de viabilidade da peça e das questões','Elaboração da minuta do recurso (se viável)','Recurso disponível na área do aluno e no seu e-mail','Avisos por e-mail em cada etapa','Atende as 7 disciplinas da 2ª fase'],
-      docs: ['Folhas de resposta da peça prático-profissional (todas)','Folhas de resposta das questões discursivas (questões 1, 2, 3 e 4, cada uma em um arquivo)','Seus dados de examinando (inscrição, exame e seccional)'],
+      intro: 'São dois serviços, contratados em sequência: primeiro a Análise de viabilidade da sua prova e, só depois, se couber recurso, o Provimento (elaboração do recurso). Todo o envio é feito pela área do aluno.',
+      itens: [],
+      servicos: [
+        { t: 'Serviço 1 — Análise de viabilidade', itens: ['Análise de viabilidade da peça e das questões','Resultado informado na área do aluno e por e-mail','Atende as 7 disciplinas da 2ª fase'] },
+        { t: 'Serviço 2 — Provimento (elaboração do recurso)', itens: ['Contratado depois, somente se a análise indicar que o recurso é viável','Elaboração da minuta do recurso','Recurso disponível na área do aluno e no seu e-mail','O protocolo na FGV é feito por você'] }
+      ],
+      docs: ['Folhas de resposta da peça prático-profissional (todas as folhas; você pode anexar vários arquivos de uma vez)','Folhas de resposta das questões discursivas (questões 1, 2, 3 e 4, cada uma em um arquivo)','Seus dados de examinando (inscrição, exame e seccional)'],
       msg: 'Olá! Vim pelo site e gostaria de saber mais sobre o serviço para a OAB 2ª fase (Provimento).'
     }
   };
@@ -1880,10 +1930,16 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     detalheConteudo.style.maxWidth = '820px';
     const ov = pagOv(chave);
     if (chave === 'curriculo'){
+      const fotoCv = (SITE_CONFIG && /^https:\/\//i.test(SITE_CONFIG.foto_perfil || '')) ? SITE_CONFIG.foto_perfil : '';
       detalheConteudo.innerHTML = `
         ${BOTAO_VOLTAR}
-        <span class="detalhe-kicker" style="display:block;">SOBRE</span>
-        <h1 class="detalhe-titulo">${escapeHtml((ov && ov.titulo) || 'Dr. Israel Donizete da Silva')}</h1>
+        <div class="cv-cabeca ${fotoCv ? 'com-foto' : ''}">
+          ${fotoCv ? `<img class="cv-foto" src="${escAttr(fotoCv)}" alt="Dr. Israel Donizete da Silva">` : ''}
+          <div>
+            <span class="detalhe-kicker" style="display:block;">SOBRE</span>
+            <h1 class="detalhe-titulo" style="margin-bottom:0;">${escapeHtml((ov && ov.titulo) || 'Dr. Israel Donizete da Silva')}</h1>
+          </div>
+        </div>
         ${ov && ov.html ? textoEditavel(ov.html) : `
         <p class="servico-intro">Advogado com atuação nas áreas Trabalhista e Previdenciária · OAB/SP 528153</p>
         <div class="servico-bloco"><h2>Formação acadêmica</h2>${cvLista(CV.formacao)}</div>
@@ -1932,8 +1988,15 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     else if (foto){ foto.removeAttribute('src'); foto.style.display = 'none'; hero.classList.remove('com-foto'); }
     document.documentElement.style.fontSize = ({ pequeno: '90%', grande: '112%' })[h.escala] || '';
   }
+  function aplicarFotoPerfil(url){
+    const sec = document.getElementById('sobre'), img = document.getElementById('homeSobreFoto');
+    if (!sec || !img) return;
+    if (/^https:\/\//i.test(url || '')){ img.src = url; sec.classList.add('com-foto'); }
+    else { img.removeAttribute('src'); sec.classList.remove('com-foto'); }
+  }
   carregarSiteConfig().then(c => {
     aplicarHome(c.home);
+    aplicarFotoPerfil(c.foto_perfil);
     const a = document.getElementById('linkMidia');
     if (a && /^https:\/\//i.test(c.youtube_url || '')){ a.href = c.youtube_url; a.style.display = ''; }
   });
@@ -2162,10 +2225,15 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       ${ov && ov.html ? textoEditavel(ov.html) : `
       <p class="servico-intro">${sv.intro}</p>
 
+      ${sv.servicos ? sv.servicos.map(x => `
+      <div class="servico-bloco">
+        <h2>${x.t}</h2>
+        <ul class="servico-lista">${x.itens.map(i => `<li>${i}</li>`).join('')}</ul>
+      </div>`).join('') : `
       <div class="servico-bloco">
         <h2>${chave.startsWith('oab-') ? 'O que está incluído' : 'Em que podemos ajudar'}</h2>
         <ul class="servico-lista">${sv.itens.map(i => `<li>${i}</li>`).join('')}</ul>
-      </div>
+      </div>`}
 
       <div class="servico-bloco">
         <h2>Como funciona</h2>
@@ -2175,9 +2243,9 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
           <li><b>Leia os artigos.</b> O Dr. Israel publica artigos sobre as questões e os pontos de recurso.</li>
           <li><b>Protocole na FGV.</b> O recurso é protocolado por você, no site da FGV, dentro do prazo do edital.</li>` : chave === 'oab-2fase' ? `
           <li><b>Crie sua conta.</b> Entre na Área do aluno do site.</li>
-          <li><b>Envie sua prova.</b> Escolha a disciplina e anexe cada arquivo no seu campo: peça e questões 1, 2, 3 e 4.</li>
-          <li><b>Análise de viabilidade.</b> O Dr. Israel avalia se cabe recurso e você recebe o resultado por e-mail.</li>
-          <li><b>Elaboração do recurso.</b> Se for viável, o recurso é elaborado e fica disponível na área do aluno e no seu e-mail. O protocolo na FGV é feito por você.</li>` : `
+          <li><b>Envie sua prova.</b> Escolha a disciplina e anexe a peça (pode ser em vários arquivos, de uma vez) e as questões 1, 2, 3 e 4, cada uma no seu campo.</li>
+          <li><b>Serviço 1 — Análise de viabilidade.</b> Você paga a análise e o Dr. Israel avalia se cabe recurso. O resultado chega por e-mail.</li>
+          <li><b>Serviço 2 — Provimento.</b> Se o recurso for viável, você contrata o Provimento e o recurso é elaborado. Ele fica na área do aluno e no seu e-mail. O protocolo na FGV é feito por você.</li>` : `
           <li><b>Fale com a gente.</b> Chame pelo WhatsApp e conte rapidamente a sua situação.</li>
           <li><b>Envie seus documentos.</b> Você manda as cópias pelo WhatsApp ou por e-mail, como preferir.</li>
           <li><b>Análise do caso.</b> O advogado avalia o material e explica os próximos passos.</li>
@@ -2190,7 +2258,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       <div class="servico-bloco servico-portal">
         <div>
           <h2>Envie sua prova pelo portal do aluno</h2>
-          <p class="servico-intro" style="margin:0;">Escolha a disciplina, anexe a peça e as questões 1, 2, 3 e 4 (cada uma em um arquivo), e acompanhe a análise e o recurso por lá.</p>
+          <p class="servico-intro" style="margin:0;">Comece pelo Serviço 1 (análise de viabilidade): escolha a disciplina, anexe a peça (pode ser em vários arquivos) e as questões 1, 2, 3 e 4. O Provimento (Serviço 2) é contratado depois, se o recurso for viável.</p>
         </div>
         <a class="btn btn-gold" href="#portal-provimento">Enviar minha prova</a>
       </div>` : ''}
@@ -2563,6 +2631,303 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     });
   }
 
+  // ============= ÁREA RESTRITA DOS ADVOGADOS PARCEIROS =============
+  // Login próprio (token só na aba do navegador: sessionStorage), separado do portal do aluno.
+  const PARC_ABAS = [
+    { id: 'inicio', nome: 'Início', hash: 'parceiros' },
+    { id: 'pastas', nome: 'Pastas dos clientes', hash: 'parceiros-pastas' },
+    { id: 'honorarios', nome: 'Honorários', hash: 'parceiros-honorarios' },
+    { id: 'ferramentas', nome: 'Ferramentas', hash: 'parceiros-ferramentas' },
+    { id: 'conta', nome: 'Minha conta', hash: 'parceiros-conta' },
+  ];
+  const parcLer = (k) => { try { return sessionStorage.getItem(k); } catch (e) { return null; } };
+  function parcGuardar(token, nome){ try { sessionStorage.setItem('tokenParceiro', token); sessionStorage.setItem('nomeParceiro', nome || ''); } catch (e) {} }
+  function parcSair(){ try { sessionStorage.removeItem('tokenParceiro'); sessionStorage.removeItem('nomeParceiro'); } catch (e) {} }
+
+  async function apiParc(caminho, opcoes = {}){
+    const headers = Object.assign({ Authorization: `Bearer ${parcLer('tokenParceiro')}` }, opcoes.headers || {});
+    if (opcoes.json !== undefined){ headers['Content-Type'] = 'application/json'; opcoes.body = JSON.stringify(opcoes.json); }
+    const res = await fetch(`${API_URL}${caminho}`, { method: opcoes.method || 'GET', headers, body: opcoes.body });
+    if (res.status === 401){
+      parcSair();
+      mostrarParceiros('inicio');
+      const e = new Error('Sua sessão terminou. Entre novamente.');
+      e.sessao = true;
+      throw e;
+    }
+    if (opcoes.blob){
+      if (!res.ok) throw new Error('Não foi possível baixar o arquivo.');
+      return res.blob();
+    }
+    const dados = await res.json().catch(() => null);
+    if (!res.ok) throw new Error((dados && dados.erro) || 'Não foi possível completar a ação.');
+    return dados;
+  }
+
+  function parcPrepararPagina(){
+    homeContent.style.display = 'none';
+    detalheSection.style.display = 'none';
+    ['cadastroPage', 'carrinhoPage'].forEach(id => { const el = document.getElementById(id); if (el) el.style.display = 'none'; });
+    const page = document.getElementById('comprasPage');
+    page.style.display = '';
+    window.scrollTo(0, 0);
+    animarEntrada(page);
+    return document.getElementById('comprasConteudo');
+  }
+  function parcLigarVoltar(){
+    const b = document.getElementById('btnVoltarDetalhe');
+    if (b) b.addEventListener('click', (e) => { e.preventDefault(); location.hash = ''; });
+  }
+
+  function mostrarParceiros(aba, extra){
+    const box = parcPrepararPagina();
+    if (!PARC_ABAS.some(a => a.id === aba)) aba = 'inicio';
+
+    if (!parcLer('tokenParceiro')){
+      box.innerHTML = `
+        ${BOTAO_VOLTAR}
+        <div class="compras-topo"><div><h1>Área do advogado parceiro</h1></div></div>
+        <div class="portal-painel" style="max-width:520px;">
+          <h3>Entrar</h3>
+          <p>Acesso restrito a advogados parceiros do escritório, com documentos protegidos por sigilo profissional.</p>
+          <form id="parcForm">
+            <div class="checkout-field"><label for="parcEmail">E-mail</label><input id="parcEmail" type="email" autocomplete="username" maxlength="160" required></div>
+            <div class="checkout-field"><label for="parcSenha">Senha</label><input id="parcSenha" type="password" autocomplete="current-password" maxlength="100" required></div>
+            <div class="portal-acoes"><button class="btn btn-gold" type="submit" id="parcEntrar">Entrar</button><span class="portal-msg" id="parcMsg" role="alert"></span></div>
+          </form>
+          <p class="prov-ajuda" style="margin-top:18px;">Primeiro acesso? Use o link de convite que o escritório enviou. Esqueceu a senha? Peça um novo convite ao escritório. Ainda não é parceiro? <a href="#seja-parceiro" style="color:var(--gold-light);">Quero ser parceiro</a>.</p>
+        </div>`;
+      parcLigarVoltar();
+      document.getElementById('parcForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const msg = document.getElementById('parcMsg'), btn = document.getElementById('parcEntrar');
+        msg.className = 'portal-msg'; msg.textContent = ''; btn.disabled = true;
+        try{
+          const res = await fetch(`${API_URL}/parceiros/login`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: document.getElementById('parcEmail').value.trim(), senha: document.getElementById('parcSenha').value }) });
+          const d = await res.json().catch(() => null);
+          if (!res.ok) throw new Error((d && d.erro) || 'Não foi possível entrar agora.');
+          parcGuardar(d.token, d.nome);
+          mostrarParceiros(aba, extra);
+        }catch(err){ msg.className = 'portal-msg erro'; msg.textContent = err.message; btn.disabled = false; }
+      });
+      return;
+    }
+
+    const nome = parcLer('nomeParceiro') || '';
+    box.innerHTML = `
+      ${BOTAO_VOLTAR}
+      <div class="compras-topo">
+        <div><h1>Área do advogado parceiro</h1>${nome ? `<p>Olá, ${escapeHtml(nome)}</p>` : ''}</div>
+        <button class="btn btn-outline" id="parcSair">Sair</button>
+      </div>
+      <nav class="portal-abas">${PARC_ABAS.map(a => `<a href="#${a.hash}" class="${a.id === aba ? 'ativa' : ''}">${a.nome}</a>`).join('')}</nav>
+      <div id="parcAba"><p style="color:var(--cream-2);">Carregando…</p></div>`;
+    parcLigarVoltar();
+    document.getElementById('parcSair').addEventListener('click', () => { parcSair(); location.hash = ''; });
+    const alvo = document.getElementById('parcAba');
+    const render = { inicio: parcInicio, pastas: parcPastas, honorarios: parcHonorarios, ferramentas: parcFerramentas, conta: parcConta }[aba];
+    render(alvo, extra).catch(err => {
+      if (err.sessao) return;
+      console.error('Erro na área do parceiro:', err);
+      alvo.innerHTML = `<p style="color:var(--cream-2);">${escapeHtml(err.message || 'Não foi possível carregar agora. Tente novamente em instantes.')}</p>`;
+    });
+  }
+
+  async function parcInicio(alvo){
+    const [pastas, ferr] = await Promise.all([apiParc('/parceiros/pastas'), apiParc('/parceiros/ferramentas')]);
+    alvo.innerHTML = `
+      <div class="portal-cards">
+        <a class="portal-card" href="#parceiros-pastas"><div class="num">${pastas.length}</div><h4>Pastas dos clientes</h4><p>Documentos liberados para você pelo escritório.</p></a>
+        <a class="portal-card" href="#parceiros-honorarios"><div class="num">R$</div><h4>Honorários</h4><p>Seus lançamentos e pagamentos com o escritório.</p></a>
+        <a class="portal-card" href="#parceiros-ferramentas"><div class="num">${ferr.length}</div><h4>Ferramentas</h4><p>Jus IA, AASP e outras plataformas de serviço.</p></a>
+        <a class="portal-card" href="#parceiros-conta"><div class="num">✎</div><h4>Minha conta</h4><p>Troque sua senha.</p></a>
+      </div>
+      <p class="prov-ajuda" style="margin-top:22px;">Os documentos são sigilosos. Use-os apenas no caso em que atua com o escritório. Seus acessos e downloads ficam registrados.</p>`;
+  }
+
+  async function parcPastas(alvo, extra){
+    if (extra) return parcArquivos(alvo, extra);
+    const pastas = await apiParc('/parceiros/pastas');
+    if (!pastas.length){
+      alvo.innerHTML = `<div class="compras-vazio"><p>Nenhuma pasta liberada para você no momento.</p><p style="font-size:0.88rem;margin-top:10px;">Quando o escritório liberar um caso, ele aparece aqui.</p></div>`;
+      return;
+    }
+    alvo.innerHTML = pastas.map(p => `
+      <div class="portal-painel">
+        <div class="parc-linha" style="border:0;padding:0;">
+          <div>
+            <h3>${escapeHtml(p.titulo)}</h3>
+            ${p.descricao ? `<p style="margin-bottom:6px;">${escapeHtml(p.descricao)}</p>` : ''}
+            <span class="compra-meta">${p.arquivos} arquivo${p.arquivos === 1 ? '' : 's'}${p.pode_enviar ? ' · você pode enviar arquivos' : ''}${p.expira_em ? ' · acesso até ' + new Date(String(p.expira_em).slice(0, 10) + 'T12:00:00').toLocaleDateString('pt-BR') : ''}</span>
+          </div>
+          <a class="btn btn-gold" href="#parceiros-pasta-${Number(p.id)}">Abrir</a>
+        </div>
+      </div>`).join('');
+  }
+
+  async function parcArquivos(alvo, id){
+    const d = await apiParc(`/parceiros/pastas/${encodeURIComponent(id)}/arquivos`);
+    const dt = (s) => new Date(s).toLocaleDateString('pt-BR');
+    alvo.innerHTML = `
+      <p><a href="#parceiros-pastas" style="color:var(--gold-light);">← Todas as pastas</a></p>
+      <div class="portal-painel" style="margin-top:14px;">
+        <h3>${escapeHtml(d.pasta.titulo)}</h3>
+        <p>Documentos sigilosos: baixe só o necessário e não repasse a terceiros.</p>
+        <div id="parcLista">${d.arquivos.length ? d.arquivos.map(a => `
+          <div class="parc-linha"><div><b style="color:var(--cream);">${escapeHtml(a.nome_original)}</b><br><span class="compra-meta">${tamanhoLegivel(a.tamanho)} · ${escapeHtml(a.enviado_por)} · ${dt(a.criado_em)}</span></div>
+          <button class="btn btn-outline" data-baixar="${Number(a.id)}" data-nome="${escAttr(a.nome_original)}">Baixar</button></div>`).join('') : '<p class="prov-ajuda">Nenhum arquivo nesta pasta ainda.</p>'}</div>
+        <span class="portal-msg" id="parcArqMsg" role="alert"></span>
+      </div>
+      ${d.pasta.pode_enviar ? `
+      <div class="portal-painel">
+        <h3>Enviar arquivo</h3>
+        <p>PDF, Word, JPG ou PNG, até 20 MB. O escritório vê quem enviou.</p>
+        <div class="checkout-field"><input type="file" id="parcArq" accept=".pdf,.doc,.docx,.jpg,.jpeg,.png"></div>
+        <div class="portal-acoes"><button class="btn btn-gold" id="parcEnviar">Enviar</button></div>
+      </div>` : ''}`;
+    const msg = (t, ok) => { const m = document.getElementById('parcArqMsg'); m.className = 'portal-msg ' + (ok ? 'ok' : 'erro'); m.textContent = t; };
+    alvo.querySelectorAll('[data-baixar]').forEach(b => b.addEventListener('click', async () => {
+      b.disabled = true;
+      try{
+        const blob = await apiParc(`/parceiros/arquivos/${b.dataset.baixar}`, { blob: true });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a'); a.href = url; a.download = b.dataset.nome || 'arquivo';
+        document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(() => URL.revokeObjectURL(url), 2000);
+      }catch(err){ if (!err.sessao) msg(err.message, false); }
+      b.disabled = false;
+    }));
+    const env = document.getElementById('parcEnviar');
+    if (env) env.addEventListener('click', async () => {
+      const f = document.getElementById('parcArq').files[0];
+      if (!f) return msg('Escolha um arquivo.', false);
+      if (f.size > 20 * 1024 * 1024) return msg('Arquivo grande demais (máximo 20 MB).', false);
+      env.disabled = true;
+      try{
+        await apiParc(`/parceiros/pastas/${encodeURIComponent(id)}/arquivo?nome=${encodeURIComponent(f.name)}`, { method: 'POST', body: f, headers: { 'Content-Type': 'application/octet-stream' } });
+        parcArquivos(alvo, id);
+      }catch(err){ if (!err.sessao) msg(err.message, false); env.disabled = false; }
+    });
+  }
+
+  async function parcHonorarios(alvo){
+    const lista = await apiParc('/parceiros/honorarios');
+    const brl = (n) => Number(n).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+    const dia = (s) => s ? new Date(String(s).slice(0, 10) + 'T12:00:00').toLocaleDateString('pt-BR') : '—';
+    if (!lista.length){
+      alvo.innerHTML = `<div class="compras-vazio"><p>Nenhum lançamento de honorários até agora.</p></div>`;
+      return;
+    }
+    const soma = (l) => l.reduce((a, x) => a + x.valor, 0);
+    const pend = lista.filter(x => x.status === 'pendente'), pagos = lista.filter(x => x.status === 'pago');
+    alvo.innerHTML = `
+      <div class="portal-cards" style="margin-bottom:18px;">
+        <div class="portal-card" style="cursor:default;"><div class="num">${brl(soma(pend))}</div><h4>A receber</h4><p>${pend.length} lançamento(s)</p></div>
+        <div class="portal-card" style="cursor:default;"><div class="num">${brl(soma(pagos))}</div><h4>Já pago</h4><p>${pagos.length} lançamento(s)</p></div>
+      </div>
+      ${lista.map(h => `
+        <div class="portal-painel">
+          <div class="parc-linha" style="border:0;padding:0;">
+            <div>
+              <h3>${escapeHtml(h.descricao)}</h3>
+              <span class="compra-meta">${[h.referencia ? escapeHtml(h.referencia) : '', brl(h.valor) + (h.parcelas > 1 ? ' em ' + h.parcelas + 'x' : ''), escapeHtml(h.forma_pagamento), h.status === 'pago' ? 'pago em ' + dia(h.pago_em) : 'vencimento ' + dia(h.vencimento)].filter(Boolean).join(' · ')}</span>
+              ${h.observacao ? `<p style="margin:8px 0 0;">${escapeHtml(h.observacao)}</p>` : ''}
+              ${h.comprovante ? `<p class="prov-ajuda" style="margin-top:6px;">Comprovante: ${escapeHtml(h.comprovante)}</p>` : ''}
+            </div>
+            <span class="prov-status ${h.status === 'pago' ? 'concluido' : h.atrasado ? 'aguardando_pagamento' : 'enviado'}">${h.status === 'pago' ? 'Pago' : h.atrasado ? 'Vencido' : 'Pendente'}</span>
+          </div>
+        </div>`).join('')}
+      <p class="prov-ajuda">Os pagamentos são feitos pelo escritório. Divergência de valor ou data? Fale com o escritório.</p>`;
+  }
+
+  async function parcFerramentas(alvo){
+    const lista = await apiParc('/parceiros/ferramentas');
+    if (!lista.length){
+      alvo.innerHTML = `<div class="compras-vazio"><p>Nenhuma ferramenta cadastrada ainda.</p></div>`;
+      return;
+    }
+    alvo.innerHTML = `<p class="prov-ajuda" style="margin-bottom:16px;">Cada serviço abre em outra janela. Entre com a <b>sua própria conta</b> em cada um: o escritório não compartilha logins nem senhas.</p>
+      <div class="portal-cards">${lista.map(f => `
+        <div class="portal-card" style="cursor:default;">
+          ${f.categoria ? `<span class="compra-meta">${escapeHtml(f.categoria)}</span>` : ''}
+          <h4 style="font-size:1.15rem;">${escapeHtml(f.nome)}</h4>
+          ${f.descricao ? `<p>${escapeHtml(f.descricao)}</p>` : ''}
+          <p style="margin-top:14px;"><a class="btn btn-outline" href="${escAttr(f.url)}" target="_blank" rel="noopener noreferrer">Abrir ${escapeHtml(f.nome)}</a></p>
+        </div>`).join('')}</div>`;
+  }
+
+  async function parcConta(alvo){
+    const eu = await apiParc('/parceiros/me');
+    alvo.innerHTML = `
+      <div class="portal-painel">
+        <h3>Meus dados</h3>
+        <p>${escapeHtml(eu.nome)} · OAB ${escapeHtml(eu.oab)} · ${escapeHtml(eu.email)}<br>Para corrigir seus dados, fale com o escritório.</p>
+      </div>
+      <div class="portal-painel">
+        <h3>Trocar senha</h3>
+        <p>Pelo menos 10 caracteres, com letras e números. Ao trocar, você precisará entrar de novo.</p>
+        <form id="parcSenhaForm" class="portal-form">
+          <div class="checkout-field" style="grid-column:1/-1;"><label for="parcAtual">Senha atual</label><input id="parcAtual" type="password" autocomplete="current-password" maxlength="100"></div>
+          <div class="checkout-field"><label for="parcNova">Nova senha</label><input id="parcNova" type="password" autocomplete="new-password" maxlength="100"></div>
+          <div class="checkout-field"><label for="parcNova2">Repita a nova senha</label><input id="parcNova2" type="password" autocomplete="new-password" maxlength="100"></div>
+        </form>
+        <div class="portal-acoes"><button class="btn btn-gold" id="parcTrocar">Trocar senha</button><span class="portal-msg" id="parcSenhaMsg" role="alert"></span></div>
+      </div>`;
+    document.getElementById('parcTrocar').addEventListener('click', async () => {
+      const m = document.getElementById('parcSenhaMsg'), nova = document.getElementById('parcNova').value;
+      m.className = 'portal-msg erro';
+      if (nova !== document.getElementById('parcNova2').value) return (m.textContent = 'As senhas novas não são iguais.');
+      try{
+        await apiParc('/parceiros/me/senha', { method: 'PUT', json: { atual: document.getElementById('parcAtual').value, nova } });
+        parcSair(); location.hash = 'parceiros'; mostrarParceiros('inicio');
+      }catch(err){ if (!err.sessao) m.textContent = err.message; }
+    });
+  }
+
+  // Convite: o parceiro cria a senha e aceita o termo de sigilo.
+  async function mostrarConviteParceiro(token){
+    const box = parcPrepararPagina();
+    box.innerHTML = `${BOTAO_VOLTAR}<div class="compras-topo"><div><h1>Ativar acesso</h1></div></div><div id="convBox"><p style="color:var(--cream-2);">Carregando…</p></div>`;
+    parcLigarVoltar();
+    const alvo = document.getElementById('convBox');
+    let c;
+    try{
+      const res = await fetch(`${API_URL}/parceiros/convite/${token}`);
+      c = await res.json().catch(() => null);
+      if (!res.ok) throw new Error((c && c.erro) || 'Convite inválido ou vencido.');
+    }catch(err){
+      alvo.innerHTML = `<div class="compras-vazio"><p>${escapeHtml(err.message)}</p><p style="font-size:0.88rem;margin-top:10px;">Peça um novo convite ao escritório.</p></div>`;
+      return;
+    }
+    alvo.innerHTML = `
+      <div class="portal-painel" style="max-width:680px;">
+        <h3>Olá, ${escapeHtml(c.nome)}</h3>
+        <p>Cadastro: ${escapeHtml(c.email)} · OAB ${escapeHtml(c.oab)}. Leia o termo, aceite e crie sua senha.</p>
+        <h4 style="color:var(--gold-light);margin-bottom:8px;">Termo de confidencialidade</h4>
+<div style="color:var(--cream-2);font-size:0.9rem;line-height:1.6;margin-bottom:18px;">${c.termo.map(t => `<p style="margin-bottom:10px;">${escapeHtml(t)}</p>`).join('')}</div>
+        <label style="display:flex;gap:10px;align-items:flex-start;color:var(--cream);margin-bottom:18px;"><input type="checkbox" id="convAceito"> <span>Li e aceito o termo de confidencialidade.</span></label>
+        <div class="portal-form">
+          <div class="checkout-field"><label for="convSenha">Crie uma senha</label><input id="convSenha" type="password" autocomplete="new-password" maxlength="100"></div>
+          <div class="checkout-field"><label for="convSenha2">Repita a senha</label><input id="convSenha2" type="password" autocomplete="new-password" maxlength="100"></div>
+        </div>
+        <p class="prov-ajuda" style="margin-top:8px;">Pelo menos 10 caracteres, com letras e números.</p>
+        <div class="portal-acoes"><button class="btn btn-gold" id="convAtivar">Ativar meu acesso</button><span class="portal-msg" id="convMsg" role="alert"></span></div>
+      </div>`;
+    document.getElementById('convAtivar').addEventListener('click', async (e) => {
+      const m = document.getElementById('convMsg'), btn = e.currentTarget, senha = document.getElementById('convSenha').value;
+      m.className = 'portal-msg erro';
+      if (!document.getElementById('convAceito').checked) return (m.textContent = 'Marque que leu e aceita o termo.');
+      if (senha !== document.getElementById('convSenha2').value) return (m.textContent = 'As senhas não são iguais.');
+      btn.disabled = true;
+      try{
+        const res = await fetch(`${API_URL}/parceiros/convite/${token}`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ senha, aceito: true }) });
+        const d = await res.json().catch(() => null);
+        if (!res.ok) throw new Error((d && d.erro) || 'Não foi possível ativar agora.');
+        alvo.innerHTML = `<div class="compras-vazio"><p>Acesso ativado.</p><a class="btn btn-gold" href="#parceiros">Entrar na área restrita</a></div>`;
+      }catch(err){ m.textContent = err.message; btn.disabled = false; }
+    });
+  }
+
   async function route(){
     const rota = parseHash();
     const comprasPg = document.getElementById('comprasPage');
@@ -2572,6 +2937,8 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     if (rota.tipo === 'cadastro'){ mostrarCadastro(); return; }
     if (rota.tipo === 'carrinho'){ mostrarCarrinho(); return; }
     if (rota.tipo === 'portal'){ mostrarPortal(rota.chave, rota.extra); return; }
+    if (rota.tipo === 'parceiros'){ mostrarParceiros(rota.chave, rota.extra); return; }
+    if (rota.tipo === 'parceiro-convite'){ mostrarConviteParceiro(rota.chave); return; }
 
     mostrarDetalhe();
     detalheConteudo.style.maxWidth = '760px';
@@ -2927,7 +3294,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       return;
     }
     const ST = { pago: ['Pago', 'concluido'], pendente: ['Aguardando pagamento', 'aguardando_pagamento'], cancelado: ['Cancelado / recusado', 'cancelado'] };
-    const TIPO = { livro: 'LIVRO', curso: 'CURSO', provimento: 'PROVIMENTO · ANÁLISE', provimento_minuta: 'PROVIMENTO · RECURSO' };
+    const TIPO = { livro: 'LIVRO', curso: 'CURSO', provimento: 'SERVIÇO 1 · ANÁLISE DE VIABILIDADE', provimento_minuta: 'SERVIÇO 2 · PROVIMENTO' };
     const totalPago = pedidos.filter(p => p.status === 'pago').reduce((n, p) => n + Number(p.valor || 0), 0);
     alvo.innerHTML = `
       <div class="portal-painel" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
@@ -3068,7 +3435,8 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     const ab = cfg.grupos.some(g => g.arquivos.length > 1);
     const espelho = cfg.grupos.some(g => /^Espelho/.test(g.titulo));
     const partes = [];
-    if (pecas) partes.push(pecas === 1 ? 'a peça processual (todas as folhas)' : `as ${pecas} peças processuais`);
+    const maxPeca = (cfg.grupos.find(g => /^Peça/.test(g.titulo)) || { arquivos: [{}] }).arquivos[0].max || 1;
+    if (pecas) partes.push((pecas === 1 ? 'a peça processual (todas as folhas)' : `as ${pecas} peças processuais`) + (maxPeca > 1 ? ` (em até ${maxPeca} arquivos, escolhidos de uma vez)` : ''));
     if (questoes) partes.push((questoes === 1 ? 'a questão discursiva' : `as ${questoes} questões discursivas`) + (ab ? ' (cada uma com item A e item B)' : ''));
     if (espelho) partes.push('o espelho de correção da FGV');
     return partes.length > 1 ? partes.slice(0, -1).join(', ') + ' e ' + partes.at(-1) : (partes[0] || '');
@@ -3088,20 +3456,20 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
         </div>`;
       case 'enviado': return `<div class="prov-resposta"><small>Prova recebida</small>Sua prova está na fila da análise de viabilidade. Você recebe o resultado por e-mail e aqui.</div>${resp}${msgSpan}`;
       case 'em_analise': return `<div class="prov-resposta"><small>Em análise</small>O Dr. Israel está analisando se o recurso é viável. Você recebe o resultado por e-mail e aqui.</div>${resp}${msgSpan}`;
-      case 'inviavel': return `<div class="prov-resposta prov-neg"><small>Resultado da análise</small>Depois da análise, entendemos que não há viabilidade técnica para recurso nesta prova.</div>${resp}${msgSpan}`;
+      case 'inviavel': return `<div class="prov-resposta prov-neg"><small>Serviço 1 concluído — resultado da análise</small>Depois da análise, entendemos que não há viabilidade técnica para recurso nesta prova. Por isso o Serviço 2 (Provimento) não é necessário.</div>${resp}${msgSpan}`;
       case 'viavel': {
         const cobra = Number(cfg.valor_minuta) > 0;
         return `
-          <div class="prov-resposta prov-ok"><small>Resultado da análise</small>O recurso da sua prova é <b>viável</b>. ${cobra ? `Para começarmos a elaboração, faça o pagamento de ${formatPreco(cfg.valor_minuta)} o quanto antes, para dar tempo de protocolar dentro do prazo da FGV.` : 'Confirme abaixo para começarmos a elaboração.'}</div>
+          <div class="prov-resposta prov-ok"><small>Serviço 1 concluído — o recurso é viável</small>Agora você pode contratar o <b>Serviço 2 — Provimento</b>, que é a elaboração do recurso. ${cobra ? `Faça o pagamento de ${formatPreco(cfg.valor_minuta)} o quanto antes, para dar tempo de protocolar dentro do prazo da FGV.` : 'Confirme abaixo para começarmos a elaboração.'}</div>
           ${resp}
           <div class="portal-acoes">
-            <button class="btn btn-gold" data-acao="pagar-recurso" data-prov="${p.id}">${cobra ? `Pagar ${formatPreco(cfg.valor_minuta)} e solicitar o recurso` : 'Solicitar o recurso'}</button>
+            <button class="btn btn-gold" data-acao="pagar-recurso" data-prov="${p.id}">${cobra ? `Contratar o Provimento — ${formatPreco(cfg.valor_minuta)}` : 'Contratar o Provimento'}</button>
             ${msgSpan}
           </div>`;
       }
-      case 'em_elaboracao': return `<div class="prov-resposta"><small>Recurso em elaboração</small>Pagamento confirmado. Seu recurso está sendo escrito e, quando ficar pronto, aparece aqui e chega no seu e-mail.</div>${resp}${msgSpan}`;
+      case 'em_elaboracao': return `<div class="prov-resposta"><small>Serviço 2 — Provimento em andamento</small>Pagamento confirmado. Seu recurso está sendo escrito e, quando ficar pronto, aparece aqui e chega no seu e-mail.</div>${resp}${msgSpan}`;
       case 'concluido': return `
-        <div class="prov-resposta prov-ok"><small>Recurso pronto</small>Baixe o seu recurso abaixo. O protocolo no site da FGV (oab.fgv.br) é feito por você, dentro do prazo do edital.</div>
+        <div class="prov-resposta prov-ok"><small>Provimento pronto — recurso elaborado</small>Baixe o seu recurso abaixo. O protocolo no site da FGV (oab.fgv.br) é feito por você, dentro do prazo do edital.</div>
         ${resp}
         <div class="portal-acoes">
           ${p.recurso ? `<button class="btn btn-gold" data-acao="baixar" data-prov="${p.id}" data-arq="${p.recurso.id}" data-nome="${escAttr(p.recurso.nome_original)}">Baixar recurso</button>` : ''}
@@ -3119,16 +3487,41 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     const envios = await apiAluno('/provimentos');
     const todosArquivos = cfg.grupos.flatMap(g => g.arquivos);
 
+    const ACEITA = '.pdf,.doc,.docx,.jpg,.jpeg,.png';
     const slotHtml = (p, s, rotulo) => {
-      const arq = p.arquivos.find(a => a.parte === s.parte && a.item === s.item);
       const editavel = p.status === 'rascunho';
+      const doSlot = p.arquivos.filter(a => a.parte === s.parte && a.item === s.item).sort((a, b) => (a.ordem || 1) - (b.ordem || 1));
+      // Campo com vários arquivos (a peça): lista + "Adicionar arquivos" (aceita escolher vários de uma vez).
+      if ((s.max || 1) > 1){
+        const restam = s.max - doSlot.length;
+        const linhas = doSlot.map((arq, i) => `
+          <div class="prov-slot feito">
+            <div><b>✓ Arquivo ${i + 1}</b><span>${escapeHtml(arq.nome_original)} · ${tamanhoLegivel(arq.tamanho)}</span></div>
+            <div class="prov-slot-acoes">
+              <button class="mini-acao" data-acao="baixar" data-prov="${p.id}" data-arq="${arq.id}" data-nome="${escAttr(arq.nome_original)}">Baixar</button>
+              ${editavel ? `<label class="mini-acao">Trocar<input type="file" hidden accept="${ACEITA}" data-acao="subir" data-prov="${p.id}" data-parte="${s.parte}" data-item="${s.item}" data-ordem="${arq.ordem || 1}"></label>
+              <button class="mini-acao" data-acao="remover" data-prov="${p.id}" data-arq="${arq.id}">Remover</button>` : ''}
+            </div>
+          </div>`).join('');
+        return `
+          <div class="prov-multi ${doSlot.length ? 'feito' : ''}">
+            <div class="prov-multi-cab">
+              <b style="color:var(--cream);font-size:0.92rem;">${escapeHtml(rotulo)}</b>
+              <span class="prov-contador">${doSlot.length} de até ${s.max} arquivos</span>
+            </div>
+            ${linhas || `<div class="prov-slot"><div><span>${editavel ? 'Nenhum arquivo ainda' : 'Não enviado'}</span></div></div>`}
+            ${editavel && restam > 0 ? `<div><label class="mini-acao principal">${doSlot.length ? 'Adicionar mais arquivos' : 'Escolher arquivos'}<input type="file" multiple hidden accept="${ACEITA}" data-acao="subir-varios" data-prov="${p.id}" data-parte="${s.parte}" data-item="${s.item}" data-restam="${restam}"></label>
+              <span class="prov-ajuda" style="margin-left:8px;">Você pode selecionar vários arquivos de uma vez${restam < s.max ? ` (ainda cabem ${restam})` : ''}.</span></div>` : ''}
+          </div>`;
+      }
+      const arq = doSlot[0];
       const info = arq
         ? `<span>${escapeHtml(arq.nome_original)} · ${tamanhoLegivel(arq.tamanho)}</span>`
         : `<span>${editavel ? 'Nenhum arquivo ainda' : 'Não enviado'}</span>`;
       const acoes = [];
       if (arq) acoes.push(`<button class="mini-acao" data-acao="baixar" data-prov="${p.id}" data-arq="${arq.id}" data-nome="${escAttr(arq.nome_original)}">Baixar</button>`);
       if (editavel){
-        acoes.push(`<label class="mini-acao ${arq ? '' : 'principal'}">${arq ? 'Trocar' : 'Escolher arquivo'}<input type="file" hidden accept=".pdf,.doc,.docx,.jpg,.jpeg,.png" data-acao="subir" data-prov="${p.id}" data-parte="${s.parte}" data-item="${s.item}"></label>`);
+        acoes.push(`<label class="mini-acao ${arq ? '' : 'principal'}">${arq ? 'Trocar' : 'Escolher arquivo'}<input type="file" hidden accept="${ACEITA}" data-acao="subir" data-prov="${p.id}" data-parte="${s.parte}" data-item="${s.item}"></label>`);
         if (arq) acoes.push(`<button class="mini-acao" data-acao="remover" data-prov="${p.id}" data-arq="${arq.id}">Remover</button>`);
       }
       return `
@@ -3170,13 +3563,14 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       const feitos = todosArquivos.filter(s => p.arquivos.some(a => a.parte === s.parte && a.item === s.item)).length;
       const data = p.enviado_em
         ? 'Enviado em ' + new Date(p.enviado_em).toLocaleDateString('pt-BR')
-        : `${feitos} de ${total} arquivos`;
+        : `${feitos} de ${total} campos preenchidos`;
       const cobra = Number(cfg.valor_analise) > 0;
-      const rotuloEnviar = cobra ? `Pagar ${formatPreco(cfg.valor_analise)} e enviar para análise` : 'Enviar para análise';
+      const rotuloEnviar = cobra ? `Pagar ${formatPreco(cfg.valor_analise)} — análise de viabilidade` : 'Enviar para a análise de viabilidade';
+      const selo = ['viavel', 'em_elaboracao', 'concluido'].includes(p.status) ? '<span class="prov-selo s2">Serviço 2 · Provimento</span>' : '<span class="prov-selo">Serviço 1 · Análise de viabilidade</span>';
       return `
         <div class="portal-painel" id="prov-${p.id}">
           <div class="prov-topo">
-            <div><h3>${escapeHtml(p.disciplina_nome)}</h3><span class="compra-meta">${data}</span></div>
+            <div><h3>${escapeHtml(p.disciplina_nome)}</h3><span class="compra-meta">${data}</span><br>${selo}</div>
             <span class="prov-status ${escAttr(p.status)}">${escapeHtml(p.status_nome)}</span>
           </div>
           ${editavel ? `
@@ -3186,7 +3580,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
               <label for="obs-${p.id}">Recado para o Dr. Israel (opcional)</label>
               <textarea id="obs-${p.id}" maxlength="3000" placeholder="Ex.: observações sobre a correção…">${escapeHtml(p.observacao || '')}</textarea>
             </div>
-            <label class="prov-termos"><input type="checkbox" id="termos-${p.id}"> Li e aceito os <a href="#" data-acao="ver-termos" data-prov="${p.id}">termos do serviço</a>.</label>
+            <label class="prov-termos"><input type="checkbox" id="termos-${p.id}"> <span>Li e aceito os <a href="#" data-acao="ver-termos" data-prov="${p.id}">termos do serviço</a>.</span></label>
             <div class="prov-termos-texto" id="termosTexto-${p.id}" hidden>${escapeHtml(cfg.termos)}</div>
             <div class="portal-acoes">
               <button class="btn btn-gold" data-acao="enviar" data-prov="${p.id}" ${feitos < total ? 'disabled style="opacity:.55;cursor:default;"' : ''}>${rotuloEnviar}</button>
@@ -3194,7 +3588,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
               <button class="mini-acao" data-acao="descartar" data-prov="${p.id}">Descartar</button>
               <span class="portal-msg" id="provMsg-${p.id}"></span>
             </div>
-            ${feitos < total ? `<p class="prov-ajuda">O botão "${rotuloEnviar}" libera quando todos os arquivos estiverem anexados. Depois de enviar, não dá mais para trocar os arquivos.</p>` : ''}`
+            ${feitos < total ? `<p class="prov-ajuda">O botão "${rotuloEnviar}" libera quando todos os campos tiverem arquivo. Depois de enviar, não dá mais para trocar os arquivos. Este pagamento é só da análise de viabilidade; o Provimento (elaboração do recurso) é contratado depois, se o recurso for viável.</p>` : ''}`
           : `
             ${blocoEtapa(p, cfg)}
             <details class="prov-enviados"><summary>Arquivos enviados (${p.arquivos.length})</summary>${gruposHtml(p)}
@@ -3203,11 +3597,21 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
         </div>`;
     };
 
-    const etapas = (Number(cfg.valor_analise) > 0 || Number(cfg.valor_minuta) > 0) ? `
-      <ol class="prov-etapas">
-        <li><b>Análise de viabilidade${Number(cfg.valor_analise) > 0 ? ' — ' + formatPreco(cfg.valor_analise) : ''}.</b> Você envia a prova e o Dr. Israel avalia se cabe recurso.</li>
-        <li><b>Elaboração do recurso${Number(cfg.valor_minuta) > 0 ? ' — ' + formatPreco(cfg.valor_minuta) : ''}.</b> Só se o recurso for viável. O recurso pronto fica disponível aqui e chega no seu e-mail.</li>
-      </ol>` : '';
+    const etapas = `
+      <div class="prov-servicos">
+        <div class="prov-serv s1">
+          <span class="sel">Serviço 1 — comece por aqui</span>
+          <h4>Análise de viabilidade</h4>
+          ${Number(cfg.valor_analise) > 0 ? `<span class="preco">${formatPreco(cfg.valor_analise)}</span>` : ''}
+          <p>Você envia a prova e o Dr. Israel avalia se cabe recurso. O resultado chega aqui e no seu e-mail.</p>
+        </div>
+        <div class="prov-serv s2">
+          <span class="sel">Serviço 2 — depois</span>
+          <h4>Provimento (elaboração do recurso)</h4>
+          ${Number(cfg.valor_minuta) > 0 ? `<span class="preco">${formatPreco(cfg.valor_minuta)}</span>` : ''}
+          <p>Só é contratado se a análise indicar que o recurso é viável. O recurso pronto fica aqui e chega no seu e-mail.</p>
+        </div>
+      </div>`;
 
     // Um container novo a cada renderização: assim os "ouvintes" de clique
     // não se acumulam quando a aba recarrega depois de cada ação.
@@ -3288,6 +3692,32 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     });
 
     wrap.addEventListener('change', async (e) => {
+      const varios = e.target.closest('input[data-acao="subir-varios"]');
+      if (varios){
+        const id = varios.dataset.prov;
+        const escolhidos = [...varios.files];
+        if (!escolhidos.length) return;
+        const restam = Number(varios.dataset.restam) || 0;
+        const aEnviar = escolhidos.slice(0, restam);
+        const sobraram = escolhidos.length - aEnviar.length;
+        const invalidos = aEnviar.filter(f => !PROV_EXTENSOES.test(f.name) || f.size > cfg.tamanho_maximo_mb * 1048576);
+        if (invalidos.length) return msg(id, `Não foi possível enviar: ${invalidos.map(f => f.name).join(', ')}. Use PDF, Word, JPG ou PNG de até ${cfg.tamanho_maximo_mb} MB.`, false);
+        try{
+          await salvarRascunho(id);
+          let n = 0;
+          for (const f of aEnviar){
+            msg(id, `Enviando arquivo ${++n} de ${aEnviar.length}…`, true);
+            await apiAluno(`/provimentos/${id}/arquivos/${varios.dataset.parte}/${varios.dataset.item}?ordem=novo`, {
+              method: 'PUT',
+              headers: { 'Content-Type': f.type || 'application/octet-stream', 'X-Nome-Arquivo': encodeURIComponent(f.name) },
+              body: f,
+            });
+          }
+          await recarregar(id);
+          if (sobraram > 0) msg(id, `${aEnviar.length} arquivo(s) enviado(s). ${sobraram === 1 ? '1 ficou de fora' : sobraram + ' ficaram de fora'} porque o limite de arquivos deste campo foi atingido.`, false);
+        }catch(err){ if (!err.sessao){ await recarregar(id); msg(id, err.message, false); } }
+        return;
+      }
       const inp = e.target.closest('input[data-acao="subir"]');
       if (!inp || !inp.files[0]) return;
       const f = inp.files[0];
@@ -3297,7 +3727,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       msg(id, 'Enviando arquivo…', true);
       try{
         await salvarRascunho(id); // não perde o que já foi digitado no perfil
-        await apiAluno(`/provimentos/${id}/arquivos/${inp.dataset.parte}/${inp.dataset.item}`, {
+        await apiAluno(`/provimentos/${id}/arquivos/${inp.dataset.parte}/${inp.dataset.item}${inp.dataset.ordem ? '?ordem=' + encodeURIComponent(inp.dataset.ordem) : ''}`, {
           method: 'PUT',
           headers: { 'Content-Type': f.type || 'application/octet-stream', 'X-Nome-Arquivo': encodeURIComponent(f.name) },
           body: f,
@@ -3351,7 +3781,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
             await salvarRascunho(id);
             const cobra = Number(cfg.valor_analise) > 0;
             if (!confirm(cobra
-              ? 'Você será levado ao Mercado Pago para pagar a análise de viabilidade. Depois do pagamento, os arquivos não podem mais ser trocados. Continuar?'
+              ? 'Você será levado ao Mercado Pago para pagar o Serviço 1 (análise de viabilidade). O Provimento (elaboração do recurso) é contratado depois, se o recurso for viável. Depois do pagamento, os arquivos não podem mais ser trocados. Continuar?'
               : 'Enviar para análise? Depois disso não será possível trocar os arquivos.')) return;
           }
           const resp = await apiAluno(`/provimentos/${id}/enviar`, { method: 'POST', json: { aceite_termos: true } });
@@ -3360,7 +3790,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
           msg(id, 'Enviado! Você recebe o resultado da análise por e-mail e aqui.', true);
         } else if (b.dataset.acao === 'pagar-recurso'){
           const cobra = Number(cfg.valor_minuta) > 0;
-          if (cobra && !confirm(`Você será levado ao Mercado Pago para pagar ${formatPreco(cfg.valor_minuta)} pela elaboração do recurso. Continuar?`)) return;
+          if (cobra && !confirm(`Você será levado ao Mercado Pago para pagar ${formatPreco(cfg.valor_minuta)} pelo Serviço 2 — Provimento (elaboração do recurso). Continuar?`)) return;
           const resp = await apiAluno(`/provimentos/${id}/pagar-recurso`, { method: 'POST' });
           if (irPagar(resp, id)) return;
           await recarregar(id);
