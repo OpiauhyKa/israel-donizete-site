@@ -2455,14 +2455,14 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
         : `<div class="detalhe-corpo">${escapeHtml(item.descricao || 'Descrição em preparação.')}</div>`}
       <div class="detalhe-compra">
         <span class="price">${formatPreco(item.preco)}</span>
-        ${externo
-          ? `<a class="btn btn-gold" href="${escAttr(externo)}" target="_blank" rel="noopener sponsored">${escapeHtml(rotuloLoja(item))} ↗</a>`
+        ${tipo === 'livro'
+          ? (externo ? `<a class="btn btn-gold" href="${escAttr(externo)}" target="_blank" rel="noopener sponsored">${escapeHtml(rotuloLoja(item))} ↗</a>` : '')
           : `<button class="btn btn-gold" id="btnAddCarrinho" ${jaNoCarrinho ? 'disabled' : ''}>${jaNoCarrinho ? 'Já está no carrinho ✓' : 'Adicionar ao carrinho'}</button>`}
       </div>
-      ${externo ? `<p class="detalhe-meta" style="margin-top:12px;">A compra e a entrega são feitas pela ${escapeHtml(item.plataforma || 'loja parceira')}.</p>` : ''}
+      ${externo ? `<p class="detalhe-meta" style="margin-top:12px;">Ao clicar, você será redirecionado para ${item.plataforma ? 'a ' + escapeHtml(item.plataforma) : 'a loja parceira'}, onde a compra e a entrega são feitas.</p>` : ''}
     `;
 
-    if (externo) return;
+    if (tipo === 'livro') return;
     document.getElementById('btnAddCarrinho').addEventListener('click', (e) => {
       adicionarAoCarrinho(tipo, item.id, item.titulo, item.preco);
       e.target.disabled = true;
@@ -2599,7 +2599,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       const externo = isLivro && linkExterno(item);
       const acao = externo
         ? `<a class="mini-btn" href="${escAttr(externo)}" target="_blank" rel="noopener sponsored">${escapeHtml(rotuloLoja(item))}</a>`
-        : `<span class="mini-btn">${isLivro ? 'Comprar' : 'Ver curso'}</span>`;
+        : (isLivro ? '' : `<span class="mini-btn">Ver curso</span>`);
       const temCapa = !!item.capa_url;
       const coverStyle = temCapa ? ` style="background-image:url('${item.capa_url}')"` : '';
       return `
