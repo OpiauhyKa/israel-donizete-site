@@ -553,6 +553,7 @@
   .docs-areas{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px;}
   .form-publico{background:#fff;border:1px solid #E1D9C8;border-radius:14px;padding:24px;position:relative;}
   .form-publico-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 18px;}
+  .form-publico select{width:100%;border:1px solid #D8CFBD;border-radius:8px;padding:11px 12px;font:inherit;background:#fff;}
   .form-publico textarea{width:100%;border:1px solid #D8CFBD;border-radius:8px;padding:11px 12px;font:inherit;}
   .form-publico textarea:focus{outline:none;border-color:var(--gold);}
   .form-aceite{display:flex;gap:10px;align-items:flex-start;font-size:0.88rem;color:var(--ink-soft);margin:6px 0 14px;}
@@ -1207,6 +1208,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
             <a href="#sobre">O escritório</a>
             <a href="#curriculo">Currículo do Dr. Israel</a>
             <a href="#portal-processos">Cliente — acompanhar meu processo</a>
+            <a href="#contrato">Contrato de honorários</a>
             <a href="#seja-parceiro">Seja parceiro</a>
             <a href="#parceiros">Área do advogado parceiro</a>
             <a href="#trabalhe-conosco">Currículos — trabalhe conosco</a>
@@ -1491,6 +1493,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
           <li><a href="#oab-2fase">OAB 2ª fase (Provimento)</a></li>
           <li><a href="#ouvidoria">Ouvidoria</a></li>
           <li><a href="#enviar-documentos">Enviar documentos</a></li>
+          <li><a href="#contrato">Contrato de honorários</a></li>
           <li><a href="#faq">Dúvidas frequentes</a></li>
           <li><a href="#seja-parceiro">Seja parceiro</a></li>
           <li><a href="#parceiros">Área do advogado parceiro</a></li>
@@ -1611,6 +1614,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     if (h === 'faq') return { tipo: 'faq', chave: null };
     if (h === 'curriculo' || h === 'privacidade' || h === 'termos') return { tipo: 'pagina', chave: h };
     if (h === 'seja-parceiro' || h === 'trabalhe-conosco' || h === 'ouvidoria') return { tipo: 'formulario', chave: h };
+    if (h === 'contrato') return { tipo: 'contrato', chave: null };
     const mDocs = h.match(/^enviar-documentos(?:-(trabalhista|previdenciario))?$/);
     if (mDocs) return { tipo: 'enviar-documentos', chave: mDocs[1] || null };
     if (h === 'midias') return { tipo: 'midias', chave: null };
@@ -1768,6 +1772,96 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
   // ---------- Textos das páginas editáveis no painel ("Páginas do site") ----------
   const pagOv = (chave) => ((SITE_CONFIG && SITE_CONFIG.paginas) || {})[chave] || null;
   const textoEditavel = (html) => `<div class="texto-legal texto-editavel">${limparHtmlArtigo(html)}</div>`;
+
+  // ---------- Contrato de honorários: ler, baixar em PDF, assinar no GOV.BR e enviar ----------
+  async function renderContrato(){
+    detalheConteudo.style.maxWidth = '860px';
+    detalheConteudo.innerHTML = `${BOTAO_VOLTAR}<span class="detalhe-kicker" style="display:block;">CLIENTES</span><h1 class="detalhe-titulo">Contrato de honorários</h1><p class="servico-intro">Carregando…</p>`;
+    let modelos = [];
+    try {
+      const r = await fetch(`${API_URL}/contratos/modelos`);
+      if (!r.ok) throw new Error();
+      modelos = await r.json();
+    } catch (e) {
+      detalheConteudo.querySelector('.servico-intro').textContent = 'Não foi possível carregar os contratos agora. Tente de novo em instantes.';
+      return;
+    }
+    if (!modelos.length){ detalheConteudo.querySelector('.servico-intro').textContent = 'Nenhum contrato disponível no momento. Fale com o escritório.'; return; }
+    const campo = (id, rotulo, tipo = 'text', extra = '') => `<div class="checkout-field"><label for="${id}">${rotulo}</label><input id="${id}" type="${tipo}" ${extra}></div>`;
+    detalheConteudo.innerHTML = `
+      ${BOTAO_VOLTAR}
+      <span class="detalhe-kicker" style="display:block;">CLIENTES</span>
+      <h1 class="detalhe-titulo">Contrato de honorários</h1>
+      <p class="servico-intro">Escolha o contrato, preencha seus dados, leia, baixe o PDF, assine com a sua conta GOV.BR e envie o arquivo assinado por aqui.</p>
+      <form id="formContrato" class="form-publico" novalidate>
+        <div class="checkout-field"><label for="cModelo">Tipo de contrato *</label>
+          <select id="cModelo">${modelos.map((m) => `<option value="${escAttr(m.slug)}">${escapeHtml(m.titulo)}</option>`).join('')}</select></div>
+        <div class="form-publico-grid">
+          ${campo('cNome', 'Nome completo *', 'text', 'maxlength="150" autocomplete="name"')}
+          ${campo('cCpf', 'CPF *', 'text', 'maxlength="14" inputmode="numeric" autocomplete="off" placeholder="000.000.000-00"')}
+          ${campo('cEmail', 'E-mail *', 'email', 'maxlength="160" autocomplete="email"')}
+          ${campo('cTel', 'Telefone / WhatsApp', 'tel', 'maxlength="40" autocomplete="tel"')}
+        </div>
+        ${campo('cEnd', 'Endereço completo', 'text', 'maxlength="300" autocomplete="street-address"')}
+        ${campo('cValor', 'Valor combinado com o escritório (se já souber)', 'text', 'maxlength="80"')}
+        <h2 style="margin:24px 0 8px;">1. Leia o contrato</h2>
+        <div id="cTexto" class="artigo-html" style="background:#fff;color:#1c2d42;padding:22px 24px;border:1px solid var(--line, #d9d2c3);max-height:460px;overflow:auto;line-height:1.6;"></div>
+        <div style="margin:14px 0 4px;"><button type="button" class="btn btn-outline-dark" id="cBaixar">Baixar / imprimir em PDF</button></div>
+        <h2 style="margin:24px 0 8px;">2. Assine com o GOV.BR</h2>
+        <p class="servico-intro" style="margin:0 0 10px;">Abra o assinador do GOV.BR, entre com a sua conta, envie o PDF que você baixou e assine. Depois baixe o arquivo assinado.</p>
+        <a class="btn btn-outline-dark" href="https://assinatura.iti.gov.br/" target="_blank" rel="noopener">Abrir assinatura GOV.BR ↗</a>
+        <h2 style="margin:24px 0 8px;">3. Envie o contrato assinado</h2>
+        <div class="checkout-field"><label for="cArq">Arquivo PDF assinado (até 5 MB) *</label><input id="cArq" type="file" accept="application/pdf,.pdf"></div>
+        <input type="text" id="cIsca" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;height:0;width:0;opacity:0;">
+        <label class="checkout-field" style="display:flex;gap:8px;align-items:flex-start;"><input type="checkbox" id="cAceite" style="margin-top:4px;"><span>Li o contrato e concordo com os termos. Autorizo o uso dos meus dados para esta contratação.</span></label>
+        <div class="checkout-erro" id="cErro" role="alert"></div>
+        <button type="submit" class="btn btn-gold" id="cEnviar">Enviar contrato assinado</button>
+      </form>`;
+    const el = (id) => document.getElementById(id);
+    const dataHoje = new Date().toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' });
+    const preencher = (texto) => String(texto).replace(/\{\{\s*(nome|cpf|email|telefone|endereco|valor|data)\s*\}\}/gi, (_, k) => {
+      k = k.toLowerCase();
+      const v = k === 'data' ? dataHoje : ({ nome: el('cNome').value, cpf: el('cCpf').value, email: el('cEmail').value, telefone: el('cTel').value, endereco: el('cEnd').value, valor: el('cValor').value })[k];
+      return `<u>${escapeHtml(String(v || '').trim() || '____________')}</u>`;
+    });
+    const modeloAtual = () => modelos.find((m) => m.slug === el('cModelo').value) || modelos[0];
+    const html = () => limparHtmlArtigo(preencher(modeloAtual().texto));
+    const atualizar = () => { el('cTexto').innerHTML = html(); };
+    ['cModelo', 'cNome', 'cCpf', 'cEmail', 'cTel', 'cEnd', 'cValor'].forEach((id) => el(id).addEventListener('input', atualizar));
+    atualizar();
+    el('cCpf').addEventListener('input', () => {
+      const d = el('cCpf').value.replace(/\D/g, '').slice(0, 11);
+      el('cCpf').value = d.replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+    });
+    el('cBaixar').addEventListener('click', () => {
+      const w = window.open('', '_blank');
+      if (!w){ alert('O navegador bloqueou a janela. Permita pop-ups para este site e tente de novo.'); return; }
+      w.document.write(`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>${escapeHtml(modeloAtual().titulo)}</title><style>body{font:14px/1.6 Arial,sans-serif;color:#111;margin:30px auto;max-width:760px;padding:0 20px}p{margin:0 0 12px;text-align:justify}button{padding:10px 16px;margin-bottom:20px;cursor:pointer}@media print{button{display:none}body{margin:12mm}}</style></head><body><button onclick="window.print()">Imprimir / Salvar como PDF</button>${html()}</body></html>`);
+      w.document.close();
+    });
+    const erro = (m) => { el('cErro').textContent = m; el('cErro').classList.toggle('show', !!m); };
+    const cpfOk = (c) => { const d = c.replace(/\D/g, ''); if (d.length !== 11 || /^(\d)\1+$/.test(d)) return false; for (const t of [9, 10]){ let s = 0; for (let i = 0; i < t; i++) s += Number(d[i]) * (t + 1 - i); if (((s * 10) % 11) % 10 !== Number(d[t])) return false; } return true; };
+    el('formContrato').addEventListener('submit', async (e) => {
+      e.preventDefault(); erro('');
+      if (el('cNome').value.trim().length < 5) return erro('Informe seu nome completo.');
+      if (!cpfOk(el('cCpf').value)) return erro('CPF inválido. Confira os números.');
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el('cEmail').value.trim())) return erro('Informe um e-mail válido.');
+      const f = el('cArq').files[0];
+      if (!f) return erro('Escolha o PDF assinado.');
+      if (f.size > 5 * 1024 * 1024) return erro('Arquivo grande demais (máximo 5 MB).');
+      if (!el('cAceite').checked) return erro('Marque que leu e concorda com o contrato.');
+      const btn = el('cEnviar'); btn.disabled = true; btn.textContent = 'Enviando…';
+      try {
+        const b64 = await new Promise((ok, falha) => { const r = new FileReader(); r.onload = () => ok(String(r.result).split(',')[1] || ''); r.onerror = falha; r.readAsDataURL(f); });
+        const res = await fetch(`${API_URL}/contratos/enviar`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({
+          modelo: el('cModelo').value, nome: el('cNome').value, cpf: el('cCpf').value, email: el('cEmail').value, telefone: el('cTel').value,
+          endereco: el('cEnd').value, valor: el('cValor').value, aceite: true, site_url: el('cIsca').value, arquivo_base64: b64, arquivo_nome: f.name }) });
+        const d = await res.json().catch(() => null);
+        if (!res.ok) throw new Error((d && d.erro) || 'Não foi possível enviar agora.');
+        el('formContrato').innerHTML = '<div class="servico-bloco"><h2 style="margin-top:0;">Contrato enviado</h2><p class="servico-intro" style="margin:0;">Recebemos o seu contrato assinado e enviamos uma confirmação para o seu e-mail. O escritório vai conferir a assinatura e falar com você se precisar de algo.</p></div>';
+      } catch (err) { erro(err.message); btn.disabled = false; btn.textContent = 'Enviar contrato assinado'; }
+    });
+  }
 
   // ---------- Formulários: Seja parceiro / Trabalhe conosco ----------
   function renderFormulario(chave){
@@ -3027,6 +3121,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       else if (rota.tipo === 'faq') await renderFaq();
       else if (rota.tipo === 'pagina') renderPagina(rota.chave);
       else if (rota.tipo === 'formulario') renderFormulario(rota.chave);
+      else if (rota.tipo === 'contrato') await renderContrato();
       else if (rota.tipo === 'enviar-documentos') renderEnviarDocumentos(rota.chave);
       else if (rota.tipo === 'midias') await renderMidias();
       else if (rota.tipo === 'artigo') await renderDetalheArtigo(rota.chave);
