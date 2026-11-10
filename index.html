@@ -835,6 +835,24 @@
     .products-grid{grid-template-columns:1fr 1fr;}
     .cta-inner{flex-direction:column;align-items:flex-start;}
   }
+
+  /* Cabeçalho: logo em duas linhas sem quebrar e espaço entre logo e menu */
+  header .nav-wrap{gap:36px;}
+  header .container{max-width:1400px;padding-left:28px;padding-right:28px;}
+  .brand{flex:none;margin-right:8px;}
+  .brand-word{white-space:nowrap;font-size:1.2rem;}
+  .brand-sub{font-size:0.6rem;letter-spacing:0.08em;white-space:nowrap;}
+  nav.main-nav{gap:22px;}
+  nav.main-nav ul{gap:22px;}
+  @media (min-width:961px) and (max-width:1500px){
+    header .nav-wrap{gap:22px;}
+    nav.main-nav{gap:14px;}
+    nav.main-nav ul{gap:14px;}
+    nav.main-nav a.top-link{font-size:0.86rem;}
+    .brand-sub{display:none;}
+  }
+  @media (min-width:1300px) and (max-width:1500px){ .brand-sub{display:block;} nav.main-nav a.top-link{font-size:0.82rem;} nav.main-nav ul{gap:11px;} }
+  @media (min-width:961px) and (max-width:1200px){ nav.main-nav ul{gap:9px;} nav.main-nav a.top-link{font-size:0.78rem;} .brand-word{font-size:1.05rem;} .header-icons{gap:8px;} }
 </style>
 <style id="visual-vivo">
 /* ===================== VISUAL VIVO (teste) =====================
@@ -1854,7 +1872,8 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     el('cBaixar').addEventListener('click', () => {
       const w = window.open('', '_blank');
       if (!w){ alert('O navegador bloqueou a janela. Permita pop-ups para este site e tente de novo.'); return; }
-      w.document.write(`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>${escapeHtml(modeloAtual().titulo)}</title><style>body{font:14px/1.6 Arial,sans-serif;color:#111;margin:30px auto;max-width:760px;padding:0 20px}p{margin:0 0 12px;text-align:justify}button{padding:10px 16px;margin-bottom:20px;cursor:pointer}@media print{button{display:none}body{margin:12mm}}</style></head><body><button onclick="window.print()">Imprimir / Salvar como PDF</button>${html()}</body></html>`);
+      w.document.write(`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>${escapeHtml(modeloAtual().titulo)}</title><style>body{font:14px/1.6 Arial,sans-serif;color:#111;margin:30px auto;max-width:760px;padding:0 20px}p{margin:0 0 12px;text-align:justify}button{padding:10px 16px;margin-bottom:20px;cursor:pointer}@media print{button{display:none}body{margin:12mm}}  @media (min-width:961px) and (max-width:1080px){ header .container{padding-left:14px;padding-right:14px;} nav.main-nav{gap:8px;} nav.main-nav ul{gap:6px;} nav.main-nav a.top-link{font-size:0.72rem;} .brand-word{font-size:0.95rem;} .brand svg{width:30px;height:30px;} .brand{gap:8px;margin-right:0;} header .nav-wrap{gap:10px;} .header-icons{gap:4px;} }
+</style></head><body><button onclick="window.print()">Imprimir / Salvar como PDF</button>${html()}</body></html>`);
       w.document.close();
     });
     const erro = (m) => { el('cErro').textContent = m; el('cErro').classList.toggle('show', !!m); };
