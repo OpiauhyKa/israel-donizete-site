@@ -853,6 +853,108 @@
   }
   @media (min-width:1300px) and (max-width:1500px){ .brand-sub{display:block;} nav.main-nav a.top-link{font-size:0.82rem;} nav.main-nav ul{gap:11px;} }
   @media (min-width:961px) and (max-width:1200px){ nav.main-nav ul{gap:9px;} nav.main-nav a.top-link{font-size:0.78rem;} .brand-word{font-size:1.05rem;} .header-icons{gap:8px;} }
+
+  /* ===== Etapas B, C, D: novos blocos do site ===== */
+  .ff-full{grid-column:1/-1;}
+  .form-ok{background:#EEF6EE;border:1px solid #BFD9C0;border-radius:10px;padding:18px 20px;color:#1E4A2A;}
+  .form-ok b{display:block;font-size:1.05rem;margin-bottom:6px;}
+  .form-ok p{margin:4px 0;}
+  #alertaGolpe{background:#FFF4D6;color:#4A3A0A;border-bottom:1px solid #E6CF8C;font-size:.92rem;}
+  #alertaGolpe .ag-box{max-width:1200px;margin:0 auto;padding:10px 24px;display:flex;gap:12px;align-items:flex-start;}
+  #alertaGolpe svg{flex:none;margin-top:2px;color:#A56A00;}
+  #alertaGolpe p{margin:0;flex:1;line-height:1.5;}
+  #alertaGolpe button{flex:none;background:none;border:0;font-size:1rem;cursor:pointer;color:inherit;padding:2px 6px;}
+  .popup-fundo{position:fixed;inset:0;background:rgba(10,20,26,.66);z-index:9000;display:flex;align-items:center;justify-content:center;padding:18px;}
+  .popup-caixa{background:linear-gradient(160deg,#1C3846,#14262F);color:var(--cream);border:1px solid var(--navy-line);border-radius:14px;max-width:460px;width:100%;padding:28px 26px 24px;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.45);max-height:92vh;overflow:auto;}
+  .popup-caixa h3{font-size:1.55rem;color:var(--gold-light);margin:0 0 8px;}
+  .popup-caixa p{margin:0 0 16px;color:#C9D4D8;}
+  .popup-x{position:absolute;top:10px;right:12px;background:none;border:0;color:var(--cream);font-size:1.1rem;cursor:pointer;}
+  .form-popup{background:transparent;border:0;padding:0;}
+  .form-popup label,.popup-caixa .form-aceite{color:#C9D4D8;}
+  .form-popup .form-publico-grid{grid-template-columns:1fr;}
+  #cookieBanner{position:fixed;left:16px;right:16px;bottom:16px;max-width:760px;margin:0 auto;background:#fff;color:var(--ink);border:1px solid #D8CFBD;border-radius:12px;padding:14px 16px;display:flex;gap:16px;align-items:center;box-shadow:0 10px 40px rgba(0,0,0,.25);z-index:8500;font-size:.9rem;}
+  #cookieBanner p{margin:0;flex:1;} #cookieBanner a{color:var(--gold);text-decoration:underline;} #cookieBanner .btn{flex:none;padding:9px 18px;}
+  @media (max-width:640px){ #cookieBanner{flex-direction:column;align-items:stretch;} }
+  #ajudaWidget{position:fixed;right:18px;bottom:18px;z-index:8000;font-family:inherit;}
+  .aj-botao{display:flex;align-items:center;gap:8px;background:#1FA855;color:#fff;border:0;border-radius:999px;padding:12px 18px;font-weight:700;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.3);font:inherit;font-weight:700;}
+  .aj-painel{position:absolute;right:0;bottom:56px;width:320px;max-width:calc(100vw - 36px);background:#fff;border-radius:14px;box-shadow:0 14px 50px rgba(0,0,0,.35);overflow:hidden;max-height:min(80vh,560px);display:flex;flex-direction:column;}
+  .aj-painel[hidden]{display:none;}
+  .aj-topo{background:var(--navy-deep);color:var(--cream);padding:14px 16px;display:flex;justify-content:space-between;align-items:center;}
+  .aj-topo button{background:none;border:0;color:var(--cream);cursor:pointer;font-size:1rem;}
+  .aj-corpo{padding:14px 16px;overflow:auto;} .aj-corpo hr{border:0;border-top:1px solid #E8E1D2;margin:14px 0;}
+  .aj-rotulo{font-size:.82rem;font-weight:700;color:var(--ink-soft);margin:0 0 6px;display:block;}
+  .aj-corpo input[type=search],.aj-corpo input:not([type=checkbox]){width:100%;border:1px solid #D8CFBD;border-radius:8px;padding:10px 12px;font:inherit;}
+  .aj-respostas details{background:#F7F3EA;border-radius:8px;padding:8px 10px;margin-top:8px;font-size:.88rem;} .aj-respostas summary{cursor:pointer;font-weight:600;} .aj-respostas p{margin:6px 0 0;}
+  .aj-vazio{font-size:.88rem;color:var(--ink-soft);}
+  .aj-wa{width:100%;background:#1FA855;color:#fff;border:0;border-radius:8px;padding:11px;font-weight:700;cursor:pointer;font:inherit;font-weight:700;margin-top:6px;}
+  #ajForm .checkout-field{margin-bottom:8px;}
+  /* carrossel */
+  #homeCarrossel{background:var(--navy-deep);padding:0 0 30px;}
+  .car-wrap{position:relative;max-width:1120px;margin:0 auto;aspect-ratio:21/8;overflow:hidden;border-radius:14px;background:#0E1B22;}
+  .car-slide{position:absolute;inset:0;margin:0;opacity:0;transition:opacity .9s ease;} .car-slide.on{opacity:1;}
+  .car-slide img,.car-slide video{width:100%;height:100%;object-fit:cover;display:block;}
+  .car-slide figcaption{position:absolute;left:0;right:0;bottom:0;padding:34px 28px 22px;background:linear-gradient(transparent,rgba(10,20,26,.85));color:#fff;display:flex;flex-direction:column;gap:4px;}
+  .car-slide figcaption b{font-size:1.3rem;font-family:'Fraunces',Georgia,serif;} .car-slide figcaption a{color:var(--gold-light);font-weight:700;}
+  .car-nav{position:absolute;top:50%;transform:translateY(-50%);background:rgba(10,20,26,.55);color:#fff;border:0;width:40px;height:40px;border-radius:50%;font-size:1.6rem;cursor:pointer;line-height:1;}
+  .car-ant{left:12px;} .car-prox{right:12px;}
+  .car-pontos{position:absolute;right:16px;bottom:12px;display:flex;gap:6px;} .car-pontos i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.4);} .car-pontos i.on{background:var(--gold-light);}
+  @media (max-width:700px){ .car-wrap{aspect-ratio:16/10;border-radius:0;} }
+  @media (prefers-reduced-motion: reduce){ .car-slide{transition:none;} .obras-trilho{animation:none !important;} }
+  /* home: situação, mvv, equipe, obras, consulta, brasil */
+  .secao-situacao{background:var(--cream-2);} .situacao-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
+  .situacao-card{background:#fff;border:1px solid #E1D9C8;border-radius:14px;padding:22px;} .situacao-card h3{margin:0 0 12px;font-size:1.25rem;}
+  .situacao-card .form-publico{border:0;padding:0;} .situacao-card .form-publico-grid{grid-template-columns:1fr 1fr;}
+  @media (max-width:860px){ .situacao-grid{grid-template-columns:1fr;} }
+  .secao-mvv{background:var(--navy-panel);color:var(--cream);padding:54px 0;} .mvv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+  .mvv-card{border:1px solid var(--navy-line);border-radius:12px;padding:22px;background:rgba(255,255,255,.03);} .mvv-card h3{color:var(--gold-light);margin:0 0 8px;font-size:1.2rem;} .mvv-card p{margin:0;color:#D3DDE0;line-height:1.6;}
+  @media (max-width:860px){ .mvv-grid{grid-template-columns:1fr;} }
+  .equipe-abas{display:flex;gap:8px;margin:0 0 22px;flex-wrap:wrap;} .equipe-abas button{border:1px solid #CDBFA5;background:#fff;border-radius:999px;padding:8px 18px;cursor:pointer;font:inherit;} .equipe-abas button.on{background:var(--navy-deep);color:var(--cream);border-color:var(--navy-deep);}
+  .equipe-lista{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:18px;}
+  .pessoa{background:#fff;border:1px solid #E1D9C8;border-radius:14px;padding:18px;text-align:center;} .pessoa img,.pessoa-ini{width:96px;height:96px;border-radius:50%;object-fit:cover;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;background:var(--navy-panel);color:var(--gold-light);font-size:1.5rem;font-weight:700;}
+  .pessoa h4{margin:0;font-size:1.05rem;} .pessoa span{display:block;color:var(--ink-soft);font-size:.9rem;} .pessoa small{color:var(--gold);} .pessoa p{font-size:.86rem;color:var(--ink-soft);margin:8px 0 0;}
+  .secao-obras{background:var(--cream-2);overflow:hidden;} .obras-faixa{overflow:hidden;mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);}
+  .obras-trilho{display:flex;gap:20px;width:max-content;animation:obras-rola 60s linear infinite;} .obras-faixa:hover .obras-trilho{animation-play-state:paused;}
+  @keyframes obras-rola{to{transform:translateX(-50%);}}
+  .obra{display:block;width:130px;flex:none;text-decoration:none;color:var(--ink);} .obra img{width:130px;height:185px;object-fit:cover;border-radius:6px;box-shadow:0 6px 16px rgba(0,0,0,.25);} .obra span{display:block;font-size:.8rem;margin-top:8px;line-height:1.3;}
+  .secao-consulta{background:var(--navy-deep);color:var(--cream);} .consulta-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:36px;align-items:start;} .secao-consulta h2{color:var(--cream);} .secao-consulta .kicker{color:var(--gold-light);}
+  .secao-consulta .form-publico{background:#fff;color:var(--ink);} @media (max-width:860px){ .consulta-grid{grid-template-columns:1fr;} }
+  .btn-outline-light{border:1px solid var(--gold-light);color:var(--gold-light);background:transparent;display:inline-block;padding:11px 22px;border-radius:4px;text-decoration:none;margin-top:14px;font-weight:600;}
+  .avaliacao-resumo{margin:14px 0;} .av-nota{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;} .av-nota b{font-size:2.4rem;font-family:'Fraunces',Georgia,serif;} .av-estrelas{color:#E2A93B;letter-spacing:2px;} .av-nota small{opacity:.8;}
+  .av-nota.grande{color:var(--ink);margin-bottom:16px;} .av-lista{display:grid;gap:12px;margin-bottom:10px;} .av-lista blockquote{margin:0;background:#fff;border:1px solid #E1D9C8;border-radius:12px;padding:14px 16px;} .av-lista p{margin:6px 0;} .av-lista cite{font-size:.85rem;color:var(--ink-soft);font-style:normal;}
+  .secao-brasil{background:var(--cream);} .brasil-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:30px;align-items:center;} .brasil-mapa{color:var(--navy-panel);max-width:280px;margin:0 auto;} .brasil-mapa svg{width:100%;height:auto;}
+  @media (max-width:860px){ .brasil-grid{grid-template-columns:1fr;} .brasil-mapa{max-width:160px;} }
+  /* faixa final */
+  #faixaFinal{background:var(--navy-deep);color:var(--cream);padding:40px 0 10px;border-top:1px solid var(--navy-line);} #faixaFinal:empty{display:none;}
+  .ff-bloco{margin-bottom:30px;} .ff-bloco h3{font-size:1.15rem;color:var(--gold-light);margin:0 0 14px;}
+  .ff-premios{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;} .premio{border:1px solid var(--navy-line);border-radius:12px;padding:14px;background:rgba(255,255,255,.03);display:flex;flex-direction:column;gap:4px;} .premio img{height:56px;width:auto;max-width:100%;object-fit:contain;align-self:flex-start;} .premio-ico{color:var(--gold-light);font-size:1.6rem;} .premio p{margin:2px 0 0;font-size:.85rem;color:#C9D4D8;}
+  .ff-premios.pag .premio{background:#fff;color:var(--ink);border-color:#E1D9C8;} .ff-premios.pag .premio p{color:var(--ink-soft);}
+  .ff-midia{display:flex;flex-wrap:wrap;gap:18px;align-items:center;} .ff-midia a,.ff-midia div{background:rgba(255,255,255,.92);border-radius:8px;padding:10px 16px;display:flex;align-items:center;min-height:54px;color:var(--ink);text-decoration:none;font-weight:600;} .ff-midia img{max-height:38px;max-width:140px;object-fit:contain;}
+  .ff-newsletter{display:grid;grid-template-columns:1fr 1.3fr;gap:24px;align-items:center;background:linear-gradient(120deg,#7B2A20,#9A3526);border-radius:14px;padding:26px 28px;margin:6px 0 30px;} .ff-newsletter h3{margin:0 0 6px;font-size:1.35rem;color:#fff;} .ff-newsletter p{margin:0;color:#F3DDD6;}
+  @media (max-width:860px){ .ff-newsletter{grid-template-columns:1fr;} }
+  .news-form{display:grid;grid-template-columns:1fr 1fr auto;gap:10px;} .news-form input:not([type=checkbox]){border:0;border-radius:6px;padding:12px;font:inherit;min-width:0;} .news-form .form-aceite,.news-form .checkout-erro{grid-column:1/-1;color:#F3DDD6;font-size:.8rem;} .news-form .form-aceite a{color:#fff;}
+  .news-form.claro{grid-template-columns:1fr 1fr;} .news-form.claro input:not([type=checkbox]){border:1px solid #D8CFBD;} .news-form.claro .form-aceite{color:var(--ink-soft);} .news-form.claro .form-aceite a{color:var(--gold);} .news-form.claro .btn{grid-column:1/-1;}
+  @media (max-width:640px){ .news-form{grid-template-columns:1fr;} }
+  .news-dl{list-style:none;padding:0;margin:10px 0 0;} .news-dl li{margin:6px 0;} .news-dl a{color:inherit;text-decoration:underline;font-weight:600;} .news-dl.grande li{background:#fff;border:1px solid #E1D9C8;border-radius:10px;padding:12px 16px;} .news-dl.grande a{color:var(--navy-deep);} .news-dl p{margin:4px 0 0;font-size:.9rem;color:var(--ink-soft);}
+  .footer-redes{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px;} .footer-redes a{border:1px solid var(--navy-line);border-radius:999px;padding:5px 12px;font-size:.82rem;}
+  .footer-grid{grid-template-columns:repeat(auto-fit,minmax(190px,1fr)) !important;}
+  /* busca e idioma */
+  .busca-caixa{background:#fff;border-radius:14px;max-width:560px;width:100%;padding:16px;align-self:flex-start;margin-top:10vh;box-shadow:0 20px 60px rgba(0,0,0,.4);}
+  .busca-caixa input{width:100%;border:1px solid #D8CFBD;border-radius:8px;padding:13px 14px;font:inherit;font-size:1.05rem;} .busca-res{max-height:55vh;overflow:auto;margin-top:8px;}
+  .busca-res a{display:flex;gap:10px;align-items:baseline;padding:10px 8px;border-radius:8px;color:var(--ink);text-decoration:none;} .busca-res a:hover{background:#F4EFE5;} .busca-res span{font-size:.7rem;font-weight:700;color:var(--gold);min-width:56px;text-transform:uppercase;} .busca-res p{color:var(--ink-soft);padding:8px;}
+  .idioma-menu{position:relative;} .idioma-btn{width:auto !important;gap:3px;} .idioma-btn b{font-size:.68rem;} .idioma-lista{position:absolute;right:0;top:36px;background:var(--navy-panel);border:1px solid var(--navy-line);border-radius:8px;list-style:none;margin:0;padding:6px;min-width:130px;z-index:50;} .idioma-lista[hidden]{display:none;}
+  .idioma-lista button{background:none;border:0;color:var(--cream);width:100%;text-align:left;padding:8px 10px;cursor:pointer;font:inherit;border-radius:6px;} .idioma-lista button:hover,.idioma-lista button.on{background:var(--navy-line);color:var(--gold-light);}
+  body{top:0 !important;} .goog-te-banner-frame,.skiptranslate iframe{display:none !important;} .goog-logo-link,.goog-te-gadget{display:none !important;}
+  /* páginas */
+  .calc-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:14px;} .calc-card{display:block;background:#fff;border:1px solid #E1D9C8;border-radius:12px;padding:18px;text-decoration:none;color:var(--ink);transition:transform .2s,box-shadow .2s;} .calc-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.12);} .calc-card h3{margin:0 0 6px;font-size:1.1rem;} .calc-card p{margin:0;font-size:.9rem;color:var(--ink-soft);}
+  .calc-res{background:#fff;border:1px solid #E1D9C8;border-radius:12px;padding:16px 18px;margin:18px 0;} .calc-res table{width:100%;border-collapse:collapse;} .calc-res td{padding:8px 4px;border-bottom:1px solid #EFE9DB;} .calc-res td:last-child{text-align:right;white-space:nowrap;} .calc-res tr.total td{font-weight:700;font-size:1.1rem;border-bottom:0;color:var(--navy-deep);} .calc-res p{font-size:.85rem;color:var(--ink-soft);margin:8px 0 0;}
+  .vagas-lista{display:grid;gap:14px;} .vaga{background:#fff;border:1px solid #E1D9C8;border-radius:12px;padding:18px;} .vaga h3{margin:0 0 4px;} .vaga>span{color:var(--gold);font-size:.9rem;} .vaga-desc{margin:10px 0;color:var(--ink-soft);}
+  .filiais{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;} .filial{background:#fff;border:1px solid #E1D9C8;border-radius:12px;padding:16px;} .filial h3{margin:0 0 6px;font-size:1.05rem;} .filial p{margin:0;} .filial small{color:var(--ink-soft);display:block;margin-top:6px;} .sub-h{font-size:1.25rem;margin:26px 0 12px;}
+  .servico-texto table,.texto-editavel table,.texto-rico table,.artigo-corpo table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92rem;} .servico-texto th,.servico-texto td,.texto-editavel th,.texto-editavel td,.artigo-corpo th,.artigo-corpo td{border:1px solid #DCD3C0;padding:8px 10px;text-align:left;vertical-align:top;} .servico-texto th,.texto-editavel th,.artigo-corpo th{background:#F1EADB;}
+  .stepper-bloco{margin:0 0 14px;} .stepper-bloco h5{margin:12px 0 6px;font-size:.85rem;color:var(--ink-soft);}
+  .stepper{list-style:none;display:flex;gap:6px;padding:0;margin:0;flex-wrap:wrap;} .stepper li{flex:1;min-width:120px;display:flex;align-items:flex-start;gap:8px;font-size:.82rem;color:#8A979C;} .stepper i{flex:none;width:24px;height:24px;border-radius:50%;border:2px solid #CFC7B6;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:.75rem;font-weight:700;}
+  .stepper li.ok{color:var(--ink);} .stepper li.ok i{background:var(--gold);border-color:var(--gold);color:#fff;} .stepper li.atual{color:var(--ink);font-weight:700;} .stepper li.atual i{border-color:var(--gold);color:var(--gold);box-shadow:0 0 0 3px rgba(173,129,91,.25);}
+  .stepper.proc{margin:10px 0 14px;}
+  .texto-legal h2{font-size:1.15rem;margin:22px 0 8px;}
 </style>
 <style id="visual-vivo">
 /* ===================== VISUAL VIVO (teste) =====================
@@ -1160,6 +1262,10 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
 }
 @media (hover:none){.oab-strip:hover h3,.footer-col a:hover,.post-card:hover img,.product-card:hover img{transform:none;}}
 
+
+/* cabeçalho apertado (telas médias e celular) */
+@media (min-width:961px) and (max-width:1080px){ header .container{padding-left:14px;padding-right:14px;} nav.main-nav{gap:8px;} nav.main-nav ul{gap:6px;} nav.main-nav a.top-link{font-size:0.72rem;} .brand-word{font-size:0.95rem;} .brand svg{width:30px;height:30px;} .brand{gap:8px;margin-right:0;} header .nav-wrap{gap:10px;} .header-icons{gap:4px;} }
+@media (max-width:960px){ .brand-word{white-space:normal;font-size:1rem;} .brand{min-width:0;gap:8px;margin-right:0;flex:1 1 auto;} .brand svg,.brand img{width:32px;height:32px;flex:none;} header .nav-wrap{gap:8px;} .header-icons{gap:2px;flex:none;} .header-icons .icon-btn{width:34px;height:34px;} .brand-sub{white-space:normal;font-size:0.56rem;letter-spacing:0.06em;line-height:1.2;} .brand-word{overflow-wrap:anywhere;} }
 </style>
 </head>
 <body>
@@ -1393,6 +1499,8 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
 </section>
 
 <!-- ================= ADVOCACIA ================= -->
+<div id="homeCarrossel" style="display:none"></div>
+
 <section class="section" id="advocacia">
   <div class="container">
     <div class="section-head">
@@ -1494,6 +1602,8 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
   </div>
 </section>
 
+<div id="homeExtras"></div>
+
 </div><!-- /#homeContent -->
 
 <!-- ================= DETALHE (livro/curso/artigo) ================= -->
@@ -1502,6 +1612,8 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
 </section>
 
 <!-- ================= FOOTER ================= -->
+<div id="faixaFinal"></div>
+
 <footer id="contato">
   <div class="container">
     <div class="footer-grid">
@@ -1668,6 +1780,11 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     // #blog-todos-trabalhista, #blog-todos-previdenciario, etc -> já abre filtrado
     const mBlogCat = h.match(/^blog-todos-(trabalhista|previdenciario|noticias|artigos)$/);
     if (mBlogCat) return { tipo: 'blog-todos', chave: mBlogCat[1] };
+    if (/^(agendar|acordo|atualizar-dados|denuncia|sugestoes|avaliacoes|informativos|vagas|premios|filiais|calculadoras)$/.test(h)) return { tipo: 'extra', chave: h };
+    const mCalc = h.match(/^calc-([a-z-]{3,30})$/);
+    if (mCalc) return { tipo: 'extra', chave: 'calc', extra: mCalc[1] };
+    const mPg = h.match(/^pagina-([a-z0-9-]{1,60})$/);
+    if (mPg) return { tipo: 'extra', chave: 'pagina', extra: mPg[1] };
     const m = h.match(/^(livro|curso|artigo)-(.+)$/);
     return m ? { tipo: m[1], chave: m[2] } : null;
   }
@@ -1734,6 +1851,14 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       itens: ['Aposentadoria','Benefícios do INSS','Auxílio por incapacidade','BPC/LOAS','Revisão de benefícios','Planejamento previdenciário','Recursos administrativos'],
       docs: ['RG','CPF','Comprovante de endereço atualizado','Carteira de Trabalho (CTPS)','Extrato do CNIS (histórico de contribuições)','Carta de concessão ou indeferimento do INSS, se houver','Laudos e atestados médicos, em casos de incapacidade','Outros documentos ligados ao seu caso'],
       msg: 'Olá! Vim pelo site e gostaria de falar sobre um caso de Direito Previdenciário.'
+    },
+    'trabalhista-empresarial': {
+      kicker: 'DIREITO DO TRABALHO',
+      titulo: 'Advocacia Trabalhista Empresarial',
+      intro: 'Atuamos preventivamente no cumprimento da legislação trabalhista e na defesa estratégica contra processos que podem impactar a saúde financeira do seu negócio.',
+      itens: ['Consultoria preventiva','Compliance trabalhista','Contencioso trabalhista'],
+      docs: ['CNPJ e contrato social','Documento do responsável','Documentos e contratos ligados ao assunto'],
+      msg: 'Olá! Vim pelo site e gostaria de falar sobre advocacia trabalhista empresarial.'
     },
     'assessoria': {
       kicker: 'ÁREA DE ATUAÇÃO',
@@ -1872,7 +1997,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     el('cBaixar').addEventListener('click', () => {
       const w = window.open('', '_blank');
       if (!w){ alert('O navegador bloqueou a janela. Permita pop-ups para este site e tente de novo.'); return; }
-      w.document.write(`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>${escapeHtml(modeloAtual().titulo)}</title><style>body{font:14px/1.6 Arial,sans-serif;color:#111;margin:30px auto;max-width:760px;padding:0 20px}p{margin:0 0 12px;text-align:justify}button{padding:10px 16px;margin-bottom:20px;cursor:pointer}@media print{button{display:none}body{margin:12mm}}  @media (min-width:961px) and (max-width:1080px){ header .container{padding-left:14px;padding-right:14px;} nav.main-nav{gap:8px;} nav.main-nav ul{gap:6px;} nav.main-nav a.top-link{font-size:0.72rem;} .brand-word{font-size:0.95rem;} .brand svg{width:30px;height:30px;} .brand{gap:8px;margin-right:0;} header .nav-wrap{gap:10px;} .header-icons{gap:4px;} }
+      w.document.write(`<!doctype html><html lang="pt-BR"><head><meta charset="utf-8"><title>${escapeHtml(modeloAtual().titulo)}</title><style>body{font:14px/1.6 Arial,sans-serif;color:#111;margin:30px auto;max-width:760px;padding:0 20px}p{margin:0 0 12px;text-align:justify}button{padding:10px 16px;margin-bottom:20px;cursor:pointer}@media print{button{display:none}body{margin:12mm}}
 </style></head><body><button onclick="window.print()">Imprimir / Salvar como PDF</button>${html()}</body></html>`);
       w.document.close();
     });
@@ -2113,6 +2238,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       SITE_CONFIG = r.ok ? await r.json() : { youtube_url: '', faq: [] };
     }catch(e){ SITE_CONFIG = { youtube_url: '', faq: [] }; }
     aplicarEscritorio(SITE_CONFIG.escritorio);
+    try{ aplicarExtras(SITE_CONFIG); }catch(e){ console.error(e); }
     return SITE_CONFIG;
   }
   // Atendimento no rodapé: horário, endereços e mapa vêm do painel (aba Site).
@@ -2464,7 +2590,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
         <p class="servico-nota">A lista pode variar conforme o caso. Os documentos são tratados com sigilo profissional.</p>
       </div>
 
-      ` : (chave === 'oab-1fase' || chave === 'assessoria') ? '' : `
+      ` : (chave === 'oab-1fase' || chave === 'assessoria' || chave === 'trabalhista-empresarial') ? '' : `
       <div class="servico-bloco servico-portal">
         <div>
           <h2>Documentos do seu caso</h2>
@@ -2480,10 +2606,11 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       </div>
     `;
     if (AREAS_SERVICOS.includes(chave)) carregarServicosArea(chave, !!(ov && ov.html));
+    extrasServico(chave);
   }
 
   // Serviços de cada área: vêm do painel, cada um abre uma página com texto editável.
-  const AREAS_SERVICOS = ['trabalhista', 'previdenciario', 'assessoria'];
+  const AREAS_SERVICOS = ['trabalhista', 'previdenciario', 'assessoria', 'trabalhista-empresarial'];
   async function carregarServicosArea(area, textoPersonalizado){
     try{
       const r = await fetch(`${API_URL}/servicos/${area}`);
@@ -2508,7 +2635,8 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     detalheConteudo.style.maxWidth = '820px';
     const sv = SERVICOS[area];
     if (!sv || !AREAS_SERVICOS.includes(area)){ location.hash = ''; return; }
-    const r = await fetch(`${API_URL}/servicos/${encodeURIComponent(area)}/${encodeURIComponent(slug)}`);
+    const r = await carregarItemRestrito(area, slug);
+    if (r.status === 401){ portaoCadastro(sv, ''); return; }
     if (!r.ok) throw new Error('Serviço não encontrado');
     const it = await r.json();
     const wa = WA_BASE + encodeURIComponent('Olá! Vim pelo site (' + sv.titulo + ' — ' + it.titulo + ') e gostaria de falar com um advogado.');
@@ -2521,7 +2649,9 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       <div class="servico-cta">
         <a class="btn btn-gold" href="${wa}" target="_blank" rel="noopener">Falar com um advogado</a>
         <a class="btn btn-outline-dark" href="#${area}">Ver outros serviços</a>
-      </div>`;
+      </div>
+      ${area === 'previdenciario' ? `<h2 style="margin:30px 0 12px;">Podemos ajudá-lo?</h2>${formContato('fPrev', 'previdenciario', [C_NOME, C_EMAIL, C_TEL, { n: 'mensagem', l: 'Mensagem', t: 'textarea', req: 1, full: 1, rows: 4 }], 'Enviar')}` : ''}`;
+    if (area === 'previdenciario') ligarFormContato('fPrev', [C_NOME, C_EMAIL, C_TEL, { n: 'mensagem', l: 'Mensagem', req: 1 }], { extra: () => ({ servico: it.titulo }), ok: 'Recebemos sua mensagem. Retornaremos em breve.' });
   }
 
   // Artigos feitos no editor do painel vêm em HTML. Antes de mostrar, tudo
@@ -2555,7 +2685,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
 }
 
   function limparHtmlArtigo(html){
-    const PERMITIDAS = new Set(['P','BR','B','STRONG','I','EM','U','H2','H3','UL','OL','LI','A','BLOCKQUOTE','IMG','SPAN']);
+    const PERMITIDAS = new Set(['P','BR','B','STRONG','I','EM','U','H2','H3','UL','OL','LI','A','BLOCKQUOTE','IMG','SPAN','TABLE','THEAD','TBODY','TR','TH','TD']);
     const doc = new DOMParser().parseFromString(`<div>${html}</div>`, 'text/html');
     const raiz = doc.body.firstChild;
     const limpar = (no) => {
@@ -3193,7 +3323,13 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     const rota = parseHash();
     const comprasPg = document.getElementById('comprasPage');
     if (comprasPg) comprasPg.style.display = 'none';
-    if (!rota){ mostrarHome(); return; }
+    if (!rota){
+      mostrarHome();
+      const alvoId = decodeURIComponent(location.hash.replace('#', ''));
+      const alvoEl = alvoId ? document.getElementById(alvoId) : null;
+      if (alvoEl && homeContent.contains(alvoEl)) setTimeout(() => alvoEl.scrollIntoView({ behavior: 'smooth', block: 'start' }), 60);
+      return;
+    }
 
     if (rota.tipo === 'cadastro'){ mostrarCadastro(); return; }
     if (rota.tipo === 'carrinho'){ mostrarCarrinho(); return; }
@@ -3210,6 +3346,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       await carregarSiteConfig();
       if (rota.tipo === 'servico') renderServico(rota.chave);
       else if (rota.tipo === 'servico-item') await renderServicoItem(rota.chave, rota.extra);
+      else if (rota.tipo === 'extra') await renderExtra(rota.chave, rota.extra);
       else if (rota.tipo === 'faq') await renderFaq();
       else if (rota.tipo === 'pagina') renderPagina(rota.chave);
       else if (rota.tipo === 'formulario') renderFormulario(rota.chave);
@@ -3681,9 +3818,10 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
           </div>
           <span class="prov-status ${p.status === 'encerrado' ? 'concluido' : p.status === 'suspenso' ? 'aguardando_pagamento' : 'enviado'}">${escapeHtml(p.status_nome)}</span>
         </div>
+        ${stepperProc(p)}
         ${p.andamentos.length ? `
           <ol class="linha-tempo">
-            ${p.andamentos.map(a => `<li><span class="lt-data">${new Date(String(a.data).slice(0, 10) + 'T12:00:00').toLocaleDateString('pt-BR')}</span><p>${escapeHtml(a.descricao)}</p></li>`).join('')}
+            ${p.andamentos.map(a => `<li><span class="lt-data">${new Date(String(a.data).slice(0, 10) + 'T12:00:00').toLocaleDateString('pt-BR')}</span><p>${escapeHtml(a.descricao)}${a.origem === 'datajud' ? ' <small style="opacity:.6">(tribunal)</small>' : ''}</p></li>`).join('')}
           </ol>` : '<p class="prov-ajuda">Ainda não há andamentos registrados.</p>'}
       </div>`).join('') + `<p class="prov-ajuda">Dúvidas sobre o seu processo? <a href="${wa}" target="_blank" rel="noopener" style="color:var(--gold-light);">Fale pelo WhatsApp</a>.</p>`;
   }
@@ -3707,7 +3845,8 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
   }
 
   // O que aparece no topo de cada envio, conforme a etapa.
-  function blocoEtapa(p, cfg){
+  function blocoEtapa(p, cfg){ return stepperProv(p) + blocoEtapaBase(p, cfg); }
+  function blocoEtapaBase(p, cfg){
     const resp = p.resposta ? `<div class="prov-resposta"><small>Recado do Dr. Israel</small>${escapeHtml(p.resposta)}</div>` : '';
     const msgSpan = `<span class="portal-msg" id="provMsg-${p.id}"></span>`;
     switch (p.status){
@@ -4326,6 +4465,642 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
 
   atualizarIconeLogin();
   atualizarBadgeCarrinho();
+  // =====================================================================
+  // ETAPAS B, C e D — conteúdo editável, formulários, calculadoras, busca e idiomas
+  // =====================================================================
+  const brl = (n) => 'R$ ' + (Number(n) || 0).toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  const ls = {
+    get(k){ try{ return localStorage.getItem(k); }catch(e){ return null; } },
+    set(k, v){ try{ localStorage.setItem(k, v); }catch(e){} },
+    sget(k){ try{ return sessionStorage.getItem(k); }catch(e){ return null; } },
+    sset(k, v){ try{ sessionStorage.setItem(k, v); }catch(e){} },
+  };
+  const WA_NUM = '5511975751984';
+
+  // ---------- Formulários públicos (envia para POST /contato) ----------
+  // campos: [{ n, l, t:'text|email|tel|date|time|select|textarea', req, full, opts:[], ph }]
+  function camposHtml(prefixo, campos){
+    return campos.map(c => {
+      const id = prefixo + '_' + c.n;
+      const cls = 'checkout-field' + (c.full ? ' ff-full' : '');
+      const r = c.req ? ' required' : '';
+      if (c.t === 'select') return `<div class="${cls}"><label for="${id}">${c.l}${c.req ? ' *' : ''}</label><select id="${id}"${r}>${(c.opts || []).map(o => `<option value="${escAttr(o)}">${escapeHtml(o)}</option>`).join('')}</select></div>`;
+      if (c.t === 'textarea') return `<div class="${cls}"><label for="${id}">${c.l}${c.req ? ' *' : ''}</label><textarea id="${id}" rows="${c.rows || 4}" maxlength="${c.max || 3000}" placeholder="${escAttr(c.ph || '')}"${r}></textarea></div>`;
+      return `<div class="${cls}"><label for="${id}">${c.l}${c.req ? ' *' : ''}</label><input id="${id}" type="${c.t || 'text'}" maxlength="${c.max || 160}" placeholder="${escAttr(c.ph || '')}"${c.t === 'date' ? ' min="' + new Date().toISOString().slice(0, 10) + '"' : ''}${r}></div>`;
+    }).join('');
+  }
+  function formContato(id, tipo, campos, botao, opts = {}){
+    const aceite = opts.anonimo ? '' : `<label class="form-aceite"><input type="checkbox" id="${id}_aceite"> Autorizo o uso dos meus dados para este contato, conforme a <a href="#privacidade">Política de Privacidade</a>.</label>`;
+    return `
+      <form id="${id}" class="form-publico ${opts.classe || ''}" novalidate data-tipo="${tipo}">
+        <div class="form-publico-grid">${camposHtml(id, campos)}</div>
+        <input type="text" id="${id}_isca" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true">
+        ${aceite}
+        <p class="checkout-erro" id="${id}_erro"></p>
+        <button class="btn btn-gold" type="submit">${botao}</button>
+      </form>`;
+  }
+  // Liga o formulário. opts: { campos, ok: mensagem/func, aposEnviar(resposta), extra(): dados fixos }
+  function ligarFormContato(id, campos, opts = {}){
+    const form = document.getElementById(id);
+    if (!form) return;
+    const erro = (m) => { const e = document.getElementById(id + '_erro'); if (e){ e.textContent = m; e.classList.toggle('show', !!m); } };
+    form.addEventListener('submit', async (ev) => {
+      ev.preventDefault(); erro('');
+      const val = (n) => ((document.getElementById(id + '_' + n) || {}).value || '').trim();
+      for (const c of campos){ if (c.req && !val(c.n)) return erro(`Preencha o campo "${c.l}".`); }
+      const anonimo = form.dataset.tipo === 'denuncia';
+      if (!anonimo && !(document.getElementById(id + '_aceite') || {}).checked) return erro('Marque a autorização de uso dos dados para continuar.');
+      const corpo = { tipo: form.dataset.tipo, consentimento: !anonimo, site_url: (document.getElementById(id + '_isca') || {}).value || '', dados: Object.assign({}, opts.extra ? opts.extra() : {}) };
+      campos.forEach(c => { const v = val(c.n); if (!v) return; if (['nome', 'email', 'telefone', 'mensagem', 'assunto'].includes(c.n)) corpo[c.n] = v; else corpo.dados[c.n] = v; });
+      const btn = form.querySelector('button[type=submit]'); btn.disabled = true; const txt0 = btn.textContent; btn.textContent = 'Enviando…';
+      try{
+        const r = await fetch(`${API_URL}/contato`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(corpo) });
+        const d = await r.json().catch(() => ({}));
+        if (!r.ok) throw new Error(d.erro || 'Não foi possível enviar agora.');
+        if (opts.aposEnviar) opts.aposEnviar(d, form);
+        else form.innerHTML = `<div class="form-ok"><b>Mensagem enviada!</b><p>${opts.ok || 'Recebemos seus dados e retornaremos em breve.'}</p></div>`;
+      }catch(e){ erro(e.message || 'Não foi possível enviar agora.'); btn.disabled = false; btn.textContent = txt0; }
+    });
+  }
+  const C_NOME = { n: 'nome', l: 'Nome completo', req: 1, max: 150 };
+  const C_EMAIL = { n: 'email', l: 'E-mail', t: 'email', req: 1 };
+  const C_TEL = { n: 'telefone', l: 'Telefone / WhatsApp', t: 'tel', max: 40 };
+
+  // ---------- Alerta de golpe, anúncio, cookies ----------
+  function alertaGolpe(c){
+    const a = c.alerta_golpe; const antigo = document.getElementById('alertaGolpe'); if (antigo) antigo.remove();
+    if (!a || !a.ativo || ls.sget('alertaGolpeFechado')) return;
+    const el = document.createElement('div');
+    el.id = 'alertaGolpe'; el.setAttribute('role', 'alert');
+    el.innerHTML = `<div class="ag-box"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9L1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4M12 17h.01"/></svg><p><b>${escapeHtml(a.titulo)}.</b> ${escapeHtml(a.texto)}</p><button type="button" aria-label="Fechar aviso">✕</button></div>`;
+    el.querySelector('button').addEventListener('click', () => { el.remove(); ls.sset('alertaGolpeFechado', '1'); });
+    const banner = document.querySelector('.preview-banner');
+    (banner || document.body).insertAdjacentElement(banner ? 'afterend' : 'afterbegin', el);
+  }
+  function anuncioPopup(c){
+    const n = c.anuncio;
+    if (!n || !n.ativo || ls.sget('anuncioVisto') || document.getElementById('anuncioPopup')) return;
+    setTimeout(() => {
+      if (ls.sget('anuncioVisto')) return;
+      const el = document.createElement('div');
+      el.id = 'anuncioPopup'; el.className = 'popup-fundo';
+      el.innerHTML = `<div class="popup-caixa" role="dialog" aria-modal="true" aria-labelledby="anTit"><button type="button" class="popup-x" aria-label="Fechar">✕</button>
+        <h3 id="anTit">${escapeHtml(n.titulo)}</h3><p>${escapeHtml(n.texto)}</p>
+        ${formContato('fAnuncio', 'ajuda', [C_NOME, { n: 'email', l: 'E-mail', t: 'email' }, { n: 'telefone', l: 'Celular / WhatsApp', t: 'tel', req: 1, max: 40 }], 'Quero receber uma ligação', { classe: 'form-popup' })}</div>`;
+      document.body.appendChild(el);
+      const fechar = () => { el.remove(); ls.sset('anuncioVisto', '1'); };
+      el.querySelector('.popup-x').addEventListener('click', fechar);
+      el.addEventListener('click', (e) => { if (e.target === el) fechar(); });
+      ligarFormContato('fAnuncio', [C_NOME, { n: 'email', l: 'E-mail', t: 'email' }, { n: 'telefone', l: 'Celular / WhatsApp', t: 'tel', req: 1 }], { extra: () => ({ origem: 'anuncio' }), ok: 'Um consultor ligará para você em breve.' });
+      ls.sset('anuncioVisto', '1');
+    }, 4000);
+  }
+  function cookieBanner(){
+    if (ls.get('cookiesAviso') || document.getElementById('cookieBanner')) return;
+    const el = document.createElement('div');
+    el.id = 'cookieBanner';
+    el.innerHTML = `<p><b>Respeitamos sua privacidade.</b> Este site guarda no seu navegador apenas o necessário para funcionar (login e carrinho) e não usa cookies de publicidade. Saiba mais na <a href="#privacidade">Política de Privacidade</a>.</p><button type="button" class="btn btn-gold">Entendi</button>`;
+    el.querySelector('button').addEventListener('click', () => { ls.set('cookiesAviso', '1'); el.remove(); });
+    document.body.appendChild(el);
+  }
+
+  // ---------- "Precisa de ajuda?" + dúvidas rápidas (assistente) ----------
+  function widgetAjuda(c){
+    const antigo = document.getElementById('ajudaWidget'); if (antigo) antigo.remove();
+    if (!c.ajuda || !c.ajuda.ativo) return;
+    const num = c.ajuda.whatsapp || WA_NUM;
+    const w = document.createElement('div'); w.id = 'ajudaWidget';
+    w.innerHTML = `
+      <div class="aj-painel" id="ajPainel" hidden>
+        <div class="aj-topo"><b>Olá! Como podemos ajudar?</b><button type="button" id="ajFechar" aria-label="Fechar">✕</button></div>
+        <div class="aj-corpo">
+          <label for="ajBusca" class="aj-rotulo">Tire uma dúvida rápida</label>
+          <input id="ajBusca" type="search" placeholder="Ex.: aviso prévio, enviar prova, pagamento" autocomplete="off">
+          <div id="ajRespostas" class="aj-respostas"></div>
+          <hr>
+          <p class="aj-rotulo">Ou converse com um advogado pelo WhatsApp</p>
+          <div id="ajForm"><div class="checkout-field"><input id="ajNome" placeholder="Nome" maxlength="150"></div>
+          <div class="checkout-field"><input id="ajEmail" type="email" placeholder="E-mail" maxlength="160"></div>
+          <div class="checkout-field"><input id="ajTel" type="tel" placeholder="Telefone" maxlength="40"></div>
+          <input type="text" id="ajIsca" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true">
+          <label class="form-aceite"><input type="checkbox" id="ajAceite"> Autorizo o uso dos dados para este contato (<a href="#privacidade">LGPD</a>).</label>
+          <p class="checkout-erro" id="ajErro"></p>
+          <button type="button" class="btn aj-wa" id="ajIniciar">Iniciar conversa</button></div>
+        </div>
+      </div>
+      <button type="button" class="aj-botao" id="ajAbrir"><svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><path d="M20 2H4a2 2 0 0 0-2 2v18l4-4h14a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2z"/></svg> Precisa de ajuda?</button>`;
+    document.body.appendChild(w);
+    const painel = document.getElementById('ajPainel');
+    document.getElementById('ajAbrir').addEventListener('click', () => { painel.hidden = !painel.hidden; });
+    document.getElementById('ajFechar').addEventListener('click', () => { painel.hidden = true; });
+    const normaliza = (s) => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+    document.getElementById('ajBusca').addEventListener('input', (e) => {
+      const q = normaliza(e.target.value).split(/\s+/).filter(x => x.length > 2);
+      const box = document.getElementById('ajRespostas');
+      if (!q.length){ box.innerHTML = ''; return; }
+      const itens = ((SITE_CONFIG && SITE_CONFIG.faq) || []).map(f => ({ f, p: q.filter(w => normaliza(f.pergunta + ' ' + f.resposta).includes(w)).length })).filter(x => x.p > 0).sort((a, b) => b.p - a.p).slice(0, 3);
+      box.innerHTML = itens.length ? itens.map(x => `<details><summary>${escapeHtml(x.f.pergunta)}</summary><p>${escapeHtml(x.f.resposta)}</p></details>`).join('') : '<p class="aj-vazio">Não encontramos essa dúvida. Fale com um advogado abaixo.</p>';
+    });
+    document.getElementById('ajIniciar').addEventListener('click', async () => {
+      const v = (id) => document.getElementById(id).value.trim();
+      const er = document.getElementById('ajErro');
+      const erro = (m) => { er.textContent = m; er.classList.toggle('show', !!m); };
+      if (!v('ajNome')) return erro('Informe seu nome.');
+      if (!v('ajEmail') && !v('ajTel')) return erro('Informe um e-mail ou telefone.');
+      if (!document.getElementById('ajAceite').checked) return erro('Marque a autorização de uso dos dados.');
+      erro('');
+      const zap = window.open('about:blank', '_blank');
+      try{
+        const r = await fetch(`${API_URL}/contato`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ tipo: 'ajuda', nome: v('ajNome'), email: v('ajEmail'), telefone: v('ajTel'), consentimento: true, site_url: v('ajIsca'), dados: { origem: 'widget' } }) });
+        const d = await r.json().catch(() => ({}));
+        if (!r.ok) throw new Error(d.erro || 'Erro ao enviar.');
+        const url = `https://wa.me/${num}?text=` + encodeURIComponent(`Olá! Me chamo ${v('ajNome')}. Vim pelo site e preciso de ajuda jurídica.`);
+        if (zap) zap.location = url; else location.href = url;
+        document.getElementById('ajForm').innerHTML = '<p class="aj-vazio"><b>Pronto!</b> Abrimos o WhatsApp para você continuar a conversa.</p>';
+      }catch(e){ if (zap) zap.close(); erro(e.message); }
+    });
+  }
+
+  // ---------- Seções novas da página inicial e do rodapé ----------
+  function estrelas(n){ n = Math.round(Number(n) || 0); return '★'.repeat(n) + '☆'.repeat(5 - n); }
+  function aplicarExtras(c){
+    try{
+      alertaGolpe(c); widgetAjuda(c); anuncioPopup(c); cookieBanner();
+      carrosselHome(c); extrasHome(c); faixaFinal(c); rodapeExtras(c); menuExtras(c); idiomasUi(c);
+    }catch(e){ console.error('Extras do site:', e); }
+  }
+  function carrosselHome(c){
+    const box = document.getElementById('homeCarrossel'); if (!box) return;
+    const sl = c.carrossel || [];
+    if (!sl.length){ box.innerHTML = ''; box.style.display = 'none'; return; }
+    box.style.display = '';
+    box.innerHTML = `<div class="car-wrap" aria-roledescription="carrossel">
+      ${sl.map((s, i) => `<figure class="car-slide${i === 0 ? ' on' : ''}">${s.tipo === 'video' ? `<video src="${escAttr(s.url)}" muted loop playsinline ${i === 0 ? 'autoplay' : ''} preload="metadata"></video>` : `<img src="${escAttr(s.url)}" alt="${escAttr(s.titulo || 'Imagem do escritório')}" loading="${i ? 'lazy' : 'eager'}">`}
+        ${(s.titulo || s.texto) ? `<figcaption><b>${escapeHtml(s.titulo)}</b>${s.texto ? `<span>${escapeHtml(s.texto)}</span>` : ''}${s.link ? `<a href="${escAttr(s.link)}" target="_blank" rel="noopener">Saiba mais</a>` : ''}</figcaption>` : ''}</figure>`).join('')}
+      ${sl.length > 1 ? `<button class="car-nav car-ant" type="button" aria-label="Anterior">‹</button><button class="car-nav car-prox" type="button" aria-label="Próximo">›</button><div class="car-pontos">${sl.map((_, i) => `<i class="${i === 0 ? 'on' : ''}"></i>`).join('')}</div>` : ''}</div>`;
+    if (sl.length < 2) { const v = box.querySelector('video'); if (v) v.play().catch(() => {}); return; }
+    let i = 0; const slides = [...box.querySelectorAll('.car-slide')], pts = [...box.querySelectorAll('.car-pontos i')];
+    const ir = (n) => {
+      slides[i].classList.remove('on'); pts[i].classList.remove('on'); const v0 = slides[i].querySelector('video'); if (v0) v0.pause();
+      i = (n + slides.length) % slides.length;
+      slides[i].classList.add('on'); pts[i].classList.add('on'); const v1 = slides[i].querySelector('video'); if (v1) v1.play().catch(() => {});
+    };
+    box.querySelector('.car-ant').addEventListener('click', () => { ir(i - 1); reiniciar(); });
+    box.querySelector('.car-prox').addEventListener('click', () => { ir(i + 1); reiniciar(); });
+    let t = null; const reiniciar = () => { clearInterval(t); if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) t = setInterval(() => ir(i + 1), 6500); };
+    reiniciar();
+  }
+
+  async function extrasHome(c){
+    const box = document.getElementById('homeExtras'); if (!box) return;
+    const partes = [];
+    // Conte a sua situação (Trabalho e Previdenciário, separados)
+    partes.push(`<section class="section secao-situacao" id="conte-situacao"><div class="container">
+      <div class="section-head"><span class="kicker">CONTE A SUA SITUAÇÃO</span><h2>Descreva em poucas linhas o seu caso</h2><p>Escolha a área e conte o que aconteceu. Um advogado responde pelo WhatsApp ou e-mail.</p></div>
+      <div class="situacao-grid">
+        <div class="situacao-card"><h3>Direito do Trabalho</h3>${formContato('fSitTrab', 'situacao_trabalhista', [C_NOME, C_TEL, { n: 'email', l: 'E-mail', t: 'email' }, { n: 'mensagem', l: 'Conte o seu caso', t: 'textarea', req: 1, full: 1, rows: 3, ph: 'Ex.: fui demitido sem receber as verbas…' }], 'Enviar')}</div>
+        <div class="situacao-card"><h3>Direito Previdenciário</h3>${formContato('fSitPrev', 'situacao_previdenciaria', [C_NOME, C_TEL, { n: 'email', l: 'E-mail', t: 'email' }, { n: 'mensagem', l: 'Conte o seu caso', t: 'textarea', req: 1, full: 1, rows: 3, ph: 'Ex.: meu benefício do INSS foi negado…' }], 'Enviar')}</div>
+      </div></div></section>`);
+    // Missão, visão e valores
+    if (c.mvv && c.mvv.ativo){
+      partes.push(`<section class="section secao-mvv" id="mvv"><div class="container"><div class="mvv-grid">
+        <div class="mvv-card"><h3>Missão</h3><p>${escapeHtml(c.mvv.missao)}</p></div>
+        <div class="mvv-card"><h3>Visão</h3><p>${escapeHtml(c.mvv.visao)}</p></div>
+        <div class="mvv-card"><h3>Valores</h3><p>${escapeHtml(c.mvv.valores)}</p></div></div></div></section>`);
+    }
+    // Profissionais
+    if ((c.equipe || []).length){
+      const grupos = [['socio', 'Sócios'], ['consultor', 'Consultores'], ['associado', 'Associados']].filter(([k]) => c.equipe.some(p => p.grupo === k));
+      partes.push(`<section class="section secao-equipe" id="equipe"><div class="container"><div class="section-head"><span class="kicker">PROFISSIONAIS</span><h2>Quem atua no escritório</h2></div>
+        <div class="equipe-abas">${grupos.map(([k, n], i) => `<button type="button" class="${i === 0 ? 'on' : ''}" data-g="${k}">${n}</button>`).join('')}</div>
+        <div class="equipe-lista" id="equipeLista"></div></div></section>`);
+    }
+    // Veja as obras (livros com link de afiliado)
+    partes.push(`<section class="section secao-obras" id="obras" style="display:none"><div class="container"><div class="section-head"><span class="kicker">PUBLICAÇÕES</span><h2>Veja as obras</h2><p>Clique no livro para comprar direto no parceiro de vendas.</p></div><div class="obras-faixa" id="obrasFaixa"></div></div></section>`);
+    // Avaliações + agendar consulta
+    partes.push(`<section class="section secao-consulta" id="agendar-home"><div class="container"><div class="consulta-grid">
+      <div><span class="kicker">AGENDE SUA CONSULTA</span><h2>Preencha o formulário e escolha o melhor horário</h2><p>Atendimento de segunda a sexta, das 9h às 17h, presencial ou online. Retornamos para confirmar a data.</p>
+        <div id="avaliacaoResumo" class="avaliacao-resumo"></div><a class="btn btn-outline-light" href="#avaliacoes">Ver e deixar avaliações</a></div>
+      <div id="agendarHomeForm"></div></div></div></section>`);
+    // Atendimento em todo o Brasil
+    if (c.brasil && c.brasil.ativo){
+      partes.push(`<section class="section secao-brasil" id="brasil"><div class="container"><div class="brasil-grid">
+        <div class="brasil-mapa" aria-hidden="true"><svg viewBox="0 0 200 200"><path d="M70 20l30 8 25-6 20 22 15 30-10 25 12 28-22 22-18 28-30 6-24-24-6-36-30-20 8-34 22-18z" fill="currentColor" opacity=".9"/><circle cx="108" cy="92" r="5" fill="#AD815B"/></svg></div>
+        <div><span class="kicker">PELO BRASIL TODO</span><h2>${escapeHtml(c.brasil.titulo)}</h2><p>${escapeHtml(c.brasil.texto)}</p>
+        ${formContato('fBrasil', 'brasil', [C_NOME, C_TEL, { n: 'mensagem', l: 'Sua mensagem', t: 'textarea', full: 1, rows: 2, ph: 'Em que cidade e estado você está? O que precisa?' }], 'Enviar mensagem')}</div></div></div></section>`);
+    }
+    box.innerHTML = partes.join('');
+    ['fSitTrab', 'fSitPrev'].forEach(id => ligarFormContato(id, [C_NOME, C_TEL, { n: 'email', l: 'E-mail', t: 'email' }, { n: 'mensagem', l: 'Conte o seu caso', req: 1 }], { ok: 'Recebemos seu relato. Um advogado retornará em breve.' }));
+    ligarFormContato('fBrasil', [C_NOME, C_TEL], { ok: 'Recebemos sua mensagem e retornaremos pelo WhatsApp.' });
+    const ag = document.getElementById('agendarHomeForm'); if (ag){ ag.innerHTML = formAgendar('fAgHome'); ligarAgendar('fAgHome'); }
+    const abas = box.querySelectorAll('.equipe-abas button');
+    const pintaEquipe = (g) => { const l = document.getElementById('equipeLista'); if (l) l.innerHTML = c.equipe.filter(p => p.grupo === g).map(cartaoPessoa).join(''); };
+    abas.forEach(b => b.addEventListener('click', () => { abas.forEach(x => x.classList.toggle('on', x === b)); pintaEquipe(b.dataset.g); }));
+    if (abas[0]) pintaEquipe(abas[0].dataset.g);
+    // obras e avaliações carregam do servidor
+    fetch(`${API_URL}/livros`).then(r => r.ok ? r.json() : []).then(lista => {
+      const obras = (lista || []).filter(l => l.capa_url).slice(0, 14); const sec = document.getElementById('obras'); if (!sec || !obras.length) return;
+      document.getElementById('obrasFaixa').innerHTML = `<div class="obras-trilho">${[...obras, ...obras].map(l => {
+        const href = l.link_compra && urlSegura(l.link_compra) ? l.link_compra : `#livro-${l.id}`; const ext = href.startsWith('https');
+        return `<a class="obra" href="${escAttr(href)}" ${ext ? 'target="_blank" rel="noopener sponsored"' : ''} title="${escAttr(l.titulo)}"><img src="${escAttr(l.capa_url)}" alt="${escAttr(l.titulo)}" loading="lazy"><span>${escapeHtml(l.titulo)}</span></a>`; }).join('')}</div>`;
+      sec.style.display = '';
+    }).catch(() => {});
+    fetch(`${API_URL}/contato/avaliacoes`).then(r => r.ok ? r.json() : null).then(a => {
+      const el = document.getElementById('avaliacaoResumo'); if (!el || !a || !a.total) return;
+      el.innerHTML = `<div class="av-nota"><b>${String(a.media).replace('.', ',')}</b><span class="av-estrelas">${estrelas(a.media)}</span><small>${a.total} avaliaç${a.total === 1 ? 'ão' : 'ões'}</small></div>`;
+    }).catch(() => {});
+  }
+  function cartaoPessoa(p){
+    return `<article class="pessoa">${p.foto ? `<img src="${escAttr(p.foto)}" alt="${escAttr(p.nome)}" loading="lazy">` : `<div class="pessoa-ini">${escapeHtml(p.nome.split(/\s+/).map(x => x[0]).slice(0, 2).join('').toUpperCase())}</div>`}
+      <h4>${escapeHtml(p.nome)}</h4>${p.cargo ? `<span>${escapeHtml(p.cargo)}</span>` : ''}${p.oab ? `<small>${escapeHtml(p.oab)}</small>` : ''}${p.bio ? `<p>${escapeHtml(p.bio)}</p>` : ''}</article>`;
+  }
+
+  // Formulário "Agende sua consulta"
+  function formAgendar(id){
+    const campos = [C_NOME, C_EMAIL, C_TEL, { n: 'area', l: 'Assunto', t: 'select', opts: ['Direito do Trabalho', 'Direito Previdenciário', 'OAB / Provimento', 'Assessoria jurídica', 'Outro'] },
+      { n: 'data', l: 'Data preferida', t: 'date', req: 1 }, { n: 'hora', l: 'Horário preferido', t: 'select', opts: ['09:00', '10:00', '11:00', '13:00', '14:00', '15:00', '16:00'] },
+      { n: 'modalidade', l: 'Modalidade', t: 'select', opts: ['Online (vídeo)', 'Presencial'] }, { n: 'mensagem', l: 'Mensagem (opcional)', t: 'textarea', full: 1, rows: 3 }];
+    return formContato(id, 'consulta', campos, 'Solicitar agendamento');
+  }
+  function ligarAgendar(id){
+    const campos = [C_NOME, C_EMAIL, C_TEL, { n: 'area', l: 'Assunto' }, { n: 'data', l: 'Data preferida', req: 1 }, { n: 'hora', l: 'Horário' }, { n: 'modalidade', l: 'Modalidade' }, { n: 'mensagem', l: 'Mensagem' }];
+    ligarFormContato(id, campos, { ok: 'Recebemos seu pedido de consulta. Vamos confirmar a data e o horário pelo e-mail ou WhatsApp informado (atendimento de segunda a sexta, das 9h às 17h).' });
+    const d = document.getElementById(id + '_data');
+    if (d) d.addEventListener('change', () => { const dia = new Date(d.value + 'T12:00:00').getDay(); if (dia === 0 || dia === 6){ d.value = ''; const e = document.getElementById(id + '_erro'); e.textContent = 'Atendemos de segunda a sexta. Escolha um dia útil.'; e.classList.add('show'); } });
+  }
+
+  // Faixa final (todas as páginas): prêmios, na mídia e "receba nossas atualizações"
+  function faixaFinal(c){
+    const box = document.getElementById('faixaFinal'); if (!box) return;
+    const partes = [];
+    if ((c.premios || []).length) partes.push(`<div class="ff-bloco"><h3>Prêmios e reconhecimentos</h3><div class="ff-premios">${c.premios.map(p => `<div class="premio">${p.imagem ? `<img src="${escAttr(p.imagem)}" alt="" loading="lazy">` : '<span class="premio-ico">★</span>'}<b>${escapeHtml(p.titulo)}</b>${p.ano ? `<small>${escapeHtml(p.ano)}</small>` : ''}${p.descricao ? `<p>${escapeHtml(p.descricao)}</p>` : ''}</div>`).join('')}</div></div>`);
+    if ((c.midia || []).length) partes.push(`<div class="ff-bloco"><h3>Na mídia e em eventos</h3><div class="ff-midia">${c.midia.map(m => { const inner = m.logo ? `<img src="${escAttr(m.logo)}" alt="${escAttr(m.nome)}" loading="lazy">` : `<span>${escapeHtml(m.nome)}</span>`; return m.link ? `<a href="${escAttr(m.link)}" target="_blank" rel="noopener" title="${escAttr(m.nome)}">${inner}</a>` : `<div title="${escAttr(m.nome)}">${inner}</div>`; }).join('')}</div></div>`);
+    partes.push(`<div class="ff-newsletter"><div><h3>Receba nossas atualizações jurídicas</h3><p>Cadastre-se e receba, de graça, nosso informativo para baixar e as novidades por e-mail.</p></div>
+      <form id="fNews" class="news-form" novalidate><input id="fNews_nome" placeholder="Seu nome" maxlength="150" aria-label="Seu nome"><input id="fNews_email" type="email" placeholder="Seu e-mail" maxlength="160" aria-label="Seu e-mail">
+      <input type="text" id="fNews_isca" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true">
+      <button class="btn btn-gold" type="submit">Quero receber</button>
+      <label class="form-aceite"><input type="checkbox" id="fNews_aceite"> Autorizo o envio e o uso dos meus dados conforme a <a href="#privacidade">Política de Privacidade</a>. Posso cancelar quando quiser.</label>
+      <p class="checkout-erro" id="fNews_erro"></p></form></div>`);
+    box.innerHTML = `<div class="container">${partes.join('')}</div>`;
+    ligarNewsletter('fNews');
+  }
+  function ligarNewsletter(id){
+    const form = document.getElementById(id); if (!form) return;
+    form.addEventListener('submit', async (ev) => {
+      ev.preventDefault();
+      const v = (n) => (document.getElementById(id + '_' + n) || {}).value || '';
+      const er = document.getElementById(id + '_erro'); const erro = (m) => { er.textContent = m; er.classList.toggle('show', !!m); };
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v('email').trim())) return erro('Informe um e-mail válido.');
+      if (!document.getElementById(id + '_aceite').checked) return erro('Marque a autorização para continuar.');
+      erro('');
+      try{
+        const r = await fetch(`${API_URL}/contato`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ tipo: 'newsletter', nome: v('nome').trim() || v('email').split('@')[0], email: v('email').trim(), consentimento: true, site_url: v('isca') }) });
+        const d = await r.json().catch(() => ({}));
+        if (!r.ok) throw new Error(d.erro || 'Não foi possível cadastrar agora.');
+        ls.set('newsletterOk', '1');
+        const dl = (d.downloads || []).map(x => `<li><a href="${escAttr(x.arquivo)}" target="_blank" rel="noopener" download>${escapeHtml(x.titulo)}</a> <small>(${x.tipo === 'ebook' ? 'e-book' : 'informativo'})</small></li>`).join('');
+        form.innerHTML = `<div class="form-ok"><b>Cadastro feito!</b><p>Você receberá nossas atualizações por e-mail.</p>${dl ? `<p>Seu material gratuito:</p><ul class="news-dl">${dl}</ul>` : ''}</div>`;
+      }catch(e){ erro(e.message); }
+    });
+  }
+
+  // Rodapé: links úteis, redes sociais, institucional
+  function rodapeExtras(c){
+    const grid = document.querySelector('.footer-grid'); if (!grid) return;
+    let col = document.getElementById('footerExtraCol'); if (col) col.remove();
+    const redes = c.redes || {}; const nomes = { instagram: 'Instagram', facebook: 'Facebook', youtube: 'YouTube', linkedin: 'LinkedIn', tiktok: 'TikTok' };
+    const r = Object.keys(nomes).filter(k => redes[k]).map(k => `<a href="${escAttr(redes[k])}" target="_blank" rel="noopener">${nomes[k]}</a>`).join('');
+    col = document.createElement('div'); col.className = 'footer-col'; col.id = 'footerExtraCol';
+    col.innerHTML = `<h5>INSTITUCIONAL</h5><ul>
+      <li><a href="#inicio">Home</a></li><li><a href="#sobre">O escritório</a></li><li><a href="#filiais">Nossos escritórios</a></li><li><a href="#equipe">Profissionais</a></li><li><a href="#blog-todos">Publicações</a></li><li><a href="#informativos">Informativos e e-books</a></li><li><a href="#avaliacoes">Avaliações</a></li><li><a href="#vagas">Oportunidades de emprego</a></li><li><a href="#premios">Prêmios e reconhecimentos</a></li>
+      ${c.codigo_etica ? `<li><a href="${escAttr(c.codigo_etica)}" target="_blank" rel="noopener" download>Código de Ética e Compliance (PDF)</a></li>` : ''}
+      <li><a href="#privacidade">Política de Privacidade</a></li><li><a href="#termos">Termos de uso</a></li><li><a href="#seguranca">Segurança de dados</a></li><li><a href="#sugestoes">Sugestões e reclamações</a></li><li><a href="#denuncia">Canal de denúncia</a></li><li><a href="#atualizar-dados">Atualize seus dados</a></li>
+      ${(window.PAGINAS_EXTRAS || []).filter(p => p.no_menu).map(p => `<li><a href="#pagina-${escAttr(p.slug)}">${escapeHtml(p.titulo)}</a></li>`).join('')}</ul>
+      ${(c.links_uteis || []).length ? `<h5 style="margin-top:18px;">LINKS ÚTEIS</h5><ul>${c.links_uteis.map(l => `<li><a href="${escAttr(l.url)}" target="_blank" rel="noopener">${escapeHtml(l.nome)}</a></li>`).join('')}</ul>` : ''}
+      ${r ? `<div class="footer-redes">${r}</div>` : ''}`;
+    grid.appendChild(col);
+  }
+  // Menu: novos itens, páginas extras e publicações
+  async function menuExtras(c){
+    const sobre = document.querySelector('#mainNav > ul > li:has(> a[href="#sobre"]) .dropdown');
+    if (sobre && !sobre.dataset.extras){
+      sobre.dataset.extras = '1';
+      const ant = sobre.querySelector('a[href="#curriculo"]');
+      const add = (h, t) => { const a = document.createElement('a'); a.href = h; a.textContent = t; (ant ? ant.nextSibling : null) ? sobre.insertBefore(a, ant.nextSibling) : sobre.appendChild(a); return a; };
+      [['#vagas', 'Oportunidades de emprego'], ['#premios', 'Prêmios e reconhecimentos'], ['#equipe', 'Profissionais'], ['#filiais', 'Nossos escritórios'], ['#avaliacoes', 'Avaliações']].reverse().forEach(([h, t]) => add(h, t));
+      if (c.codigo_etica){ const a = document.createElement('a'); a.href = c.codigo_etica; a.target = '_blank'; a.rel = 'noopener'; a.textContent = 'Código de Ética (PDF)'; sobre.appendChild(a); }
+    }
+    const area = document.querySelector('#mainNav > ul > li:has(> a[href="#advocacia"]) .dropdown');
+    if (area && !area.dataset.extras){
+      area.dataset.extras = '1';
+      const t = area.querySelector('a[href="#trabalhista"]');
+      const emp = document.createElement('a'); emp.href = '#trabalhista-empresarial'; emp.textContent = 'Trabalhista Empresarial'; if (t && t.nextSibling) area.insertBefore(emp, t.nextSibling); else area.appendChild(emp);
+      const calc = document.createElement('a'); calc.href = '#calculadoras'; calc.textContent = 'Calculadoras trabalhistas'; area.appendChild(calc);
+      const ag = document.createElement('a'); ag.href = '#agendar'; ag.textContent = 'Agende sua consulta'; area.appendChild(ag);
+    }
+    const blog = document.querySelector('#mainNav > ul > li:has(> a[href="#blog-todos"])');
+    if (blog && !blog.dataset.extras){
+      blog.dataset.extras = '1';
+      const t = blog.querySelector('a.top-link'); if (t) t.firstChild.textContent = 'Publicações ';
+      const dd = blog.querySelector('.dropdown'); if (dd){ const a = document.createElement('a'); a.href = '#informativos'; a.textContent = 'Informativos e e-books'; dd.appendChild(a); }
+    }
+    try{
+      if (!window.PAGINAS_EXTRAS){ const r = await fetch(`${API_URL}/paginas-extras`); window.PAGINAS_EXTRAS = r.ok ? await r.json() : []; rodapeExtras(c); }
+      const s2 = document.querySelector('#mainNav > ul > li:has(> a[href="#sobre"]) .dropdown');
+      if (s2 && !s2.dataset.paginas){ s2.dataset.paginas = '1'; window.PAGINAS_EXTRAS.filter(p => p.no_menu).forEach(p => { const a = document.createElement('a'); a.href = '#pagina-' + p.slug; a.textContent = p.titulo; s2.appendChild(a); }); }
+    }catch(e){ window.PAGINAS_EXTRAS = []; }
+  }
+
+  // ---------- Busca no site e idiomas ----------
+  const PAGINAS_BUSCA = [
+    ['Direito do Trabalho', '#trabalhista'], ['Direito Previdenciário', '#previdenciario'], ['Assessoria jurídica', '#assessoria'], ['Advocacia Trabalhista Empresarial', '#trabalhista-empresarial'],
+    ['OAB 1ª fase', '#oab-1fase'], ['OAB 2ª fase — Provimento', '#oab-2fase'], ['Ouvidoria (recurso ao Conselho Federal da OAB)', '#ouvidoria'], ['Livros', '#livros-todos'], ['Cursos', '#cursos-todos'],
+    ['Vídeos e Podcast', '#midias'], ['Currículo do Dr. Israel Donizete da Silva', '#curriculo'], ['Perguntas frequentes (FAQ)', '#faq'], ['Calculadoras trabalhistas', '#calculadoras'],
+    ['Agende sua consulta', '#agendar'], ['Proposta de acordo', '#acordo'], ['Atualize seus dados cadastrais', '#atualizar-dados'], ['Canal de denúncia', '#denuncia'], ['Sugestões e reclamações', '#sugestoes'],
+    ['Oportunidades de emprego', '#vagas'], ['Trabalhe conosco (enviar currículo)', '#trabalhe-conosco'], ['Seja parceiro', '#seja-parceiro'], ['Contrato de honorários', '#contrato'], ['Enviar documentos', '#enviar-documentos'],
+    ['Política de Privacidade', '#privacidade'], ['Segurança de dados', '#seguranca'], ['Termos de uso', '#termos'], ['Nossos escritórios', '#filiais'], ['Prêmios e reconhecimentos', '#premios'], ['Informativos e e-books', '#informativos'], ['Área do aluno', '#portal'], ['Acompanhar meu processo', '#portal-processos'],
+  ];
+  let INDICE_BUSCA = null;
+  async function indiceBusca(){
+    if (INDICE_BUSCA) return INDICE_BUSCA;
+    const itens = PAGINAS_BUSCA.map(([t, h]) => ({ t, h, k: 'Página' }));
+    const get = (p) => fetch(`${API_URL}${p}`).then(r => r.ok ? r.json() : []).catch(() => []);
+    const [a, b, c, d, art, livros, cursos] = await Promise.all(['/servicos/trabalhista', '/servicos/previdenciario', '/servicos/assessoria', '/servicos/trabalhista-empresarial', '/artigos', '/livros', '/cursos'].map(get));
+    [['trabalhista', a], ['previdenciario', b], ['assessoria', c], ['trabalhista-empresarial', d]].forEach(([ar, l]) => (l || []).forEach(i => itens.push({ t: i.titulo, h: `#servico-${ar}--${i.slug}`, k: 'Serviço' })));
+    (Array.isArray(art) ? art : []).forEach(i => itens.push({ t: i.titulo, h: `#artigo-${i.slug}`, k: 'Artigo' }));
+    (Array.isArray(livros) ? livros : []).forEach(i => itens.push({ t: i.titulo, h: `#livro-${i.id}`, k: 'Livro' }));
+    (Array.isArray(cursos) ? cursos : []).forEach(i => itens.push({ t: i.titulo, h: `#curso-${i.id}`, k: 'Curso' }));
+    return (INDICE_BUSCA = itens);
+  }
+  function abrirBusca(){
+    let el = document.getElementById('buscaSite');
+    if (!el){
+      el = document.createElement('div'); el.id = 'buscaSite'; el.className = 'popup-fundo';
+      el.innerHTML = `<div class="busca-caixa" role="dialog" aria-modal="true" aria-label="Pesquisar no site"><input id="buscaInput" type="search" placeholder="Pesquisar no site (ex.: aviso prévio, FGTS, aposentadoria)" autocomplete="off"><div id="buscaRes" class="busca-res"></div></div>`;
+      document.body.appendChild(el);
+      el.addEventListener('click', (e) => { if (e.target === el) el.style.display = 'none'; });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') el.style.display = 'none'; });
+      const norm = (s) => String(s || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+      document.getElementById('buscaInput').addEventListener('input', async (e) => {
+        const q = norm(e.target.value).split(/\s+/).filter(Boolean); const res = document.getElementById('buscaRes');
+        if (!q.length){ res.innerHTML = ''; return; }
+        const idx = await indiceBusca();
+        const r = idx.filter(i => q.every(w => norm(i.t).includes(w))).slice(0, 12);
+        res.innerHTML = r.length ? r.map(i => `<a href="${escAttr(i.h)}"><span>${escapeHtml(i.k)}</span>${escapeHtml(i.t)}</a>`).join('') : '<p>Nada encontrado. Tente outra palavra.</p>';
+        res.querySelectorAll('a').forEach(a => a.addEventListener('click', () => { el.style.display = 'none'; }));
+      });
+    }
+    el.style.display = 'flex'; const inp = document.getElementById('buscaInput'); inp.value = ''; document.getElementById('buscaRes').innerHTML = ''; setTimeout(() => inp.focus(), 50);
+  }
+  const IDIOMAS = [['pt', 'Português'], ['en', 'English'], ['es', 'Español'], ['fr', 'Français'], ['de', 'Deutsch']];
+  function idiomaAtual(){ const m = document.cookie.match(/(?:^|;\s*)googtrans=\/pt\/([a-z]{2})/); return m ? m[1] : 'pt'; }
+  function trocarIdioma(l){
+    const dom = location.hostname;
+    if (l === 'pt'){ document.cookie = 'googtrans=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/'; document.cookie = `googtrans=;expires=Thu, 01 Jan 1970 00:00:00 GMT;path=/;domain=${dom}`; }
+    else { document.cookie = `googtrans=/pt/${l};path=/`; document.cookie = `googtrans=/pt/${l};path=/;domain=${dom}`; }
+    location.reload();
+  }
+  function idiomasUi(c){
+    if (document.getElementById('barraBusca')) return;
+    const icons = document.querySelector('.header-icons'); if (!icons) return;
+    const busca = document.createElement('button'); busca.id = 'barraBusca'; busca.className = 'icon-btn'; busca.type = 'button'; busca.title = 'Pesquisar no site'; busca.setAttribute('aria-label', 'Pesquisar no site');
+    busca.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>';
+    busca.addEventListener('click', abrirBusca); icons.insertBefore(busca, icons.firstChild);
+    if (c.idiomas){
+      const atual = idiomaAtual();
+      const idi = document.createElement('div'); idi.className = 'idioma-menu notranslate'; idi.translate = false;
+      idi.innerHTML = `<button type="button" class="icon-btn idioma-btn" aria-haspopup="listbox" aria-label="Idioma" title="Idioma"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><b>${atual.toUpperCase()}</b></button><ul class="idioma-lista" hidden>${IDIOMAS.map(([k, n]) => `<li><button type="button" data-l="${k}"${k === atual ? ' class="on"' : ''}>${n}</button></li>`).join('')}</ul>`;
+      icons.insertBefore(idi, busca.nextSibling);
+      const lista = idi.querySelector('ul');
+      idi.querySelector('.idioma-btn').addEventListener('click', (e) => { e.stopPropagation(); lista.hidden = !lista.hidden; });
+      document.addEventListener('click', () => { lista.hidden = true; });
+      lista.querySelectorAll('button').forEach(b => b.addEventListener('click', () => trocarIdioma(b.dataset.l)));
+      if (atual !== 'pt' && !document.getElementById('gtScript')){
+        const d = document.createElement('div'); d.id = 'google_translate_element'; d.style.display = 'none'; document.body.appendChild(d);
+        window.googleTranslateElementInit = () => { new google.translate.TranslateElement({ pageLanguage: 'pt', autoDisplay: false }, 'google_translate_element'); };
+        const s = document.createElement('script'); s.id = 'gtScript'; s.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit'; document.head.appendChild(s);
+      }
+    }
+  }
+
+  // ---------- Páginas novas (formulários, listas editáveis e calculadoras) ----------
+  async function renderExtra(chave, extra){
+    detalheConteudo.style.maxWidth = '820px';
+    const c = SITE_CONFIG || {};
+    const cab = (kicker, titulo, intro) => `${BOTAO_VOLTAR}<span class="detalhe-kicker" style="display:block;">${kicker}</span><h1 class="detalhe-titulo">${escapeHtml(titulo)}</h1>${intro ? `<p class="servico-intro">${intro}</p>` : ''}`;
+    switch (chave){
+      case 'agendar':
+        detalheConteudo.innerHTML = cab('ATENDIMENTO', 'Agende sua consulta', 'Preencha o formulário. Atendemos de segunda a sexta, das 9h às 17h, presencial ou online. Confirmamos a data e o horário por e-mail ou WhatsApp.') + formAgendar('fAgPag');
+        ligarAgendar('fAgPag'); break;
+      case 'acordo': {
+        const campos = [C_NOME, C_EMAIL, C_TEL, { n: 'parte', l: 'Você é', t: 'select', opts: ['Trabalhador(a) / reclamante', 'Empresa / reclamada', 'Advogado(a) da outra parte'] }, { n: 'processo', l: 'Número do processo (se houver)', max: 40 }, { n: 'valor', l: 'Valor que propõe (opcional)', max: 40 }, { n: 'mensagem', l: 'Sua proposta', t: 'textarea', req: 1, full: 1, rows: 5, ph: 'Descreva a proposta de acordo e como podemos retornar.' }];
+        detalheConteudo.innerHTML = cab('ADVOCACIA TRABALHISTA', 'Proposta de acordo', 'Se as partes têm interesse em fazer um acordo, envie sua proposta por aqui. O escritório avalia e responde pelo contato informado.') + formContato('fAcordo', 'acordo', campos, 'Enviar proposta');
+        ligarFormContato('fAcordo', campos, { ok: 'Recebemos sua proposta de acordo e entraremos em contato.' }); break; }
+      case 'atualizar-dados': {
+        const campos = [C_NOME, { n: 'nascimento', l: 'Data de nascimento', t: 'date' }, C_EMAIL, C_TEL, { n: 'rg', l: 'RG (com órgão expedidor)', max: 40 }, { n: 'cpf', l: 'CPF (somente números)', max: 14 }, { n: 'ocupacao', l: 'Ocupação atual', max: 80 }, { n: 'estado_civil', l: 'Estado civil', t: 'select', opts: ['Solteiro(a)', 'Casado(a)', 'União estável', 'Divorciado(a)', 'Viúvo(a)'] }, { n: 'endereco', l: 'Endereço completo com CEP', full: 1, max: 250 }, { n: 'mensagem', l: 'Observações (opcional)', t: 'textarea', full: 1, rows: 3 }];
+        detalheConteudo.innerHTML = cab('CLIENTES', 'Atualize seus dados cadastrais', 'É importante manter seus dados atualizados para contato e andamento dos serviços. Os dados são usados só pelo escritório, com sigilo profissional.') + formContato('fCadastro', 'cadastro', campos, 'Enviar dados atualizados');
+        ligarFormContato('fCadastro', campos, { ok: 'Recebemos seus dados. Obrigado por manter o cadastro atualizado.' }); break; }
+      case 'denuncia': {
+        const campos = [{ n: 'assunto', l: 'Assunto', max: 150 }, { n: 'mensagem', l: 'Descreva o que aconteceu', t: 'textarea', req: 1, full: 1, rows: 7, max: 6000, ph: 'Conte o fato, onde e quando ocorreu e quem estava envolvido.' }];
+        detalheConteudo.innerHTML = cab('CANAL DE DENÚNCIA', 'Canal de denúncia', 'Por regra de compliance interno e externo, se você notou alguma conduta que contrarie o Código de Ética e Compliance do escritório, pode relatar aqui. <b>A denúncia é anônima</b>: não pedimos nome nem e-mail e não guardamos o seu endereço de IP. O sigilo do relato é protegido.') + formContato('fDenuncia', 'denuncia', campos, 'Enviar denúncia', { anonimo: true });
+        ligarFormContato('fDenuncia', campos, { ok: 'Sua denúncia foi registrada de forma anônima e será analisada com sigilo.' }); break; }
+      case 'sugestoes': {
+        const campos = [C_NOME, { n: 'email', l: 'E-mail', t: 'email' }, C_TEL, { n: 'tipo_msg', l: 'Tipo', t: 'select', opts: ['Sugestão', 'Reclamação', 'Elogio'] }, { n: 'mensagem', l: 'Sua mensagem', t: 'textarea', req: 1, full: 1, rows: 5 }];
+        detalheConteudo.innerHTML = cab('FALE CONOSCO', 'Sugestões e reclamações', 'Críticas e sugestões são bem-vindas e podem ser encaminhadas por aqui. Respondemos pelo contato informado.') + formContato('fSugestao', 'sugestao', campos, 'Enviar');
+        ligarFormContato('fSugestao', campos, { ok: 'Obrigado! Sua mensagem foi encaminhada ao escritório.' }); break; }
+      case 'avaliacoes': await renderAvaliacoes(cab); break;
+      case 'informativos': renderInformativos(cab, c); break;
+      case 'vagas': renderVagas(cab, c); break;
+      case 'premios':
+        detalheConteudo.innerHTML = cab('SOBRE', 'Prêmios e reconhecimentos', '') + ((c.premios || []).length ? `<div class="ff-premios pag">${c.premios.map(p => `<div class="premio">${p.imagem ? `<img src="${escAttr(p.imagem)}" alt="">` : '<span class="premio-ico">★</span>'}<b>${escapeHtml(p.titulo)}</b>${p.ano ? `<small>${escapeHtml(p.ano)}</small>` : ''}${p.descricao ? `<p>${escapeHtml(p.descricao)}</p>` : ''}</div>`).join('')}</div>` : '<p class="servico-intro">Em breve, os prêmios e reconhecimentos do escritório aparecerão aqui.</p>'); break;
+      case 'filiais': renderFiliais(cab, c); break;
+      case 'calculadoras': renderCalculadoras(cab, c); break;
+      case 'calc': renderCalculadora(extra, cab, c); break;
+      case 'pagina': {
+        const r = await fetch(`${API_URL}/paginas-extras/${encodeURIComponent(extra)}`);
+        if (!r.ok){ detalheConteudo.innerHTML = cab('PÁGINA', 'Página não encontrada', 'O endereço pode ter mudado.'); break; }
+        const p = await r.json();
+        detalheConteudo.innerHTML = cab('INSTITUCIONAL', p.titulo, '') + textoEditavel(p.html || ''); break; }
+    }
+  }
+
+  async function renderAvaliacoes(cab){
+    const campos = [{ n: 'nome', l: 'Seu nome', req: 1, max: 100 }, { n: 'servico', l: 'Serviço avaliado', t: 'select', opts: ['Direito do Trabalho', 'Direito Previdenciário', 'OAB / Provimento', 'Livros e cursos', 'Outro'] }, { n: 'nota', l: 'Nota', t: 'select', req: 1, opts: ['5 — Excelente', '4 — Muito bom', '3 — Bom', '2 — Regular', '1 — Ruim'] }, { n: 'texto', l: 'Seu comentário', t: 'textarea', req: 1, full: 1, rows: 4, max: 1200 }];
+    detalheConteudo.innerHTML = cab('AVALIAÇÕES', 'O que dizem os clientes e alunos', 'Avalie o serviço. Seu comentário passa por uma aprovação antes de aparecer aqui.') + '<div id="avLista"><p class="servico-intro">Carregando…</p></div><h2 style="margin:28px 0 12px;">Deixe sua avaliação</h2>' + formContato('fAval', 'avaliacao', campos, 'Enviar avaliação');
+    try{
+      const a = await (await fetch(`${API_URL}/contato/avaliacoes`)).json();
+      document.getElementById('avLista').innerHTML = a.total ? `<div class="av-nota grande"><b>${String(a.media).replace('.', ',')}</b><span class="av-estrelas">${estrelas(a.media)}</span><small>${a.total} avaliaç${a.total === 1 ? 'ão' : 'ões'}</small></div><div class="av-lista">${a.itens.map(i => `<blockquote><span class="av-estrelas">${estrelas(i.nota)}</span><p>${escapeHtml(i.texto)}</p><cite>${escapeHtml(i.nome)}${i.servico ? ' · ' + escapeHtml(i.servico) : ''}</cite></blockquote>`).join('')}</div>` : '<p class="servico-intro">Ainda não há avaliações publicadas. Seja o primeiro a avaliar!</p>';
+    }catch(e){ document.getElementById('avLista').innerHTML = ''; }
+    const form = document.getElementById('fAval'); if (!form) return;
+    const erro = (m) => { const e = document.getElementById('fAval_erro'); e.textContent = m; e.classList.toggle('show', !!m); };
+    form.addEventListener('submit', async (ev) => {
+      ev.preventDefault(); erro('');
+      const v = (n) => (document.getElementById('fAval_' + n) || {}).value || '';
+      if (!v('nome').trim() || v('texto').trim().length < 10) return erro('Informe seu nome e um comentário (mínimo de 10 caracteres).');
+      if (!document.getElementById('fAval_aceite').checked) return erro('Marque a autorização para publicar seu comentário.');
+      try{
+        const r = await fetch(`${API_URL}/contato/avaliacao`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ nome: v('nome').trim(), servico: v('servico'), nota: parseInt(v('nota'), 10), texto: v('texto').trim(), consentimento: true, site_url: v('isca') }) });
+        const d = await r.json().catch(() => ({}));
+        if (!r.ok) throw new Error(d.erro || 'Erro ao enviar.');
+        form.innerHTML = '<div class="form-ok"><b>Obrigado pela avaliação!</b><p>Ela aparecerá aqui depois da aprovação do escritório.</p></div>';
+      }catch(e){ erro(e.message); }
+    });
+  }
+  function renderInformativos(cab, c){
+    const lista = c.informativos || [];
+    const liberado = ls.get('newsletterOk') === '1';
+    detalheConteudo.innerHTML = cab('PUBLICAÇÕES', 'Informativos e e-books gratuitos', 'Cadastre-se para receber nossas atualizações jurídicas e baixar os materiais do escritório.') +
+      (liberado ? (lista.length ? `<ul class="news-dl grande">${lista.map(i => `<li><a href="${escAttr(i.arquivo)}" target="_blank" rel="noopener" download><b>${escapeHtml(i.titulo)}</b></a> <small>${i.tipo === 'ebook' ? 'e-book' : 'informativo'}</small>${i.descricao ? `<p>${escapeHtml(i.descricao)}</p>` : ''}</li>`).join('')}</ul>` : '<p class="servico-intro">Em breve, novos materiais estarão disponíveis aqui.</p>') :
+      `<div class="servico-bloco"><h2>Cadastre-se para baixar</h2><p class="servico-intro">Materiais disponíveis: ${lista.length ? lista.map(i => escapeHtml(i.titulo)).join(', ') : 'em breve'}.</p>
+      <form id="fNewsPag" class="news-form claro" novalidate><input id="fNewsPag_nome" placeholder="Seu nome" maxlength="150"><input id="fNewsPag_email" type="email" placeholder="Seu e-mail" maxlength="160"><input type="text" id="fNewsPag_isca" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true"><button class="btn btn-gold" type="submit">Cadastrar e baixar</button>
+      <label class="form-aceite"><input type="checkbox" id="fNewsPag_aceite"> Autorizo o envio e o uso dos meus dados conforme a <a href="#privacidade">Política de Privacidade</a>.</label><p class="checkout-erro" id="fNewsPag_erro"></p></form></div>`);
+    ligarNewsletter('fNewsPag');
+  }
+  function renderVagas(cab, c){
+    const vagas = (c.vagas || []).filter(v => v.ativa);
+    detalheConteudo.innerHTML = cab('TRABALHE CONOSCO', 'Oportunidades de emprego', 'Veja as vagas abertas. Para se candidatar, use o contato da vaga ou envie seu currículo.') +
+      (vagas.length ? `<div class="vagas-lista">${vagas.map(v => `<article class="vaga"><h3>${escapeHtml(v.titulo)}</h3><span>${[v.local, v.tipo].filter(Boolean).map(escapeHtml).join(' · ')}</span>${v.descricao ? `<div class="vaga-desc">${escapeHtml(v.descricao).replace(/\n/g, '<br>')}</div>` : ''}${v.contato ? `<p>Candidate-se: ${/^https:\/\//.test(v.contato) ? `<a href="${escAttr(v.contato)}" target="_blank" rel="noopener">${escapeHtml(v.contato)}</a>` : `<a href="mailto:${escAttr(v.contato)}">${escapeHtml(v.contato)}</a>`}</p>` : ''}</article>`).join('')}</div>` : '<p class="servico-intro">No momento não há vagas abertas, mas você pode deixar seu currículo para futuras oportunidades.</p>') +
+      '<div class="servico-cta"><a class="btn btn-gold" href="#trabalhe-conosco">Enviar meu currículo</a></div>';
+  }
+  function renderFiliais(cab, c){
+    const e = c.escritorio || {};
+    const nossos = (e.enderecos || []).map(u => `<div class="filial"><h3>${escapeHtml(u.nome || 'Escritório')}</h3><p>${escapeHtml(u.endereco || '')}</p>${u.horario ? `<small>${escapeHtml(u.horario)}</small>` : ''}</div>`).join('');
+    const par = (e.parceiros || []).map(p => `<div class="filial"><h3>${p.link ? `<a href="${escAttr(p.link)}" target="_blank" rel="noopener">${escapeHtml(p.nome)}</a>` : escapeHtml(p.nome)}</h3>${p.cidade ? `<p>${escapeHtml(p.cidade)}</p>` : ''}${p.descricao ? `<small>${escapeHtml(p.descricao)}</small>` : ''}</div>`).join('');
+    const mapa = /^https:\/\/www\.google\.com\/maps\/embed\?/i.test(e.mapa_url || '') ? `<iframe src="${escAttr(e.mapa_url)}" title="Mapa" loading="lazy" style="border:0;width:100%;height:320px;border-radius:10px;margin:16px 0;"></iframe>` : '';
+    detalheConteudo.innerHTML = cab('SOBRE', 'Nossos escritórios', e.descricao ? escapeHtml(e.descricao) : 'Atendimento presencial e online.') +
+      `<h2 class="sub-h">Nossos escritórios</h2><div class="filiais">${nossos || '<p class="servico-intro">Endereços em breve.</p>'}</div>${mapa}` +
+      (par ? `<h2 class="sub-h">Escritórios parceiros</h2><div class="filiais">${par}</div>` : '') +
+      `<div class="servico-bloco"><h2>Horário de atendimento</h2><p class="servico-intro" style="white-space:pre-line;margin:0;">${escapeHtml(e.horario || 'Segunda a sexta, das 9h às 17h.\nSábado, domingo e feriados: fechado.')}</p></div>`;
+  }
+
+  // Blocos extras nas páginas de área (calculadoras, acordo, empresarial)
+  function extrasServico(chave){
+    const cta = detalheConteudo.querySelector('.servico-cta'); if (!cta) return;
+    const add = (html) => cta.insertAdjacentHTML('beforebegin', html);
+    if (chave === 'trabalhista'){
+      add(`<div class="servico-bloco servico-portal"><div><h2>Calculadoras</h2><p class="servico-intro" style="margin:0;">Calcule rescisão, aviso prévio, horas extras, FGTS e outros direitos.</p></div><a class="btn btn-gold" href="#calculadoras">Abrir calculadoras</a></div>
+        <div class="servico-bloco servico-portal"><div><h2>Advocacia Trabalhista Empresarial</h2><p class="servico-intro" style="margin:0;">Assessoria preventiva e contenciosa para empresas.</p></div><a class="btn btn-outline-dark" href="#trabalhista-empresarial">Ver serviços para empresas</a></div>
+        <div class="servico-bloco servico-portal"><div><h2>Proposta de acordo</h2><p class="servico-intro" style="margin:0;">Se as partes têm interesse em fazer acordo, envie sua proposta pelo site.</p></div><a class="btn btn-outline-dark" href="#acordo">Enviar proposta</a></div>`);
+    }
+    if (chave === 'previdenciario'){
+      add(`<div class="servico-bloco servico-portal"><div><h2>Quero saber mais</h2><p class="servico-intro" style="margin:0;">Para acessar os serviços previdenciários acima (me aposentar, revisar, planejar e outros) é preciso ter cadastro no site. É rápido e gratuito.</p></div><a class="btn btn-gold" href="#cadastro">Criar minha conta</a></div>`);
+    }
+  }
+  // Previdenciário: o serviço só abre para quem tem cadastro (login na Área do aluno)
+  async function carregarItemRestrito(area, slug){
+    const token = ls.get('tokenAluno');
+    const r = await fetch(`${API_URL}/servicos/${encodeURIComponent(area)}/${encodeURIComponent(slug)}`, { headers: token ? { Authorization: 'Bearer ' + token } : {} });
+    return r;
+  }
+  function portaoCadastro(sv, tituloItem){
+    detalheConteudo.innerHTML = `${BOTAO_VOLTAR}<span class="detalhe-kicker" style="display:block;">${escapeHtml(sv.kicker)}</span><h1 class="detalhe-titulo">${escapeHtml(tituloItem || sv.titulo)}</h1>
+      <div class="servico-bloco servico-portal"><div><h2>Cadastro necessário</h2><p class="servico-intro" style="margin:0;">Para acessar este serviço, entre na sua conta ou faça o cadastro gratuito no site.</p></div><div style="display:flex;gap:10px;flex-wrap:wrap;"><a class="btn btn-gold" href="#cadastro">Criar conta</a><a class="btn btn-outline-dark" href="#portal">Já tenho conta</a></div></div>`;
+  }
+
+  // ---------- Calculadoras trabalhistas (estimativas) ----------
+  // Os valores são aproximados e informativos: não consideram convenções coletivas, médias de variáveis,
+  // INSS e imposto de renda. O botão leva o cliente a conversar com o escritório.
+  const diasEntre = (a, b) => Math.round((b - a) / 86400000);
+  function anosCompletos(adm, dem){ let a = dem.getFullYear() - adm.getFullYear(); if (dem.getMonth() < adm.getMonth() || (dem.getMonth() === adm.getMonth() && dem.getDate() < adm.getDate())) a--; return Math.max(0, a); }
+  function mesesTrabalhados(ini, fim){ // meses com 15 dias ou mais, de ini até fim (inclusive)
+    let n = 0; const d = new Date(ini.getFullYear(), ini.getMonth(), 1);
+    while (d <= fim){
+      const m0 = new Date(Math.max(+d, +ini)); const m1 = new Date(Math.min(+new Date(d.getFullYear(), d.getMonth() + 1, 0), +fim));
+      if (diasEntre(m0, m1) + 1 >= 15) n++; d.setMonth(d.getMonth() + 1);
+    }
+    return n;
+  }
+  const dt = (s) => s ? new Date(s + 'T12:00:00') : null;
+  const CALCS = {
+    'aviso-previo': { nome: 'Aviso prévio', desc: 'Dias e valor do aviso prévio proporcional ao tempo de empresa.',
+      campos: [{ n: 'salario', l: 'Último salário (R$)', t: 'money', req: 1 }, { n: 'adm', l: 'Data de admissão', t: 'date', req: 1 }, { n: 'dem', l: 'Data do aviso / desligamento', t: 'date', req: 1 }, { n: 'quem', l: 'Quem encerrou o contrato', t: 'select', opts: [['empresa', 'A empresa (sem justa causa)'], ['empregado', 'O empregado (pedido de demissão)']] }],
+      calc(v, o){ const anos = anosCompletos(v.adm, v.dem); const dias = v.quem === 'empresa' ? Math.min(90, 30 + 3 * anos) : 30; const valor = v.salario / 30 * dias;
+        return { linhas: [['Anos completos de empresa', anos], ['Dias de aviso prévio', dias + ' dias'], ['Valor do aviso (indenizado)', brl(valor)]], total: valor, notas: ['Aviso proporcional: 30 dias + 3 dias por ano completo, até 90 dias (Lei 12.506/2011).', v.quem === 'empregado' ? 'No pedido de demissão não há aviso proporcional: são 30 dias, trabalhados ou descontados.' : ''] }; } },
+    'rescisao': { nome: 'Rescisão trabalhista', desc: 'Estimativa das verbas rescisórias (saldo, aviso, férias, 13º e multa do FGTS).',
+      campos: [{ n: 'salario', l: 'Último salário (R$)', t: 'money', req: 1 }, { n: 'adm', l: 'Data de admissão', t: 'date', req: 1 }, { n: 'dem', l: 'Data de saída', t: 'date', req: 1 },
+        { n: 'motivo', l: 'Motivo', t: 'select', opts: [['sem_justa', 'Dispensa sem justa causa'], ['acordo', 'Acordo (comum acordo)'], ['pedido', 'Pedido de demissão'], ['justa', 'Justa causa']] },
+        { n: 'aviso', l: 'Aviso prévio', t: 'select', opts: [['indenizado', 'Indenizado (não trabalhou)'], ['trabalhado', 'Trabalhado']] },
+        { n: 'vencidas', l: 'Tem 1 período de férias vencidas?', t: 'select', opts: [['nao', 'Não'], ['sim', 'Sim']] }, { n: 'fgts', l: 'Saldo do FGTS (opcional, R$)', t: 'money' }],
+      calc(v){
+        const sal = v.salario; const ult = v.dem; const dias = Math.min(ult.getDate(), 30); const saldo = sal / 30 * dias;
+        const anos = anosCompletos(v.adm, v.dem); const diasAviso = Math.min(90, 30 + 3 * anos);
+        let aviso = 0, proj = new Date(v.dem);
+        if (v.aviso === 'indenizado' && (v.motivo === 'sem_justa' || v.motivo === 'acordo')){ aviso = sal / 30 * diasAviso; if (v.motivo === 'acordo') aviso /= 2; proj.setDate(proj.getDate() + diasAviso); }
+        const justa = v.motivo === 'justa';
+        const ini13 = new Date(proj.getFullYear(), 0, 1); const m13 = justa ? 0 : mesesTrabalhados(new Date(Math.max(+ini13, +v.adm)), proj); const dec = sal / 12 * m13;
+        let anivers = new Date(v.adm); anivers.setFullYear(proj.getFullYear()); if (anivers > proj) anivers.setFullYear(proj.getFullYear() - 1);
+        const mf = justa ? 0 : Math.min(12, mesesTrabalhados(anivers, proj)); const ferias = sal / 12 * mf * 4 / 3;
+        const venc = v.vencidas === 'sim' ? sal * 4 / 3 : 0;
+        const meses = Math.max(1, mesesTrabalhados(v.adm, proj)); const saldoFgts = v.fgts > 0 ? v.fgts : sal * 0.08 * meses; const taxa = v.motivo === 'sem_justa' ? 0.4 : v.motivo === 'acordo' ? 0.2 : 0;
+        const multa = saldoFgts * taxa; const total = saldo + aviso + dec + ferias + venc + multa;
+        return { linhas: [[`Saldo de salário (${dias} dias)`, brl(saldo)], [`Aviso prévio indenizado (${diasAviso} dias${v.motivo === 'acordo' ? ', 50% no acordo' : ''})`, brl(aviso)], [`13º proporcional (${m13}/12)`, brl(dec)], [`Férias proporcionais (${mf}/12) + 1/3`, brl(ferias)], ['Férias vencidas + 1/3', brl(venc)], [`Multa do FGTS (${taxa * 100}%)${v.fgts > 0 ? '' : ' — saldo estimado'}`, brl(multa)]], total,
+          notas: ['Valores brutos, antes de INSS e imposto de renda.', v.fgts > 0 ? '' : 'Sem o saldo do FGTS informado, a multa foi estimada com 8% do salário por mês trabalhado. Consulte o extrato real na Caixa.', justa ? 'Na justa causa só há saldo de salário e férias vencidas.' : '', v.motivo === 'pedido' ? 'No pedido de demissão não há multa do FGTS nem saque; o aviso pode ser descontado se não for cumprido.' : ''] }; } },
+    'horas-extras': { nome: 'Horas extras', desc: 'Valor das horas extras a 50% e a 100%.',
+      campos: [{ n: 'salario', l: 'Salário mensal (R$)', t: 'money', req: 1 }, { n: 'divisor', l: 'Horas mensais (jornada de 44h = 220)', t: 'num', def: 220 }, { n: 'h50', l: 'Horas extras com adicional de 50%', t: 'num', def: 0 }, { n: 'h100', l: 'Horas extras com adicional de 100% (domingos e feriados)', t: 'num', def: 0 }],
+      calc(v){ const h = v.salario / (v.divisor || 220); const a = h * 1.5 * v.h50, b = h * 2 * v.h100; return { linhas: [['Valor da hora normal', brl(h)], [`Horas a 50% (${v.h50}h)`, brl(a)], [`Horas a 100% (${v.h100}h)`, brl(b)]], total: a + b, notas: ['Convenção coletiva pode prever adicional maior. As horas extras refletem em DSR, férias, 13º e FGTS.'] }; } },
+    'adicional-noturno': { nome: 'Adicional noturno', desc: 'Adicional de 20% para o trabalho noturno urbano, com hora reduzida.',
+      campos: [{ n: 'salario', l: 'Salário mensal (R$)', t: 'money', req: 1 }, { n: 'divisor', l: 'Horas mensais (44h semanais = 220)', t: 'num', def: 220 }, { n: 'horas', l: 'Horas noturnas trabalhadas no mês (relógio)', t: 'num', req: 1 }, { n: 'perc', l: 'Percentual do adicional (%)', t: 'num', def: 20 }, { n: 'reduzida', l: 'Considerar hora noturna reduzida (52min30s)?', t: 'select', opts: [['sim', 'Sim (trabalho urbano)'], ['nao', 'Não']] }],
+      calc(v){ const h = v.salario / (v.divisor || 220); const comp = v.reduzida === 'sim' ? v.horas * 60 / 52.5 : v.horas; const adic = h * (v.perc / 100) * comp; return { linhas: [['Valor da hora normal', brl(h)], ['Horas noturnas computadas', comp.toFixed(1).replace('.', ',') + ' h'], ['Adicional noturno', brl(adic)]], total: adic, notas: ['O trabalho noturno urbano é das 22h às 5h. O adicional reflete em férias, 13º e FGTS.'] }; } },
+    'fgts': { nome: 'FGTS', desc: 'Depósitos mensais de 8% e multa de 40% na dispensa sem justa causa.',
+      campos: [{ n: 'salario', l: 'Salário mensal (R$)', t: 'money', req: 1 }, { n: 'meses', l: 'Meses trabalhados', t: 'num', req: 1 }, { n: 'saldo', l: 'Saldo atual na conta (opcional, R$)', t: 'money' }],
+      calc(v){ const dep = v.salario * 0.08; const total = v.saldo > 0 ? v.saldo : dep * v.meses; const multa = total * 0.4; return { linhas: [['Depósito mensal (8%)', brl(dep)], [`Depósitos em ${v.meses} meses${v.saldo > 0 ? ' (saldo informado)' : ' (sem rendimento)'}`, brl(total)], ['Multa de 40% (dispensa sem justa causa)', brl(multa)]], total: total + multa, notas: ['O saldo real tem correção (3% ao ano + TR). Confira o extrato no app FGTS.'] }; } },
+    'insalubridade': { nome: 'Insalubridade e periculosidade', desc: 'Adicional de 10%, 20% ou 40% (insalubridade) ou 30% (periculosidade).',
+      campos: [{ n: 'salario', l: 'Salário mensal (R$)', t: 'money', req: 1 }, { n: 'tipo', l: 'Adicional', t: 'select', opts: [['p30', 'Periculosidade — 30% sobre o salário'], ['i10', 'Insalubridade grau mínimo — 10%'], ['i20', 'Insalubridade grau médio — 20%'], ['i40', 'Insalubridade grau máximo — 40%']] }],
+      calc(v, o){ const p = v.tipo === 'p30'; const base = p ? v.salario : o.salario_minimo; const perc = { p30: .3, i10: .1, i20: .2, i40: .4 }[v.tipo]; const val = base * perc; return { linhas: [[p ? 'Base: salário' : 'Base: salário mínimo', brl(base)], ['Adicional mensal', brl(val)]], total: val, notas: ['Os dois adicionais não se acumulam: o trabalhador escolhe o mais vantajoso (art. 193, §2º da CLT).', 'A base da insalubridade pode variar por convenção coletiva ou decisão judicial.'] }; } },
+    'salario-maternidade': { nome: 'Salário-maternidade', desc: 'Valor estimado do benefício para empregada (120 ou 180 dias).',
+      campos: [{ n: 'salario', l: 'Salário mensal médio (R$)', t: 'money', req: 1 }, { n: 'dias', l: 'Duração', t: 'select', opts: [['120', '120 dias'], ['180', '180 dias (Empresa Cidadã)']] }],
+      calc(v){ const dias = parseInt(v.dias, 10); const val = v.salario / 30 * dias; return { linhas: [['Valor por dia', brl(v.salario / 30)], [`Total em ${dias} dias`, brl(val)]], total: val, notas: ['Para outras seguradas (autônoma, MEI, desempregada) o cálculo segue regras próprias do INSS.'] }; } },
+    'custo-funcionario': { nome: 'Custo de um funcionário', desc: 'Estimativa do custo mensal real de um empregado para a empresa.',
+      campos: [{ n: 'salario', l: 'Salário bruto (R$)', t: 'money', req: 1 }, { n: 'regime', l: 'Regime da empresa', t: 'select', opts: [['geral', 'Lucro presumido / real (com INSS patronal)'], ['simples', 'Simples Nacional (sem INSS patronal)']] }, { n: 'benef', l: 'Benefícios por mês: VR, VT, plano de saúde (R$)', t: 'money' }],
+      calc(v){ const s = v.salario; const dec = s / 12, fer = s / 12 * 4 / 3; const base = s + dec + fer; const fgts = base * 0.08; const patron = v.regime === 'geral' ? base * (0.20 + 0.058 + 0.02) : 0; const multa = s * 0.08 * 0.4; const total = base + fgts + patron + multa + (v.benef || 0);
+        return { linhas: [['Salário', brl(s)], ['13º salário (1/12)', brl(dec)], ['Férias + 1/3 (1/12)', brl(fer)], ['FGTS (8%)', brl(fgts)], ['INSS patronal, RAT e terceiros (≈28%)', brl(patron)], ['Provisão da multa de 40% do FGTS', brl(multa)], ['Benefícios', brl(v.benef || 0)]], total, notas: [`Custo mensal estimado: ${(total / s).toFixed(2).replace('.', ',')}× o salário.`, 'Alíquotas de RAT e terceiros variam por empresa e atividade (estimativa de 2% + 5,8%).'] }; } },
+  };
+  function renderCalculadoras(cab, c){
+    const ativas = (c.calculadoras && c.calculadoras.ativas) || Object.keys(CALCS);
+    detalheConteudo.innerHTML = cab('DIREITO DO TRABALHO', 'Calculadoras trabalhistas', 'Faça uma estimativa dos seus direitos. Os resultados são aproximados e não substituem a análise de um advogado.') +
+      `<div class="calc-grid">${Object.keys(CALCS).filter(k => ativas.includes(k)).map(k => `<a class="calc-card" href="#calc-${k}"><h3>${CALCS[k].nome}</h3><p>${CALCS[k].desc}</p></a>`).join('') || '<p class="servico-intro">As calculadoras estão em manutenção. Volte em breve.</p>'}</div>`;
+  }
+  function renderCalculadora(k, cab, c){
+    const calc = CALCS[k]; const cfgc = c.calculadoras || { ativas: Object.keys(CALCS), salario_minimo: 1518 };
+    if (!calc || !(cfgc.ativas || []).includes(k)){ location.hash = 'calculadoras'; return; }
+    const campo = (f) => { const id = 'cc_' + f.n;
+      if (f.t === 'select') return `<div class="checkout-field"><label for="${id}">${f.l}</label><select id="${id}">${f.opts.map(([v, t]) => `<option value="${v}">${t}</option>`).join('')}</select></div>`;
+      return `<div class="checkout-field"><label for="${id}">${f.l}${f.req ? ' *' : ''}</label><input id="${id}" type="${f.t === 'date' ? 'date' : 'text'}" ${f.t === 'money' ? 'inputmode="decimal" placeholder="0,00"' : f.t === 'num' ? 'inputmode="decimal"' : ''} value="${f.def !== undefined ? f.def : ''}"></div>`; };
+    detalheConteudo.innerHTML = cab('CALCULADORA', calc.nome, calc.desc) + `<form id="formCalc" class="form-publico" novalidate><div class="form-publico-grid">${calc.campos.map(campo).join('')}</div><p class="checkout-erro" id="calcErro"></p><button class="btn btn-gold" type="submit">Calcular</button></form><div id="calcResultado"></div><p class="servico-nota">Resultado estimado, para fins informativos. Não considera convenções coletivas, médias de variáveis, INSS nem imposto de renda.</p><div class="servico-cta"><a class="btn btn-gold" href="${WA_BASE + encodeURIComponent('Olá! Fiz o cálculo de ' + calc.nome + ' no site e gostaria de conversar com um advogado.')}" target="_blank" rel="noopener">Falar com um advogado</a><a class="btn btn-outline-dark" href="#calculadoras">Outras calculadoras</a></div>`;
+    document.getElementById('formCalc').addEventListener('submit', (e) => {
+      e.preventDefault(); const er = document.getElementById('calcErro'); er.textContent = ''; er.classList.remove('show');
+      const v = {};
+      for (const f of calc.campos){
+        const raw = (document.getElementById('cc_' + f.n).value || '').trim();
+        if (f.t === 'date'){ v[f.n] = dt(raw); if (f.req && (!v[f.n] || isNaN(v[f.n]))){ er.textContent = 'Preencha todas as datas.'; er.classList.add('show'); return; } }
+        else if (f.t === 'select') v[f.n] = raw;
+        else { const t = raw.replace(/\./g, '').replace(',', '.'); v[f.n] = t === '' ? 0 : Number(t); if (!Number.isFinite(v[f.n]) || v[f.n] < 0 || (f.req && v[f.n] <= 0)){ er.textContent = `Confira o campo "${f.l}".`; er.classList.add('show'); return; } }
+      }
+      if (v.adm && v.dem && v.dem < v.adm){ er.textContent = 'A data de saída não pode ser antes da admissão.'; er.classList.add('show'); return; }
+      const r = calc.calc(v, { salario_minimo: cfgc.salario_minimo || 1518 });
+      document.getElementById('calcResultado').innerHTML = `<div class="calc-res"><table>${r.linhas.map(([a, b]) => `<tr><td>${a}</td><td>${b}</td></tr>`).join('')}<tr class="total"><td>Total estimado</td><td>${brl(r.total)}</td></tr></table>${r.notas.filter(Boolean).map(n => `<p>${escapeHtml(n)}</p>`).join('')}</div>`;
+      document.getElementById('calcResultado').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+  }
+
+  // ---------- Etapas do pedido (Provimento) e do processo ----------
+  function stepperProv(p){
+    const s = p.status;
+    const n1 = { rascunho: 0, aguardando_pagamento: 1, enviado: 2, em_analise: 3, inviavel: 4, viavel: 4, em_elaboracao: 4, concluido: 4 }[s];
+    const n2 = { viavel: 0, em_elaboracao: 1, concluido: 3 }[s];
+    const passos = (lista, feito, rotuloFim) => `<ol class="stepper">${lista.map((t, i) => `<li class="${i < feito ? 'ok' : i === feito ? 'atual' : ''}"><i>${i < feito ? '✓' : i + 1}</i><span>${t}</span></li>`).join('')}</ol>`;
+    if (n1 === undefined) return '';
+    const s1 = passos(['Pedido realizado', 'Pagamento confirmado', 'Em análise de viabilidade', s === 'inviavel' ? 'Resultado: recurso inviável' : 'Resultado: recurso viável'], n1);
+    const s2 = s === 'inviavel' ? '' : passos(['Pagamento do Provimento', 'Recurso em elaboração', 'Recurso disponível'], n2 === undefined ? -1 : n2);
+    return `<div class="stepper-bloco"><h5>Serviço 1 — Análise de viabilidade</h5>${s1}${s2 ? `<h5>Serviço 2 — Provimento (elaboração do recurso)</h5>${s2}` : ''}</div>`;
+  }
+  const ETAPAS_PROC = ['Processo cadastrado', 'Documentos e análise', 'Petição / defesa', 'Aguardando audiência ou perícia', 'Sentença', 'Recurso / execução', 'Encerrado'];
+  function stepperProc(p){
+    const e = Math.max(1, Math.min(7, Number(p.etapa) || 1));
+    return `<ol class="stepper proc">${ETAPAS_PROC.map((t, i) => `<li class="${i + 1 < e ? 'ok' : i + 1 === e ? 'atual' : ''}"><i>${i + 1 < e ? '✓' : i + 1}</i><span>${t}</span></li>`).join('')}</ol>`;
+  }
+
   route(); // trata link direto pra uma página de detalhe/cadastro/carrinho (deep link)
 
   // ================= TELA DE CARREGAMENTO =================
