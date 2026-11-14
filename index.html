@@ -937,6 +937,21 @@
   .news-dl{list-style:none;padding:0;margin:10px 0 0;} .news-dl li{margin:6px 0;} .news-dl a{color:inherit;text-decoration:underline;font-weight:600;} .news-dl.grande li{background:#fff;border:1px solid #E1D9C8;border-radius:10px;padding:12px 16px;} .news-dl.grande a{color:var(--navy-deep);} .news-dl p{margin:4px 0 0;font-size:.9rem;color:var(--ink-soft);}
   .footer-redes{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px;} .footer-redes a{border:1px solid var(--navy-line);border-radius:999px;padding:5px 12px;font-size:.82rem;}
   .footer-grid{grid-template-columns:repeat(auto-fit,minmax(190px,1fr)) !important;}
+  /* v18: página O escritório, profissionais, agenda, vagas, apresentação, rodapé */
+  .footer-grid{grid-template-columns:repeat(3,minmax(0,1fr)) !important;gap:34px 40px;}
+  .footer-grid .footer-brand{grid-column:1 / -1;max-width:none;} .footer-grid .footer-brand p{max-width:520px;}
+  @media (min-width:1100px){ .footer-grid{grid-template-columns:repeat(5,minmax(0,1fr)) !important;} }
+  @media (max-width:900px){ .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;} }
+  @media (max-width:560px){ .footer-grid{grid-template-columns:1fr !important;} }
+  body:has(#homeContent[style*="none"]) .ff-newsletter{display:none;}
+  #ajudaWidget{right:20px !important;bottom:94px !important;} @media (max-width:640px){ #ajudaWidget{right:14px !important;bottom:82px !important;} }
+  .mvv-pag{margin:0 0 26px;} .eq-busca{width:100%;max-width:420px;padding:10px 14px;border:1px solid #D8CFBD;border-radius:10px;font:inherit;margin:4px 0 18px;} .equipe-abas button small{opacity:.7;} .pessoa-esp{color:var(--gold) !important;font-weight:600;}
+  .vagas-filtros{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:6px 0 14px;} .vf{display:flex;flex-direction:column;gap:4px;font-size:.82rem;color:var(--ink-soft);} .vf select{padding:9px 10px;border:1px solid #D8CFBD;border-radius:8px;font:inherit;background:#fff;}
+  .cal-topo{display:flex;align-items:center;justify-content:space-between;margin:8px 0;text-transform:capitalize;} .cal-topo button{border:1px solid #D8CFBD;background:#fff;border-radius:8px;width:38px;height:38px;font-size:1.2rem;cursor:pointer;}
+  .cal-grade{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:18px;} .cal-sem{font-style:normal;text-align:center;font-size:.78rem;color:var(--ink-soft);} .cal-dia{text-align:center;padding:9px 0;border-radius:8px;background:#fff;border:1px solid #EFE8D8;font-size:.9rem;} .cal-dia.tem{background:var(--gold);color:#fff;font-weight:700;} .cal-dia.hoje{outline:2px solid var(--navy-deep);}
+  .cal-lista{list-style:none;padding:0;display:grid;gap:10px;} .cal-lista li{background:#fff;border:1px solid #E1D9C8;border-radius:12px;padding:14px 16px;} .cal-lista li b{color:var(--gold);} .cal-lista li small{display:block;color:var(--ink-soft);} .cal-lista li p{margin:6px 0 0;font-size:.9rem;}
+  .apres-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:34px;align-items:center;} .apres-grid.sem-video{grid-template-columns:1fr;max-width:760px;} .apres-video{position:relative;aspect-ratio:16/9;border-radius:14px;overflow:hidden;background:#000;} .apres-video iframe,.apres-video video{position:absolute;inset:0;width:100%;height:100%;border:0;} @media (max-width:800px){ .apres-grid{grid-template-columns:1fr;} }
+  .conta-faixa{display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:#fff;border:1px solid #E1D9C8;border-radius:16px;padding:22px 26px;} .conta-faixa h2{margin:0 0 4px;font-size:1.3rem;} .conta-faixa p{margin:0;color:var(--ink-soft);max-width:620px;}
   /* busca e idioma */
   .busca-caixa{background:#fff;border-radius:14px;max-width:560px;width:100%;padding:16px;align-self:flex-start;margin-top:10vh;box-shadow:0 20px 60px rgba(0,0,0,.4);}
   .busca-caixa input{width:100%;border:1px solid #D8CFBD;border-radius:8px;padding:13px 14px;font:inherit;font-size:1.05rem;} .busca-res{max-height:55vh;overflow:auto;margin-top:8px;}
@@ -1263,9 +1278,26 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
 @media (hover:none){.oab-strip:hover h3,.footer-col a:hover,.post-card:hover img,.product-card:hover img{transform:none;}}
 
 
+
+.prov-escolha{display:grid;gap:8px;margin:16px 0 4px;}
+.prov-escolha>b{font-size:.92rem;}
+.prov-escolha label{display:flex;gap:10px;align-items:flex-start;padding:12px 14px;border:1px solid rgba(255,255,255,.14);border-radius:12px;cursor:pointer;font-size:.9rem;}
+.prov-escolha label small{display:block;opacity:.75;margin-top:3px;font-size:.8rem;line-height:1.4;}
+.prov-escolha input{margin-top:3px;width:auto;}
 /* cabeçalho apertado (telas médias e celular) */
 @media (min-width:961px) and (max-width:1080px){ header .container{padding-left:14px;padding-right:14px;} nav.main-nav{gap:8px;} nav.main-nav ul{gap:6px;} nav.main-nav a.top-link{font-size:0.72rem;} .brand-word{font-size:0.95rem;} .brand svg{width:30px;height:30px;} .brand{gap:8px;margin-right:0;} header .nav-wrap{gap:10px;} .header-icons{gap:4px;} }
 @media (max-width:960px){ .brand-word{white-space:normal;font-size:1rem;} .brand{min-width:0;gap:8px;margin-right:0;flex:1 1 auto;} .brand svg,.brand img{width:32px;height:32px;flex:none;} header .nav-wrap{gap:8px;} .header-icons{gap:2px;flex:none;} .header-icons .icon-btn{width:34px;height:34px;} .brand-sub{white-space:normal;font-size:0.56rem;letter-spacing:0.06em;line-height:1.2;} .brand-word{overflow-wrap:anywhere;} }
+/* v18: com 11 itens de menu, o menu desce para uma segunda linha no computador */
+@media (min-width:961px){
+  header .nav-wrap{flex-wrap:wrap;row-gap:0;padding-bottom:0;}
+  header .nav-wrap .brand{order:1;}
+  header .nav-wrap > div:last-child{order:2;}
+  header nav.main-nav{order:3;flex:0 0 100%;width:100%;justify-content:center;border-top:1px solid var(--navy-line);margin-top:10px;padding:4px 0 0;}
+  header nav.main-nav ul{gap:22px;flex-wrap:wrap;justify-content:center;}
+  header nav.main-nav a.top-link{font-size:.9rem;}
+  header .brand-sub{display:block;}
+}
+@media (min-width:961px) and (max-width:1120px){ header nav.main-nav ul{gap:12px;} header nav.main-nav a.top-link{font-size:.8rem;} }
 </style>
 </head>
 <body>
@@ -1331,7 +1363,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
         <li>
           <a class="top-link" href="#sobre">Sobre <span class="caret">▾</span></a>
           <div class="dropdown">
-            <a href="#sobre">O escritório</a>
+            <a href="#escritorio">O escritório</a>
             <a href="#curriculo">Currículo (Dr. Israel Donizete da Silva)</a>
             <a href="#trabalhe-conosco">Trabalhe conosco</a>
             <a href="#faq">Dúvidas frequentes (FAQ)</a>
@@ -1339,10 +1371,18 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
           </div>
         </li>
         <li>
-          <a class="top-link" href="#portal-processos">Clientes e parceiros <span class="caret">▾</span></a>
+          <a class="top-link" href="#portal-processos">Acesso Cliente <span class="caret">▾</span></a>
           <div class="dropdown">
-            <a href="#portal-processos">Acompanhar meu processo</a>
+            <a href="#portal-processos">Acompanhar processo</a>
             <a href="#contrato">Contrato de honorários</a>
+            <a href="#declaracao-gratuidade">Declaração de gratuidade de justiça</a>
+            <a href="#procuracao">Procuração</a>
+          </div>
+        </li>
+        <li>
+          <a class="top-link" href="#agendar">Clientes e parceiros <span class="caret">▾</span></a>
+          <div class="dropdown">
+            <a href="#agendar">Agende sua consulta</a>
             <a href="#seja-parceiro">Seja parceiro</a>
             <a href="#parceiros">Área do advogado parceiro</a>
           </div>
@@ -1755,6 +1795,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     if (mServ) return { tipo: 'servico-item', chave: mServ[1], extra: mServ[2] };
     if (h === 'seja-parceiro' || h === 'trabalhe-conosco' || h === 'ouvidoria') return { tipo: 'formulario', chave: h };
     if (h === 'contrato') return { tipo: 'contrato', chave: null };
+    if (h === 'procuracao' || h === 'declaracao-gratuidade') return { tipo: 'contrato', chave: h };
     const mDocs = h.match(/^enviar-documentos(?:-(trabalhista|previdenciario))?$/);
     if (mDocs) return { tipo: 'enviar-documentos', chave: mDocs[1] || null };
     if (h === 'midias') return { tipo: 'midias', chave: null };
@@ -1762,7 +1803,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     if (h === 'minhas-compras') return { tipo: 'portal', chave: 'livros' };
     if (h === 'portal') return { tipo: 'portal', chave: 'inicio' };
     if (h === 'parceiros') return { tipo: 'parceiros', chave: 'inicio' };
-    const mPar = h.match(/^parceiros-(pastas|honorarios|ferramentas|conta)$/);
+    const mPar = h.match(/^parceiros-(pastas|honorarios|processos|ferramentas|conta)$/);
     if (mPar) return { tipo: 'parceiros', chave: mPar[1] };
     const mParPasta = h.match(/^parceiros-pasta-(\d+)$/);
     if (mParPasta) return { tipo: 'parceiros', chave: 'pastas', extra: mParPasta[1] };
@@ -1780,9 +1821,8 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     // #blog-todos-trabalhista, #blog-todos-previdenciario, etc -> já abre filtrado
     const mBlogCat = h.match(/^blog-todos-(trabalhista|previdenciario|noticias|artigos)$/);
     if (mBlogCat) return { tipo: 'blog-todos', chave: mBlogCat[1] };
-    if (/^(agendar|acordo|atualizar-dados|denuncia|sugestoes|avaliacoes|informativos|vagas|premios|filiais|calculadoras)$/.test(h)) return { tipo: 'extra', chave: h };
-    const mCalc = h.match(/^calc-([a-z-]{3,30})$/);
-    if (mCalc) return { tipo: 'extra', chave: 'calc', extra: mCalc[1] };
+    if (/^(agendar|acordo|atualizar-dados|denuncia|sugestoes|avaliacoes|informativos|vagas|premios|filiais|escritorio|equipe|programacao)$/.test(h)) return { tipo: 'extra', chave: h };
+    if (h === 'calculadoras' || /^calc-/.test(h)) return null;
     const mPg = h.match(/^pagina-([a-z0-9-]{1,60})$/);
     if (mPg) return { tipo: 'extra', chave: 'pagina', extra: mPg[1] };
     const m = h.match(/^(livro|curso|artigo)-(.+)$/);
@@ -1935,13 +1975,17 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
   const textoEditavel = (html) => `<div class="texto-legal texto-editavel">${limparHtmlArtigo(html)}</div>`;
 
   // ---------- Contrato de honorários: ler, baixar em PDF, assinar no GOV.BR e enviar ----------
-  async function renderContrato(){
+  async function renderContrato(modo){
+    const DOCS = { 'procuracao': { slug: 'procuracao', nome: 'Procuração', kicker: 'ACESSO CLIENTE', enviar: 'Enviar procuração assinada', intro: 'Preencha seus dados, leia o texto, baixe o PDF, assine com a sua conta GOV.BR e envie o arquivo assinado por aqui.' },
+      'declaracao-gratuidade': { slug: 'declaracao-gratuidade', nome: 'Declaração de gratuidade de justiça', kicker: 'ACESSO CLIENTE', enviar: 'Enviar declaração assinada', intro: 'Preencha seus dados, leia a declaração, baixe o PDF, assine com a sua conta GOV.BR e envie o arquivo assinado por aqui.' } };
+    const doc = DOCS[modo] || null;
+    const NOME = doc ? doc.nome : 'Contrato de honorários';
     detalheConteudo.style.maxWidth = '860px';
-    detalheConteudo.innerHTML = `${BOTAO_VOLTAR}<span class="detalhe-kicker" style="display:block;">CLIENTES</span><h1 class="detalhe-titulo">Contrato de honorários</h1><p class="servico-intro">Carregando…</p>`;
+    detalheConteudo.innerHTML = `${BOTAO_VOLTAR}<span class="detalhe-kicker" style="display:block;">${doc ? doc.kicker : 'CLIENTES'}</span><h1 class="detalhe-titulo">${NOME}</h1><p class="servico-intro">Carregando…</p>`;
     let modelos = [];
     const pedirLogin = () => {
-      detalheConteudo.innerHTML = `${BOTAO_VOLTAR}<span class="detalhe-kicker" style="display:block;">CLIENTES</span><h1 class="detalhe-titulo">Contrato de honorários</h1>
-        <p class="servico-intro">Esta área é exclusiva para clientes do escritório. Entre na sua conta para ler, baixar e enviar o seu contrato.</p>
+      detalheConteudo.innerHTML = `${BOTAO_VOLTAR}<span class="detalhe-kicker" style="display:block;">${doc ? doc.kicker : 'CLIENTES'}</span><h1 class="detalhe-titulo">${NOME}</h1>
+        <p class="servico-intro">Esta área é exclusiva para clientes do escritório. Entre na sua conta para ler, preencher, baixar e enviar o documento.</p>
         <p class="servico-nota">Ainda não tem conta? <a href="#cadastro" style="color:var(--gold);">Crie sua conta</a> com o mesmo e-mail que você informou ao escritório.</p>
         <button class="btn btn-gold" id="contratoEntrar">Entrar</button>`;
       document.getElementById('contratoEntrar').addEventListener('click', () => abrirLogin());
@@ -1953,6 +1997,8 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       if (r.status === 401 || r.status === 403){ localStorage.removeItem('tokenAluno'); localStorage.removeItem('nomeAluno'); atualizarIconeLogin(); pedirLogin(); return; }
       if (!r.ok) throw new Error();
       modelos = await r.json();
+      const SO_DOCS = ['procuracao', 'declaracao-gratuidade'];
+      modelos = doc ? modelos.filter((m) => m.slug === doc.slug) : modelos.filter((m) => !SO_DOCS.includes(m.slug));
     } catch (e) {
       detalheConteudo.querySelector('.servico-intro').textContent = 'Não foi possível carregar os contratos agora. Tente de novo em instantes.';
       return;
@@ -1961,11 +2007,11 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     const campo = (id, rotulo, tipo = 'text', extra = '') => `<div class="checkout-field"><label for="${id}">${rotulo}</label><input id="${id}" type="${tipo}" ${extra}></div>`;
     detalheConteudo.innerHTML = `
       ${BOTAO_VOLTAR}
-      <span class="detalhe-kicker" style="display:block;">CLIENTES</span>
-      <h1 class="detalhe-titulo">Contrato de honorários</h1>
-      <p class="servico-intro">Escolha o contrato, preencha seus dados, leia, baixe o PDF, assine com a sua conta GOV.BR e envie o arquivo assinado por aqui.</p>
+      <span class="detalhe-kicker" style="display:block;">${doc ? doc.kicker : 'CLIENTES'}</span>
+      <h1 class="detalhe-titulo">${NOME}</h1>
+      <p class="servico-intro">${doc ? doc.intro : 'Escolha o contrato, preencha seus dados, leia, baixe o PDF, assine com a sua conta GOV.BR e envie o arquivo assinado por aqui.'}</p>
       <form id="formContrato" class="form-publico" novalidate>
-        <div class="checkout-field"><label for="cModelo">Tipo de contrato *</label>
+        <div class="checkout-field" ${doc || modelos.length < 2 ? 'style="display:none"' : ''}><label for="cModelo">Tipo de contrato *</label>
           <select id="cModelo">${modelos.map((m) => `<option value="${escAttr(m.slug)}">${escapeHtml(m.titulo)}</option>`).join('')}</select></div>
         <div class="form-publico-grid">
           ${campo('cNome', 'Nome completo *', 'text', 'maxlength="150" autocomplete="name"')}
@@ -1973,32 +2019,40 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
           ${campo('cEmail', 'E-mail *', 'email', 'maxlength="160" autocomplete="email"')}
           ${campo('cTel', 'Telefone / WhatsApp', 'tel', 'maxlength="40" autocomplete="tel"')}
         </div>
+        ${doc ? `<div class="form-publico-grid">
+          ${campo('cNac', 'Nacionalidade', 'text', 'maxlength="60" placeholder="Ex.: brasileira"')}
+          ${campo('cEc', 'Estado civil', 'text', 'maxlength="40" placeholder="Ex.: solteiro(a), casado(a)"')}
+          ${campo('cProf', 'Profissão', 'text', 'maxlength="80"')}
+          ${campo('cRg', 'RG (com órgão expedidor)', 'text', 'maxlength="40"')}
+        </div>` : ''}
         ${campo('cEnd', 'Endereço completo', 'text', 'maxlength="300" autocomplete="street-address"')}
-        ${campo('cValor', 'Valor combinado com o escritório (se já souber)', 'text', 'maxlength="80"')}
-        <h2 style="margin:24px 0 8px;">1. Leia o contrato</h2>
+        ${doc ? campo('cCidade', 'Município', 'text', 'maxlength="80" placeholder="Ex.: São Paulo"') : campo('cValor', 'Valor combinado com o escritório (se já souber)', 'text', 'maxlength="80"')}
+        ${modo === 'procuracao' ? campo('cObjeto', 'Para que é a procuração? (opcional)', 'text', 'maxlength="300" placeholder="Ex.: reclamação trabalhista contra a empresa X"') : ''}
+        <h2 style="margin:24px 0 8px;">1. Leia ${doc ? 'o documento' : 'o contrato'}</h2>
         <div id="cTexto" class="artigo-html" style="background:#fff;color:#1c2d42;padding:22px 24px;border:1px solid var(--line, #d9d2c3);max-height:460px;overflow:auto;line-height:1.6;"></div>
         <div style="margin:14px 0 4px;"><button type="button" class="btn btn-outline-dark" id="cBaixar">Baixar / imprimir em PDF</button></div>
         <h2 style="margin:24px 0 8px;">2. Assine com o GOV.BR</h2>
         <p class="servico-intro" style="margin:0 0 10px;">Abra o assinador do GOV.BR, entre com a sua conta, envie o PDF que você baixou e assine. Depois baixe o arquivo assinado.</p>
         <a class="btn btn-outline-dark" href="https://assinatura.iti.gov.br/" target="_blank" rel="noopener">Abrir assinatura GOV.BR ↗</a>
-        <h2 style="margin:24px 0 8px;">3. Envie o contrato assinado</h2>
+        <h2 style="margin:24px 0 8px;">3. Envie ${doc ? 'o documento assinado' : 'o contrato assinado'}</h2>
         <div class="checkout-field"><label for="cArq">Arquivo PDF assinado (até 5 MB) *</label><input id="cArq" type="file" accept="application/pdf,.pdf"></div>
         <input type="text" id="cIsca" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;height:0;width:0;opacity:0;">
-        <label class="checkout-field" style="display:flex;gap:8px;align-items:flex-start;"><input type="checkbox" id="cAceite" style="margin-top:4px;"><span>Li o contrato e concordo com os termos. Autorizo o uso dos meus dados para esta contratação.</span></label>
+        <label class="checkout-field" style="display:flex;gap:8px;align-items:flex-start;"><input type="checkbox" id="cAceite" style="margin-top:4px;"><span>Li ${doc ? 'o documento' : 'o contrato'} e concordo com os termos. Autorizo o uso dos meus dados para esta finalidade.</span></label>
         <div class="checkout-erro" id="cErro" role="alert"></div>
-        <button type="submit" class="btn btn-gold" id="cEnviar">Enviar contrato assinado</button>
+        <button type="submit" class="btn btn-gold" id="cEnviar">${doc ? doc.enviar : 'Enviar contrato assinado'}</button>
       </form>`;
     const el = (id) => document.getElementById(id);
     const dataHoje = new Date().toLocaleDateString('pt-BR', { day: 'numeric', month: 'long', year: 'numeric' });
-    const preencher = (texto) => String(texto).replace(/\{\{\s*(nome|cpf|email|telefone|endereco|valor|data)\s*\}\}/gi, (_, k) => {
+    const val = (id) => (el(id) ? el(id).value : '');
+    const preencher = (texto) => String(texto).replace(/\{\{#(\w+)\}\}([\s\S]*?)\{\{\/\1\}\}/g, (_, k, c) => (String(({ objeto: val('cObjeto') })[k.toLowerCase()] || '').trim() ? c : '')).replace(/\{\{\s*(nome|cpf|email|telefone|endereco|valor|data|rg|nacionalidade|estado_civil|profissao|cidade|objeto)\s*\}\}/gi, (_, k) => {
       k = k.toLowerCase();
-      const v = k === 'data' ? dataHoje : ({ nome: el('cNome').value, cpf: el('cCpf').value, email: el('cEmail').value, telefone: el('cTel').value, endereco: el('cEnd').value, valor: el('cValor').value })[k];
+      const v = k === 'data' ? dataHoje : ({ nome: val('cNome'), cpf: val('cCpf'), email: val('cEmail'), telefone: val('cTel'), endereco: val('cEnd'), valor: val('cValor'), rg: val('cRg'), nacionalidade: val('cNac'), estado_civil: val('cEc'), profissao: val('cProf'), cidade: val('cCidade'), objeto: val('cObjeto') })[k];
       return `<u>${escapeHtml(String(v || '').trim() || '____________')}</u>`;
     });
     const modeloAtual = () => modelos.find((m) => m.slug === el('cModelo').value) || modelos[0];
     const html = () => limparHtmlArtigo(preencher(modeloAtual().texto));
     const atualizar = () => { el('cTexto').innerHTML = html(); };
-    ['cModelo', 'cNome', 'cCpf', 'cEmail', 'cTel', 'cEnd', 'cValor'].forEach((id) => el(id).addEventListener('input', atualizar));
+    ['cModelo', 'cNome', 'cCpf', 'cEmail', 'cTel', 'cEnd', 'cValor', 'cRg', 'cNac', 'cEc', 'cProf', 'cCidade', 'cObjeto'].forEach((id) => el(id) && el(id).addEventListener('input', atualizar));
     atualizar();
     el('cCpf').addEventListener('input', () => {
       const d = el('cCpf').value.replace(/\D/g, '').slice(0, 11);
@@ -2027,11 +2081,11 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
         const b64 = await new Promise((ok, falha) => { const r = new FileReader(); r.onload = () => ok(String(r.result).split(',')[1] || ''); r.onerror = falha; r.readAsDataURL(f); });
         const res = await fetch(`${API_URL}/contratos/enviar`, { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + (localStorage.getItem('tokenAluno') || '') }, body: JSON.stringify({
           modelo: el('cModelo').value, nome: el('cNome').value, cpf: el('cCpf').value, email: el('cEmail').value, telefone: el('cTel').value,
-          endereco: el('cEnd').value, valor: el('cValor').value, aceite: true, site_url: el('cIsca').value, arquivo_base64: b64, arquivo_nome: f.name }) });
+          endereco: el('cEnd').value, valor: val('cValor'), extras: { rg: val('cRg'), nacionalidade: val('cNac'), estado_civil: val('cEc'), profissao: val('cProf'), cidade: val('cCidade'), objeto: val('cObjeto') }, aceite: true, site_url: el('cIsca').value, arquivo_base64: b64, arquivo_nome: f.name }) });
         const d = await res.json().catch(() => null);
         if (!res.ok) throw new Error((d && d.erro) || 'Não foi possível enviar agora.');
-        el('formContrato').innerHTML = '<div class="servico-bloco"><h2 style="margin-top:0;">Contrato enviado</h2><p class="servico-intro" style="margin:0;">Recebemos o seu contrato assinado e enviamos uma confirmação para o seu e-mail. O escritório vai conferir a assinatura e falar com você se precisar de algo.</p></div>';
-      } catch (err) { erro(err.message); btn.disabled = false; btn.textContent = 'Enviar contrato assinado'; }
+        el('formContrato').innerHTML = '<div class="servico-bloco"><h2 style="margin-top:0;">' + (doc ? 'Enviado com sucesso' : 'Contrato enviado') + '</h2><p class="servico-intro" style="margin:0;">Recebemos o seu ' + (doc ? 'documento' : 'contrato') + ' assinado e enviamos uma confirmação para o seu e-mail. O escritório vai conferir a assinatura e falar com você se precisar de algo.</p></div>';
+      } catch (err) { erro(err.message); btn.disabled = false; btn.textContent = doc ? doc.enviar : 'Enviar contrato assinado'; }
     });
   }
 
@@ -2054,7 +2108,8 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
         : 'Advogados, estagiários e profissionais da área podem enviar o currículo. Ele fica guardado para futuras oportunidades.'}</p>`}
       ${ouvidoria ? `
         <div class="servico-bloco" style="margin:18px 0;"><h2 style="margin-top:0;">Valor do serviço</h2><p class="servico-intro" style="margin:0;" id="ouvValor">Consulte o valor com o escritório.</p><p class="servico-intro" style="margin:8px 0 0;white-space:pre-line;" id="ouvTexto"></p></div>
-        <p class="servico-intro" style="margin:0 0 6px;">Preencha o pedido abaixo. O escritório entra em contato pelo e-mail ou telefone informado para combinar o pagamento e os próximos passos.</p>` : ''}
+        <div id="ouvVideo"></div>
+        <p class="servico-intro" style="margin:0 0 6px;">Preencha o pedido abaixo e escolha como prefere pagar. O escritório entra em contato pelo e-mail ou telefone informado para enviar o Pix, o boleto ou o link do cartão e combinar os próximos passos.</p>` : ''}
       <form id="formPublico" class="form-publico" novalidate>
         <div class="form-publico-grid">
           ${campo('fNome', 'Nome completo *', 'text', 'maxlength="150" required')}
@@ -2065,6 +2120,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
           ${campo('fArea', parceiro ? 'Áreas de atuação' : 'Área de interesse / cargo', 'text', 'maxlength="150"')}`}
         </div>
         <div class="checkout-field"><label for="fMensagem">${ouvidoria ? 'Conte o seu caso e o resultado do recurso na FGV *' : parceiro ? 'Sua proposta de parceria' : 'Fale um pouco sobre você'}</label><textarea id="fMensagem" maxlength="5000" rows="${ouvidoria ? 7 : 5}"></textarea></div>
+        ${ouvidoria ? `<div class="checkout-field"><label for="fPagto">Forma de pagamento preferida</label><select id="fPagto"><option>Pix</option><option>Boleto</option><option>Cartão de crédito</option></select></div>` : ''}
         ${parceiro || ouvidoria ? '' : `<div class="checkout-field"><label for="fArquivo">Currículo (PDF ou Word, até 5 MB)</label><input id="fArquivo" type="file" accept=".pdf,.doc,.docx"></div>`}
         <input type="text" name="site_url" id="fIsca" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true">
         <label class="form-aceite"><input type="checkbox" id="fAceite"> Concordo com o uso dos meus dados para este contato, conforme a <a href="#privacidade">Política de Privacidade</a>.</label>
@@ -2076,6 +2132,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
         const o = (c && c.ouvidoria) || {};
         if (Number(o.valor) > 0) document.getElementById('ouvValor').innerHTML = '<b>' + formatPreco(o.valor) + '</b>';
         if (o.texto) document.getElementById('ouvTexto').textContent = o.texto;
+        const ve = videoEmbed(o.video); if (ve) document.getElementById('ouvVideo').innerHTML = `<div class="apres-video" style="margin:0 0 18px;">${ve}</div>`;
       }).catch(() => {});
     }
     const form = document.getElementById('formPublico');
@@ -2096,7 +2153,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       if (ouvidoria && !v('fArea').trim()) return erro('Informe o exame e a fase.');
       const corpo = {
         tipo: ouvidoria ? 'ouvidoria' : parceiro ? 'parceiro' : 'curriculo', nome: v('fNome'), email: v('fEmail'), telefone: v('fTelefone'),
-        cidade: v('fCidade'), oab: v('fOab'), area: v('fArea'), mensagem: v('fMensagem'), site_url: v('fIsca'),
+        cidade: v('fCidade'), oab: v('fOab'), area: v('fArea'), mensagem: (ouvidoria ? 'Forma de pagamento preferida: ' + v('fPagto') + '\n\n' : '') + v('fMensagem'), site_url: v('fIsca'),
       };
       const arq = document.getElementById('fArquivo');
       if (arq && arq.files[0]){
@@ -2660,8 +2717,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
         <a class="btn btn-gold" href="${wa}" target="_blank" rel="noopener">Falar com um advogado</a>
         <a class="btn btn-outline-dark" href="#${area}">Ver outros serviços</a>
       </div>
-      ${area === 'previdenciario' ? `<h2 style="margin:30px 0 12px;">Podemos ajudá-lo?</h2>${formContato('fPrev', 'previdenciario', [C_NOME, C_EMAIL, C_TEL, { n: 'mensagem', l: 'Mensagem', t: 'textarea', req: 1, full: 1, rows: 4 }], 'Enviar')}` : ''}`;
-    if (area === 'previdenciario') ligarFormContato('fPrev', [C_NOME, C_EMAIL, C_TEL, { n: 'mensagem', l: 'Mensagem', req: 1 }], { extra: () => ({ servico: it.titulo }), ok: 'Recebemos sua mensagem. Retornaremos em breve.' });
+    `;
   }
 
   // Artigos feitos no editor do painel vêm em HTML. Antes de mostrar, tudo
@@ -2916,7 +2972,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       const externo = isLivro && linkExterno(item);
       const acao = externo
         ? `<a class="mini-btn" href="${escAttr(externo)}" target="_blank" rel="noopener sponsored">${escapeHtml(rotuloLoja(item))}</a>`
-        : (isLivro ? '' : `<span class="mini-btn">Ver curso</span>`);
+        : (isLivro ? '' : `<span class="mini-btn">Ver e comprar</span>`);
       const temCapa = !!item.capa_url;
       const coverStyle = temCapa ? ` style="background-image:url('${item.capa_url}')"` : '';
       return `
@@ -2987,6 +3043,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     { id: 'inicio', nome: 'Início', hash: 'parceiros' },
     { id: 'pastas', nome: 'Pastas dos clientes', hash: 'parceiros-pastas' },
     { id: 'honorarios', nome: 'Honorários', hash: 'parceiros-honorarios' },
+    { id: 'processos', nome: 'Processos do escritório', hash: 'parceiros-processos' },
     { id: 'ferramentas', nome: 'Ferramentas', hash: 'parceiros-ferramentas' },
     { id: 'conta', nome: 'Minha conta', hash: 'parceiros-conta' },
   ];
@@ -3075,7 +3132,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     parcLigarVoltar();
     document.getElementById('parcSair').addEventListener('click', () => { parcSair(); location.hash = ''; });
     const alvo = document.getElementById('parcAba');
-    const render = { inicio: parcInicio, pastas: parcPastas, honorarios: parcHonorarios, ferramentas: parcFerramentas, conta: parcConta }[aba];
+    const render = { inicio: parcInicio, pastas: parcPastas, honorarios: parcHonorarios, processos: parcProcessos, ferramentas: parcFerramentas, conta: parcConta }[aba];
     render(alvo, extra).catch(err => {
       if (err.sessao) return;
       console.error('Erro na área do parceiro:', err);
@@ -3190,6 +3247,17 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       <p class="prov-ajuda">Os pagamentos são feitos pelo escritório. Divergência de valor ou data? Fale com o escritório.</p>`;
   }
 
+  async function parcProcessos(alvo){
+    let lista;
+    try{ lista = await apiParc('/parceiros/processos-escritorio'); }
+    catch(e){ alvo.innerHTML = `<div class="compras-vazio"><p>${escapeHtml(e.message || 'Consulta indisponível.')}</p></div>`; return; }
+    if (!lista.length){ alvo.innerHTML = `<div class="compras-vazio"><p>Nenhum processo ativo no momento.</p></div>`; return; }
+    const NOME = { trabalhista: 'Trabalhista', previdenciario: 'Previdenciário' };
+    alvo.innerHTML = `<p class="prov-ajuda" style="margin-bottom:16px;">Consulta somente leitura. Dados do cliente, valores e anotações não aparecem aqui, por sigilo profissional.</p>
+      <div class="portal-cards">${lista.map(p => `<div class="portal-card" style="cursor:default;"><span class="compra-meta">${escapeHtml(NOME[p.area] || p.area || '')}${p.fase ? ' · ' + escapeHtml(p.fase) : ''}</span>
+        <h4 style="font-size:1.05rem;">${escapeHtml(p.tipo_demanda || 'Processo')}</h4>
+        <p>${p.numero ? 'Nº ' + escapeHtml(p.numero) + '<br>' : ''}${p.orgao ? escapeHtml(p.orgao) + '<br>' : ''}${p.proximo_ato ? 'Próximo ato: ' + escapeHtml(p.proximo_ato) + (p.data_proximo_ato ? ' (' + escapeHtml(p.data_proximo_ato.split('-').reverse().join('/')) + ')' : '') : ''}</p></div>`).join('')}</div>`;
+  }
   async function parcFerramentas(alvo){
     const lista = await apiParc('/parceiros/ferramentas');
     if (!lista.length){
@@ -3360,7 +3428,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       else if (rota.tipo === 'faq') await renderFaq();
       else if (rota.tipo === 'pagina') renderPagina(rota.chave);
       else if (rota.tipo === 'formulario') renderFormulario(rota.chave);
-      else if (rota.tipo === 'contrato') await renderContrato();
+      else if (rota.tipo === 'contrato') await renderContrato(rota.chave);
       else if (rota.tipo === 'enviar-documentos') renderEnviarDocumentos(rota.chave);
       else if (rota.tipo === 'midias') await renderMidias();
       else if (rota.tipo === 'artigo') await renderDetalheArtigo(rota.chave);
@@ -3978,7 +4046,10 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
         ? 'Enviado em ' + new Date(p.enviado_em).toLocaleDateString('pt-BR')
         : `${feitos} de ${total} campos preenchidos`;
       const cobra = Number(cfg.valor_analise) > 0;
-      const rotuloEnviar = cobra ? `Pagar ${formatPreco(cfg.valor_analise)} — análise de viabilidade` : 'Enviar para a análise de viabilidade';
+      const cobraM = Number(cfg.valor_minuta) > 0;
+      const rotuloAnalise = cobra ? `Pagar ${formatPreco(cfg.valor_analise)} — análise de viabilidade` : 'Enviar para a análise de viabilidade';
+      const rotuloMinuta = cobraM ? `Pagar ${formatPreco(cfg.valor_minuta)} — Provimento (elaboração do recurso)` : 'Contratar o Provimento';
+      const rotuloEnviar = rotuloAnalise;
       const selo = ['viavel', 'em_elaboracao', 'concluido'].includes(p.status) ? '<span class="prov-selo s2">Serviço 2 · Provimento</span>' : '<span class="prov-selo">Serviço 1 · Análise de viabilidade</span>';
       return `
         <div class="portal-painel" id="prov-${p.id}">
@@ -3993,6 +4064,11 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
               <label for="obs-${p.id}">Recado para o Dr. Israel (opcional)</label>
               <textarea id="obs-${p.id}" maxlength="3000" placeholder="Ex.: observações sobre a correção…">${escapeHtml(p.observacao || '')}</textarea>
             </div>
+            <div class="prov-escolha" id="escolha-${p.id}">
+              <b>Qual serviço você quer contratar?</b>
+              <label><input type="radio" name="modal-${p.id}" value="analise" checked data-rot="${escAttr(rotuloAnalise)}"> <span><b>Serviço 1 — Análise de viabilidade</b>${cobra ? ' · ' + formatPreco(cfg.valor_analise) : ''}<small>O Dr. Israel avalia se cabe recurso. Se for viável, você contrata o Provimento depois.</small></span></label>
+              <label><input type="radio" name="modal-${p.id}" value="minuta" data-rot="${escAttr(rotuloMinuta)}"> <span><b>Serviço 2 — Provimento (elaboração do recurso)</b>${cobraM ? ' · ' + formatPreco(cfg.valor_minuta) : ''}<small>Contratação direta: o recurso é elaborado sem a etapa de análise de viabilidade.</small></span></label>
+            </div>
             <label class="prov-termos"><input type="checkbox" id="termos-${p.id}"> <span>Li e aceito os <a href="#" data-acao="ver-termos" data-prov="${p.id}">termos do serviço</a>.</span></label>
             <div class="prov-termos-texto" id="termosTexto-${p.id}" hidden>${escapeHtml(cfg.termos)}</div>
             <div class="portal-acoes">
@@ -4001,7 +4077,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
               <button class="mini-acao" data-acao="descartar" data-prov="${p.id}">Descartar</button>
               <span class="portal-msg" id="provMsg-${p.id}"></span>
             </div>
-            ${feitos < total ? `<p class="prov-ajuda">O botão "${rotuloEnviar}" libera quando todos os campos tiverem arquivo. Depois de enviar, não dá mais para trocar os arquivos. Este pagamento é só da análise de viabilidade; o Provimento (elaboração do recurso) é contratado depois, se o recurso for viável.</p>` : ''}`
+            ${feitos < total ? `<p class="prov-ajuda">O botão de pagamento libera quando todos os campos tiverem arquivo. Depois de enviar, não dá mais para trocar os arquivos. Escolhendo o Serviço 1, o pagamento é só da análise de viabilidade; o Provimento é contratado depois, se o recurso for viável.</p>` : ''}`
           : `
             ${blocoEtapa(p, cfg)}
             <details class="prov-enviados"><summary>Arquivos enviados (${p.arquivos.length})</summary>${gruposHtml(p)}
@@ -4019,10 +4095,10 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
           <p>Você envia a prova e o Dr. Israel avalia se cabe recurso. O resultado chega aqui e no seu e-mail.</p>
         </div>
         <div class="prov-serv s2">
-          <span class="sel">Serviço 2 — depois</span>
+          <span class="sel">Serviço 2 — depois, ou direto</span>
           <h4>Provimento (elaboração do recurso)</h4>
           ${Number(cfg.valor_minuta) > 0 ? `<span class="preco">${formatPreco(cfg.valor_minuta)}</span>` : ''}
-          <p>Só é contratado se a análise indicar que o recurso é viável. O recurso pronto fica aqui e chega no seu e-mail.</p>
+          <p>Você pode contratar depois da análise (se o recurso for viável) ou escolher este serviço direto ao enviar a prova. O recurso pronto fica aqui e chega no seu e-mail.</p>
         </div>
       </div>`;
 
@@ -4188,19 +4264,23 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
         } else if (b.dataset.acao === 'enviar'){
           if (b.disabled) return;
           const direto = b.dataset.direto === '1'; // "Pagar agora" de um envio que já aguarda pagamento
+          const radioM = document.querySelector(`input[name="modal-${id}"]:checked`);
+          const modalidade = radioM ? radioM.value : undefined;
           if (!direto){
             const termos = document.getElementById('termos-' + id);
             if (!termos || !termos.checked){ msg(id, 'Para enviar, marque que leu e aceita os termos do serviço.', false); return; }
             await salvarRascunho(id);
             const cobra = Number(cfg.valor_analise) > 0;
-            if (!confirm(cobra
+            if (modalidade === 'minuta'){
+              if (!confirm(Number(cfg.valor_minuta) > 0 ? `Você será levado ao Mercado Pago para pagar ${formatPreco(cfg.valor_minuta)} pelo Serviço 2 — Provimento (elaboração do recurso), sem a etapa de análise de viabilidade. Depois do pagamento, os arquivos não podem mais ser trocados. Continuar?` : 'Contratar o Provimento? Depois disso não será possível trocar os arquivos.')) return;
+            } else if (!confirm(cobra
               ? 'Você será levado ao Mercado Pago para pagar o Serviço 1 (análise de viabilidade). O Provimento (elaboração do recurso) é contratado depois, se o recurso for viável. Depois do pagamento, os arquivos não podem mais ser trocados. Continuar?'
               : 'Enviar para análise? Depois disso não será possível trocar os arquivos.')) return;
           }
-          const resp = await apiAluno(`/provimentos/${id}/enviar`, { method: 'POST', json: { aceite_termos: true } });
+          const resp = await apiAluno(`/provimentos/${id}/enviar`, { method: 'POST', json: modalidade ? { aceite_termos: true, modalidade } : { aceite_termos: true } });
           if (irPagar(resp, id)) return;
           await recarregar(id);
-          msg(id, 'Enviado! Você recebe o resultado da análise por e-mail e aqui.', true);
+          msg(id, modalidade === 'minuta' ? 'Contratado! O recurso entra em elaboração e você acompanha aqui.' : 'Enviado! Você recebe o resultado da análise por e-mail e aqui.', true);
         } else if (b.dataset.acao === 'pagar-recurso'){
           const cobra = Number(cfg.valor_minuta) > 0;
           if (cobra && !confirm(`Você será levado ao Mercado Pago para pagar ${formatPreco(cfg.valor_minuta)} pelo Serviço 2 — Provimento (elaboração do recurso). Continuar?`)) return;
@@ -4666,6 +4746,13 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
   async function extrasHome(c){
     const box = document.getElementById('homeExtras'); if (!box) return;
     const partes = [];
+    // Apresentação em vídeo (editável no painel)
+    const ap = c.apresentacao || {};
+    if (ap.ativo && (ap.video || ap.titulo || ap.texto)){
+      const v = videoEmbed(ap.video);
+      partes.push(`<section class="section secao-apres" id="apresentacao"><div class="container"><div class="apres-grid${v ? '' : ' sem-video'}">
+        <div>${ap.titulo ? `<h2>${escapeHtml(ap.titulo)}</h2>` : ''}${ap.texto ? `<div class="apres-texto">${limparHtmlArtigo(ap.texto)}</div>` : ''}</div>${v ? `<div class="apres-video">${v}</div>` : ''}</div></div></section>`);
+    }
     // Conte a sua situação (Trabalho e Previdenciário, separados)
     partes.push(`<section class="section secao-situacao" id="conte-situacao"><div class="container">
       <div class="section-head"><span class="kicker">CONTE A SUA SITUAÇÃO</span><h2>Descreva em poucas linhas o seu caso</h2><p>Escolha a área e conte o que aconteceu. Um advogado responde pelo WhatsApp ou e-mail.</p></div>
@@ -4673,20 +4760,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
         <div class="situacao-card"><h3>Direito do Trabalho</h3>${formContato('fSitTrab', 'situacao_trabalhista', [C_NOME, C_TEL, { n: 'email', l: 'E-mail', t: 'email' }, { n: 'mensagem', l: 'Conte o seu caso', t: 'textarea', req: 1, full: 1, rows: 3, ph: 'Ex.: fui demitido sem receber as verbas…' }], 'Enviar')}</div>
         <div class="situacao-card"><h3>Direito Previdenciário</h3>${formContato('fSitPrev', 'situacao_previdenciaria', [C_NOME, C_TEL, { n: 'email', l: 'E-mail', t: 'email' }, { n: 'mensagem', l: 'Conte o seu caso', t: 'textarea', req: 1, full: 1, rows: 3, ph: 'Ex.: meu benefício do INSS foi negado…' }], 'Enviar')}</div>
       </div></div></section>`);
-    // Missão, visão e valores
-    if (c.mvv && c.mvv.ativo){
-      partes.push(`<section class="section secao-mvv" id="mvv"><div class="container"><div class="mvv-grid">
-        <div class="mvv-card"><h3>Missão</h3><p>${escapeHtml(c.mvv.missao)}</p></div>
-        <div class="mvv-card"><h3>Visão</h3><p>${escapeHtml(c.mvv.visao)}</p></div>
-        <div class="mvv-card"><h3>Valores</h3><p>${escapeHtml(c.mvv.valores)}</p></div></div></div></section>`);
-    }
-    // Profissionais
-    if ((c.equipe || []).length){
-      const grupos = [['socio', 'Sócios'], ['consultor', 'Consultores'], ['associado', 'Associados']].filter(([k]) => c.equipe.some(p => p.grupo === k));
-      partes.push(`<section class="section secao-equipe" id="equipe"><div class="container"><div class="section-head"><span class="kicker">PROFISSIONAIS</span><h2>Quem atua no escritório</h2></div>
-        <div class="equipe-abas">${grupos.map(([k, n], i) => `<button type="button" class="${i === 0 ? 'on' : ''}" data-g="${k}">${n}</button>`).join('')}</div>
-        <div class="equipe-lista" id="equipeLista"></div></div></section>`);
-    }
+    partes.push(`<section class="section secao-conta"><div class="container"><div class="conta-faixa"><div><h2>Crie sua conta gratuita</h2><p>Com o cadastro você acessa os serviços previdenciários, o contrato de honorários, a procuração e o acompanhamento do seu processo.</p></div><a class="btn btn-gold" href="#cadastro">Criar minha conta</a></div></div></section>`);
     // Veja as obras (livros com link de afiliado)
     partes.push(`<section class="section secao-obras" id="obras" style="display:none"><div class="container"><div class="section-head"><span class="kicker">PUBLICAÇÕES</span><h2>Veja as obras</h2><p>Clique no livro para comprar direto no parceiro de vendas.</p></div><div class="obras-faixa" id="obrasFaixa"></div></div></section>`);
     // Avaliações + agendar consulta
@@ -4724,7 +4798,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
   }
   function cartaoPessoa(p){
     return `<article class="pessoa">${p.foto ? `<img src="${escAttr(p.foto)}" alt="${escAttr(p.nome)}" loading="lazy">` : `<div class="pessoa-ini">${escapeHtml(p.nome.split(/\s+/).map(x => x[0]).slice(0, 2).join('').toUpperCase())}</div>`}
-      <h4>${escapeHtml(p.nome)}</h4>${p.cargo ? `<span>${escapeHtml(p.cargo)}</span>` : ''}${p.oab ? `<small>${escapeHtml(p.oab)}</small>` : ''}${p.bio ? `<p>${escapeHtml(p.bio)}</p>` : ''}</article>`;
+      <h4>${escapeHtml(p.nome)}</h4>${p.cargo ? `<span>${escapeHtml(p.cargo)}</span>` : ''}${p.especializacao ? `<span class="pessoa-esp">${escapeHtml(p.especializacao)}</span>` : ''}${p.oab ? `<small>${escapeHtml(p.oab)}</small>` : ''}${p.bio ? `<p>${escapeHtml(p.bio)}</p>` : ''}</article>`;
   }
 
   // Formulário "Agende sua consulta"
@@ -4784,7 +4858,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     const r = Object.keys(nomes).filter(k => redes[k]).map(k => `<a href="${escAttr(redes[k])}" target="_blank" rel="noopener">${nomes[k]}</a>`).join('');
     col = document.createElement('div'); col.className = 'footer-col'; col.id = 'footerExtraCol';
     col.innerHTML = `<h5>INSTITUCIONAL</h5><ul>
-      <li><a href="#inicio">Home</a></li><li><a href="#sobre">O escritório</a></li><li><a href="#filiais">Nossos escritórios</a></li><li><a href="#equipe">Profissionais</a></li><li><a href="#blog-todos">Publicações</a></li><li><a href="#informativos">Informativos e e-books</a></li><li><a href="#avaliacoes">Avaliações</a></li><li><a href="#vagas">Oportunidades de emprego</a></li><li><a href="#premios">Prêmios e reconhecimentos</a></li>
+      <li><a href="#inicio">Home</a></li><li><a href="#escritorio">O escritório</a></li><li><a href="#filiais">Nossos escritórios</a></li><li><a href="#equipe">Profissionais</a></li><li><a href="#blog-todos">Publicações</a></li><li><a href="#informativos">Informativos e e-books</a></li><li><a href="#avaliacoes">Avaliações</a></li><li><a href="#vagas">Oportunidades de emprego</a></li><li><a href="#premios">Prêmios e reconhecimentos</a></li>
       ${c.codigo_etica ? `<li><a href="${escAttr(c.codigo_etica)}" target="_blank" rel="noopener" download>Código de Ética e Compliance (PDF)</a></li>` : ''}
       <li><a href="#privacidade">Política de Privacidade</a></li><li><a href="#termos">Termos de uso</a></li><li><a href="#seguranca">Segurança de dados</a></li><li><a href="#sugestoes">Sugestões e reclamações</a></li><li><a href="#denuncia">Canal de denúncia</a></li><li><a href="#atualizar-dados">Atualize seus dados</a></li>
       ${(window.PAGINAS_EXTRAS || []).filter(p => p.no_menu).map(p => `<li><a href="#pagina-${escAttr(p.slug)}">${escapeHtml(p.titulo)}</a></li>`).join('')}</ul>
@@ -4807,8 +4881,6 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       area.dataset.extras = '1';
       const t = area.querySelector('a[href="#trabalhista"]');
       const emp = document.createElement('a'); emp.href = '#trabalhista-empresarial'; emp.textContent = 'Trabalhista Empresarial'; if (t && t.nextSibling) area.insertBefore(emp, t.nextSibling); else area.appendChild(emp);
-      const calc = document.createElement('a'); calc.href = '#calculadoras'; calc.textContent = 'Calculadoras trabalhistas'; area.appendChild(calc);
-      const ag = document.createElement('a'); ag.href = '#agendar'; ag.textContent = 'Agende sua consulta'; area.appendChild(ag);
     }
     const blog = document.querySelector('#mainNav > ul > li:has(> a[href="#blog-todos"])');
     if (blog && !blog.dataset.extras){
@@ -4827,8 +4899,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
   const PAGINAS_BUSCA = [
     ['Direito do Trabalho', '#trabalhista'], ['Direito Previdenciário', '#previdenciario'], ['Assessoria jurídica', '#assessoria'], ['Advocacia Trabalhista Empresarial', '#trabalhista-empresarial'],
     ['OAB 1ª fase', '#oab-1fase'], ['OAB 2ª fase — Provimento', '#oab-2fase'], ['Ouvidoria (recurso ao Conselho Federal da OAB)', '#ouvidoria'], ['Livros', '#livros-todos'], ['Cursos', '#cursos-todos'],
-    ['Vídeos e Podcast', '#midias'], ['Currículo do Dr. Israel Donizete da Silva', '#curriculo'], ['Perguntas frequentes (FAQ)', '#faq'], ['Calculadoras trabalhistas', '#calculadoras'],
-    ['Agende sua consulta', '#agendar'], ['Proposta de acordo', '#acordo'], ['Atualize seus dados cadastrais', '#atualizar-dados'], ['Canal de denúncia', '#denuncia'], ['Sugestões e reclamações', '#sugestoes'],
+    ['Vídeos e Podcast', '#midias'], ['Currículo do Dr. Israel Donizete da Silva', '#curriculo'], ['Perguntas frequentes (FAQ)', '#faq'], ['Agende sua consulta', '#agendar'], ['Declaração de gratuidade de justiça', '#declaracao-gratuidade'], ['Procuração', '#procuracao'], ['Profissionais', '#equipe'], ['Agenda do escritório', '#programacao'], ['Proposta de acordo', '#acordo'], ['Atualize seus dados cadastrais', '#atualizar-dados'], ['Canal de denúncia', '#denuncia'], ['Sugestões e reclamações', '#sugestoes'],
     ['Oportunidades de emprego', '#vagas'], ['Trabalhe conosco (enviar currículo)', '#trabalhe-conosco'], ['Seja parceiro', '#seja-parceiro'], ['Contrato de honorários', '#contrato'], ['Enviar documentos', '#enviar-documentos'],
     ['Política de Privacidade', '#privacidade'], ['Segurança de dados', '#seguranca'], ['Termos de uso', '#termos'], ['Nossos escritórios', '#filiais'], ['Prêmios e reconhecimentos', '#premios'], ['Informativos e e-books', '#informativos'], ['Área do aluno', '#portal'], ['Acompanhar meu processo', '#portal-processos'],
   ];
@@ -4926,8 +4997,9 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       case 'premios':
         detalheConteudo.innerHTML = cab('SOBRE', 'Prêmios e reconhecimentos', '') + ((c.premios || []).length ? `<div class="ff-premios pag">${c.premios.map(p => `<div class="premio">${p.imagem ? `<img src="${escAttr(p.imagem)}" alt="">` : '<span class="premio-ico">★</span>'}<b>${escapeHtml(p.titulo)}</b>${p.ano ? `<small>${escapeHtml(p.ano)}</small>` : ''}${p.descricao ? `<p>${escapeHtml(p.descricao)}</p>` : ''}</div>`).join('')}</div>` : '<p class="servico-intro">Em breve, os prêmios e reconhecimentos do escritório aparecerão aqui.</p>'); break;
       case 'filiais': renderFiliais(cab, c); break;
-      case 'calculadoras': renderCalculadoras(cab, c); break;
-      case 'calc': renderCalculadora(extra, cab, c); break;
+      case 'escritorio': renderEscritorio(cab, c); break;
+      case 'equipe': renderEquipe(cab, c); break;
+      case 'programacao': renderProgramacao(cab, c); break;
       case 'pagina': {
         const r = await fetch(`${API_URL}/paginas-extras/${encodeURIComponent(extra)}`);
         if (!r.ok){ detalheConteudo.innerHTML = cab('PÁGINA', 'Página não encontrada', 'O endereço pode ter mudado.'); break; }
@@ -4963,16 +5035,98 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     const liberado = ls.get('newsletterOk') === '1';
     detalheConteudo.innerHTML = cab('PUBLICAÇÕES', 'Informativos e e-books gratuitos', 'Cadastre-se para receber nossas atualizações jurídicas e baixar os materiais do escritório.') +
       (liberado ? (lista.length ? `<ul class="news-dl grande">${lista.map(i => `<li><a href="${escAttr(i.arquivo)}" target="_blank" rel="noopener" download><b>${escapeHtml(i.titulo)}</b></a> <small>${i.tipo === 'ebook' ? 'e-book' : 'informativo'}</small>${i.descricao ? `<p>${escapeHtml(i.descricao)}</p>` : ''}</li>`).join('')}</ul>` : '<p class="servico-intro">Em breve, novos materiais estarão disponíveis aqui.</p>') :
-      `<div class="servico-bloco"><h2>Cadastre-se para baixar</h2><p class="servico-intro">Materiais disponíveis: ${lista.length ? lista.map(i => escapeHtml(i.titulo)).join(', ') : 'em breve'}.</p>
+      `<ul class="news-dl grande">${lista.map(i => `<li><b>${escapeHtml(i.titulo)}</b> <small>${i.tipo === 'ebook' ? 'e-book' : 'informativo'}</small>${i.descricao ? `<p>${escapeHtml(i.descricao)}</p>` : ''}</li>`).join('')}</ul><div class="servico-bloco"><h2>Cadastre-se para baixar</h2><p class="servico-intro">${lista.length ? 'Preencha seus dados para liberar o download dos materiais acima.' : 'Em breve, novos materiais.'}</p>
       <form id="fNewsPag" class="news-form claro" novalidate><input id="fNewsPag_nome" placeholder="Seu nome" maxlength="150"><input id="fNewsPag_email" type="email" placeholder="Seu e-mail" maxlength="160"><input type="text" id="fNewsPag_isca" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true"><button class="btn btn-gold" type="submit">Cadastrar e baixar</button>
       <label class="form-aceite"><input type="checkbox" id="fNewsPag_aceite"> Autorizo o envio e o uso dos meus dados conforme a <a href="#privacidade">Política de Privacidade</a>.</label><p class="checkout-erro" id="fNewsPag_erro"></p></form></div>`);
     ligarNewsletter('fNewsPag');
   }
+  // Vídeo de apresentação: aceita YouTube, Vimeo ou arquivo .mp4 (https)
+  function videoEmbed(u){
+    u = String(u || '').trim(); if (!/^https:\/\//i.test(u)) return '';
+    let m = u.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/embed\/)([\w-]{11})/i);
+    if (m) return `<iframe src="https://www.youtube-nocookie.com/embed/${m[1]}" title="Vídeo de apresentação" allowfullscreen loading="lazy"></iframe>`;
+    m = u.match(/vimeo\.com\/(\d+)/i);
+    if (m) return `<iframe src="https://player.vimeo.com/video/${m[1]}" title="Vídeo de apresentação" allowfullscreen loading="lazy"></iframe>`;
+    if (/\.(mp4|webm)(\?|$)/i.test(u)) return `<video src="${escAttr(u)}" controls playsinline preload="metadata"></video>`;
+    return '';
+  }
+
+  function renderEscritorio(cab, c){
+    const e = c.escritorio || {}; const m = c.mvv || {};
+    const mvv = (m.ativo !== false && (m.missao || m.visao || m.valores)) ? `<div class="mvv-grid mvv-pag">
+      ${m.missao ? `<div class="mvv-card"><h3>Missão</h3><p>${escapeHtml(m.missao)}</p></div>` : ''}${m.visao ? `<div class="mvv-card"><h3>Visão</h3><p>${escapeHtml(m.visao)}</p></div>` : ''}${m.valores ? `<div class="mvv-card"><h3>Valores</h3><p>${escapeHtml(m.valores)}</p></div>` : ''}</div>` : '';
+    const desc = e.descricao_html ? textoEditavel(e.descricao_html) : `<p class="servico-intro">${escapeHtml(e.descricao || 'A Israel Donizete da Silva Sociedade Individual de Advocacia atua com foco em Direito do Trabalho e Direito Previdenciário, acompanhando cada cliente com atenção individual — da análise inicial do caso até o desfecho do processo.').replace(/\n/g, '<br>')}</p>`;
+    detalheConteudo.innerHTML = cab('SOBRE', 'O escritório', '') + mvv + desc +
+      `<div class="servico-cta"><a class="btn btn-gold" href="#equipe">Conheça os profissionais</a><a class="btn btn-outline-dark" href="#curriculo">Currículo do Dr. Israel</a><a class="btn btn-outline-dark" href="#filiais">Nossos escritórios</a></div>`;
+  }
+
+  function renderEquipe(cab, c){
+    const eq = c.equipe || [];
+    const grupos = [['socio', 'Sócios'], ['consultor', 'Consultores'], ['associado', 'Associados']];
+    detalheConteudo.innerHTML = cab('SOBRE', 'Profissionais', 'Conheça quem atua no escritório.') + (eq.length ? `
+      <div class="equipe-abas">${grupos.map(([k, n], i) => `<button type="button" class="${i === 0 ? 'on' : ''}" data-g="${k}">${n} <small>(${eq.filter(p => p.grupo === k).length})</small></button>`).join('')}</div>
+      <input id="eqBusca" class="eq-busca" type="search" placeholder="Buscar por nome ou especialização" aria-label="Buscar profissional">
+      <div class="equipe-lista" id="equipeLista"></div>` : '<p class="servico-intro">Em breve apresentaremos a equipe.</p>');
+    if (!eq.length) return;
+    let g = (grupos.find(([k]) => eq.some(p => p.grupo === k)) || grupos[0])[0];
+    const abas = detalheConteudo.querySelectorAll('.equipe-abas button');
+    const pinta = () => {
+      const q = (document.getElementById('eqBusca').value || '').toLowerCase();
+      const l = eq.filter(p => p.grupo === g && (!q || [p.nome, p.cargo, p.especializacao].join(' ').toLowerCase().includes(q)));
+      document.getElementById('equipeLista').innerHTML = l.map(cartaoPessoa).join('') || '<p class="servico-intro">Nenhum profissional neste grupo.</p>';
+      abas.forEach(b => b.classList.toggle('on', b.dataset.g === g));
+    };
+    abas.forEach(b => b.addEventListener('click', () => { g = b.dataset.g; pinta(); }));
+    document.getElementById('eqBusca').addEventListener('input', pinta);
+    pinta();
+  }
+
+  // Agenda pública do escritório (eventos, plantões, palestras, datas de atendimento)
+  function renderProgramacao(cab, c){
+    const ev = (c.programacao || []).filter(e => e && /^\d{4}-\d{2}-\d{2}$/.test(e.data || '')).sort((a, b) => (a.data + (a.hora || '')).localeCompare(b.data + (b.hora || '')));
+    const MESES = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+    const hoje = new Date(); let ano = hoje.getFullYear(), mes = hoje.getMonth();
+    const hojeIso = `${hoje.getFullYear()}-${String(hoje.getMonth() + 1).padStart(2, '0')}-${String(hoje.getDate()).padStart(2, '0')}`;
+    detalheConteudo.innerHTML = cab('AGENDA', 'Agenda do escritório', 'Eventos, palestras, plantões e datas de atendimento. Para marcar uma consulta, use “Agende sua consulta”.') +
+      `<div class="cal-topo"><button type="button" id="calAnt" aria-label="Mês anterior">‹</button><b id="calTit"></b><button type="button" id="calProx" aria-label="Próximo mês">›</button></div>
+       <div class="cal-grade" id="calGrade"></div><div id="calLista"></div>
+       <div class="servico-cta"><a class="btn btn-gold" href="#agendar">Agende sua consulta</a></div>`;
+    const pinta = () => {
+      document.getElementById('calTit').textContent = MESES[mes] + ' de ' + ano;
+      const prim = new Date(ano, mes, 1).getDay(), dias = new Date(ano, mes + 1, 0).getDate();
+      const pref = `${ano}-${String(mes + 1).padStart(2, '0')}-`;
+      let h = ['D', 'S', 'T', 'Q', 'Q', 'S', 'S'].map(d => `<i class="cal-sem">${d}</i>`).join('') + '<i></i>'.repeat(prim);
+      for (let d = 1; d <= dias; d++){
+        const iso = pref + String(d).padStart(2, '0'); const n = ev.filter(e => e.data === iso).length;
+        h += `<span class="cal-dia${n ? ' tem' : ''}${iso === hojeIso ? ' hoje' : ''}" ${n ? `title="${n} evento(s)"` : ''}>${d}</span>`;
+      }
+      document.getElementById('calGrade').innerHTML = h;
+      const doMes = ev.filter(e => e.data.startsWith(pref));
+      document.getElementById('calLista').innerHTML = doMes.length ? `<ul class="cal-lista">${doMes.map(e => `<li><b>${e.data.slice(8, 10)}/${e.data.slice(5, 7)}${e.hora ? ' · ' + escapeHtml(e.hora) : ''}</b> <span>${escapeHtml(e.titulo || 'Evento')}</span>${e.local ? `<small>${escapeHtml(e.local)}</small>` : ''}${e.descricao ? `<p>${escapeHtml(e.descricao)}</p>` : ''}</li>`).join('')}</ul>` : '<p class="servico-intro">Nenhum evento neste mês.</p>';
+    };
+    document.getElementById('calAnt').addEventListener('click', () => { mes--; if (mes < 0){ mes = 11; ano--; } pinta(); });
+    document.getElementById('calProx').addEventListener('click', () => { mes++; if (mes > 11){ mes = 0; ano++; } pinta(); });
+    pinta();
+  }
+
   function renderVagas(cab, c){
-    const vagas = (c.vagas || []).filter(v => v.ativa);
-    detalheConteudo.innerHTML = cab('TRABALHE CONOSCO', 'Oportunidades de emprego', 'Veja as vagas abertas. Para se candidatar, use o contato da vaga ou envie seu currículo.') +
-      (vagas.length ? `<div class="vagas-lista">${vagas.map(v => `<article class="vaga"><h3>${escapeHtml(v.titulo)}</h3><span>${[v.local, v.tipo].filter(Boolean).map(escapeHtml).join(' · ')}</span>${v.descricao ? `<div class="vaga-desc">${escapeHtml(v.descricao).replace(/\n/g, '<br>')}</div>` : ''}${v.contato ? `<p>Candidate-se: ${/^https:\/\//.test(v.contato) ? `<a href="${escAttr(v.contato)}" target="_blank" rel="noopener">${escapeHtml(v.contato)}</a>` : `<a href="mailto:${escAttr(v.contato)}">${escapeHtml(v.contato)}</a>`}</p>` : ''}</article>`).join('')}</div>` : '<p class="servico-intro">No momento não há vagas abertas, mas você pode deixar seu currículo para futuras oportunidades.</p>') +
+    const todas = (c.vagas || []).filter(v => v.ativa);
+    const F = [['modo', 'Modalidade'], ['tipo', 'Contrato'], ['area', 'Área'], ['estado', 'Estado'], ['cidade', 'Cidade'], ['bairro', 'Bairro']];
+    const opcoes = (k) => [...new Set(todas.map(v => (v[k] || '').trim()).filter(Boolean))].sort((a, b) => a.localeCompare(b, 'pt-BR'));
+    const filtros = F.filter(([k]) => opcoes(k).length > 1).map(([k, n]) => `<label class="vf"><span>${n}</span><select data-f="${k}"><option value="">Todos</option>${opcoes(k).map(o => `<option>${escapeHtml(o)}</option>`).join('')}</select></label>`).join('');
+    const card = (v) => `<article class="vaga"><h3>${escapeHtml(v.titulo)}</h3><span>${[v.modo, v.tipo, v.area, [v.bairro, v.cidade, v.estado].filter(Boolean).join(', ') || v.local].filter(Boolean).map(escapeHtml).join(' · ')}</span>${v.descricao ? `<div class="vaga-desc">${escapeHtml(v.descricao).replace(/\n/g, '<br>')}</div>` : ''}${v.contato ? `<p>Candidate-se: ${/^https:\/\//.test(v.contato) ? `<a href="${escAttr(v.contato)}" target="_blank" rel="noopener">${escapeHtml(v.contato)}</a>` : `<a href="mailto:${escAttr(v.contato)}">${escapeHtml(v.contato)}</a>`}</p>` : ''}</article>`;
+    detalheConteudo.innerHTML = cab('TRABALHE CONOSCO', 'Oportunidades de emprego', 'Veja as vagas abertas e filtre por modalidade, área e local. Para se candidatar, use o contato da vaga ou envie seu currículo.') +
+      (todas.length ? `${filtros ? `<div class="vagas-filtros">${filtros}</div>` : ''}<p class="servico-intro" id="vagasCont"></p><div class="vagas-lista" id="vagasLista"></div>` : '<p class="servico-intro">No momento não há vagas abertas, mas você pode deixar seu currículo para futuras oportunidades.</p>') +
       '<div class="servico-cta"><a class="btn btn-gold" href="#trabalhe-conosco">Enviar meu currículo</a></div>';
+    if (!todas.length) return;
+    const pinta = () => {
+      const sel = {}; detalheConteudo.querySelectorAll('select[data-f]').forEach(e => { if (e.value) sel[e.dataset.f] = e.value; });
+      const l = todas.filter(v => Object.keys(sel).every(k => (v[k] || '').trim() === sel[k]));
+      document.getElementById('vagasLista').innerHTML = l.map(card).join('');
+      document.getElementById('vagasCont').textContent = l.length ? `${l.length} vaga${l.length > 1 ? 's' : ''} encontrada${l.length > 1 ? 's' : ''}.` : 'Nenhuma vaga com esses filtros.';
+    };
+    detalheConteudo.querySelectorAll('select[data-f]').forEach(e => e.addEventListener('change', pinta));
+    pinta();
   }
   function renderFiliais(cab, c){
     const e = c.escritorio || {};
@@ -4990,12 +5144,8 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     const cta = detalheConteudo.querySelector('.servico-cta'); if (!cta) return;
     const add = (html) => cta.insertAdjacentHTML('beforebegin', html);
     if (chave === 'trabalhista'){
-      add(`<div class="servico-bloco servico-portal"><div><h2>Calculadoras</h2><p class="servico-intro" style="margin:0;">Calcule rescisão, aviso prévio, horas extras, FGTS e outros direitos.</p></div><a class="btn btn-gold" href="#calculadoras">Abrir calculadoras</a></div>
-        <div class="servico-bloco servico-portal"><div><h2>Advocacia Trabalhista Empresarial</h2><p class="servico-intro" style="margin:0;">Assessoria preventiva e contenciosa para empresas.</p></div><a class="btn btn-outline-dark" href="#trabalhista-empresarial">Ver serviços para empresas</a></div>
+      add(`<div class="servico-bloco servico-portal"><div><h2>Advocacia Trabalhista Empresarial</h2><p class="servico-intro" style="margin:0;">Assessoria preventiva e contenciosa para empresas.</p></div><a class="btn btn-outline-dark" href="#trabalhista-empresarial">Ver serviços para empresas</a></div>
         <div class="servico-bloco servico-portal"><div><h2>Proposta de acordo</h2><p class="servico-intro" style="margin:0;">Se as partes têm interesse em fazer acordo, envie sua proposta pelo site.</p></div><a class="btn btn-outline-dark" href="#acordo">Enviar proposta</a></div>`);
-    }
-    if (chave === 'previdenciario'){
-      add(`<div class="servico-bloco servico-portal"><div><h2>Quero saber mais</h2><p class="servico-intro" style="margin:0;">Para acessar os serviços previdenciários acima (me aposentar, revisar, planejar e outros) é preciso ter cadastro no site. É rápido e gratuito.</p></div><a class="btn btn-gold" href="#cadastro">Criar minha conta</a></div>`);
     }
   }
   // Previdenciário: o serviço só abre para quem tem cadastro (login na Área do aluno)
@@ -5095,6 +5245,12 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     });
   }
 
+
+  document.addEventListener('change', (e) => {
+    const r = e.target.closest && e.target.closest('.prov-escolha input[type=radio]'); if (!r) return;
+    const painel = r.closest('.portal-painel'); const btn = painel && painel.querySelector('[data-acao="enviar"]');
+    if (btn && r.dataset.rot) btn.textContent = r.dataset.rot;
+  });
   // ---------- Etapas do pedido (Provimento) e do processo ----------
   function stepperProv(p){
     const s = p.status;
@@ -5102,6 +5258,10 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     const n2 = { viavel: 0, em_elaboracao: 1, concluido: 3 }[s];
     const passos = (lista, feito, rotuloFim) => `<ol class="stepper">${lista.map((t, i) => `<li class="${i < feito ? 'ok' : i === feito ? 'atual' : ''}"><i>${i < feito ? '✓' : i + 1}</i><span>${t}</span></li>`).join('')}</ol>`;
     if (n1 === undefined) return '';
+    if (p.modalidade === 'minuta' && s !== 'rascunho'){
+      const nm = { aguardando_pagamento: 0, em_elaboracao: 1, concluido: 3 }[s];
+      return `<div class="stepper-bloco"><h5>Serviço 2 — Provimento (elaboração do recurso)</h5>${passos(['Pagamento do Provimento', 'Recurso em elaboração', 'Recurso disponível'], nm === undefined ? 0 : nm)}</div>`;
+    }
     const s1 = passos(['Pedido realizado', 'Pagamento confirmado', 'Em análise de viabilidade', s === 'inviavel' ? 'Resultado: recurso inviável' : 'Resultado: recurso viável'], n1);
     const s2 = s === 'inviavel' ? '' : passos(['Pagamento do Provimento', 'Recurso em elaboração', 'Recurso disponível'], n2 === undefined ? -1 : n2);
     return `<div class="stepper-bloco"><h5>Serviço 1 — Análise de viabilidade</h5>${s1}${s2 ? `<h5>Serviço 2 — Provimento (elaboração do recurso)</h5>${s2}` : ''}</div>`;
