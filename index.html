@@ -350,6 +350,33 @@
   .hp-lista li::before{content:'';position:absolute;left:2px;top:.42em;width:11px;height:6px;border-left:2px solid #D3AE84;border-bottom:2px solid #D3AE84;transform:rotate(-45deg);}
   .hp-areas{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;} .hp-areas a{font-size:.8rem;padding:6px 12px;border-radius:999px;border:1px solid rgba(211,174,132,.45);color:#EBCFAE;text-decoration:none;transition:background .2s,color .2s;}
   .hp-areas a:hover{background:#D3AE84;color:#14262F;} .hp-link{display:inline-block;color:#D3AE84;font-weight:600;text-decoration:none;border-bottom:1px solid rgba(211,174,132,.5);padding-bottom:2px;} .hp-link:hover{color:#fff;border-color:#fff;}
+  .hp-slides{position:relative;display:grid;} .hp-slide{grid-area:1/1;opacity:0;visibility:hidden;transform:translateY(10px);transition:opacity .7s ease,transform .8s var(--ease),visibility 0s .7s;} .hp-slide.on{opacity:1;visibility:visible;transform:none;transition:opacity .7s ease,transform .8s var(--ease);}
+  .hp-pontos{display:flex;gap:8px;margin:2px 0 18px;} .hp-pontos button{width:26px;height:4px;border:0;border-radius:4px;background:rgba(211,174,132,.3);cursor:pointer;padding:0;position:relative;overflow:hidden;} .hp-pontos button.on{background:rgba(211,174,132,.35);} .hp-pontos button.on::after{content:'';position:absolute;inset:0;background:#D3AE84;transform-origin:left;animation:hpTempo var(--hp-t,6s) linear forwards;} @keyframes hpTempo{from{transform:scaleX(0);}to{transform:scaleX(1);}}
+  .faixa-areas{overflow:hidden;background:#101F27;border-top:1px solid rgba(211,174,132,.25);border-bottom:1px solid rgba(211,174,132,.25);padding:14px 0;white-space:nowrap;} .faixa-trilho{display:inline-flex;gap:46px;padding-left:46px;animation:faixaAnda 38s linear infinite;} .faixa-areas:hover .faixa-trilho{animation-play-state:paused;} .faixa-trilho span{font-family:'Fraunces',serif;font-size:1.05rem;color:#D3AE84;letter-spacing:.01em;position:relative;} .faixa-trilho span::after{content:'';position:absolute;right:-27px;top:50%;width:6px;height:6px;border-radius:50%;background:#AD815B;transform:translateY(-50%);} @keyframes faixaAnda{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+  @media (prefers-reduced-motion:reduce){.faixa-trilho{animation:none;} .hp-slide{transition:none;} .hp-pontos button.on::after{animation:none;transform:none;}}
+  .esc-lista{display:grid;gap:18px;} .esc-parceiro{background:#fff;border:1px solid #E1D9C8;border-radius:14px;padding:20px 22px;box-shadow:0 10px 26px -20px rgba(20,38,47,.45);} .esc-topo{display:flex;gap:16px;align-items:flex-start;} .esc-topo img,.esc-topo .pessoa-ini{flex:0 0 auto;width:64px;height:64px;border-radius:12px;object-fit:cover;} .esc-topo h3{font-family:'Fraunces',serif;margin:0 0 4px;font-size:1.2rem;color:var(--ink);} .esc-topo ul{list-style:none;padding:0;margin:8px 0 0;font-size:.9rem;color:var(--ink-soft);display:grid;gap:3px;}
+  .esc-profs{margin-top:14px;border-top:1px solid #EADFCB;padding-top:12px;} .esc-profs summary{cursor:pointer;font-weight:600;color:var(--gold-dark,#8a6240);} .esc-profs .parceiros-lista{margin-top:12px;} .esc-sem{margin:12px 0 0;font-size:.88rem;color:var(--ink-soft);}
+  /* v23: áreas de atuação em grade 4 x 2, cartões com botões no rodapé */
+  .areas-grid{grid-template-columns:repeat(4,minmax(0,1fr)) !important;gap:20px !important;align-items:stretch;}
+  .areas-grid .area-card{display:flex;flex-direction:column;padding:24px 22px !important;} .areas-grid .area-card ul{flex:1;} .areas-grid .area-card .area-actions{margin-top:auto;flex-direction:column;align-items:stretch;gap:8px;} .areas-grid .area-card .area-actions .btn{text-align:center;justify-content:center;padding:10px 14px;font-size:.88rem;}
+  .areas-grid .area-card h3{font-size:1.15rem;} .areas-grid .area-card li{font-size:.88rem;}
+  @media (max-width:1100px){ .areas-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;} }
+  @media (max-width:640px){ .areas-grid{grid-template-columns:1fr !important;} }
+  /* v23: Onde estamos */
+  .onde-grid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:22px;align-items:stretch;margin:6px 0 22px;} .onde-lista{display:grid;gap:14px;align-content:start;}
+  .onde-un{background:#fff;border:1px solid #E1D9C8;border-radius:16px;padding:20px 22px;box-shadow:0 12px 28px -22px rgba(20,38,47,.5);transition:border-color .3s ease,box-shadow .3s ease,transform .3s var(--ease);} .onde-un.on{border-color:#B98E65;box-shadow:0 22px 40px -24px rgba(173,129,91,.7);transform:translateX(4px);}
+  .onde-un-topo{display:flex;align-items:center;gap:12px;margin-bottom:10px;} .onde-un-topo h3{margin:0;font-family:'Fraunces',serif;font-size:1.18rem;color:var(--ink);} .onde-num{display:grid;place-items:center;width:30px;height:30px;border-radius:50%;background:#14262F;color:#EBCFAE;font-weight:700;font-size:.9rem;flex:0 0 auto;}
+  .onde-linha{display:flex;gap:10px;align-items:flex-start;margin:6px 0;font-size:.93rem;color:var(--ink-soft);line-height:1.45;} .onde-linha svg{flex:0 0 auto;width:18px;height:18px;margin-top:2px;stroke:#AD815B;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;} .onde-linha a{color:var(--ink);font-weight:600;}
+  .onde-acoes{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;} .onde-acoes .btn{padding:9px 16px;font-size:.86rem;}
+  .onde-mapa{border-radius:16px;overflow:hidden;border:1px solid #E1D9C8;min-height:380px;background:#E8E0CE;box-shadow:0 14px 34px -22px rgba(20,38,47,.5);} .onde-mapa iframe{display:block;width:100%;height:100%;min-height:380px;border:0;}
+  .onde-faixa{display:flex;gap:26px;align-items:center;flex-wrap:wrap;justify-content:space-between;background:#14262F;color:#E7E0D1;border-radius:16px;padding:20px 26px;margin-top:6px;} .onde-faixa b{color:#EBCFAE;font-family:'Fraunces',serif;font-weight:500;font-size:1.05rem;} .onde-faixa p{font-size:.92rem;color:#C9D6DA;}
+  @media (max-width:900px){ .onde-grid{grid-template-columns:1fr;} .onde-mapa,.onde-mapa iframe{min-height:300px;} .onde-un.on{transform:none;} }
+  .portal-abas .portal-troca{margin-left:auto;color:var(--gold-light);font-size:.85rem;opacity:.9;border:1px dashed rgba(211,174,132,.5);border-radius:999px;padding:6px 12px;} .portal-abas .portal-troca:hover{background:rgba(211,174,132,.15);}
+  .portal-abas.parc-abas{flex-wrap:wrap;overflow:visible;row-gap:0;}
+  .parc-previa{background:#FFF4D6;color:#5b4310;border:1px solid #E6C66B;border-radius:12px;padding:12px 16px;margin:0 0 16px;font-size:.92rem;}
+  .parc-restrito{margin-top:20px;padding:14px 18px;border:1px dashed rgba(255,255,255,.25);border-radius:12px;color:var(--cream-2);font-size:.92rem;}
+  .parc-tabela{width:100%;border-collapse:collapse;font-size:.92rem;} .parc-tabela th,.parc-tabela td{padding:12px 16px;text-align:left;border-bottom:1px solid rgba(255,255,255,.1);vertical-align:top;} .parc-tabela th{font-size:.78rem;color:var(--cream-2);font-weight:700;}
+  .parc-pill{display:inline-block;padding:3px 10px;border-radius:99px;font-size:.8rem;font-weight:600;background:rgba(255,255,255,.1);} .parc-pill.vencido{background:#a33a2e;color:#fff;} .parc-pill.urgente{background:#c98a1b;color:#1b1203;} .parc-pill.cumprido{opacity:.65;}
   .hero.com-foto .hero-painel{display:none;}
   @media (max-width:980px){ .hero .hero-grid{grid-template-columns:1fr;gap:36px;} .hero-painel{max-width:560px;} }
   @media (max-width:900px){ .hero-foto{position:static;transform:none;display:block;width:calc(100% - 40px);max-width:460px;max-height:320px;margin:34px auto 0;} }
@@ -923,6 +950,11 @@
   .situacao-painel{max-width:860px;} .form-publico textarea{min-height:150px;resize:vertical;}
   .servico-caso .form-publico-grid{grid-template-columns:1fr 1fr;} .servico-caso .form-publico{border:0;padding:0;}
   @media (max-width:860px){ .situacao-grid{grid-template-columns:1fr;} }
+  /* v23: pílulas legíveis e formulários sem corte */
+  .situacao-tabs button{color:#14262F !important;background:#fff !important;border:1px solid #CDBFA5 !important;font-weight:500;transition:background-color .2s ease,color .2s ease,transform .2s var(--ease);} .situacao-tabs button:hover{background:#F4EAD9 !important;transform:translateY(-1px);} .situacao-tabs button.on{background:#14262F !important;color:#fff !important;border-color:#14262F !important;font-weight:600;}
+  .form-publico{box-sizing:border-box;max-width:100%;} .form-publico-grid > *{min-width:0;} .form-publico input:not([type=checkbox]):not([type=radio]),.form-publico select,.form-publico textarea{box-sizing:border-box;width:100%;max-width:100%;} .form-publico .campo,.form-publico label{min-width:0;}
+  .servico-caso,.situacao-painel{box-sizing:border-box;max-width:100%;} .servico-caso .form-publico{width:100%;}
+
   .secao-mvv{background:var(--navy-panel);color:var(--cream);padding:54px 0;} .mvv-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
   .mvv-card{border:1px solid var(--navy-line);border-radius:12px;padding:22px;background:rgba(255,255,255,.03);} .mvv-card h3{color:var(--gold-light);margin:0 0 8px;font-size:1.2rem;} .mvv-card p{margin:0;color:#D3DDE0;line-height:1.6;}
   @media (max-width:860px){ .mvv-grid{grid-template-columns:1fr;} }
@@ -941,7 +973,7 @@
   .av-nota.grande{color:var(--ink);margin-bottom:16px;} .av-lista{display:grid;gap:12px;margin-bottom:10px;} .av-lista blockquote{margin:0;background:#fff;border:1px solid #E1D9C8;border-radius:12px;padding:14px 16px;} .av-lista p{margin:6px 0;} .av-lista cite{font-size:.85rem;color:var(--ink-soft);font-style:normal;}
   .consulta-cab{max-width:760px;margin:0 0 26px;} .consulta-cab h2{margin:6px 0 10px;} .consulta-cab p{margin:0;opacity:.9;}
   .consulta-grid.com-mapa{display:grid;grid-template-columns:.8fr 1.2fr;gap:34px;align-items:center;} .consulta-grid .brasil-mapa img{width:100%;height:auto;display:block;border-radius:14px;}
-  .consulta-grid:not(.com-mapa){display:block;max-width:720px;}
+  .consulta-grid:not(.com-mapa){display:block;max-width:760px;margin:0 auto;} .secao-consulta .consulta-cab{text-align:center;max-width:760px;margin:0 auto 26px;}
   .consulta-rodape{display:flex;gap:18px;flex-wrap:wrap;align-items:center;margin-top:26px;}
   @media (max-width:860px){ .consulta-grid.com-mapa{grid-template-columns:1fr;} .consulta-grid .brasil-mapa{max-width:420px;margin:0 auto;} }
   /* Currículo em formato de infográfico */
@@ -983,6 +1015,14 @@
   .footer-grid .footer-brand{grid-column:1 / -1;max-width:none;} .footer-grid .footer-brand p{max-width:520px;}
   @media (min-width:1100px){ .footer-grid{grid-template-columns:repeat(5,minmax(0,1fr)) !important;} }
   @media (max-width:900px){ .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;} }
+  @media (max-width:560px){ .footer-grid{grid-template-columns:1fr !important;} }
+  /* v23: rodapé distribuído em colunas por assunto */
+  .footer-grid{grid-template-columns:repeat(4,minmax(0,1fr)) !important;gap:34px 36px !important;align-items:start;}
+  .footer-grid .footer-brand{grid-column:1 / -1;}
+  .footer-faixa{grid-column:1 / -1;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:26px 36px;border-top:1px solid var(--navy-line);padding-top:30px;margin-top:6px;}
+  .footer-col h5{font-weight:700;}
+  .footer-col li{margin-bottom:8px;} .footer-col a{display:inline-block;transition:color .2s ease,transform .2s ease;} .footer-col a:hover{transform:translateX(3px);}
+  @media (max-width:980px){ .footer-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;} }
   @media (max-width:560px){ .footer-grid{grid-template-columns:1fr !important;} }
   body:has(#homeContent[style*="none"]) .ff-newsletter{display:none;}
   #ajudaWidget{right:20px !important;bottom:94px !important;} @media (max-width:640px){ #ajudaWidget{right:14px !important;bottom:82px !important;} }
@@ -1442,7 +1482,6 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
             <a href="#escritorio">O escritório</a>
             <a href="#curriculo">Currículo (Dr. Israel Donizete da Silva)</a>
             <a href="#escritorios-parceiros">Escritórios parceiros</a>
-            <a href="#profissionais-parceiros">Profissionais parceiros</a>
             <a href="#premios">Prêmios e reconhecimentos</a>
             <a href="#trabalhe-conosco">Trabalhe conosco</a>
             <a href="#filiais">Onde estamos</a>
@@ -1453,7 +1492,6 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
           <a class="top-link" href="#cliente">Acesso Cliente <span class="caret">▾</span></a>
           <div class="dropdown">
             <a href="#cliente">Área do cliente</a>
-            <a href="#portal-servicos">Meus serviços</a>
             <a href="#atualizar-dados">Atualize seus dados</a>
           </div>
         </li>
@@ -1465,7 +1503,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
           </div>
         </li>
         <li><a class="top-link" href="#contato">Contato</a></li>
-        <li><a class="top-link top-link-aluno" href="#portal">Área do aluno</a></li>
+        <li><a class="top-link top-link-aluno" href="#aluno">Área do aluno</a></li>
       </ul>
     </nav>
 
@@ -1593,11 +1631,6 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
 
 <!-- ================= HERO ================= -->
 <section class="hero" id="inicio">
-  <svg class="hero-watermark" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="100" cy="100" r="95" stroke="#AD815B" stroke-width="1"/>
-    <path d="M100 40c-24 10-30 34-22 52 4 9 3 16-4 22 14 4 26-2 32-12 6 10 18 16 32 12-7-6-8-13-4-22 8-18 2-42-22-52-4 6-8 6-12 0z" fill="#AD815B"/>
-    <path d="M60 150c8-6 20-8 40-8s32 2 40 8" stroke="#AD815B" stroke-width="1.4" stroke-linecap="round"/>
-  </svg>
   <div class="container hero-grid">
   <div class="hero-content">
     <div class="hero-eyebrow"><span class="rule"></span> <span id="homeEyebrow">OAB/SP 528153</span></div>
@@ -1613,20 +1646,44 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       <div><span class="num">100%</span><span class="label">Atendimento digital</span></div>
     </div>
   </div>
-  <aside class="hero-painel" aria-label="Destaques do escritório">
-    <span class="hp-selo" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" width="34" height="34"><path d="M24 10v22M17 14h14M13 17l-5 8a5 5 0 0010 0l-5-8zM35 17l-5 8a5 5 0 0010 0l-5-8zM8 25h10M30 25h10M18 36h12" stroke="#D3AE84" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-    <h2>Seu caso nas mãos de um advogado, onde você estiver</h2>
-    <ul class="hp-lista">
-      <li>Atendimento online em todo o Brasil</li>
-      <li>Envio de documentos com segurança pelo site</li>
-      <li>Acompanhe seus serviços e processos na Área do cliente</li>
-    </ul>
+  <aside class="hero-painel" aria-label="Destaques do escritório" id="heroPainel">
+    <div class="hp-slides" aria-live="off">
+      <div class="hp-slide on">
+        <span class="hp-selo" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" width="34" height="34"><path d="M24 10v22M17 14h14M13 17l-5 8a5 5 0 0010 0l-5-8zM35 17l-5 8a5 5 0 0010 0l-5-8zM8 25h10M30 25h10M18 36h12" stroke="#D3AE84" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <h2>Seu caso nas mãos de um advogado, onde você estiver</h2>
+        <ul class="hp-lista">
+          <li>Atendimento online em todo o Brasil</li>
+          <li>Envio de documentos com segurança pelo site</li>
+          <li>Acompanhe seus serviços e processos na Área do cliente</li>
+        </ul>
+      </div>
+      <div class="hp-slide">
+        <span class="hp-selo" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" width="34" height="34"><path d="M24 10v22M17 14h14M13 17l-5 8a5 5 0 0010 0l-5-8zM35 17l-5 8a5 5 0 0010 0l-5-8zM8 25h10M30 25h10M18 36h12" stroke="#D3AE84" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <h2>Atuação em oito áreas do Direito</h2>
+        <ul class="hp-lista">
+          <li>Trabalho e Previdenciário, a base do escritório</li>
+          <li>Civil, Tributário, Penal, Administrativo e Empresarial</li>
+          <li>Assessoria jurídica para pessoas e empresas</li>
+        </ul>
+      </div>
+      <div class="hp-slide">
+        <span class="hp-selo" aria-hidden="true"><svg viewBox="0 0 48 48" fill="none" width="34" height="34"><path d="M24 10v22M17 14h14M13 17l-5 8a5 5 0 0010 0l-5-8zM35 17l-5 8a5 5 0 0010 0l-5-8zM8 25h10M30 25h10M18 36h12" stroke="#D3AE84" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <h2>Escritórios e profissionais parceiros</h2>
+        <ul class="hp-lista">
+          <li>Rede de advogados parceiros em todo o país</li>
+          <li>Unidades no Centro e no Jardim Paulista, em São Paulo</li>
+          <li>Agende uma consulta online ou presencial</li>
+        </ul>
+      </div>
+    </div>
+    <div class="hp-pontos" role="tablist" aria-label="Destaques"><button type="button" class="on" aria-label="Destaque 1"></button><button type="button" aria-label="Destaque 2"></button><button type="button" aria-label="Destaque 3"></button></div>
     <div class="hp-areas"><a href="#trabalhista">Trabalho</a><a href="#previdenciario">Previdenciário</a><a href="#civil">Civil</a><a href="#tributario">Tributário</a><a href="#penal">Penal</a><a href="#administrativo">Administrativo</a><a href="#empresarial">Empresarial</a></div>
-    <a class="hp-link" href="#cliente">Entrar na Área do cliente</a>
   </aside>
   </div>
   <img class="hero-foto" id="homeFoto" alt="" style="display:none">
 </section>
+
+<div class="faixa-areas" aria-hidden="true"><div class="faixa-trilho"><span>Direito do Trabalho</span><span>Direito Previdenciário</span><span>Direito Civil</span><span>Direito Tributário</span><span>Direito Penal</span><span>Direito Administrativo</span><span>Direito Empresarial</span><span>Assessoria jurídica</span><span>Direito do Trabalho</span><span>Direito Previdenciário</span><span>Direito Civil</span><span>Direito Tributário</span><span>Direito Penal</span><span>Direito Administrativo</span><span>Direito Empresarial</span><span>Assessoria jurídica</span></div></div>
 
 <!-- ================= ADVOCACIA ================= -->
 <div id="homeCarrossel" style="display:none"></div>
@@ -1726,6 +1783,16 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
         <div class="area-actions"><a href="#empresarial" class="btn btn-gold">Ver detalhes</a>
         <a href="https://wa.me/5511975751984?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20sobre%20Direito%20Empresarial." target="_blank" rel="noopener" class="btn btn-outline-dark">Fale com um advogado</a></div>
       </div>
+      <div class="area-card">
+        <svg class="icon" viewBox="0 0 48 48" fill="none"><rect x="1" y="1" width="46" height="46" rx="4" stroke="#AD815B" stroke-width="1.3"/><path d="M14 33V20l10-6 10 6v13M14 33h20M19 33v-7h10v7" stroke="#AD815B" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Assessoria jurídica</h3>
+        <p class="area-intro">Acompanhamento jurídico preventivo para pessoas e empresas.</p>
+        <ul>
+          <li>Consultoria jurídica preventiva</li><li>Análise documental</li><li>Elaboração e revisão de contratos</li><li>Pareceres e acordos extrajudiciais</li>
+        </ul>
+        <div class="area-actions"><a href="#assessoria" class="btn btn-gold">Ver detalhes</a>
+        <a href="https://wa.me/5511975751984?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20gostaria%20de%20falar%20sobre%20Assessoria%20jur%C3%ADdica." target="_blank" rel="noopener" class="btn btn-outline-dark">Fale com um advogado</a></div>
+      </div>
     </div>
 
     <div class="oab-grid">
@@ -1807,7 +1874,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
         <p>Israel Donizete da Silva Sociedade Individual de Advocacia<br>OAB/SP 528153</p>
       </div>
       <div class="footer-col">
-        <h5>ADVOCACIA</h5>
+        <h5>ÁREAS DE ATUAÇÃO</h5>
         <ul>
           <li><a href="#trabalhista">Direito do Trabalho</a></li>
           <li><a href="#previdenciario">Direito Previdenciário</a></li>
@@ -1816,26 +1883,50 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
           <li><a href="#penal">Direito Penal</a></li>
           <li><a href="#administrativo">Direito Administrativo</a></li>
           <li><a href="#empresarial">Direito Empresarial</a></li>
+          <li><a href="#assessoria">Assessoria jurídica</a></li>
           <li><a href="#oab-1fase">OAB 1ª fase</a></li>
           <li><a href="#oab-2fase">OAB 2ª fase (Provimento)</a></li>
-          <li><a href="#ouvidoria">Ouvidoria</a></li>
-          <li><a href="#enviar-documentos">Enviar documentos</a></li>
-          <li><a href="#contrato">Contrato de honorários</a></li>
-          <li><a href="#faq">Dúvidas frequentes</a></li>
-          <li><a href="#seja-parceiro">Seja parceiro</a></li>
-          <li><a href="#parceiros">Área do advogado parceiro</a></li>
-          <li><a href="#trabalhe-conosco">Trabalhe conosco</a></li>
-          <li><a href="#contato">Atendimento</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h5>LIVROS E CURSOS</h5>
+        <h5>PARA CLIENTES</h5>
+        <ul>
+          <li><a href="#cliente">Área do cliente</a></li>
+          <li><a href="#enviar-documentos">Enviar documentos</a></li>
+          <li><a href="#contrato">Contrato de honorários</a></li>
+          <li><a href="#atualizar-dados">Atualize seus dados</a></li>
+          <li><a href="#faq">Dúvidas frequentes</a></li>
+          <li><a href="#ouvidoria">Ouvidoria</a></li>
+          <li><a href="#contato">Atendimento</a></li>
+        </ul>
+        <h5 style="margin-top:22px;">PARCERIAS E CARREIRA</h5>
+        <ul>
+          <li><a href="#escritorios-parceiros">Escritórios parceiros</a></li>
+          <li><a href="#seja-parceiro">Seja parceiro</a></li>
+          <li><a href="#parceiros">Área do advogado parceiro</a></li>
+          <li><a href="#trabalhe-conosco">Trabalhe conosco</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>O ESCRITÓRIO</h5>
+        <ul>
+          <li><a href="#inicio">Home</a></li>
+          <li><a href="#escritorio">O escritório</a></li>
+          <li><a href="#equipe">Profissionais</a></li>
+          <li><a href="#filiais">Onde estamos</a></li>
+          <li><a href="#blog-todos">Publicações</a></li>
+          <li><a href="#informativos">Informativos e e-books</a></li>
+          <li><a href="#avaliacoes">Avaliações</a></li>
+          <li><a href="#premios">Prêmios e reconhecimentos</a></li>
+        </ul>
+        <h5 style="margin-top:22px;">LIVROS E CURSOS</h5>
         <ul>
           <li><a href="#livros-todos">Livros</a></li>
           <li><a href="#cursos-todos">Cursos</a></li>
           <li><a href="#midias">Vídeos e Podcast</a></li>
         </ul>
       </div>
+      <div class="footer-faixa" id="footerFaixa">
       <div class="footer-col">
         <h5>CONTATO</h5>
         <ul>
@@ -1845,6 +1936,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       </div>
       <div class="footer-col" id="footerEndereco"><h5>ENDEREÇO</h5><div id="footerEnderecoCorpo" style="color:#B7C4C8;font-size:0.9rem;line-height:1.6;"></div></div>
       <div class="footer-col" id="footerAtendimento"><h5>ATENDIMENTO</h5><div id="footerAtendimentoCorpo" style="color:#B7C4C8;font-size:0.9rem;line-height:1.6;"></div></div>
+      </div>
     </div>
     <div class="footer-pagamento" id="footerPagamento" style="display:none">
       <h5>FORMAS DE PAGAMENTO</h5>
@@ -1954,8 +2046,9 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     if (h === 'carrinho') return { tipo: 'carrinho', chave: null };
     if (h === 'minhas-compras') return { tipo: 'portal', chave: 'livros' };
     if (h === 'portal' || h === 'cliente') return { tipo: 'portal', chave: 'inicio' };
+    if (h === 'aluno') return { tipo: 'portal', chave: 'aluno' };
     if (h === 'parceiros') return { tipo: 'parceiros', chave: 'inicio' };
-    const mPar = h.match(/^parceiros-(pastas|honorarios|processos|ferramentas|conta|carteira)$/);
+    const mPar = h.match(/^parceiros-(pastas|honorarios|processos|ferramentas|conta|carteira|clientes|agenda|sistemas)$/);
     if (mPar) return { tipo: 'parceiros', chave: mPar[1] };
     const mParPasta = h.match(/^parceiros-pasta-(\d+)$/);
     if (mParPasta) return { tipo: 'parceiros', chave: 'pastas', extra: mParPasta[1] };
@@ -2212,6 +2305,13 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
         <a class="btn btn-outline-dark" href="https://assinador.iti.br/" target="_blank" rel="noopener">Abrir assinador GOV.BR ↗</a>
         <h2 style="margin:24px 0 8px;">3. Envie ${doc ? 'o documento assinado' : 'o contrato assinado'}</h2>
         <div class="checkout-field"><label for="cArq">Arquivo PDF assinado (até 5 MB) *</label><input id="cArq" type="file" accept="application/pdf,.pdf"></div>
+        ${modo === 'declaracao-gratuidade' ? `
+        <h2 style="margin:24px 0 8px;">4. Envie os documentos de comprovação</h2>
+        <p class="servico-intro" style="margin:0 0 10px;">Cada documento tem o seu campo. Aceitamos PDF, JPG ou PNG (até 5 MB cada); você pode escolher mais de um arquivo por campo.</p>
+        <div class="checkout-field"><label for="cAnexoIr">a) Imposto de Renda: as 3 últimas declarações ou, se for isento, a declaração de isenção assinada *</label><input id="cAnexoIr" type="file" multiple accept="application/pdf,image/jpeg,image/png,.pdf,.jpg,.jpeg,.png"></div>
+        <div class="checkout-field"><label for="cAnexoAtiv">b) Declaração de próprio punho de que não exerce atividade empresária e não é sócio de empresa. Se for, envie junto Junta Comercial, Imposto de Renda e DRE *</label><input id="cAnexoAtiv" type="file" multiple accept="application/pdf,image/jpeg,image/png,.pdf,.jpg,.jpeg,.png"></div>
+        <div class="checkout-field"><label for="cAnexoReg">c) Relatório Registrato e extratos bancários dos últimos 60 dias *</label><input id="cAnexoReg" type="file" multiple accept="application/pdf,image/jpeg,image/png,.pdf,.jpg,.jpeg,.png">
+          <span class="dica" style="display:block;margin-top:4px;">Emita o Registrato em <a href="https://www3.bcb.gov.br/registrato/login/" target="_blank" rel="noopener" style="color:var(--gold);">www3.bcb.gov.br/registrato</a> com a sua conta GOV.BR.</span></div>` : ''}
         <input type="text" id="cIsca" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;height:0;width:0;opacity:0;">
         <label class="checkout-field" style="display:flex;gap:8px;align-items:flex-start;"><input type="checkbox" id="cAceite" style="margin-top:4px;"><span>Li ${doc ? 'o documento' : 'o contrato'} e concordo com os termos. Autorizo o uso dos meus dados para esta finalidade.</span></label>
         <div class="checkout-erro" id="cErro" role="alert"></div>
@@ -2252,6 +2352,13 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       if (!f) return erro('Escolha o PDF assinado.');
       if (f.size > 5 * 1024 * 1024) return erro('Arquivo grande demais (máximo 5 MB).');
       if (!el('cAceite').checked) return erro('Marque que leu e concorda com o contrato.');
+      const ANEXOS = modo === 'declaracao-gratuidade' ? [['ir', 'cAnexoIr', 'Imposto de Renda ou isenção'], ['atividade', 'cAnexoAtiv', 'Declaração de atividade empresária'], ['registrato', 'cAnexoReg', 'Registrato e extratos']] : [];
+      for (const [, id, rot] of ANEXOS){
+        const fs = Array.from(el(id).files);
+        if (!fs.length) return erro('Envie o documento: ' + rot + '.');
+        if (fs.length > 6) return erro('Máximo de 6 arquivos em: ' + rot + '.');
+        if (fs.some((x) => x.size > 5 * 1024 * 1024)) return erro('Um dos arquivos de "' + rot + '" passa de 5 MB.');
+      }
       const btn = el('cEnviar'); btn.disabled = true; btn.textContent = 'Enviando…';
       try {
         const b64 = await new Promise((ok, falha) => { const r = new FileReader(); r.onload = () => ok(String(r.result).split(',')[1] || ''); r.onerror = falha; r.readAsDataURL(f); });
@@ -2260,6 +2367,16 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
           endereco: el('cEnd').value, valor: val('cValor'), extras: { rg: val('cRg'), nacionalidade: val('cNac'), estado_civil: val('cEc'), profissao: val('cProf'), cidade: val('cCidade'), objeto: val('cObjeto') }, aceite: true, site_url: el('cIsca').value, arquivo_base64: b64, arquivo_nome: f.name }) });
         const d = await res.json().catch(() => null);
         if (!res.ok) throw new Error((d && d.erro) || 'Não foi possível enviar agora.');
+        if (ANEXOS.length && d && d.id){
+          const lerB64 = (x) => new Promise((ok, falha) => { const r = new FileReader(); r.onload = () => ok(String(r.result).split(',')[1] || ''); r.onerror = falha; r.readAsDataURL(x); });
+          for (const [tipo, id, rot] of ANEXOS){
+            for (const x of Array.from(el(id).files)){
+              btn.textContent = 'Enviando ' + rot + '…';
+              const ra = await fetch(`${API_URL}/contratos/${Number(d.id)}/anexos`, { method: 'POST', headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + (localStorage.getItem('tokenAluno') || '') }, body: JSON.stringify({ tipo, arquivo_base64: await lerB64(x), arquivo_nome: x.name }) });
+              if (!ra.ok){ const da = await ra.json().catch(() => null); throw new Error('A declaração foi enviada, mas o arquivo "' + x.name + '" não: ' + ((da && da.erro) || 'tente de novo') + ' Fale com o escritório para completar os documentos.'); }
+            }
+          }
+        }
         el('formContrato').innerHTML = '<div class="servico-bloco"><h2 style="margin-top:0;">' + (doc ? 'Enviado com sucesso' : 'Contrato enviado') + '</h2><p class="servico-intro" style="margin:0;">Recebemos o seu ' + (doc ? 'documento' : 'contrato') + ' assinado e enviamos uma confirmação para o seu e-mail. O escritório vai conferir a assinatura e falar com você se precisar de algo.</p></div>';
       } catch (err) { erro(err.message); btn.disabled = false; btn.textContent = doc ? doc.enviar : 'Enviar contrato assinado'; }
     });
@@ -3305,17 +3422,21 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
   // ============= ÁREA RESTRITA DOS ADVOGADOS PARCEIROS =============
   // Login próprio (token só na aba do navegador: sessionStorage), separado do portal do aluno.
   const PARC_ABAS = [
-    { id: 'inicio', nome: 'Início', hash: 'parceiros' },
-    { id: 'pastas', nome: 'Pastas dos clientes', hash: 'parceiros-pastas' },
+    { id: 'inicio', nome: 'Painel', hash: 'parceiros' },
+    { id: 'clientes', nome: 'Clientes', hash: 'parceiros-clientes' },
+    { id: 'processos', nome: 'Processos', hash: 'parceiros-processos' },
+    { id: 'agenda', nome: 'Agenda e prazos', hash: 'parceiros-agenda' },
+    { id: 'pastas', nome: 'Documentos', hash: 'parceiros-pastas' },
+    { id: 'sistemas', nome: 'Sistemas e tribunais', hash: 'parceiros-sistemas' },
     { id: 'carteira', nome: 'Minha carteira', hash: 'parceiros-carteira' },
     { id: 'honorarios', nome: 'Honorários', hash: 'parceiros-honorarios' },
-    { id: 'processos', nome: 'Processos do escritório', hash: 'parceiros-processos' },
     { id: 'ferramentas', nome: 'Ferramentas', hash: 'parceiros-ferramentas' },
     { id: 'conta', nome: 'Minha conta', hash: 'parceiros-conta' },
   ];
+  const parcPrevia = () => parcLer('parcPrevia') === '1';
   const parcLer = (k) => { try { return sessionStorage.getItem(k); } catch (e) { return null; } };
   function parcGuardar(token, nome){ try { sessionStorage.setItem('tokenParceiro', token); sessionStorage.setItem('nomeParceiro', nome || ''); } catch (e) {} }
-  function parcSair(){ try { sessionStorage.removeItem('tokenParceiro'); sessionStorage.removeItem('nomeParceiro'); } catch (e) {} }
+  function parcSair(){ try { sessionStorage.removeItem('tokenParceiro'); sessionStorage.removeItem('nomeParceiro'); sessionStorage.removeItem('parcPrevia'); } catch (e) {} }
 
   async function apiParc(caminho, opcoes = {}){
     const headers = Object.assign({ Authorization: `Bearer ${parcLer('tokenParceiro')}` }, opcoes.headers || {});
@@ -3406,16 +3527,17 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     const nome = parcLer('nomeParceiro') || '';
     box.innerHTML = `
       ${BOTAO_VOLTAR}
+      ${parcPrevia() ? `<div class="parc-previa" role="status"><b>Visualização do administrador.</b> Você está vendo o painel exatamente como o advogado vê, somente para leitura. Esta janela expira em 30 minutos.</div>` : ''}
       <div class="compras-topo">
-        <div><h1>Área do advogado parceiro</h1>${nome ? `<p>Olá, ${escapeHtml(nome)}</p>` : ''}</div>
-        <button class="btn btn-outline" id="parcSair">Sair</button>
+        <div><h1>Área do advogado parceiro</h1>${nome && !parcPrevia() ? `<p>Olá, ${escapeHtml(nome)}</p>` : ''}</div>
+        <button class="btn btn-outline" id="parcSair">${parcPrevia() ? 'Fechar visualização' : 'Sair'}</button>
       </div>
-      <nav class="portal-abas">${PARC_ABAS.map(a => `<a href="#${a.hash}" class="${a.id === aba ? 'ativa' : ''}">${a.nome}</a>`).join('')}</nav>
+      <nav class="portal-abas parc-abas">${PARC_ABAS.map(a => `<a href="#${a.hash}" class="${a.id === aba ? 'ativa' : ''}">${a.nome}</a>`).join('')}</nav>
       <div id="parcAba"><p style="color:var(--cream-2);">Carregando…</p></div>`;
     parcLigarVoltar();
-    document.getElementById('parcSair').addEventListener('click', () => { parcSair(); location.hash = ''; });
+    document.getElementById('parcSair').addEventListener('click', () => { const era = parcPrevia(); parcSair(); location.hash = ''; if (era){ try { window.close(); } catch (e) {} } });
     const alvo = document.getElementById('parcAba');
-    const render = { inicio: parcInicio, pastas: parcPastas, carteira: parcCarteira, honorarios: parcHonorarios, processos: parcProcessos, ferramentas: parcFerramentas, conta: parcConta }[aba];
+    const render = { inicio: parcInicio, clientes: parcClientes, processos: parcProcessos, agenda: parcAgenda, pastas: parcPastas, sistemas: parcSistemas, carteira: parcCarteira, honorarios: parcHonorarios, ferramentas: parcFerramentas, conta: parcConta }[aba];
     render(alvo, extra).catch(err => {
       if (err.sessao) return;
       console.error('Erro na área do parceiro:', err);
@@ -3423,17 +3545,69 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     });
   }
 
+  // Painel do advogado parceiro: só mostra o que o escritório compartilhou. Financeiro, relatórios e configurações ficam trancados.
+  const PARC_AREAS = { trabalhista: 'Trabalhista', previdenciario: 'Previdenciário', civil: 'Cível', civel: 'Cível', tributario: 'Tributário', penal: 'Penal', administrativo: 'Administrativo', empresarial: 'Empresarial', assessoria: 'Assessoria jurídica' };
+  const parcData = (v) => v ? String(v).split('-').reverse().join('/') : '';
+  const parcSemAcesso = (msg) => `<div class="compras-vazio"><p>${escapeHtml(msg)}</p></div>`;
   async function parcInicio(alvo){
-    const [pastas, ferr] = await Promise.all([apiParc('/parceiros/pastas'), apiParc('/parceiros/ferramentas')]);
+    const [painel, ferr] = await Promise.all([apiParc('/parceiros/painel'), apiParc('/parceiros/ferramentas')]);
+    const c = painel.compartilhados, sis = painel.sistemas;
+    const sisTxt = !sis.permitido ? 'Sem permissão para o seu acesso.' : sis.liberado ? 'Os 10 portais estão liberados.' : 'Aguardando liberação do administrador.';
     alvo.innerHTML = `
       <div class="portal-cards">
-        <a class="portal-card" href="#parceiros-pastas"><div class="num">${pastas.length}</div><h4>Pastas dos clientes</h4><p>Documentos liberados para você pelo escritório.</p></a>
+        <a class="portal-card" href="#parceiros-clientes"><div class="num">${c.clientes}</div><h4>Clientes compartilhados</h4><p>${painel.ver_compartilhados ? 'Clientes que o escritório liberou para você.' : 'O escritório não liberou esta consulta para o seu acesso.'}</p></a>
+        <a class="portal-card" href="#parceiros-processos"><div class="num">${c.processos}</div><h4>Processos ativos</h4><p>Casos em parceria com o escritório.</p></a>
+        <a class="portal-card" href="#parceiros-agenda"><div class="num">${c.prazos_pendentes}</div><h4>Prazos pendentes</h4><p>${c.prazos_7_dias} nos próximos 7 dias.</p></a>
+        <a class="portal-card" href="#parceiros-pastas"><div class="num">${painel.pastas}</div><h4>Documentos</h4><p>Pastas liberadas para você, com sigilo.</p></a>
+        <a class="portal-card" href="#parceiros-sistemas"><div class="num">${sis.liberado && sis.permitido ? '✓' : '🔒'}</div><h4>Sistemas e tribunais</h4><p>${sisTxt}</p></a>
         <a class="portal-card" href="#parceiros-carteira"><div class="num">▤</div><h4>Minha carteira</h4><p>Seus clientes e cobranças, num controle só seu.</p></a>
         <a class="portal-card" href="#parceiros-honorarios"><div class="num">R$</div><h4>Honorários</h4><p>Seus lançamentos e pagamentos com o escritório.</p></a>
-        <a class="portal-card" href="#parceiros-ferramentas"><div class="num">${ferr.length}</div><h4>Ferramentas</h4><p>Jus IA, AASP e outras plataformas de serviço.</p></a>
-        <a class="portal-card" href="#parceiros-conta"><div class="num">✎</div><h4>Minha conta</h4><p>Troque sua senha.</p></a>
+        <a class="portal-card" href="#parceiros-ferramentas"><div class="num">${ferr.length}</div><h4>Ferramentas</h4><p>Jus IA e outras plataformas de serviço.</p></a>
       </div>
-      <p class="prov-ajuda" style="margin-top:22px;">Os documentos são sigilosos. Use-os apenas no caso em que atua com o escritório. Seus acessos e downloads ficam registrados.</p>`;
+      <div class="parc-restrito"><b>🔒 Restrito ao escritório:</b> ${painel.restritos.map(escapeHtml).join(' · ')}. Estes módulos não aparecem para parceiros.</div>
+      <p class="prov-ajuda" style="margin-top:18px;">Os dados são sigilosos. Use-os apenas no caso em que atua com o escritório. Seus acessos e downloads ficam registrados.</p>`;
+  }
+  async function parcClientes(alvo){
+    let lista;
+    try{ lista = await apiParc('/parceiros/compartilhados/clientes'); } catch(e){ if (e.sessao) throw e; alvo.innerHTML = parcSemAcesso(e.message); return; }
+    if (!lista.length){ alvo.innerHTML = parcSemAcesso('Nenhum cliente compartilhado com você no momento. Quando o escritório liberar um caso, ele aparece aqui.'); return; }
+    alvo.innerHTML = `<p class="prov-ajuda" style="margin-bottom:16px;">Somente leitura. Contato, valores e anotações do cliente ficam só com o escritório.</p>
+      <div class="portal-cards">${lista.map(c => `<div class="portal-card" style="cursor:default;"><span class="compra-meta">${escapeHtml(PARC_AREAS[c.area] || '')}${c.cadastro ? ' · cliente desde ' + escapeHtml(parcData(c.cadastro)) : ''}</span>
+        <h4 style="font-size:1.1rem;">${escapeHtml(c.nome)}</h4><p>${c.processos} processo(s) ativo(s) em parceria.</p></div>`).join('')}</div>`;
+  }
+  async function parcProcessos(alvo){
+    let lista;
+    try{ lista = await apiParc('/parceiros/compartilhados/processos'); } catch(e){ if (e.sessao) throw e; alvo.innerHTML = parcSemAcesso(e.message); return; }
+    if (!lista.length){ alvo.innerHTML = parcSemAcesso('Nenhum processo compartilhado com você no momento.'); return; }
+    alvo.innerHTML = `<p class="prov-ajuda" style="margin-bottom:16px;">Somente leitura. Valores, honorários e anotações internas não aparecem aqui, por sigilo profissional. Confira sempre o andamento no sistema do tribunal.</p>
+      <div class="portal-cards">${lista.map(p => `<div class="portal-card" style="cursor:default;"><span class="compra-meta">${escapeHtml(PARC_AREAS[p.area] || p.area || '')}${p.fase ? ' · ' + escapeHtml(p.fase) : ''}${p.status !== 'ativo' ? ' · ' + escapeHtml(p.status) : ''}</span>
+        <h4 style="font-size:1.05rem;">${escapeHtml(p.cliente)}</h4>
+        <p>${escapeHtml(p.tipo_demanda || 'Processo')}<br>${p.numero ? 'Nº ' + escapeHtml(p.numero) + '<br>' : ''}${p.orgao ? escapeHtml(p.orgao) + '<br>' : ''}${p.proximo_ato ? 'Próximo ato: ' + escapeHtml(p.proximo_ato) + (p.data_proximo_ato ? ' (' + escapeHtml(parcData(p.data_proximo_ato)) + ')' : '') : ''}</p></div>`).join('')}</div>`;
+  }
+  async function parcAgenda(alvo){
+    let lista;
+    try{ lista = await apiParc('/parceiros/compartilhados/prazos'); } catch(e){ if (e.sessao) throw e; alvo.innerHTML = parcSemAcesso(e.message); return; }
+    if (!lista.length){ alvo.innerHTML = parcSemAcesso('Nenhum prazo ou audiência compartilhado com você no momento.'); return; }
+    const TIPO = { prazo: 'Prazo', audiencia: 'Audiência', tarefa: 'Tarefa' };
+    const rot = (z) => z.situacao === 'cumprido' ? ['cumprido', 'Cumprido'] : z.dias < 0 ? ['vencido', 'Vencido há ' + (-z.dias) + ' dia(s)'] : z.dias === 0 ? ['urgente', 'Vence hoje'] : z.dias <= 3 ? ['urgente', 'Em ' + z.dias + ' dia(s)'] : ['ok', 'Em ' + z.dias + ' dias'];
+    alvo.innerHTML = `<p class="prov-ajuda" style="margin-bottom:16px;">Somente leitura. As datas são de controle do escritório: confirme sempre no sistema oficial do tribunal.</p>
+      <div class="portal-painel" style="padding:0;overflow-x:auto;"><table class="parc-tabela"><thead><tr><th>Data</th><th>O que é</th><th>Cliente</th><th>Situação</th></tr></thead><tbody>${lista.map(z => { const r = rot(z); return `<tr>
+        <td style="white-space:nowrap"><b>${escapeHtml(parcData(z.data_limite))}</b>${z.hora ? '<br><span class="compra-meta">' + escapeHtml(String(z.hora).slice(0, 5)) + '</span>' : ''}</td>
+        <td>${escapeHtml(z.descricao)}<br><span class="compra-meta">${escapeHtml(TIPO[z.tipo] || '')}${z.area ? ' · ' + escapeHtml(PARC_AREAS[z.area] || z.area) : ''}</span></td>
+        <td>${escapeHtml(z.cliente || '—')}${z.processo_numero ? '<br><span class="compra-meta">' + escapeHtml(z.processo_numero) + '</span>' : ''}</td>
+        <td><span class="parc-pill ${r[0]}">${escapeHtml(r[1])}</span></td></tr>`; }).join('')}</tbody></table></div>`;
+  }
+  async function parcSistemas(alvo){
+    const d = await apiParc('/parceiros/sistemas');
+    if (!d.permitido){ alvo.innerHTML = parcSemAcesso('O escritório não liberou os sistemas e tribunais para o seu acesso. Fale com o escritório.'); return; }
+    if (!d.liberado){ alvo.innerHTML = `<div class="compras-vazio"><p>🔒 <b>Aguardando liberação do administrador.</b></p><p style="font-size:0.88rem;margin-top:10px;">Quando o escritório liberar, os 10 portais (AASP, Jusbrasil, TRT-2, TST, TJ-SP, STJ e TRF-3) aparecem aqui.</p></div>`; return; }
+    alvo.innerHTML = `<p class="prov-ajuda" style="margin-bottom:16px;">Cada portal abre em outra janela. Entre com a <b>sua própria conta</b> (certificado, GOV.BR ou usuário de cada sistema): o escritório não guarda nem compartilha logins ou senhas.</p>
+      <div class="portal-cards">${d.itens.map(f => `
+        <div class="portal-card" style="cursor:default;">
+          <h4 style="font-size:1.1rem;">${escapeHtml(f.nome)}</h4>
+          ${f.descricao ? `<p>${escapeHtml(f.descricao)}</p>` : ''}
+          <p style="margin-top:14px;"><a class="btn btn-outline" href="${escAttr(f.url)}" target="_blank" rel="noopener noreferrer">Abrir portal</a></p>
+        </div>`).join('')}</div>`;
   }
 
   async function parcPastas(alvo, extra){
@@ -3531,17 +3705,6 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       <p class="prov-ajuda">Os pagamentos são feitos pelo escritório. Divergência de valor ou data? Fale com o escritório.</p>`;
   }
 
-  async function parcProcessos(alvo){
-    let lista;
-    try{ lista = await apiParc('/parceiros/processos-escritorio'); }
-    catch(e){ alvo.innerHTML = `<div class="compras-vazio"><p>${escapeHtml(e.message || 'Consulta indisponível.')}</p></div>`; return; }
-    if (!lista.length){ alvo.innerHTML = `<div class="compras-vazio"><p>Nenhum processo ativo no momento.</p></div>`; return; }
-    const NOME = { trabalhista: 'Trabalhista', previdenciario: 'Previdenciário' };
-    alvo.innerHTML = `<p class="prov-ajuda" style="margin-bottom:16px;">Consulta somente leitura. Dados do cliente, valores e anotações não aparecem aqui, por sigilo profissional.</p>
-      <div class="portal-cards">${lista.map(p => `<div class="portal-card" style="cursor:default;"><span class="compra-meta">${escapeHtml(NOME[p.area] || p.area || '')}${p.fase ? ' · ' + escapeHtml(p.fase) : ''}</span>
-        <h4 style="font-size:1.05rem;">${escapeHtml(p.tipo_demanda || 'Processo')}</h4>
-        <p>${p.numero ? 'Nº ' + escapeHtml(p.numero) + '<br>' : ''}${p.orgao ? escapeHtml(p.orgao) + '<br>' : ''}${p.proximo_ato ? 'Próximo ato: ' + escapeHtml(p.proximo_ato) + (p.data_proximo_ato ? ' (' + escapeHtml(p.data_proximo_ato.split('-').reverse().join('/')) + ')' : '') : ''}</p></div>`).join('')}</div>`;
-  }
   async function parcFerramentas(alvo){
     const lista = await apiParc('/parceiros/ferramentas');
     if (!lista.length){
@@ -3759,6 +3922,10 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     if (c) c.style.display = vendas ? '' : 'none';
   }
   async function route(){
+    // "Ver como parceiro" (vem do painel administrador): o token curto vem depois do # e é guardado só nesta aba.
+    { const mp = location.hash.match(/^#parceiros-previa=([A-Za-z0-9_.-]{20,2000})$/);
+      if (mp){ try { sessionStorage.setItem('tokenParceiro', mp[1]); sessionStorage.setItem('nomeParceiro', ''); sessionStorage.setItem('parcPrevia', '1'); } catch (e) {}
+        history.replaceState(null, '', location.pathname + location.search + '#parceiros'); } }
     ajustarCarrinho();
     const rota = parseHash();
     { const fp = document.getElementById('footerPagamento'); if (fp) fp.style.display = /^(livro|curso)-\d+$|^(livros|cursos)-todos$|^carrinho$/.test(decodeURIComponent(location.hash.replace('#', ''))) ? '' : 'none'; }
@@ -3906,16 +4073,18 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
   // Abas: Início, Minha conta, Meus livros, Meus cursos e Provimento OAB 2ª fase.
   // Cada aba tem seu endereço (#portal, #portal-conta, #portal-livros...),
   // então o botão "voltar" do navegador funciona normalmente.
+  // Dois ambientes com o mesmo login: Área do cliente (jurídico) e Área do aluno (livros, cursos, OAB).
   const PORTAL_ABAS = [
-    { id: 'inicio', nome: 'Início', hash: 'cliente' },
-    { id: 'processos', nome: 'Meus processos', hash: 'portal-processos' },
-    { id: 'servicos', nome: 'Meus serviços', hash: 'portal-servicos' },
-    { id: 'honorarios', nome: 'Pagamento de Honorários', hash: 'portal-honorarios' },
-    { id: 'financeiro', nome: 'Financeiro', hash: 'portal-financeiro' },
-    { id: 'livros', nome: 'Meus livros', hash: 'portal-livros' },
-    { id: 'cursos', nome: 'Meus cursos', hash: 'portal-cursos' },
-    { id: 'provimento', nome: 'Provimento OAB 2ª fase', hash: 'portal-provimento' },
-    { id: 'conta', nome: 'Minha conta', hash: 'portal-conta' },
+    { id: 'inicio', nome: 'Início', hash: 'cliente', grupo: 'cliente' },
+    { id: 'processos', nome: 'Meus processos', hash: 'portal-processos', grupo: 'cliente' },
+    { id: 'servicos', nome: 'Meus serviços', hash: 'portal-servicos', grupo: 'cliente' },
+    { id: 'honorarios', nome: 'Pagamento de Honorários', hash: 'portal-honorarios', grupo: 'cliente' },
+    { id: 'aluno', nome: 'Início', hash: 'aluno', grupo: 'aluno' },
+    { id: 'livros', nome: 'Meus livros', hash: 'portal-livros', grupo: 'aluno' },
+    { id: 'cursos', nome: 'Meus cursos', hash: 'portal-cursos', grupo: 'aluno' },
+    { id: 'provimento', nome: 'Provimento OAB 2ª fase', hash: 'portal-provimento', grupo: 'aluno' },
+    { id: 'financeiro', nome: 'Financeiro', hash: 'portal-financeiro', grupo: 'aluno' },
+    { id: 'conta', nome: 'Minha conta', hash: 'portal-conta', grupo: 'aluno' },
   ];
 
   function escAttr(str){
@@ -3967,13 +4136,15 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     window.scrollTo(0, 0);
     animarEntrada(page);
     if (!PORTAL_ABAS.some(a => a.id === aba)) aba = 'inicio';
+    const grupo = PORTAL_ABAS.find(a => a.id === aba).grupo, ehAluno = grupo === 'aluno';
+    const TITULO = ehAluno ? 'Área do aluno' : 'Área do cliente';
 
     if (!localStorage.getItem('tokenAluno')){
       box.innerHTML = `
         ${BOTAO_VOLTAR}
-        <div class="compras-topo"><div><h1>Área do cliente e do aluno</h1></div></div>
+        <div class="compras-topo"><div><h1>${TITULO}</h1></div></div>
         <div class="compras-vazio">
-          <p>Entre na sua conta para acompanhar seus processos e serviços, pagar honorários, assinar contrato e procuração, e acessar seus livros e cursos. É um só login para tudo.</p>
+          <p>${ehAluno ? 'Entre na sua conta para acessar seus livros, cursos, pedidos e o Provimento OAB 2ª fase.' : 'Entre na sua conta para acompanhar seus processos e serviços, pagar honorários, assinar contrato e procuração e enviar documentos.'} O login é o mesmo para a Área do cliente e para a Área do aluno.</p>
           <p style="font-size:0.88rem;margin-top:10px;">Ainda não tem conta? <a href="#cadastro" style="color:var(--gold);">Crie sua conta</a>. Se comprou sem conta, use o mesmo e-mail da compra.</p>
           <button class="btn btn-gold" id="portalEntrar">Entrar</button>
         </div>`;
@@ -3987,20 +4158,21 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       ${BOTAO_VOLTAR}
       <div class="compras-topo">
         <div>
-          <h1>Área do cliente e do aluno</h1>
+          <h1>${TITULO}</h1>
           ${nome ? `<p>Olá, ${escapeHtml(nome)}</p>` : ''}
         </div>
         <button class="btn btn-outline" id="portalSair">Sair da conta</button>
       </div>
       <nav class="portal-abas">
-        ${PORTAL_ABAS.map(a => `<a href="#${a.hash}" class="${a.id === aba ? 'ativa' : ''}">${a.nome}</a>`).join('')}
+        ${PORTAL_ABAS.filter(a => a.grupo === grupo).map(a => `<a href="#${a.hash}" class="${a.id === aba ? 'ativa' : ''}">${a.nome}</a>`).join('')}
+        <a href="#${ehAluno ? 'cliente' : 'aluno'}" class="portal-troca">${ehAluno ? 'Ir para a Área do cliente' : 'Ir para a Área do aluno'} →</a>
       </nav>
       <div id="portalAba"><p style="color:var(--cream-2);">Carregando…</p></div>`;
     ligarVoltar();
     document.getElementById('portalSair').addEventListener('click', () => { sairDaConta(); location.hash = ''; });
 
     const alvo = document.getElementById('portalAba');
-    const render = { inicio: portalInicio, conta: portalConta, livros: portalLivros, cursos: portalCursos, financeiro: portalFinanceiro, provimento: portalProvimento, processos: portalProcessos, servicos: portalServicos, honorarios: portalHonorarios }[aba];
+    const render = { inicio: portalInicio, aluno: portalInicioAluno, conta: portalConta, livros: portalLivros, cursos: portalCursos, financeiro: portalFinanceiro, provimento: portalProvimento, processos: portalProcessos, servicos: portalServicos, honorarios: portalHonorarios }[aba];
     (aba === 'cursos' && extra ? portalAulas(alvo, extra) : render(alvo)).catch(err => {
       if (err.sessao) return;
       console.error('Erro no portal:', err);
@@ -4015,14 +4187,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
 
   // ---------- Início ----------
   async function portalInicio(alvo){
-    const [compras, provs, serv] = await Promise.all([
-      apiAluno('/alunos/minhas-compras'),
-      apiAluno('/provimentos').catch(() => []),
-      apiAluno('/area-cliente/servicos').catch(() => ({ servicos: [] })),
-    ]);
-    const nLivros = compras.filter(c => c.tipo_item === 'livro').length;
-    const nCursos = compras.filter(c => c.tipo_item === 'curso').length;
-    const abertos = provs.filter(p => !['concluido', 'inviavel'].includes(p.status)).length;
+    const serv = await apiAluno('/area-cliente/servicos').catch(() => ({ servicos: [] }));
     const nServ = (serv.servicos || []).filter(x => x.status === 'andamento').length;
     const card = (h, n, t, d) => `<a class="portal-card" href="#${h}"><div class="num">${n}</div><h4>${t}</h4><p>${d}</p></a>`;
     alvo.innerHTML = `
@@ -4031,12 +4196,25 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
         ${card('portal-processos', '§', 'Acompanhar processo', 'Andamento dos seus processos.')}
         ${card('portal-servicos', nServ, 'Meus serviços', 'Peça um serviço e acompanhe cada fase.')}
         ${card('contrato', '✍', 'Contrato de honorários advocatícios', 'Baixe, assine no GOV.BR e envie.')}
-        ${card('declaracao-gratuidade', '✍', 'Declaração de gratuidade de justiça', 'Baixe, assine no GOV.BR e envie.')}
+        ${card('declaracao-gratuidade', '✍', 'Declaração de gratuidade de justiça', 'Baixe, assine no GOV.BR e envie, com os documentos de comprovação.')}
         ${card('procuracao', '✍', 'Procuração', 'Baixe, assine no GOV.BR e envie.')}
-        ${card('portal-honorarios', 'R$', 'Pagamento de Honorários', 'PIX, cartão de crédito, dinheiro, bens e boletos.')}
+        ${card('portal-honorarios', 'R$', 'Pagamento de Honorários', 'PIX, cartão de crédito, dinheiro ou boleto.')}
         ${card('enviar-documentos', '⇪', 'Enviar documentos', 'Envie seus documentos com segurança.')}
         ${card('atualizar-dados', '✎', 'Atualize seus dados', 'Mantenha seu cadastro em dia.')}
       </div>
+      <p class="prov-ajuda" style="margin-top:18px;">Comprou livros ou cursos? Eles ficam na <a href="#aluno" style="color:var(--gold-light);text-decoration:underline;">Área do aluno</a>.</p>`;
+  }
+
+  async function portalInicioAluno(alvo){
+    const [compras, provs] = await Promise.all([
+      apiAluno('/alunos/minhas-compras'),
+      apiAluno('/provimentos').catch(() => []),
+    ]);
+    const nLivros = compras.filter(c => c.tipo_item === 'livro').length;
+    const nCursos = compras.filter(c => c.tipo_item === 'curso').length;
+    const abertos = provs.filter(p => !['concluido', 'inviavel'].includes(p.status)).length;
+    const card = (h, n, t, d) => `<a class="portal-card" href="#${h}"><div class="num">${n}</div><h4>${t}</h4><p>${d}</p></a>`;
+    alvo.innerHTML = `
       <h3 class="portal-grupo">Livros, cursos e OAB</h3>
       <div class="portal-cards">
         ${card('portal-livros', nLivros, 'Meus livros', 'E-books para baixar e livros físicos comprados.')}
@@ -4044,7 +4222,8 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
         ${card('portal-provimento', abertos, 'Provimento OAB 2ª fase', 'Envie sua peça e suas questões e acompanhe a análise.')}
         ${card('portal-financeiro', 'R$', 'Financeiro', 'Seus pedidos e pagamentos.')}
         ${card('portal-conta', '✎', 'Minha conta', 'Seus dados e sua senha.')}
-      </div>`;
+      </div>
+      <p class="prov-ajuda" style="margin-top:18px;">Procura seus processos, contrato ou honorários? Eles ficam na <a href="#cliente" style="color:var(--gold-light);text-decoration:underline;">Área do cliente</a>.</p>`;
   }
 
   // ---------- Minha conta ----------
@@ -4220,25 +4399,26 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     const l = r.cobrancas || [], prev = r.previstos || [], cfg = r.pagamento || {};
     const wa = WA_BASE + encodeURIComponent('Olá! Sou cliente e quero combinar o pagamento dos meus honorários.');
     const dt = (v) => v ? v.split('-').reverse().join('/') : '';
-    const FORMAS_ROT = { pix: 'PIX direto para o escritório', dinheiro: 'Dinheiro', bens: 'Bens', cartao: 'Cartão de crédito', boleto: 'Boleto' };
+    const FORMAS_ROT = { pix: 'PIX direto para o escritório', dinheiro: 'Dinheiro', cartao: 'Cartão de crédito', boleto: 'Boleto' };
     if (!l.length && !prev.length){
       alvo.innerHTML = `<div class="compras-vazio"><p>Você não tem honorários cadastrados no momento.</p><p style="font-size:0.88rem;margin-top:10px;">Se esperava ver valores aqui, confirme se o e-mail da sua conta é o mesmo que você informou ao escritório. <a href="${wa}" target="_blank" rel="noopener" style="color:var(--gold-light);text-decoration:underline;">Falar com o escritório</a>.</p></div>`;
       return;
     }
     const aberto = l.filter(c => c.status === 'pendente').reduce((n, c) => n + Number(c.valor || 0), 0);
-    // Formas de pagamento oferecidas (online só para cobranças; PIX/dinheiro/bens valem para os dois)
+    // Formas de pagamento oferecidas (online só para cobranças; PIX/cartão/boleto/dinheiro valem para os dois)
     const botoes = (tipo, id, c) => {
       const online = tipo === 'c' && r.pagamento_online;
       return `<div class="pag-formas" data-item="${tipo}${id}">
         ${online ? `<button class="btn btn-gold" data-pagar="${id}">Pagar online (PIX, cartão${c && c.permite_boleto ? ' ou boleto' : ''})</button>` : ''}
         <button class="btn btn-outline" data-forma="pix">PIX direto</button>
+        <button class="btn btn-outline" data-forma="cartao">Cartão de crédito</button>
+        <button class="btn btn-outline" data-forma="boleto">Boleto</button>
         <button class="btn btn-outline" data-forma="dinheiro">Dinheiro</button>
-        <button class="btn btn-outline" data-forma="bens">Bens</button>
         <div class="pag-detalhe" style="display:none"></div></div>`;
     };
     alvo.innerHTML = `
       <div class="portal-painel" style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;">
-        <div><h3 style="margin:0;">Pagamento de Honorários</h3><p style="margin:4px 0 0;color:var(--cream-2);font-size:0.9rem;">PIX, cartão de crédito, dinheiro, bens ou boleto. Escolha a forma que preferir; o escritório confirma e dá baixa.</p>${cfg.texto_geral ? `<p style="margin:6px 0 0;color:var(--cream-2);font-size:0.88rem;">${escapeHtml(cfg.texto_geral)}</p>` : ''}</div>
+        <div><h3 style="margin:0;">Pagamento de Honorários</h3><p style="margin:4px 0 0;color:var(--cream-2);font-size:0.9rem;">PIX, cartão de crédito, boleto ou dinheiro. Escolha a forma que preferir; o escritório confirma e dá baixa.</p>${cfg.texto_geral ? `<p style="margin:6px 0 0;color:var(--cream-2);font-size:0.88rem;">${escapeHtml(cfg.texto_geral)}</p>` : ''}</div>
         ${l.length ? `<div style="text-align:right;"><span class="compra-meta">Em aberto</span><div style="font-family:'Fraunces',serif;color:var(--gold-light);font-size:1.5rem;">${formatPreco(aberto)}</div></div>` : ''}
       </div>
       ${prev.map(p => `<div class="compra-item" style="flex-direction:column;align-items:stretch;gap:10px;"><div>
@@ -4270,9 +4450,9 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       box.querySelectorAll('button[data-forma]').forEach(x => x.classList.toggle('btn-gold', x === b));
       const info = forma === 'pix'
         ? (cfg.pix_chave ? `<p style="margin:0 0 6px;"><b>Chave PIX:</b> <span id="pixChave-${item}">${escapeHtml(cfg.pix_chave)}</span> <button type="button" class="link-btn" data-copiar="${escAttr(cfg.pix_chave)}">Copiar</button></p>${cfg.pix_favorecido ? `<p style="margin:0 0 6px;"><b>Favorecido:</b> ${escapeHtml(cfg.pix_favorecido)}</p>` : ''}<p style="margin:0 0 8px;font-size:.88rem;">Depois de pagar, clique em confirmar para avisar o escritório.</p>` : '<p style="margin:0 0 8px;">O escritório vai te enviar a chave PIX. Clique em confirmar para avisar que prefere esta forma.</p>')
-        : `<p style="margin:0 0 8px;">${escapeHtml(forma === 'dinheiro' ? (cfg.texto_dinheiro || '') : (cfg.texto_bens || ''))}</p>`;
+        : `<p style="margin:0 0 8px;">${escapeHtml(forma === 'dinheiro' ? (cfg.texto_dinheiro || '') : forma === 'cartao' ? (cfg.texto_cartao || '') : (cfg.texto_boleto || ''))}</p>`;
       det.style.display = 'block';
-      det.innerHTML = `${info}<textarea rows="3" maxlength="1000" placeholder="${forma === 'bens' ? 'Descreva o bem que você pretende oferecer' : 'Observação para o escritório (opcional)'}" style="width:100%;margin:0 0 8px;"></textarea><button type="button" class="btn btn-gold" data-confirmar="${forma}">Confirmar esta forma de pagamento</button> <span class="pag-ok" role="status" style="margin-left:8px;"></span>`;
+      det.innerHTML = `${info}<textarea rows="3" maxlength="1000" placeholder="${forma === 'cartao' ? 'Observação (ex.: em quantas parcelas prefere pagar)' : 'Observação para o escritório (opcional)'}" style="width:100%;margin:0 0 8px;"></textarea><button type="button" class="btn btn-gold" data-confirmar="${forma}">Confirmar esta forma de pagamento</button> <span class="pag-ok" role="status" style="margin-left:8px;"></span>`;
       det.querySelector('[data-copiar]') && det.querySelector('[data-copiar]').addEventListener('click', (ev) => { try { navigator.clipboard.writeText(ev.target.dataset.copiar); ev.target.textContent = 'Copiado'; } catch (er) {} });
       det.querySelector('[data-confirmar]').addEventListener('click', async (ev) => {
         const ok = det.querySelector('.pag-ok'); ev.target.disabled = true;
@@ -5265,7 +5445,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     // Veja as obras (livros com link de afiliado)
     partes.push(`<section class="section secao-obras" id="obras" style="display:none"><div class="container"><div class="section-head"><span class="kicker">PUBLICAÇÕES</span><h2>Veja as obras</h2><p>Clique no livro para comprar direto no parceiro de vendas.</p></div><div class="obras-faixa" id="obrasFaixa"></div></div></section>`);
     // Agende sua consulta: uma caixa só, com o mapa do Brasil à esquerda do formulário
-    const mapaOn = !(c.brasil && c.brasil.ativo === false);
+    const mapaOn = false; // pedido do escritório: só o painel de agendamento, sem a imagem do Brasil
     partes.push(`<section class="section secao-consulta" id="agendar-home"><div class="container">
       <div class="consulta-cab"><span class="kicker">AGENDE SUA CONSULTA</span><h2>Conte com atendimento jurídico em todo o Brasil</h2>
         <p>Preencha o formulário e escolha o melhor horário para seu atendimento. Nossa equipe entrará em contato para confirmar o agendamento.</p></div>
@@ -5358,15 +5538,16 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     let col = document.getElementById('footerExtraCol'); if (col) col.remove();
     const redes = c.redes || {}; const nomes = { instagram: 'Instagram', facebook: 'Facebook', youtube: 'YouTube', linkedin: 'LinkedIn', tiktok: 'TikTok' };
     const r = Object.keys(nomes).filter(k => redes[k]).map(k => `<a href="${escAttr(redes[k])}" target="_blank" rel="noopener">${nomes[k]}</a>`).join('');
+    const faixa = document.getElementById('footerFaixa');
     col = document.createElement('div'); col.className = 'footer-col'; col.id = 'footerExtraCol';
-    col.innerHTML = `<h5>INSTITUCIONAL</h5><ul>
-      <li><a href="#inicio">Home</a></li><li><a href="#escritorio">O escritório</a></li><li><a href="#filiais">Onde estamos</a></li><li><a href="#escritorios-parceiros">Escritórios parceiros</a></li><li><a href="#profissionais-parceiros">Profissionais parceiros</a></li><li><a href="#equipe">Profissionais</a></li><li><a href="#blog-todos">Publicações</a></li><li><a href="#informativos">Informativos e e-books</a></li><li><a href="#avaliacoes">Avaliações</a></li><li><a href="#vagas">Oportunidades de emprego</a></li><li><a href="#premios">Prêmios e reconhecimentos</a></li>
+    col.innerHTML = `<h5>TRANSPARÊNCIA E PRIVACIDADE</h5><ul>
       ${c.codigo_etica ? `<li><a href="${escAttr(c.codigo_etica)}" target="_blank" rel="noopener" download>Código de Ética e Compliance (PDF)</a></li>` : ''}
-      <li><a href="#privacidade">Política de Privacidade</a></li><li><a href="#termos">Termos de uso</a></li><li><a href="#seguranca">Segurança de dados</a></li><li><a href="#sugestoes">Sugestões e reclamações</a></li><li><a href="#denuncia">Canal de denúncia</a></li><li><a href="#atualizar-dados">Atualize seus dados</a></li>
+      <li><a href="#privacidade">Política de Privacidade</a></li><li><a href="#termos">Termos de uso</a></li><li><a href="#seguranca">Segurança de dados</a></li><li><a href="#sugestoes">Sugestões e reclamações</a></li><li><a href="#denuncia">Canal de denúncia</a></li>
       ${(window.PAGINAS_EXTRAS || []).filter(p => p.no_menu).map(p => `<li><a href="#pagina-${escAttr(p.slug)}">${escapeHtml(p.titulo)}</a></li>`).join('')}</ul>
-      ${(c.links_uteis || []).length ? `<h5 style="margin-top:18px;">LINKS ÚTEIS</h5><ul>${c.links_uteis.map(l => `<li><a href="${escAttr(l.url)}" target="_blank" rel="noopener">${escapeHtml(l.nome)}</a></li>`).join('')}</ul>` : ''}
-      ${r ? `<div class="footer-redes">${r}</div>` : ''}`;
-    grid.appendChild(col);
+      ${(c.links_uteis || []).length ? `<h5 style="margin-top:22px;">LINKS ÚTEIS</h5><ul>${c.links_uteis.map(l => `<li><a href="${escAttr(l.url)}" target="_blank" rel="noopener">${escapeHtml(l.nome)}</a></li>`).join('')}</ul>` : ''}`;
+    grid.insertBefore(col, faixa || null);
+    let rd = document.getElementById('footerRedesCol'); if (rd) rd.remove();
+    if (r && faixa){ rd = document.createElement('div'); rd.className = 'footer-col'; rd.id = 'footerRedesCol'; rd.innerHTML = `<h5>REDES</h5><div class="footer-redes">${r}</div>`; faixa.appendChild(rd); }
   }
   // Menu: novos itens, páginas extras e publicações
   async function menuExtras(c){
@@ -5490,8 +5671,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       case 'premios':
         detalheConteudo.innerHTML = cab('SOBRE', 'Prêmios e reconhecimentos', '') + ((c.premios || []).length ? `<div class="ff-premios pag">${c.premios.map(p => `<div class="premio">${p.imagem ? `<img src="${escAttr(p.imagem)}" alt="">` : '<span class="premio-ico">★</span>'}<b>${escapeHtml(p.titulo)}</b>${p.ano ? `<small>${escapeHtml(p.ano)}</small>` : ''}${p.descricao ? `<p>${escapeHtml(p.descricao)}</p>` : ''}</div>`).join('')}</div>` : '<p class="servico-intro">Em breve, os prêmios e reconhecimentos do escritório aparecerão aqui.</p>'); break;
       case 'filiais': renderFiliais(cab, c); break;
-      case 'escritorios-parceiros': renderDiretorio(cab, c, 'escritorio'); break;
-      case 'profissionais-parceiros': renderDiretorio(cab, c, 'profissional'); break;
+      case 'escritorios-parceiros': case 'profissionais-parceiros': renderDiretorio(cab, c); break;
       case 'escritorio': renderEscritorio(cab, c); break;
       case 'equipe': renderEquipe(cab, c); break;
       case 'programacao': renderProgramacao(cab, c); break;
@@ -5640,26 +5820,37 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     vagasLigar(c, bloco);
   }
   // Diretório de escritórios e profissionais parceiros (editável no painel), com busca
-  function renderDiretorio(cab, c, tipo){
-    const ehEsc = tipo === 'escritorio';
-    const legado = ehEsc ? ((c.escritorio || {}).parceiros || []).map(p => ({ tipo: 'escritorio', nome: p.nome, cidade: p.cidade, atuacao: p.descricao, site: p.link })) : [];
-    const todos = [...(c.diretorio || []).filter(x => x.tipo === tipo), ...legado];
+  function renderDiretorio(cab, c){
+    const legado = ((c.escritorio || {}).parceiros || []).map(p => ({ tipo: 'escritorio', nome: p.nome, cidade: p.cidade, atuacao: p.descricao, site: p.link }));
+    const escs = [...(c.diretorio || []).filter(x => x.tipo === 'escritorio'), ...legado];
+    const profs = (c.diretorio || []).filter(x => x.tipo !== 'escritorio');
+    const chave = (n) => String(n || '').trim().toLowerCase();
     const iniciais = (n) => escapeHtml(n.split(/\s+/).map(x => x[0]).slice(0, 2).join('').toUpperCase());
-    const card = (p) => {
+    const contato = (p) => {
       const local = [p.endereco, [p.cidade, p.estado].filter(Boolean).join('/')].filter(Boolean).join(' — ');
-      return `<article class="parceiro-card">${p.foto ? `<img src="${escAttr(p.foto)}" alt="${escAttr(p.nome)}" loading="lazy">` : `<div class="pessoa-ini">${iniciais(p.nome)}</div>`}
-        <div><h4>${escapeHtml(p.nome)}</h4>${p.atuacao ? `<span class="pessoa-esp">${escapeHtml(p.atuacao)}</span>` : ''}${p.oab ? `<small>${escapeHtml(p.oab)}</small>` : ''}
-        <ul>${local ? `<li>${escapeHtml(local)}</li>` : ''}${p.telefone ? `<li><a href="tel:${escAttr(p.telefone.replace(/[^\d+]/g, ''))}">${escapeHtml(p.telefone)}</a></li>` : ''}${p.email ? `<li><a href="mailto:${escAttr(p.email)}">${escapeHtml(p.email)}</a></li>` : ''}${p.site ? `<li><a href="${escAttr(p.site)}" target="_blank" rel="noopener">Site</a></li>` : ''}</ul></div></article>`;
+      return `<ul>${local ? `<li>${escapeHtml(local)}</li>` : ''}${p.telefone ? `<li><a href="tel:${escAttr(p.telefone.replace(/[^\d+]/g, ''))}">${escapeHtml(p.telefone)}</a></li>` : ''}${p.email ? `<li><a href="mailto:${escAttr(p.email)}">${escapeHtml(p.email)}</a></li>` : ''}${p.site ? `<li><a href="${escAttr(p.site)}" target="_blank" rel="noopener">Site</a></li>` : ''}</ul>`;
     };
-    detalheConteudo.innerHTML = cab('SOBRE', ehEsc ? 'Escritórios parceiros' : 'Profissionais parceiros', ehEsc ? 'Escritórios que atuam em parceria com o nosso, em várias cidades.' : 'Advogados e profissionais que atuam em parceria com o escritório.') +
-      (todos.length ? `<input id="dirBusca" class="eq-busca" type="search" placeholder="Buscar por nome, cidade ou área de atuação" aria-label="Buscar"><p class="servico-intro" id="dirCont"></p><div class="parceiros-lista" id="dirLista"></div>` : '<p class="servico-intro">Em breve apresentaremos nossos parceiros.</p>') +
+    const cartaoProf = (p) => `<article class="parceiro-card parceiro-prof">${p.foto ? `<img src="${escAttr(p.foto)}" alt="${escAttr(p.nome)}" loading="lazy">` : `<div class="pessoa-ini">${iniciais(p.nome)}</div>`}<div><h4>${escapeHtml(p.nome)}</h4>${p.atuacao ? `<span class="pessoa-esp">${escapeHtml(p.atuacao)}</span>` : ''}${p.oab ? `<small>${escapeHtml(p.oab)}</small>` : ''}${contato(p)}</div></article>`;
+    const cartaoEsc = (e) => {
+      const seus = profs.filter(p => chave(p.escritorio) === chave(e.nome));
+      return `<article class="esc-parceiro"><div class="esc-topo">${e.foto ? `<img src="${escAttr(e.foto)}" alt="${escAttr(e.nome)}" loading="lazy">` : `<div class="pessoa-ini">${iniciais(e.nome)}</div>`}<div><h3>${escapeHtml(e.nome)}</h3>${e.atuacao ? `<span class="pessoa-esp">${escapeHtml(e.atuacao)}</span>` : ''}${contato(e)}</div></div>${seus.length ? `<details class="esc-profs"><summary>Profissionais parceiros deste escritório (${seus.length})</summary><div class="parceiros-lista">${seus.map(cartaoProf).join('')}</div></details>` : '<p class="esc-sem">Nenhum profissional cadastrado neste escritório ainda.</p>'}</article>`;
+    };
+    const nomesEsc = new Set(escs.map(e => chave(e.nome)));
+    const soltos = profs.filter(p => !p.escritorio || !nomesEsc.has(chave(p.escritorio)));
+    const total = escs.length + profs.length;
+    detalheConteudo.style.maxWidth = '1000px';
+    detalheConteudo.innerHTML = cab('SOBRE', 'Escritórios parceiros', 'Escritórios que atuam em parceria com o nosso, em várias cidades. Em cada escritório você encontra os profissionais parceiros.') +
+      (total ? `<input id="dirBusca" class="eq-busca" type="search" placeholder="Buscar escritório, profissional, cidade ou área de atuação" aria-label="Buscar"><p class="servico-intro" id="dirCont"></p><div id="dirLista"></div>` : '<p class="servico-intro">Em breve, a lista de escritórios e profissionais parceiros.</p>') +
       '<div class="servico-cta"><a class="btn btn-gold" href="#seja-parceiro">Quero ser parceiro</a></div>';
-    if (!todos.length) return;
+    if (!total) return;
     const pinta = () => {
       const q = (document.getElementById('dirBusca').value || '').toLowerCase();
-      const l = todos.filter(p => !q || [p.nome, p.atuacao, p.cidade, p.estado, p.endereco].join(' ').toLowerCase().includes(q));
-      document.getElementById('dirLista').innerHTML = l.map(card).join('') || '<p class="servico-intro">Nenhum resultado para essa busca.</p>';
-      document.getElementById('dirCont').textContent = `${l.length} ${ehEsc ? (l.length === 1 ? 'escritório' : 'escritórios') : (l.length === 1 ? 'profissional' : 'profissionais')}.`;
+      const bate = (p) => !q || [p.nome, p.atuacao, p.cidade, p.estado, p.endereco, p.escritorio].join(' ').toLowerCase().includes(q);
+      const le = escs.filter(e => bate(e) || profs.some(p => chave(p.escritorio) === chave(e.nome) && bate(p)));
+      const ls = soltos.filter(bate);
+      document.getElementById('dirLista').innerHTML = (le.length ? `<div class="esc-lista">${le.map(cartaoEsc).join('')}</div>` : '') + (ls.length ? `<h2 class="sub-h" style="margin-top:28px;">Profissionais parceiros independentes</h2><div class="parceiros-lista">${ls.map(cartaoProf).join('')}</div>` : '') || '<p class="servico-intro">Nenhum resultado para essa busca.</p>';
+      document.getElementById('dirCont').textContent = `${le.length} ${le.length === 1 ? 'escritório' : 'escritórios'}${profs.length ? ` e ${profs.filter(bate).length} ${profs.filter(bate).length === 1 ? 'profissional' : 'profissionais'}` : ''}.`;
+      if (q) document.querySelectorAll('#dirLista details').forEach(d => { d.open = true; });
     };
     document.getElementById('dirBusca').addEventListener('input', pinta);
     pinta();
@@ -5669,16 +5860,26 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     const ends = (e.enderecos || []).filter(u => u.endereco || u.nome);
     const fone = '(11) 97575-1984';
     const embed = (u) => /^https:\/\/www\.google\.com\/maps\/embed\?/i.test(e.mapa_url || '') && ends.length <= 1 ? e.mapa_url : 'https://www.google.com/maps?output=embed&q=' + encodeURIComponent(u.endereco || u.nome);
-    const nossos = ends.map((u, i) => `<div class="filial" data-un="${i}"><h3>${escapeHtml(u.nome || 'Escritório')}</h3><p>${escapeHtml(u.endereco || '')}</p>${u.horario ? `<small>Atendimento: ${escapeHtml(u.horario)}</small><br>` : ''}<small>Telefone: <a href="tel:+5511975751984">${fone}</a></small><div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap;"><button type="button" class="btn btn-outline-dark" data-mapa="${i}" style="padding:7px 14px;font-size:.85rem;">Ver no mapa</button><a class="btn btn-outline-dark" style="padding:7px 14px;font-size:.85rem;" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(u.endereco || u.nome)}">Como chegar ↗</a></div></div>`).join('');
+    const icPino = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-6.2 7-11.5A7 7 0 005 9.5C5 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.6"/></svg>';
+    const icRel = '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>';
+    const icTel = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg>';
+    const unidades = ends.map((u, i) => `<article class="onde-un${i ? '' : ' on'}" data-un="${i}">
+        <div class="onde-un-topo"><span class="onde-num">${i + 1}</span><h3>${escapeHtml(u.nome || 'Escritório')}</h3></div>
+        <p class="onde-linha">${icPino}<span>${escapeHtml(u.endereco || '')}</span></p>
+        ${u.horario ? `<p class="onde-linha">${icRel}<span>Atendimento: ${escapeHtml(u.horario)}</span></p>` : ''}
+        <p class="onde-linha">${icTel}<span><a href="tel:+5511975751984">${fone}</a></span></p>
+        <div class="onde-acoes"><button type="button" class="btn btn-gold" data-mapa="${i}">Ver no mapa</button><a class="btn btn-outline-dark" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(u.endereco || u.nome)}">Como chegar ↗</a></div>
+      </article>`).join('');
     const par = (e.parceiros || []).map(p => `<div class="filial"><h3>${p.link ? `<a href="${escAttr(p.link)}" target="_blank" rel="noopener">${escapeHtml(p.nome)}</a>` : escapeHtml(p.nome)}</h3>${p.cidade ? `<p>${escapeHtml(p.cidade)}</p>` : ''}${p.descricao ? `<small>${escapeHtml(p.descricao)}</small>` : ''}</div>`).join('');
-    detalheConteudo.style.maxWidth = '1000px';
+    detalheConteudo.style.maxWidth = '1080px';
     detalheConteudo.innerHTML = cab('SOBRE', 'Onde estamos', e.descricao ? escapeHtml(e.descricao) : 'Atendimento presencial nas unidades abaixo e online em todo o Brasil.') +
-      `<div class="filiais">${nossos || '<p class="servico-intro">Endereços em breve.</p>'}</div>` +
-      (ends.length ? `<iframe id="mapaOnde" src="${escAttr(embed(ends[0]))}" title="Mapa: onde estamos" loading="lazy" referrerpolicy="no-referrer-when-downgrade" style="border:0;width:100%;height:360px;border-radius:12px;margin:18px 0;"></iframe>` : '') +
-      (par ? `<h2 class="sub-h">Escritórios parceiros</h2><div class="filiais">${par}</div>` : '') +
-      `<div class="servico-bloco"><h2>Horário de atendimento</h2><p class="servico-intro" style="white-space:pre-line;margin:0;">${escapeHtml(e.horario || 'Segunda a sexta, das 9h às 17h.\nSábado, domingo e feriados: fechado.')}</p></div>`;
+      (ends.length ? `<div class="onde-grid"><div class="onde-lista">${unidades}</div><div class="onde-mapa"><iframe id="mapaOnde" src="${escAttr(embed(ends[0]))}" title="Mapa: onde estamos" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div></div>` : '<p class="servico-intro">Endereços em breve.</p>') +
+      `<div class="onde-faixa"><div><b>Horário de atendimento</b><p style="white-space:pre-line;margin:6px 0 0;">${escapeHtml(e.horario || 'Segunda a sexta, das 9h às 17h.\nSábado, domingo e feriados: fechado.')}</p></div><div><b>Atendimento online</b><p style="margin:6px 0 0;">Em todo o Brasil, por vídeo, telefone e WhatsApp.</p></div><a class="btn btn-gold" href="#agendar">Agendar consulta</a></div>` +
+      (par ? `<h2 class="sub-h">Escritórios parceiros</h2><div class="filiais">${par}</div>` : '');
     detalheConteudo.querySelectorAll('[data-mapa]').forEach(b => b.addEventListener('click', () => {
-      const fr = document.getElementById('mapaOnde'); if (fr) { fr.src = 'https://www.google.com/maps?output=embed&q=' + encodeURIComponent(ends[+b.dataset.mapa].endereco || ends[+b.dataset.mapa].nome); fr.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
+      const i = +b.dataset.mapa, fr = document.getElementById('mapaOnde');
+      detalheConteudo.querySelectorAll('.onde-un').forEach(x => x.classList.toggle('on', +x.dataset.un === i));
+      if (fr) { fr.src = 'https://www.google.com/maps?output=embed&q=' + encodeURIComponent(ends[i].endereco || ends[i].nome); if (window.matchMedia('(max-width:900px)').matches) fr.scrollIntoView({ behavior: 'smooth', block: 'center' }); }
     }));
   }
 
@@ -5894,7 +6095,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
   var docEl = document.documentElement;
   var reduz = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
   var header = document.querySelector('header');
-  var watermark = document.querySelector('.hero-watermark');
+  var watermark = null;
 
   // barra de progresso + cabeçalho compacto + leve paralaxe da marca d'água
   var barra = document.createElement('div');
@@ -5912,6 +6113,24 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
   window.addEventListener('scroll', function () { if (!agendado) { agendado = true; requestAnimationFrame(aoRolar); } }, { passive: true });
   aoRolar();
 
+
+  // ----- painel do topo: destaques que se alternam -----
+  (function () {
+    var painel = document.getElementById('heroPainel'); if (!painel) return;
+    var slides = painel.querySelectorAll('.hp-slide'), pontos = painel.querySelectorAll('.hp-pontos button'), atual = 0, timer = null, T = 6000;
+    painel.style.setProperty('--hp-t', (T / 1000) + 's');
+    function ir(n) {
+      atual = (n + slides.length) % slides.length;
+      slides.forEach(function (el, i) { el.classList.toggle('on', i === atual); });
+      pontos.forEach(function (b, i) { b.classList.remove('on'); if (i === atual) { void b.offsetWidth; b.classList.add('on'); } });
+    }
+    function iniciar() { parar(); if (reduz) return; timer = setInterval(function () { ir(atual + 1); }, T); }
+    function parar() { if (timer) clearInterval(timer); timer = null; }
+    pontos.forEach(function (b, i) { b.addEventListener('click', function () { ir(i); iniciar(); }); });
+    painel.addEventListener('mouseenter', parar); painel.addEventListener('mouseleave', iniciar);
+    document.addEventListener('visibilitychange', function () { if (document.hidden) parar(); else iniciar(); });
+    iniciar();
+  })();
   if (reduz) { document.body.classList.add('hero-pronto'); return; }
   docEl.classList.add('vis-js');
 
