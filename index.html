@@ -1156,7 +1156,7 @@ header.header-compacto{
   box-shadow:0 14px 34px -14px rgba(0,0,0,.55);
   border-bottom-color:rgba(173,129,91,.45);
 }
-header.header-compacto .nav-wrap{padding:9px 0;}
+header.header-compacto .nav-wrap{padding-top:9px;padding-bottom:9px;}
 nav.main-nav a.top-link{position:relative;border-bottom:2px solid transparent !important;}
 nav.main-nav a.top-link::after{
   content:"";position:absolute;left:50%;right:50%;bottom:0;height:2px;border-radius:2px;
@@ -1404,6 +1404,67 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
   header .brand-sub{display:block;}
 }
 @media (min-width:961px) and (max-width:1120px){ header nav.main-nav ul{gap:12px;} header nav.main-nav a.top-link{font-size:.8rem;} }
+
+  /* v25: rodapé (Endereço, Atendimento, Contato + redes), logo alinhado, avaliações centralizadas, blog 1ª fase, formulário das áreas */
+  .footer-social{grid-column:1 / -1;text-align:center;border-top:1px solid var(--navy-line);padding-top:30px;margin-top:6px;}
+  .footer-social h5{color:var(--cream);font-size:1.05rem;font-weight:600;letter-spacing:0;margin:0 0 16px;font-family:'Playfair Display',Georgia,serif;}
+  .footer-social-ico{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;}
+  .footer-social-ico a{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:50%;background:rgba(255,255,255,.1);color:var(--cream);transition:background .2s ease,color .2s ease,transform .2s ease;}
+  .footer-social-ico a:hover{background:var(--gold);color:var(--navy-deep);transform:translateY(-2px);}
+  .footer-social-ico svg{width:22px;height:22px;}
+  .footer-social[hidden]{display:none;}
+  header .container{max-width:1200px;padding-left:24px;padding-right:24px;}
+  .consulta-rodape{justify-content:center;text-align:center;}
+  .blog-recursos1fase{display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:#fff;border:1px solid #E1D9C8;border-left:4px solid var(--gold);border-radius:14px;padding:20px 24px;margin:0 0 24px;}
+  .blog-recursos1fase h2{font-size:1.3rem;margin:0 0 4px;} .blog-recursos1fase p{margin:0;color:var(--ink-soft);font-size:.95rem;max-width:620px;}
+  .servico-caso .form-publico{background:#fff;border:1px solid #E1D9C8;border-radius:16px;padding:28px 30px;box-shadow:0 8px 26px rgba(20,38,47,.06);}
+  .servico-caso .form-publico .checkout-field label{font-size:.86rem;font-weight:600;margin-bottom:6px;display:block;}
+  .servico-caso .form-publico input:not([type=checkbox]),.servico-caso .form-publico textarea{padding:12px 14px;font-size:1rem;}
+  .servico-caso .form-publico .form-aceite{align-items:center;margin:10px 0 18px;} .servico-caso .form-publico .form-aceite a{margin:0;}
+  .servico-caso .form-publico button[type=submit]{min-width:180px;}
+  @media (max-width:640px){ .servico-caso .form-publico{padding:20px 18px;} .servico-caso .form-publico-grid{grid-template-columns:1fr;} }
+
+  /* v25: Provimento — textos legíveis no painel escuro */
+  .prov-escolha{color:var(--cream);}
+  .prov-escolha>b{color:var(--cream);font-size:1rem;}
+  .prov-escolha label{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.22);color:var(--cream);line-height:1.45;transition:border-color .2s ease,background .2s ease;}
+  .prov-escolha label:hover{border-color:var(--gold-light);}
+  .prov-escolha label:has(input:checked){border-color:var(--gold-light);background:rgba(211,174,132,.12);}
+  .prov-escolha label small{color:var(--cream-2);opacity:1;font-size:.84rem;line-height:1.5;}
+  .prov-escolha label b{color:var(--cream);}
+  .prov-termos{color:var(--cream);} .prov-ajuda{color:var(--cream-2);line-height:1.5;} .prov-ajuda a{color:var(--gold-light);text-decoration:underline;}
+  .prov-serv p{color:var(--cream-2);line-height:1.5;}
+  .portal-painel .portal-msg{color:var(--cream);}
+
+  /* v25: honorários do cliente — forma de pagamento legível */
+  .pag-formas{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch;}
+  .pag-formas .btn.sel{background:linear-gradient(135deg,#D3AE84,#AD815B);color:var(--navy-deep);border-color:transparent;}
+  .pag-formas .pag-detalhe{flex:0 0 100%;color:var(--cream);font-size:.92rem;line-height:1.55;background:rgba(255,255,255,.04);border:1px solid var(--navy-line);border-radius:12px;padding:16px 18px;margin-top:4px;}
+  .pag-formas .pag-detalhe p{color:var(--cream);margin:0 0 8px;}
+  .pag-formas .pag-detalhe textarea{width:100%;font:inherit;font-size:.92rem;background:var(--navy-deep);color:var(--cream);border:1px solid var(--navy-line);border-radius:8px;padding:10px 12px;margin:0 0 10px;resize:vertical;}
+  .pag-formas .pag-detalhe textarea::placeholder{color:#8FA3AA;} .pag-formas .pag-detalhe .pag-ok{color:var(--gold-light);}
+  /* v26: currículo com abas, busca, cartões e histórico (modelo enviado em 19/11) */
+  .cvi-metricas{display:flex;flex-direction:column;gap:14px;border-left:1px solid rgba(255,255,255,.14);padding-left:26px;position:relative;z-index:1;} .cvi-metricas b{display:block;font-family:'Fraunces',serif;font-size:1.9rem;color:var(--gold-light);line-height:1;} .cvi-metricas span{font-size:.78rem;color:#C9D6DA;}
+  .cvi-faixa{display:flex;flex-wrap:wrap;gap:8px 22px;justify-content:space-between;background:#0F2027;color:var(--gold-light);padding:12px 28px;font-size:.82rem;font-weight:600;border-top:1px solid rgba(211,174,132,.25);} .cvi-faixa span::before{content:'';display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--gold);margin-right:8px;vertical-align:middle;}
+  .cvi-barra{position:sticky;top:132px;z-index:5;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;background:rgba(250,247,240,.97);border:1px solid #E5D8C1;border-radius:12px;padding:10px 12px;margin:18px 0 6px;box-shadow:0 4px 18px -8px rgba(20,40,48,.15);}
+  .cvi-abas{display:flex;gap:6px;overflow-x:auto;max-width:100%;} .cvi-abas button{border:0;background:transparent;color:var(--ink-soft);font:inherit;font-size:.85rem;font-weight:600;padding:8px 13px;border-radius:8px;cursor:pointer;white-space:nowrap;} .cvi-abas button:hover{background:#EFE7D6;color:var(--ink);} .cvi-abas button.on{background:#14262F;color:var(--gold-light);}
+  .cvi-barra input{flex:1 1 220px;max-width:300px;padding:9px 12px;border:1px solid #D8CFBD;border-radius:8px;font:inherit;font-size:.88rem;background:#fff;}
+  .cvi-nada{background:#FAF7F0;border:1px solid #E5D8C1;border-radius:12px;padding:26px;text-align:center;margin:14px 0;} .cvi-nada b{display:block;font-family:'Fraunces',serif;font-size:1.1rem;margin-bottom:6px;} .cvi-nada span{display:block;color:var(--ink-soft);font-size:.9rem;margin-bottom:12px;} .cvi-nada[hidden],.cvi [hidden]{display:none !important;}
+  .cvi-chip.escuro{background:#14262F;} button.cvi-chip{cursor:pointer;font:inherit;font-size:.85rem;}
+  .cvi-it{background:#fff;} .cvi-linha .cvi-it small,.cvi-card small{display:block;font-size:.76rem;font-weight:700;color:var(--gold);letter-spacing:.02em;margin-bottom:3px;} .cvi-linha .cvi-it span{display:block;color:var(--ink-soft);font-size:.9rem;margin-top:2px;} .cvi-linha .cvi-it span strong{color:var(--ink);}
+  .cvi-grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:8px;margin-top:8px;} .cvi-esp{background:#FAF7F0;border:1px solid #E5D8C1;border-radius:8px;padding:9px 11px;} .cvi-esp b{display:block;font-size:.9rem;} .cvi-esp span{font-size:.78rem !important;color:var(--ink-soft);}
+  .cvi-cit small{display:block;font-family:'Inter',system-ui,sans-serif;font-style:normal;font-size:.78rem;color:var(--ink-soft);margin-top:12px;line-height:1.5;}
+  .cvi-cards3{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px;} .cvi-cards3.dois{grid-template-columns:repeat(auto-fit,minmax(300px,1fr));margin-top:12px;}
+  .cvi-card{display:flex;flex-direction:column;gap:4px;border:1px solid #E5D8C1;border-radius:12px;padding:16px;} .cvi-card b{font-size:1.02rem;color:var(--ink);} .cvi-card em{font-style:normal;font-size:.82rem;font-weight:600;color:var(--gold);} .cvi-card span{font-size:.88rem;color:var(--ink-soft);line-height:1.5;text-align:left;} .cvi-card u{text-decoration:none;margin-top:auto;padding-top:10px;border-top:1px solid #EFE8D8;font-size:.78rem;color:var(--ink-soft);}
+  .cvi-hist{margin-top:14px;border:1px solid #E5D8C1;border-radius:12px;padding:0 14px;background:#fff;} .cvi-hist summary{cursor:pointer;padding:13px 0;font-weight:600;list-style:none;} .cvi-hist summary::-webkit-details-marker{display:none;} .cvi-hist summary small{font-weight:400;color:var(--ink-soft);margin-left:6px;} .cvi-hist summary::after{content:'+';float:right;color:var(--gold);font-size:1.4rem;line-height:1;} .cvi-hist[open] summary::after{content:'\2212';} .cvi-hist .cvi-cards3{margin-bottom:14px;}
+  .cvi-area small{display:block;font-size:.74rem;color:var(--ink-soft);font-weight:400;line-height:1.3;}
+  .cvi-prod span{display:block;font-size:.9rem;color:var(--ink-soft);text-align:left;} .cvi-cong{margin-top:14px;background:#F8F3E9;border:1px solid #E6DAC4;border-radius:10px;padding:14px;} .cvi-cong>span{display:block;margin:4px 0 8px;color:var(--ink-soft);text-align:justify;}
+  .cvi-impressao{display:none;}
+  @media (max-width:900px){ .cvi-metricas{display:none;} .cvi-barra{position:static;} }
+  @media print{
+    body:has(.cvi) header,body:has(.cvi) footer,body:has(.cvi) #faixaFinal,body:has(.cvi) #ajudaWidget,body:has(.cvi) .cvi-barra,body:has(.cvi) .detalhe-voltar,body:has(.cvi) .btn-voltar{display:none !important;}
+    .cvi-topo{-webkit-print-color-adjust:exact;print-color-adjust:exact;} .cvi-hist:not([open])>*:not(summary){display:block;} .cvi-impressao{display:block;text-align:center;font-size:.8rem;color:#555;margin-top:14px;} .cvi-sec{break-inside:avoid;}
+  }
 </style>
 </head>
 <body>
@@ -1449,6 +1510,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
           <a class="top-link" href="#oab-1fase">OAB <span class="caret">▾</span></a>
           <div class="dropdown">
             <a href="#oab-1fase">OAB 1ª fase</a>
+            <a href="#blog-todos-recursos1fase">Recursos de 1ª fase</a>
             <a href="#oab-2fase">OAB 2ª fase — Provimento</a>
             <a href="#ouvidoria">Ouvidoria</a>
           </div>
@@ -1463,6 +1525,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
         <li>
           <a class="top-link" href="#blog-todos">Blog <span class="caret">▾</span></a>
           <div class="dropdown">
+            <a href="#blog-todos-recursos1fase">Recursos de 1ª fase</a>
             <a href="#blog-todos-trabalhista">Trabalhista</a>
             <a href="#blog-todos-previdenciario">Previdenciário</a>
             <a href="#blog-todos-civil">Civil</a>
@@ -1496,7 +1559,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
           </div>
         </li>
         <li>
-          <a class="top-link" href="#parceiros">Clientes e parceiros <span class="caret">▾</span></a>
+          <a class="top-link" href="#parceiros">Parceiro <span class="caret">▾</span></a>
           <div class="dropdown">
             <a href="#parceiros">Área do advogado</a>
             <a href="#seja-parceiro">Seja parceiro</a>
@@ -1927,6 +1990,8 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
         </ul>
       </div>
       <div class="footer-faixa" id="footerFaixa">
+      <div class="footer-col" id="footerEndereco"><h5>ENDEREÇO</h5><div id="footerEnderecoCorpo" style="color:#B7C4C8;font-size:0.9rem;line-height:1.6;"></div></div>
+      <div class="footer-col" id="footerAtendimento"><h5>ATENDIMENTO</h5><div id="footerAtendimentoCorpo" style="color:#B7C4C8;font-size:0.9rem;line-height:1.6;"></div></div>
       <div class="footer-col">
         <h5>CONTATO</h5>
         <ul>
@@ -1934,9 +1999,8 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
           <li><a href="mailto:israeldonizete@adv.oabsp.org.br">israeldonizete@adv.oabsp.org.br</a></li>
         </ul>
       </div>
-      <div class="footer-col" id="footerEndereco"><h5>ENDEREÇO</h5><div id="footerEnderecoCorpo" style="color:#B7C4C8;font-size:0.9rem;line-height:1.6;"></div></div>
-      <div class="footer-col" id="footerAtendimento"><h5>ATENDIMENTO</h5><div id="footerAtendimentoCorpo" style="color:#B7C4C8;font-size:0.9rem;line-height:1.6;"></div></div>
       </div>
+      <div class="footer-social" id="footerSocial" hidden></div>
     </div>
     <div class="footer-pagamento" id="footerPagamento" style="display:none">
       <h5>FORMAS DE PAGAMENTO</h5>
@@ -1997,7 +2061,8 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     oab: "Exame da OAB",
     outros: "Outros",
     noticias: "Notícias",
-    artigos: "Artigos científicos"
+    artigos: "Artigos científicos",
+    recursos1fase: "Recursos de 1ª fase"
   };
 
   function formatPreco(valor){
@@ -2064,7 +2129,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     if (h === 'livros-todos') return { tipo: 'livros-todos', chave: null };
     if (h === 'cursos-todos') return { tipo: 'cursos-todos', chave: null };
     // #blog-todos-trabalhista, #blog-todos-previdenciario, etc -> já abre filtrado
-    const mBlogCat = h.match(/^blog-todos-(trabalhista|previdenciario|civil|tributario|penal|administrativo|empresarial|noticias|artigos)$/);
+    const mBlogCat = h.match(/^blog-todos-(trabalhista|previdenciario|civil|tributario|penal|administrativo|empresarial|noticias|artigos|recursos1fase)$/);
     if (mBlogCat) return { tipo: 'blog-todos', chave: mBlogCat[1] };
     if (/^(agendar|acordo|atualizar-dados|denuncia|sugestoes|avaliacoes|informativos|vagas|premios|filiais|escritorio|equipe|programacao|escritorios-parceiros|profissionais-parceiros)$/.test(h)) return { tipo: 'extra', chave: h };
     if (h === 'calculadoras' || /^calc-/.test(h)) return null;
@@ -2583,61 +2648,102 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       const nomeCv = (ov && ov.titulo) || 'Dr. Israel Donizete da Silva';
       const ic = (d) => `<svg viewBox="0 0 24 24" aria-hidden="true">${d}</svg>`;
       const AREAS_CV = [
-        ['Trabalhista', '#trabalhista', ic('<path d="M3 11l5-5 4 4 4-4 5 5-8 8z"/><path d="M12 14l-2 2"/>')],
-        ['Previdenciário', '#previdenciario', ic('<path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/>')],
-        ['Tributário', '#tributario', ic('<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h2M8 15h2M12 15h2"/>')],
-        ['Penal', '#penal', ic('<path d="M14 4l6 6-3 3-6-6zM11 7L4 14l3 3 7-7M3 21h10"/>')],
-        ['Administrativo', '#administrativo', ic('<path d="M3 9l9-5 9 5M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18"/>')],
-        ['Civil e Empresarial', '#civil', ic('<path d="M12 4v16M5 7h14M5 7l-3 7a3 3 0 006 0zM19 7l-3 7a3 3 0 006 0z"/>')]
+        ['Trabalhista', 'Relações de trabalho e defesa técnica', '#trabalhista', ic('<path d="M3 11l5-5 4 4 4-4 5 5-8 8z"/><path d="M12 14l-2 2"/>')],
+        ['Previdenciário', 'Benefícios, INSS e perícias médicas', '#previdenciario', ic('<path d="M12 3l8 3v6c0 4.5-3.2 8-8 9-4.8-1-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/>')],
+        ['Tributário', 'Planejamento e contencioso fiscal', '#tributario', ic('<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M8 7h8M8 11h2M12 11h2M8 15h2M12 15h2"/>')],
+        ['Penal', 'Garantias fundamentais e defesa', '#penal', ic('<path d="M14 4l6 6-3 3-6-6zM11 7L4 14l3 3 7-7M3 21h10"/>')],
+        ['Administrativo', 'Atos públicos e servidores', '#administrativo', ic('<path d="M3 9l9-5 9 5M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 20h18"/>')],
+        ['Civil e Empresarial', 'Contratos, responsabilidade e negócios', '#civil', ic('<path d="M12 4v16M5 7h14M5 7l-3 7a3 3 0 006 0zM19 7l-3 7a3 3 0 006 0z"/>')]
       ];
-      const completo = ov && ov.html
-        ? cvOrganizar(ov.html)
-        : cvSecao('Formação acadêmica completa', cvLista(CV.formacao), false) + cvSecao('Atuação profissional', cvLista(CV.atuacao), false) + cvSecao('Produção acadêmica', cvLista(CV.producao), false);
+      const completoEditado = ov && ov.html ? `<div class="cvi-completo" data-cv-sec="producao"><h2 class="cvi-tit" data-ic="📄">Currículo completo</h2>${cvOrganizar(ov.html)}</div>` : '';
+      const cvEsp = (t, o) => `<div class="cvi-esp"><b>${t}</b><span>${o}</span></div>`;
       detalheConteudo.innerHTML = `
         ${BOTAO_VOLTAR}
         <div class="cvi">
           <div class="cvi-topo">
             ${fotoCv ? `<img class="cvi-foto" src="${escAttr(fotoCv)}" alt="${escAttr(nomeCv)}">` : `<div class="cvi-foto vazia" aria-hidden="true">ID</div>`}
-            <div style="position:relative;z-index:1;">
+            <div style="position:relative;z-index:1;flex:1;">
               <h1>${escapeHtml(nomeCv)}</h1>
-              <p class="cvi-sub">Advogado · Pesquisador · Mestre em Comunicação</p>
-              <p class="cvi-txt">Atuação nas áreas do Direito, com especialização em Direito do Trabalho, Previdenciário, Tributário, Penal, Administrativo e Civil Empresarial, integrando a prática jurídica à pesquisa acadêmica e à produção científica. OAB/SP 528153.</p>
+              <p class="cvi-sub">Advogado • Pesquisador • Mestre em Comunicação (em andamento)</p>
+              <p class="cvi-txt">Atuação nas áreas do Direito, com especialização em Direito do Trabalho, Previdenciário, Tributário, Penal, Administrativo e Civil Empresarial, integrando a prática jurídica à pesquisa acadêmica e à produção científica.</p>
               <div class="cvi-chips"><button type="button" class="cvi-chip" id="cviPdf">Baixar currículo em PDF</button><a class="cvi-chip" href="#agendar">Agendar consulta</a></div>
             </div>
+            <div class="cvi-metricas"><div><b>6</b><span>Áreas de atuação</span></div><div><b>10+</b><span>Títulos e especializações</span></div></div>
           </div>
+          <div class="cvi-faixa">${AREAS_CV.map(a => `<span>${a[0] === 'Civil e Empresarial' ? 'Direito Civil e Empresarial' : 'Direito ' + a[0]}</span>`).join('')}</div>
           <div class="cvi-corpo">
-            <section class="cvi-sec"><h2 class="cvi-tit" data-ic="🎓">Formação acadêmica</h2>
+            <div class="cvi-barra">
+              <div class="cvi-abas" role="tablist" aria-label="Filtrar seções do currículo">
+                <button type="button" class="on" data-cvtab="all">Todos</button><button type="button" data-cvtab="formacao">Formação acadêmica</button><button type="button" data-cvtab="experiencia">Experiência profissional</button><button type="button" data-cvtab="atuacao">Áreas de atuação</button><button type="button" data-cvtab="producao">Produção científica e eventos</button>
+              </div>
+              <input type="search" id="cviBusca" placeholder="Buscar curso, área, título, ano..." aria-label="Buscar no currículo">
+            </div>
+            <div class="cvi-nada" id="cviNada" hidden><b>Nenhum registro encontrado para a sua busca.</b><span>Tente termos como “Mestrado”, “USP”, “UNIP”, “Trabalhista”, “INTERCOM” ou “TRF3”.</span><button type="button" class="cvi-chip escuro" id="cviLimpar">Limpar busca</button></div>
+
+            <section class="cvi-sec" data-cv-sec="formacao"><h2 class="cvi-tit" data-ic="🎓">Formação acadêmica</h2>
               <div class="cvi-dois">
                 <div class="cvi-linha">
-                  <div><small>2026 (em andamento)</small><b>Mestrado em Comunicação</b><span>Universidade Paulista (UNIP) · bolsista CAPES</span></div>
-                  <div><small>2024</small><b>Mestrado em Direito Intelectual</b><span>Faculdade de Direito da USP (FDUSP)</span></div>
-                  <div><small>2023</small><b>Especialização em Direito do Trabalho (360h)</b><span>Faculdade Legale</span></div>
-                  <div><small>2015 – 2021</small><b>Graduação em Direito</b><span>Universidade Paulista (UNIP)</span></div>
+                  <div class="cvi-it"><small>2025 – Atual · Stricto sensu · Bolsista CAPES</small><b>Mestrado em Comunicação (em andamento)</b><span>Universidade Paulista (UNIP)</span><span><strong>Pesquisa:</strong> <em>“Abordagem da mídia digital aos medicamentos inovadores e as práticas farmacêuticas no caso Ozempic”</em>. <strong>Orientador:</strong> Prof. Dr. Antonio Adami.</span></div>
+                  <div class="cvi-it"><small>2024 · Stricto sensu · Aluno especial</small><b>Disciplina especial de Mestrado em Propriedade Intelectual</b><span>Faculdade de Direito da Universidade de São Paulo (FDUSP)</span><span><strong>Trabalho:</strong> <em>“Licenciamento compulsório de patente”</em>. <strong>Orientador:</strong> Prof. Dr. Babson Veiga Garcia.</span></div>
+                  <div class="cvi-it"><small>Pós-graduação lato sensu</small><b>Especializações jurídicas e em gestão</b>
+                    <div class="cvi-grade">${cvEsp('Direito Trabalhista', 'Faculdade Legale (FALAG) · 360h')}${cvEsp('Direito Previdenciário', 'Faculdade Legale (FALAG) · 360h')}${cvEsp('Direito Tributário', 'Faculdade Legale (FALAG) · 360h')}${cvEsp('Direito Civil', 'Faculdade Legale (FALAG) · 360h')}${cvEsp('Gestão de Negócios', 'Universidade Cidade de São Paulo (UNICID) · 360h · Título: “Gestão de Processos”')}</div></div>
+                  <div class="cvi-it"><small>Graduação · Bacharelado</small><b>Bacharelado em Direito</b><span>Universidade Paulista (UNIP)</span><span><strong>TCC:</strong> <em>“A divergência dos laudos médicos e a responsabilidade indenizatória no âmbito da Previdência Social – O 1º Livro Jurídico Previdenciário e Trabalhista”</em>.</span></div>
+                  <div class="cvi-it"><small>Graduação tecnológica</small><b>Tecnologia em Logística</b><span>Universidade Cidade de São Paulo (UNICID)</span></div>
+                  <div class="cvi-it"><small>Formação complementar</small><b>Técnico em Transações Imobiliárias</b><span>Instituto Monitor (960h)</span><b style="margin-top:8px">Auxiliar Administrativo</b><span>SENAI/SP (160h)</span></div>
                 </div>
-                <div class="cvi-cit"><i>🎓</i>“Conhecimento, experiência e compromisso com a justiça.”</div>
+                <div class="cvi-cit"><i>🎓</i>“Conhecimento, experiência e compromisso com a justiça.”<small>Formação multidisciplinar contínua unindo Direito, Gestão e Comunicação para soluções jurídicas estratégicas e fundamentadas.</small></div>
               </div></section>
-            <section class="cvi-sec"><h2 class="cvi-tit" data-ic="💼">Experiência profissional</h2>
-              <ul class="cvi-lista">
-                <li>Advogado inscrito na OAB/SP sob o nº 528153, com atuação em Direito Trabalhista, Previdenciário, Tributário, Penal, Administrativo e Civil Empresarial.</li>
-                <li>Tutor de Educação a Distância na Universidade Paulista (UNIP) desde 2014; estágio no Tribunal Regional Federal da 3ª Região (2020).</li>
-                <li>Experiência na gestão de projetos acadêmicos e na produção de conteúdo jurídico e científico.</li>
-              </ul></section>
-            <section class="cvi-sec"><h2 class="cvi-tit" data-ic="⚖">Áreas de atuação</h2>
-              <div class="cvi-areas">${AREAS_CV.map(a => `<a class="cvi-area" href="${a[1]}">${a[2]}<span>${a[0]}</span></a>`).join('')}</div></section>
-            <section class="cvi-sec"><h2 class="cvi-tit" data-ic="📚">Produção acadêmica</h2>
+
+            <section class="cvi-sec" data-cv-sec="experiencia"><h2 class="cvi-tit" data-ic="💼">Experiência profissional e jurídica</h2>
+              <div class="cvi-cards3">
+                <article class="cvi-card cvi-it"><small>Atual · OAB/SP</small><b>Advocacia autônoma</b><em>Prática contenciosa e consultiva</em><span>Atuação contenciosa e consultiva nas áreas Trabalhista, Previdenciária, Tributária, Penal, Administrativa e Civil Empresarial, com foco na defesa técnica e estratégica.</span><u>Exercício da Advocacia</u></article>
+                <article class="cvi-card cvi-it"><small>2016 – Atual · Celetista · 24h/sem</small><b>Tutor de Educação a Distância (EAD)</b><em>Universidade Paulista (UNIP)</em><span>Suporte acadêmico especializado, orientação pedagógica e correção de atividades, trabalhos e avaliações no curso superior de Tecnologia em Logística.</span><u>Docência e orientação acadêmica</u></article>
+                <article class="cvi-card cvi-it"><small>2020 · Estágio jurídico</small><b>Estagiário de Direito</b><em>Tribunal Regional Federal da 3ª Região (TRF3)</em><span>Vivência institucional na Justiça Federal, auxiliando em rotinas processuais, análise de autos e suporte técnico-jurídico no âmbito federal.</span><u>Justiça Federal · 3ª Região</u></article>
+              </div>
+              <details class="cvi-hist"><summary>Ver experiências corporativas anteriores (2006–2014) <small>— histórico completo do Currículo Lattes</small></summary>
+                <div class="cvi-cards3 dois">
+                  <article class="cvi-card cvi-it"><small>2013 – 2014 · Dedicação exclusiva · 44h</small><b>Lopes Imobiliária S.A. (LPS Brasil)</b><em>Cargo: Vendedor / Consultor Imobiliário</em><span>Atendimento consultivo ao cliente com foco na análise de perfil, negociação e realização de vendas de apartamentos e empreendimentos imobiliários.</span></article>
+                  <article class="cvi-card cvi-it"><small>2006 – 2012 · Vínculo celetista · 44h</small><b>Wal Mart Brasil Ltda.</b><em>Atendimento Foto Center, Repositor e Operador de Caixa</em><span>Trajetória progressiva (2006–2012): atendimento ao público, gestão de metas e relatórios, controle de estoque, operação de sistemas de caixa e coordenação de rotina operacional no departamento.</span></article>
+                </div></details></section>
+
+            <section class="cvi-sec" data-cv-sec="atuacao"><h2 class="cvi-tit" data-ic="⚖">Áreas de atuação</h2>
+              <div class="cvi-areas">${AREAS_CV.map(a => `<a class="cvi-area cvi-it" href="${a[2]}">${a[3]}<span>${a[0]}</span><small>${a[1]}</small></a>`).join('')}</div></section>
+
+            <section class="cvi-sec" data-cv-sec="producao"><h2 class="cvi-tit" data-ic="📚">Produção acadêmica e congressos</h2>
               <div class="cvi-prod">
-                <div><b>Artigos e publicações</b><span>Artigo aceito para publicação no INTERCOM (2026): A desinformação midiática e a judicialização da saúde.</span></div>
-                <div><b>Pesquisas e estudos</b><span>Licenciamento compulsório da patente; limbo jurídico previdenciário e trabalhista; mídia digital e medicamentos.</span></div>
-                <div><b>Apresentações em congressos</b><span>Seminário (2024): Licenciamento compulsório da patente.</span></div>
-                <div><b>Projeto de ensino</b><span>Coordenação na UNIP (2015–2021) sobre a responsabilidade indenizatória no âmbito da Previdência Social.</span></div>
-              </div></section>
-            <section class="cvi-sec"><h2 class="cvi-tit" data-ic="🎤">Congressos e eventos</h2>
-              <p style="margin:0 0 8px;text-align:justify;">Participação em eventos acadêmicos de relevância nacional e internacional, com apresentações sobre mídia, comunicação, direito e sociedade, destacando-se:</p>
-              <ul class="cvi-lista"><li>29º Seminário Acadêmico Internacional APEC · Barcelona, Espanha (2026)</li><li>26º Encontro GP · Intercom (2026)</li><li>Outros eventos acadêmicos e científicos.</li></ul></section>
-            <div class="cvi-completo"><h2 class="cvi-tit" data-ic="📄">Currículo completo</h2>${completo}</div>
-            <div class="cvi-rodape"><em>Um perfil que une a prática jurídica à pesquisa acadêmica.</em><div class="cvi-chips"><a class="cvi-chip" href="#equipe">Conheça a equipe</a><a class="cvi-chip" href="#agendar">Agende sua consulta</a></div></div>
+                <div class="cvi-it"><b>Artigos e publicações</b><span>Artigo publicado nos anais do <strong>INTERCOM (2026)</strong> — <em>“A desinformação midiática e a judicialização da saúde”</em>.</span></div>
+                <div class="cvi-it"><b>Pesquisas e estudos</b><span>Licenciamento compulsório de patente; limites jurídicos previdenciários e trabalhistas; mídia digital e medicamentos (GLP-1).</span></div>
+                <div class="cvi-it"><b>Apresentações em congressos</b><span>Seminário (<strong>2024</strong>) sobre licenciamento compulsório de patente; apresentação científica no <strong>INTERCOM (2026)</strong>.</span></div>
+                <div class="cvi-it"><b>Projeto de ensino</b><span>Coordenação na <strong>UNIP (2015–2016)</strong> sobre a responsabilidade indenizatória no âmbito da Previdência Social.</span></div>
+              </div>
+              <div class="cvi-it cvi-cong"><b>Congressos e eventos</b><span>Participação ativa em encontros acadêmicos de relevância nacional e internacional, com debates sobre mídia, comunicação, direito e sociedade:</span>
+                <ul class="cvi-lista"><li>34º Seminário Acadêmico Internacional APEC — Barcelona, Espanha (2026)</li><li>38º Encontro GP – Intercom (2026)</li></ul></div></section>
+            ${completoEditado}
+            <div class="cvi-rodape"><em>“Uma trajetória que une a prática jurídica à pesquisa acadêmica.”</em><div class="cvi-chips"><a class="cvi-chip" href="#equipe">Conheça a equipe</a><a class="cvi-chip" href="#agendar">Agende sua consulta</a></div></div>
+            <p class="cvi-impressao">Dr. Israel Donizete da Silva — Advogado (OAB/SP 528.153) · Documento gerado a partir do currículo digital oficial</p>
           </div>
         </div>`;
+      // abas e busca
+      const raizCv = detalheConteudo.querySelector('.cvi');
+      const abasCv = [...raizCv.querySelectorAll('[data-cvtab]')], buscaCv = raizCv.querySelector('#cviBusca'), nadaCv = raizCv.querySelector('#cviNada');
+      const semAcento = (s) => String(s || '').normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase();
+      function filtrarCv(){
+        const aba = (abasCv.find(b => b.classList.contains('on')) || {}).dataset.cvtab || 'all', q = semAcento(buscaCv.value.trim());
+        let achou = 0;
+        raizCv.querySelectorAll('[data-cv-sec]').forEach(sec => {
+          const naAba = aba === 'all' || sec.dataset.cvSec === aba;
+          const itens = [...sec.querySelectorAll('.cvi-it')];
+          let visiveis = 0;
+          itens.forEach(it => { const ok = !q || semAcento(it.textContent).includes(q); it.hidden = !ok; if (ok) visiveis++; });
+          const mostrar = naAba && (!q || visiveis > 0 || (!itens.length && semAcento(sec.textContent).includes(q)));
+          sec.hidden = !mostrar; if (mostrar) achou++;
+          if (q && mostrar) sec.querySelectorAll('details').forEach(d => { d.open = true; });
+        });
+        nadaCv.hidden = achou > 0;
+      }
+      abasCv.forEach(b => b.addEventListener('click', () => { abasCv.forEach(x => x.classList.toggle('on', x === b)); filtrarCv(); }));
+      buscaCv.addEventListener('input', filtrarCv);
+      raizCv.querySelector('#cviLimpar').addEventListener('click', () => { buscaCv.value = ''; abasCv.forEach(x => x.classList.toggle('on', x.dataset.cvtab === 'all')); filtrarCv(); });
       const bp = document.getElementById('cviPdf'); if (bp) bp.addEventListener('click', () => window.print());
       return;
     }
@@ -2997,7 +3103,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
           <h2>Artigos e recursos da 1ª fase</h2>
           <p class="servico-intro" style="margin:0;">Leia os artigos publicados pelo Dr. Israel sobre a prova e use os recursos disponibilizados para protocolar no site da FGV.</p>
         </div>
-        <a class="btn btn-gold" href="#blog-todos">Ver artigos</a>
+        <a class="btn btn-gold" href="#blog-todos-recursos1fase">Ver artigos e recursos</a>
       </div>` : ''}
 
       ${chave === 'oab-2fase' ? `
@@ -3253,9 +3359,10 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     artigos.sort((a, b) => new Date(b.data_publicacao || b.criado_em) - new Date(a.data_publicacao || a.criado_em));
 
     // Ordem fixa das abas: Todos, Artigos científicos, Trabalho, Previdenciário, Notícias
-    const ORDEM_BLOG = ['artigos', 'trabalhista', 'previdenciario', 'civil', 'tributario', 'penal', 'administrativo', 'empresarial', 'noticias'];
+    const ORDEM_BLOG = ['recursos1fase', 'artigos', 'trabalhista', 'previdenciario', 'civil', 'tributario', 'penal', 'administrativo', 'empresarial', 'noticias'];
     const presentes = new Set(artigos.map(a => a.categoria));
-    const categoriasPresentes = ['todos', ...ORDEM_BLOG.filter(c => presentes.has(c)), ...[...presentes].filter(c => !ORDEM_BLOG.includes(c))];
+    // "Recursos de 1ª fase" aparece sempre, mesmo antes do primeiro artigo ser publicado
+    const categoriasPresentes = ['todos', ...ORDEM_BLOG.filter(c => c === 'recursos1fase' || presentes.has(c)), ...[...presentes].filter(c => !ORDEM_BLOG.includes(c))];
     // Se veio de um link de categoria específica (ex: dropdown do menu Blog)
     // mas essa categoria não tem nenhum artigo ainda, cai de volta pra "todos".
     const filtroInicial = (categoriaInicial && categoriasPresentes.includes(categoriaInicial))
@@ -3292,7 +3399,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       const grid = document.getElementById('blogTodosGrid');
       grid.innerHTML = pagina.length
         ? pagina.map(montarCard).join('')
-        : `<p style="color:var(--ink-soft);grid-column:1/-1;">${buscaAtual ? 'Nenhum artigo encontrado para essa busca.' : 'Nenhum artigo nessa categoria ainda.'}</p>`;
+        : `<p style="color:var(--ink-soft);grid-column:1/-1;">${buscaAtual ? 'Nenhum artigo encontrado para essa busca.' : (filtroAtual === 'recursos1fase' ? 'Os artigos e recursos da 1ª fase serão publicados aqui.' : 'Nenhum artigo nessa categoria ainda.')}</p>`;
       const pag = document.getElementById('blogPaginacao');
       pag.innerHTML = totalPaginas > 1 ? `
         <button class="pag-btn" data-pag="${paginaAtual - 1}" ${paginaAtual === 1 ? 'disabled' : ''} aria-label="Página anterior">‹</button>
@@ -3304,6 +3411,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       ${BOTAO_VOLTAR}
       <span class="detalhe-kicker">BLOG</span>
       <h1 class="detalhe-titulo" style="margin-bottom:28px;">Todos os artigos</h1>
+      <div class="blog-recursos1fase"><div><h2>Artigos e Recursos de 1ª fase</h2><p>Leia os artigos do Dr. Israel sobre a prova e use os recursos disponibilizados para protocolar no site da FGV.</p></div><a class="btn btn-gold" href="#blog-todos-recursos1fase" data-rec1>Acessar recursos de 1ª fase</a></div>
       ${htmlCaixaBusca('buscaBlog', 'Buscar artigos...')}
       <div class="shop-tabs" id="blogTodosTabs">
         ${categoriasPresentes.map(c => `<button class="shop-tab${c === filtroInicial ? ' active' : ''}" data-cat="${c}">${c === 'todos' ? 'Todos' : (CATEGORIA_LABEL[c] || c)}</button>`).join('')}
@@ -3321,6 +3429,12 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       document.getElementById('blogTodosTabs').scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
 
+    const rec1 = detalheConteudo.querySelector('[data-rec1]');
+    if (rec1) rec1.addEventListener('click', (e) => {
+      e.preventDefault();
+      const t = document.querySelector('#blogTodosTabs .shop-tab[data-cat="recursos1fase"]'); if (t) t.click();
+      const g = document.getElementById('blogTodosTabs'); if (g) g.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
     document.getElementById('blogTodosTabs').addEventListener('click', (e) => {
       const btn = e.target.closest('.shop-tab');
       if (!btn) return;
@@ -3505,7 +3619,8 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
           const res = await fetch(`${API_URL}/parceiros/esqueci-senha`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email: document.getElementById('parcEsqEmail').value.trim() }) });
           const d = await res.json().catch(() => null);
           if (!res.ok) throw new Error((d && d.erro) || 'Não foi possível enviar agora.');
-          m.textContent = 'Se este e-mail estiver cadastrado como parceiro, o link já foi enviado. Confira a caixa de entrada e o spam.';
+          m.textContent = (d && d.mensagem) || 'Se este e-mail estiver cadastrado como parceiro, o link foi enviado. Confira a caixa de entrada e o spam.';
+          if (d && d.email_ativo === false) m.className = 'portal-msg erro';
         }catch(err){ m.className = 'portal-msg erro'; m.textContent = err.message; }
         b.disabled = false;
       });
@@ -4422,16 +4537,16 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
         ${l.length ? `<div style="text-align:right;"><span class="compra-meta">Em aberto</span><div style="font-family:'Fraunces',serif;color:var(--gold-light);font-size:1.5rem;">${formatPreco(aberto)}</div></div>` : ''}
       </div>
       ${prev.map(p => `<div class="compra-item" style="flex-direction:column;align-items:stretch;gap:10px;"><div>
-          <span class="carrinho-item-tag">HONORÁRIOS PREVISTOS · ${escapeHtml(p.numero ? 'PROCESSO ' + p.numero : (p.tipo_demanda || 'SEU CASO').toUpperCase())}</span>
-          <h4>${escapeHtml(p.tipo_demanda || 'Honorários do seu caso')}</h4>
-          <span class="compra-meta">${formatPreco(p.honorarios)} · valor combinado com o escritório. A cobrança é gerada pelo escritório; você já pode informar como prefere pagar.</span></div>
+          <span class="carrinho-item-tag">HONORÁRIOS ADVOCATÍCIOS${p.numero ? ' · PROCESSO ' + escapeHtml(p.numero) : ''}</span>
+          <h4>Pagamento de honorários advocatícios</h4>
+          <span class="compra-meta">${formatPreco(p.honorarios)} · valor combinado com o escritório. Escolha abaixo a forma de pagamento.</span></div>
           ${botoes('p', Number(p.id), null)}</div>`).join('')}
       ${l.map(c => {
         const pend = c.status === 'pendente';
         const rot = pend ? (c.atrasada ? 'Em atraso' : 'Em aberto') : 'Pago', cls = pend ? (c.atrasada ? 'cancelado' : 'aguardando_pagamento') : 'concluido';
         return `<div class="compra-item" style="flex-direction:column;align-items:stretch;gap:10px;"><div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:flex-start;"><div>
-            <span class="carrinho-item-tag">HONORÁRIOS · COBRANÇA #${Number(c.id)}</span>
-            <h4>${escapeHtml(c.descricao)}</h4>
+            <span class="carrinho-item-tag">HONORÁRIOS ADVOCATÍCIOS · COBRANÇA #${Number(c.id)}</span>
+            <h4>Pagamento de honorários advocatícios</h4>
             <span class="compra-meta">${formatPreco(c.valor)}${c.vencimento && pend ? ' · vence em ' + dt(c.vencimento) : ''}${!pend && c.pago_em ? ' · pago em ' + dt(c.pago_em) : ''}${pend && c.max_parcelas > 1 ? ` · cartão em até ${Number(c.max_parcelas)}x` : ''}${pend && c.forma_escolhida ? ` · você escolheu: ${escapeHtml(FORMAS_ROT[c.forma_escolhida] || c.forma_escolhida)}` : ''}</span>
           </div><span class="prov-status ${cls}">${rot}</span></div>
           ${pend ? botoes('c', Number(c.id), c) : ''}</div>`;
@@ -4447,7 +4562,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     alvo.querySelectorAll('.pag-formas').forEach(box => box.addEventListener('click', (e) => {
       const b = e.target.closest('button[data-forma]'); if (!b) return;
       const forma = b.dataset.forma, det = box.querySelector('.pag-detalhe'), item = box.dataset.item;
-      box.querySelectorAll('button[data-forma]').forEach(x => x.classList.toggle('btn-gold', x === b));
+      box.querySelectorAll('button[data-forma]').forEach(x => x.classList.toggle('sel', x === b));
       const info = forma === 'pix'
         ? (cfg.pix_chave ? `<p style="margin:0 0 6px;"><b>Chave PIX:</b> <span id="pixChave-${item}">${escapeHtml(cfg.pix_chave)}</span> <button type="button" class="link-btn" data-copiar="${escAttr(cfg.pix_chave)}">Copiar</button></p>${cfg.pix_favorecido ? `<p style="margin:0 0 6px;"><b>Favorecido:</b> ${escapeHtml(cfg.pix_favorecido)}</p>` : ''}<p style="margin:0 0 8px;font-size:.88rem;">Depois de pagar, clique em confirmar para avisar o escritório.</p>` : '<p style="margin:0 0 8px;">O escritório vai te enviar a chave PIX. Clique em confirmar para avisar que prefere esta forma.</p>')
         : `<p style="margin:0 0 8px;">${escapeHtml(forma === 'dinheiro' ? (cfg.texto_dinheiro || '') : forma === 'cartao' ? (cfg.texto_cartao || '') : (cfg.texto_boleto || ''))}</p>`;
@@ -4734,8 +4849,8 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
             </div>
             <div class="prov-escolha" id="escolha-${p.id}">
               <b>Qual serviço você quer contratar?</b>
-              <label><input type="radio" name="modal-${p.id}" value="analise" checked data-rot="${escAttr(rotuloAnalise)}"> <span><b>Serviço 1 — Análise de viabilidade</b>${cobra ? ' · ' + formatPreco(cfg.valor_analise) : ''}<small>O Dr. Israel avalia se cabe recurso. Se for viável, você contrata o Provimento depois.</small></span></label>
-              <label><input type="radio" name="modal-${p.id}" value="minuta" data-rot="${escAttr(rotuloMinuta)}"> <span><b>Serviço 2 — Provimento (elaboração do recurso)</b>${cobraM ? ' · ' + formatPreco(cfg.valor_minuta) : ''}<small>Contratação direta: o recurso é elaborado sem a etapa de análise de viabilidade.</small></span></label>
+              <label><input type="radio" name="modal-${p.id}" value="analise" checked data-rot="${escAttr(rotuloAnalise)}"> <span><b>Serviço 1 — Análise de viabilidade</b>${cobra ? ' · ' + formatPreco(cfg.valor_analise) : ''}<small>O Dr. Israel analisa a sua prova e informa se há fundamento para recurso. A resposta chega na área do aluno e por e-mail. Se for viável, você contrata o Provimento depois.</small></span></label>
+              <label><input type="radio" name="modal-${p.id}" value="minuta" data-rot="${escAttr(rotuloMinuta)}"> <span><b>Serviço 2 — Provimento (elaboração do recurso)</b>${cobraM ? ' · ' + formatPreco(cfg.valor_minuta) : ''}<small>Elaboração do recurso. Contratação direta, sem a análise de viabilidade. O recurso pronto fica na área do aluno e chega por e-mail; o protocolo na FGV é feito por você.</small></span></label>
             </div>
             <label class="prov-termos"><input type="checkbox" id="termos-${p.id}"> <span>Li e aceito os <a href="#" data-acao="ver-termos" data-prov="${p.id}">termos do serviço</a>.</span></label>
             <div class="prov-termos-texto" id="termosTexto-${p.id}" hidden>${escapeHtml(cfg.termos)}</div>
@@ -4745,6 +4860,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
               <button class="mini-acao" data-acao="descartar" data-prov="${p.id}">Descartar</button>
               <span class="portal-msg" id="provMsg-${p.id}"></span>
             </div>
+            <p class="prov-ajuda prov-ajuda-pag">Pagamento pelo Mercado Pago (Pix, cartão ou boleto). Se o Mercado Pago não deixar concluir (por exemplo, ao pagar com a mesma conta Mercado Pago do escritório), chame no <a href="https://wa.me/5511975751984?text=Ol%C3%A1!%20Tive%20problema%20para%20pagar%20no%20site." target="_blank" rel="noopener">WhatsApp</a>: confirmamos o pagamento por Pix e liberamos o serviço.</p>
             ${feitos < total ? `<p class="prov-ajuda">O botão de pagamento libera quando todos os campos tiverem arquivo. Depois de enviar, não dá mais para trocar os arquivos. Escolhendo o Serviço 1, o pagamento é só da análise de viabilidade; o Provimento é contratado depois, se o recurso for viável.</p>` : ''}`
           : `
             ${blocoEtapa(p, cfg)}
@@ -4760,13 +4876,13 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
           <span class="sel">Serviço 1 — comece por aqui</span>
           <h4>Análise de viabilidade</h4>
           ${Number(cfg.valor_analise) > 0 ? `<span class="preco">${formatPreco(cfg.valor_analise)}</span>` : ''}
-          <p>Você envia a prova e o Dr. Israel avalia se cabe recurso. O resultado chega aqui e no seu e-mail.</p>
+          <p>Você envia a prova e o Dr. Israel analisa se há fundamento para recurso. A resposta chega aqui, na área do aluno, e no seu e-mail.</p>
         </div>
         <div class="prov-serv s2">
           <span class="sel">Serviço 2 — depois, ou direto</span>
           <h4>Provimento (elaboração do recurso)</h4>
           ${Number(cfg.valor_minuta) > 0 ? `<span class="preco">${formatPreco(cfg.valor_minuta)}</span>` : ''}
-          <p>Você pode contratar depois da análise (se o recurso for viável) ou escolher este serviço direto ao enviar a prova. O recurso pronto fica aqui e chega no seu e-mail.</p>
+          <p>É a elaboração do recurso. Você contrata depois da análise (se for viável) ou direto, ao enviar a prova. O recurso pronto fica aqui e chega no seu e-mail. O protocolo na FGV é feito por você.</p>
         </div>
       </div>`;
 
@@ -5259,7 +5375,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     empresarial: ['Direito Empresarial', 'situacao_empresarial', 'Ex.: preciso revisar um contrato da minha empresa…'],
     assessoria: ['Assessoria jurídica', 'situacao_assessoria', 'Ex.: quero uma consultoria jurídica para a minha empresa…'],
   };
-  const CASO_CAMPOS = (ph) => [C_NOME, C_TEL, { n: 'email', l: 'E-mail', t: 'email' }, { n: 'mensagem', l: 'Conte o seu caso', t: 'textarea', req: 1, full: 1, rows: 8, max: 5000, ph }];
+  const CASO_CAMPOS = (ph) => [C_NOME, C_TEL, { n: 'email', l: 'E-mail', t: 'email', full: 1 }, { n: 'mensagem', l: 'Conte o seu caso', t: 'textarea', req: 1, full: 1, rows: 8, max: 5000, ph }];
   function casoForm(area, id){ const a = AREAS_CASO[area]; return formContato(id, a[1], CASO_CAMPOS(a[2]), 'Enviar'); }
   function ligarCaso(id){ ligarFormContato(id, CASO_CAMPOS(''), { ok: 'Recebemos seu relato. Um advogado retornará em breve.' }); }
   function formContato(id, tipo, campos, botao, opts = {}){
@@ -5485,7 +5601,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
 
   // Formulário "Agende sua consulta"
   function formAgendar(id){
-    const campos = [C_NOME, C_EMAIL, C_TEL, { n: 'area', l: 'Assunto', t: 'select', opts: ['Direito do Trabalho', 'Direito Previdenciário', 'OAB / Provimento', 'Assessoria jurídica', 'Outro'] },
+    const campos = [C_NOME, C_EMAIL, C_TEL, { n: 'area', l: 'Assunto', t: 'select', opts: ['Direito do Trabalho', 'Direito Previdenciário', 'Direito Civil', 'Direito Penal', 'Direito Tributário', 'Direito Administrativo', 'Direito Empresarial', 'OAB / Provimento', 'Assessoria jurídica', 'Outro'] },
       { n: 'data', l: 'Data preferida', t: 'date', req: 1 }, { n: 'hora', l: 'Horário preferido', t: 'select', opts: ['09:00', '10:00', '11:00', '13:00', '14:00', '15:00', '16:00'] },
       { n: 'modalidade', l: 'Modalidade', t: 'select', opts: ['Online (vídeo)', 'Presencial'] }, { n: 'mensagem', l: 'Mensagem (opcional)', t: 'textarea', full: 1, rows: 3 }];
     return formContato(id, 'consulta', campos, 'Solicitar agendamento');
@@ -5546,8 +5662,20 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
       ${(window.PAGINAS_EXTRAS || []).filter(p => p.no_menu).map(p => `<li><a href="#pagina-${escAttr(p.slug)}">${escapeHtml(p.titulo)}</a></li>`).join('')}</ul>
       ${(c.links_uteis || []).length ? `<h5 style="margin-top:22px;">LINKS ÚTEIS</h5><ul>${c.links_uteis.map(l => `<li><a href="${escAttr(l.url)}" target="_blank" rel="noopener">${escapeHtml(l.nome)}</a></li>`).join('')}</ul>` : ''}`;
     grid.insertBefore(col, faixa || null);
-    let rd = document.getElementById('footerRedesCol'); if (rd) rd.remove();
-    if (r && faixa){ rd = document.createElement('div'); rd.className = 'footer-col'; rd.id = 'footerRedesCol'; rd.innerHTML = `<h5>REDES</h5><div class="footer-redes">${r}</div>`; faixa.appendChild(rd); }
+    const rd = document.getElementById('footerRedesCol'); if (rd) rd.remove();
+    const soc = document.getElementById('footerSocial');
+    if (soc){
+      const ICONES = {
+        instagram: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>',
+        facebook: '<path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>',
+        linkedin: '<path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>',
+        youtube: '<path d="M22.5 6.4a2.8 2.8 0 0 0-1.9-2C18.9 4 12 4 12 4s-6.9 0-8.6.5a2.8 2.8 0 0 0-1.9 2A29 29 0 0 0 1 11.8a29 29 0 0 0 .5 5.3 2.8 2.8 0 0 0 1.9 2c1.7.5 8.6.5 8.6.5s6.9 0 8.6-.5a2.8 2.8 0 0 0 1.9-2 29 29 0 0 0 .5-5.3 29 29 0 0 0-.5-5.4z"/><polygon points="9.8 15 15.5 11.8 9.8 8.5 9.8 15"/>',
+        tiktok: '<path d="M9 12a4 4 0 1 0 4 4V3a5 5 0 0 0 5 5"/>'
+      };
+      const ordem = ['instagram', 'facebook', 'linkedin', 'youtube', 'tiktok'].filter(k => redes[k]);
+      soc.hidden = !ordem.length;
+      soc.innerHTML = ordem.length ? `<h5>Siga-nos nas redes sociais</h5><div class="footer-social-ico">${ordem.map(k => `<a href="${escAttr(redes[k])}" target="_blank" rel="noopener" aria-label="${nomes[k]}" title="${nomes[k]}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONES[k]}</svg></a>`).join('')}</div>` : '';
+    }
   }
   // Menu: novos itens, páginas extras e publicações
   async function menuExtras(c){
@@ -5572,7 +5700,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
   // ---------- Busca no site e idiomas ----------
   const PAGINAS_BUSCA = [
     ['Direito do Trabalho', '#trabalhista'], ['Direito Previdenciário', '#previdenciario'], ['Direito Civil', '#civil'], ['Direito Tributário', '#tributario'], ['Direito Penal', '#penal'], ['Direito Administrativo', '#administrativo'], ['Direito Empresarial', '#empresarial'], ['Assessoria jurídica', '#assessoria'], ['Advocacia Trabalhista Empresarial', '#trabalhista-empresarial'], ['Escritórios parceiros', '#escritorios-parceiros'], ['Profissionais parceiros', '#profissionais-parceiros'], ['Área do cliente', '#cliente'], ['Meus serviços (fase do serviço)', '#portal-servicos'], ['Pagar honorários', '#portal-honorarios'], ['Área do advogado parceiro', '#parceiros'],
-    ['OAB 1ª fase', '#oab-1fase'], ['OAB 2ª fase — Provimento', '#oab-2fase'], ['Ouvidoria (recurso ao Conselho Federal da OAB)', '#ouvidoria'], ['Livros', '#livros-todos'], ['Cursos', '#cursos-todos'],
+    ['OAB 1ª fase', '#oab-1fase'], ['Recursos de 1ª fase (artigos)', '#blog-todos-recursos1fase'], ['OAB 2ª fase — Provimento', '#oab-2fase'], ['Ouvidoria (recurso ao Conselho Federal da OAB)', '#ouvidoria'], ['Livros', '#livros-todos'], ['Cursos', '#cursos-todos'],
     ['Vídeos e Podcast', '#midias'], ['Currículo do Dr. Israel Donizete da Silva', '#curriculo'], ['Perguntas frequentes (FAQ)', '#faq'], ['Agende sua consulta', '#agendar'], ['Declaração de gratuidade de justiça', '#declaracao-gratuidade'], ['Procuração', '#procuracao'], ['Profissionais', '#equipe'], ['Agenda do escritório', '#programacao'], ['Proposta de acordo', '#acordo'], ['Atualize seus dados cadastrais', '#atualizar-dados'], ['Canal de denúncia', '#denuncia'], ['Sugestões e reclamações', '#sugestoes'],
     ['Oportunidades de emprego', '#vagas'], ['Trabalhe conosco (enviar currículo)', '#trabalhe-conosco'], ['Seja parceiro', '#seja-parceiro'], ['Contrato de honorários', '#contrato'], ['Enviar documentos', '#enviar-documentos'],
     ['Política de Privacidade', '#privacidade'], ['Segurança de dados', '#seguranca'], ['Termos de uso', '#termos'], ['Onde estamos (endereços e mapa)', '#filiais'], ['Prêmios e reconhecimentos', '#premios'], ['Informativos e e-books', '#informativos'], ['Área do aluno', '#portal'], ['Acompanhar meu processo', '#portal-processos'],
