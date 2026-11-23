@@ -1607,7 +1607,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
   @media (max-width:560px){ .dest-cursos{padding:20px 16px 24px;} .dest-card{flex-basis:70%;} }
 
 /* ---------- ABERTURA CINEMATOGRÁFICA (ponte estaiada em camadas) ---------- */
-.hero.com-cena{min-height:min(100svh,940px);display:flex;align-items:center;padding:112px 0 128px;isolation:isolate;}
+.hero.com-cena{min-height:min(100svh,940px);display:flex;align-items:center;padding:56px 0 186px;isolation:isolate;}
 .hero.com-cena::before,.hero.com-cena .hero-watermark{display:none;}
 .hero.com-cena > .container{width:100%;}
 .cena{position:absolute;inset:0;z-index:0;overflow:hidden;background:#14262F;pointer-events:none;
@@ -1640,7 +1640,7 @@ body.hero-pronto .cena-rolar{opacity:1;}
 .cena-rolar:hover{border-color:#AD815B;}
 .cena-rolar span{position:absolute;left:50%;top:8px;width:4px;height:8px;margin-left:-2px;border-radius:3px;background:#AD815B;animation:cenaRolar 2.2s ease-in-out infinite;}
 @keyframes cenaRolar{0%{transform:translateY(0);opacity:0;}25%{opacity:1;}70%{transform:translateY(14px);opacity:0;}100%{opacity:0;}}
-@media (max-width:980px){ .hero.com-cena{padding:104px 0 112px;} .cena-veu{background:linear-gradient(180deg,rgba(20,38,47,.78) 0%,rgba(20,38,47,.6) 55%,var(--navy-deep) 100%);} }
+@media (max-width:980px){ .hero.com-cena{padding:80px 0 128px;} .cena-veu{background:linear-gradient(180deg,rgba(20,38,47,.78) 0%,rgba(20,38,47,.6) 55%,var(--navy-deep) 100%);} }
 @media (max-width:600px){ .cena-rolar{display:none;} .cena-camada{inset:-6%;} }
 @media (prefers-reduced-motion:reduce){
   .cena-camada svg,.cena-luz,.cena-camada .brilho path,.cena-rolar span{animation:none !important;}
@@ -1679,6 +1679,23 @@ body.hero-pronto .cena.video-ok .hero-video video{animation:videoEntra 3.6s cubi
 .hero.com-cena::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;z-index:1;background:linear-gradient(90deg,transparent,rgba(211,174,132,.55),transparent);pointer-events:none;}
 @media (max-width:700px){ .hero-video{--vid-pos:60% 50%;inset:-1%;} .hero-video video{transform:scale(1.03);} @keyframes videoEntra{from{transform:scale(1.12);}to{transform:scale(1.03);}} }
 @media (prefers-reduced-motion:reduce){ .hero-video{display:none;} }
+
+/* v35: parcelamento no cartão (livros, cursos e carrinho) */
+.carrinho-resumo .price{color:var(--gold-light);}
+.parc-info{display:block;color:var(--gold-light);font-size:.78rem;font-weight:600;margin-top:2px;line-height:1.3;}
+.carrinho-item-right .parc-info{text-align:right;margin:0 0 6px;}
+.carrinho-formas{margin:14px 0 6px;padding:12px 14px;border:1px solid var(--navy-line);border-radius:10px;background:rgba(255,255,255,.03);font-size:.88rem;color:var(--cream-2);}
+.carrinho-formas b{color:var(--cream);display:block;margin-bottom:6px;font-size:.92rem;}
+.carrinho-formas ul{list-style:none;margin:0 0 8px;padding:0;display:grid;gap:3px;}
+.carrinho-formas li::before{content:"✓ ";color:var(--gold-light);}
+.carrinho-formas small{display:block;font-size:.76rem;opacity:.85;line-height:1.4;}
+
+.hon-simula{margin-top:8px;padding:16px 18px;border:1px solid var(--navy-line);border-radius:12px;background:rgba(255,255,255,.03);}
+.hon-simula-grade{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;}
+.hon-simula label{display:block;font-size:.8rem;font-weight:600;color:var(--gold-light);}
+.hon-simula select,.hon-simula input,.hon-simula textarea{display:block;width:100%;margin-top:5px;padding:10px 12px;border-radius:8px;border:1px solid var(--navy-line);background:var(--navy-deep);color:var(--cream);font:400 .95rem 'Source Sans 3',sans-serif;}
+.hon-simula select:focus,.hon-simula input:focus,.hon-simula textarea:focus{outline:2px solid var(--gold-light);outline-offset:1px;}
+.hon-simula-resumo{margin:12px 0 0;color:var(--cream);font-size:.92rem;min-height:1.3em;}
 </style>
 </head>
 <body>
@@ -2395,6 +2412,11 @@ body.hero-pronto .cena.video-ok .hero-video video{animation:videoEntra 3.6s cubi
     const n = Number(valor);
     return n.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
   }
+  // Parcelamento no cartão (feito pelo Mercado Pago, em até 12x; parcela mínima de cerca de R$ 5)
+  const PARCELAS_MAX = 12;
+  function parcelasDe(valor){ return Math.max(1, Math.min(PARCELAS_MAX, Math.floor(Number(valor) / 5))); }
+  function infoParcela(valor){ const n = parcelasDe(valor); return n >= 2 ? `ou em até ${n}x no cartão de crédito` : ''; }
+
 
   // Descrição de livro/curso: texto puro, ou HTML (feito no editor do painel).
   function descTexto(item){
@@ -3765,7 +3787,7 @@ body.hero-pronto .cena.video-ok .hero-video video{animation:videoEntra 3.6s cubi
         ? `<div class="detalhe-corpo artigo-html">${limparHtmlArtigo(item.descricao)}</div>`
         : `<div class="detalhe-corpo">${escapeHtml(item.descricao || 'Descrição em preparação.')}</div>`}
       <div class="detalhe-compra">
-        <span class="price">${formatPreco(item.preco)}</span>
+        <span class="price">${formatPreco(item.preco)}${infoParcela(item.preco) ? `<small class="parc-info">${infoParcela(item.preco)}</small>` : ''}</span>
         ${tipo === 'livro'
           ? (externo ? `<a class="btn btn-gold" href="${escAttr(externo)}" target="_blank" rel="noopener sponsored">${escapeHtml(rotuloLoja(item))} ↗</a>` : '')
           : (cursoAfiliado ? `<a class="btn btn-gold" href="${escAttr(cursoAfiliado)}" target="_blank" rel="noopener sponsored">Fazer a inscrição e o pagamento ↗</a>` : `<button class="btn btn-gold" id="btnAddCarrinho" ${jaNoCarrinho ? 'disabled' : ''}>${jaNoCarrinho ? 'Já está no carrinho ✓' : 'Adicionar ao carrinho'}</button>`)}
@@ -3937,7 +3959,7 @@ body.hero-pronto .cena.video-ok .hero-video video{animation:videoEntra 3.6s cubi
             ${autor ? `<span class="lv-autor">Por ${escapeHtml(autor)}</span>` : ''}
             <p>${escapeHtml(descTexto(item))}</p>
             <div class="lv-pe">
-              <div class="lv-preco"><b>${formatPreco(item.preco)}</b>${nota ? `<small>${escapeHtml(nota)}</small>` : ''}</div>
+              <div class="lv-preco"><b>${formatPreco(item.preco)}</b>${infoParcela(item.preco) ? `<small class="parc-info">${infoParcela(item.preco)}</small>` : ''}${nota ? `<small>${escapeHtml(nota)}</small>` : ''}</div>
               ${externo
                 ? `<a class="lv-btn" href="${escAttr(externo)}" target="_blank" rel="noopener sponsored">${escapeHtml(rotulo)} <span aria-hidden="true">→</span></a>`
                 : `<button type="button" class="lv-btn" data-abrir="${item.id}">${rotulo} <span aria-hidden="true">→</span></button>`}
@@ -3981,7 +4003,7 @@ body.hero-pronto .cena.video-ok .hero-video video{animation:videoEntra 3.6s cubi
                 <div class="dest-capa">${it.capa_url ? `<img src="${escAttr(it.capa_url)}" alt="${escAttr(it.titulo)}" loading="lazy">` : `<div class="dest-semcapa">${ICON_COURSE}</div>`}</div>
                 <div class="dest-corpo"><span class="dest-cat">${escapeHtml(CATEGORIA_LABEL[it.categoria] || it.categoria)}</span><h3>${escapeHtml(it.titulo)}</h3>
                   ${info ? `<span class="dest-info">${escapeHtml(info)}</span>` : ''}
-                  <b class="dest-preco">${formatPreco(it.preco)}</b>
+                  <b class="dest-preco">${formatPreco(it.preco)}</b>${infoParcela(it.preco) ? `<span class="dest-info parc-info">${infoParcela(it.preco)}</span>` : ''}
                   ${ext ? `<a class="dest-btn" href="${escAttr(ext)}" target="_blank" rel="noopener sponsored">Matricule-se</a>` : `<button type="button" class="dest-btn" data-abrir="${it.id}">Matricule-se</button>`}
                 </div></article>`; }).join('')}
           </div>
@@ -4097,7 +4119,7 @@ body.hero-pronto .cena.video-ok .hero-video video{animation:videoEntra 3.6s cubi
     if (!parcLer('tokenParceiro')){
       box.innerHTML = `
         ${BOTAO_VOLTAR}
-        <div class="compras-topo"><div><h1>Área do advogado parceiro</h1></div></div>
+        <div class="compras-topo"><div><h1>Área restrita</h1></div></div>
         <div class="portal-painel" style="max-width:520px;">
           <h3>Entrar</h3>
           <p>Acesso restrito a advogados parceiros do escritório, com documentos protegidos por sigilo profissional.</p>
@@ -4149,7 +4171,7 @@ body.hero-pronto .cena.video-ok .hero-video video{animation:videoEntra 3.6s cubi
       ${BOTAO_VOLTAR}
       ${parcPrevia() ? `<div class="parc-previa" role="status"><b>Visualização do administrador.</b> Você está vendo o painel exatamente como o advogado vê, somente para leitura. Esta janela expira em 30 minutos.</div>` : ''}
       <div class="compras-topo">
-        <div><h1>Área do advogado parceiro</h1>${nome && !parcPrevia() ? `<p>Olá, ${escapeHtml(nome)}</p>` : ''}</div>
+        <div><h1>Área restrita</h1>${nome && !parcPrevia() ? `<p>Olá, ${escapeHtml(nome)}</p>` : ''}</div>
         <button class="btn btn-outline" id="parcSair">${parcPrevia() ? 'Fechar visualização' : 'Sair'}</button>
       </div>
       <nav class="portal-abas parc-abas">${PARC_ABAS.map(a => `<a href="#${a.hash}" class="${a.id === aba ? 'ativa' : ''}">${a.nome}</a>`).join('')}</nav>
@@ -4646,6 +4668,7 @@ body.hero-pronto .cena.video-ok .hero-video video{animation:videoEntra 3.6s cubi
         </div>
         <div class="carrinho-item-right">
           <span class="price">${formatPreco(i.preco)}</span>
+          ${infoParcela(i.preco) ? `<small class="parc-info">${infoParcela(i.preco)}</small>` : ''}
           <button class="carrinho-remover" aria-label="Remover">✕</button>
         </div>
       </div>`).join('') : '<p style="color:var(--cream-2);">Seu carrinho está vazio.</p>';
@@ -4663,6 +4686,9 @@ body.hero-pronto .cena.video-ok .hero-video video{animation:videoEntra 3.6s cubi
             <span>Total da Compra</span>
             <span class="price" style="font-size:1.3rem;">${formatPreco(total)}</span>
           </div>
+          ${lista.length ? `<div class="carrinho-formas"><b>Formas de pagamento</b>
+            <ul><li>Cartão de crédito${parcelasDe(total) >= 2 ? ': <strong>em até ' + parcelasDe(total) + 'x</strong>' : ''}</li><li>Pix</li><li>Boleto bancário</li></ul>
+            <small>Pagamento pelo Mercado Pago, em ambiente seguro. As parcelas e eventuais juros do cartão aparecem na tela de pagamento antes de você confirmar.</small></div>` : ''}
           <button class="btn btn-gold" id="btnFinalizarCompra" ${lista.length ? '' : 'disabled'}>Finalizar a Compra</button>
           <a href="#livros-todos" class="btn btn-outline" style="justify-content:center;">Continuar Comprando</a>
           <p class="carrinho-cupom">🏷️ Possui cupom de desconto? Você poderá usar na etapa de pagamento.</p>
@@ -5140,6 +5166,68 @@ body.hero-pronto .cena.video-ok .hero-video video{animation:videoEntra 3.6s cubi
       });
     }
 
+
+    // Caixa para o cliente preencher o valor, a forma e as parcelas do pagamento (vai ao escritório e ao Painel de pagamento)
+    const itensPag = () => [
+      ...prev.map(p => ({ k: 'p' + Number(p.id), rot: 'Honorários combinados' + (p.numero ? ' · processo ' + p.numero : ''), valor: Number(p.honorarios || 0), parc: 12 })),
+      ...pend.map(c => ({ k: 'c' + Number(c.id), rot: (c.descricao || 'Honorários') + ' · cobrança #' + Number(c.id), valor: Number(c.valor || 0), parc: Math.max(1, Math.min(12, Number(c.max_parcelas) || 1)) })),
+    ];
+    function simuladorHtml(){
+      const it = itensPag(); if (!it.length) return '';
+      const formas = [['pix', 'Pix'], ['cartao', 'Cartão de crédito'], ['boleto', 'Boleto'], ['dinheiro', 'Dinheiro']].concat(cfg.contas_ted ? [['ted', 'TED / transferência']] : []);
+      return `<form class="hon-simula" id="honSimula" novalidate>
+        <h4 class="hon-h" style="margin-top:22px;">Informe o valor do pagamento</h4>
+        <p class="compra-meta" style="margin:0 0 12px;">Preencha abaixo quanto e como você quer pagar. O escritório recebe a sua escolha e confirma com você; para pagar o valor total na hora, use o Painel de pagamento.</p>
+        <div class="hon-simula-grade">
+          <label>Cobrança<select id="hsItem">${it.map(x => `<option value="${x.k}">${escapeHtml(x.rot)} — ${formatPreco(x.valor)}</option>`).join('')}</select></label>
+          <label>Valor que deseja pagar (R$)<input id="hsValor" type="text" inputmode="decimal" autocomplete="off" placeholder="0,00"></label>
+          <label>Forma de pagamento<select id="hsForma">${formas.map(([v, n]) => `<option value="${v}">${n}</option>`).join('')}</select></label>
+          <label id="hsParcWrap" style="display:none">Parcelas no cartão<select id="hsParc"></select></label>
+        </div>
+        <p class="hon-simula-resumo" id="hsResumo" role="status"></p>
+        <label style="display:block;margin-top:8px;">Observação (opcional)<textarea id="hsObs" rows="2" maxlength="600"></textarea></label>
+        <div class="portal-acoes" style="margin-top:12px;"><button type="submit" class="btn btn-gold">Enviar ao escritório</button><button type="button" class="btn btn-outline" id="hsPainel">Ir para o Painel de pagamento</button><span class="pag-ok" id="hsOk" role="status"></span></div>
+      </form>`;
+    }
+    function ligarSimulador(){
+      const f = pane.querySelector('#honSimula'); if (!f) return;
+      const it = itensPag(), $ = (i) => f.querySelector('#' + i);
+      const num = (v) => { const n = Number(String(v).replace(/\./g, '').replace(',', '.')); return isFinite(n) ? n : NaN; };
+      const atual = () => it.find(x => x.k === $('hsItem').value) || it[0];
+      const reais = (n) => formatPreco(Math.round(n * 100) / 100);
+      function atualizar(manual){
+        const x = atual(); if (!manual) $('hsValor').value = x.valor.toFixed(2).replace('.', ',');
+        const cartao = $('hsForma').value === 'cartao'; $('hsParcWrap').style.display = cartao ? '' : 'none';
+        const pcs = $('hsParc'), max = Math.max(1, x.parc), antes = Number(pcs.value) || 1;
+        if (pcs.options.length !== max) pcs.innerHTML = Array.from({ length: max }, (_, i) => `<option value="${i + 1}">${i + 1}x</option>`).join('');
+        pcs.value = String(Math.min(antes, max));
+        const v = num($('hsValor').value), n = Number(pcs.value) || 1, rs = $('hsResumo');
+        if (!(v > 0)) { rs.textContent = 'Digite o valor que deseja pagar.'; return; }
+        rs.textContent = 'Você vai informar ' + reais(v) + (cartao && n > 1 ? ', em ' + n + 'x de aproximadamente ' + reais(v / n) + ' (juros do cartão, se houver, aparecem na hora de pagar)' : '') + '.' + (v > x.valor + 0.005 ? ' Atenção: o valor é maior que o da cobrança.' : v < x.valor - 0.005 ? ' Valor menor que o total (' + reais(x.valor) + '): o escritório confirma com você.' : '');
+      }
+      $('hsItem').addEventListener('change', () => atualizar(false));
+      $('hsForma').addEventListener('change', () => atualizar(true));
+      $('hsParc').addEventListener('change', () => atualizar(true));
+      $('hsValor').addEventListener('input', () => atualizar(true));
+      $('hsPainel').addEventListener('click', () => abrirAba('painel'));
+      atualizar(false);
+      f.addEventListener('submit', async (e) => {
+        e.preventDefault(); const ok = $('hsOk'), x = atual(), v = num($('hsValor').value), forma = $('hsForma').value;
+        ok.textContent = '';
+        if (!(v > 0)) { ok.textContent = 'Digite um valor maior que zero.'; return; }
+        if (v > x.valor + 0.005) { ok.textContent = 'O valor não pode ser maior que ' + reais(x.valor) + '.'; return; }
+        const n = Number($('hsParc').value) || 1, obs = $('hsObs').value.trim();
+        const mensagem = 'Valor que o cliente deseja pagar: ' + reais(v) + (forma === 'cartao' && n > 1 ? ' em ' + n + 'x' : '') + '.' + (obs ? ' ' + obs : '');
+        const btn = f.querySelector('button[type=submit]'); btn.disabled = true;
+        try{
+          const id = Number(x.k.slice(1));
+          await apiAluno(x.k[0] === 'c' ? `/area-cliente/honorarios/${id}/forma` : `/area-cliente/honorarios/previsto/${id}/forma`, { method: 'POST', json: { forma, mensagem } });
+          ok.textContent = 'Enviado! O escritório recebeu o valor e a forma que você informou e vai confirmar com você.';
+        }catch(err){ ok.textContent = err.message; }
+        btn.disabled = false;
+      });
+    }
+
     // ----- 2. Formas de pagamento
     function abaFormas(){
       const card = (t, d, extra) => `<div class="hon-forma"><h5>${t}</h5><p>${d}</p>${extra || ''}</div>`;
@@ -5149,7 +5237,8 @@ body.hero-pronto .cena.video-ok .hero-video video{animation:videoEntra 3.6s cubi
         ${card('Boleto', escapeHtml(cfg.texto_boleto || ''))}
         ${card('Dinheiro', escapeHtml(cfg.texto_dinheiro || ''))}
         ${cfg.contas_ted ? card('TED / transferência', 'Dados bancários do escritório para transferência. Depois de pagar, avise pelo Painel de pagamento.', `<pre class="hon-ted">${escapeHtml(cfg.contas_ted)}</pre>`) : ''}
-      </div>${cfg.texto_geral ? `<p class="compra-meta" style="margin-top:14px;">${escapeHtml(cfg.texto_geral)}</p>` : ''}`;
+      </div>${cfg.texto_geral ? `<p class="compra-meta" style="margin-top:14px;">${escapeHtml(cfg.texto_geral)}</p>` : ''}` + simuladorHtml();
+      ligarSimulador();
       const cp = pane.querySelector('[data-copiar]'); if (cp) cp.addEventListener('click', (ev) => { try{ navigator.clipboard.writeText(ev.target.dataset.copiar); ev.target.textContent = 'Copiado'; }catch(er){} });
     }
 
@@ -5784,7 +5873,7 @@ body.hero-pronto .cena.video-ok .hero-video video{animation:videoEntra 3.6s cubi
     const resumo = lista.length === 1
       ? escapeHtml(lista[0].titulo)
       : `${lista.length} itens`;
-    checkoutItemEl.innerHTML = `<b>${resumo}</b> — ${formatPreco(totalCarrinho(lista))}`;
+    checkoutItemEl.innerHTML = `<b>${resumo}</b> — ${formatPreco(totalCarrinho(lista))}${infoParcela(totalCarrinho(lista)) ? `<br><small class="parc-info">Cartão de crédito em até ${parcelasDe(totalCarrinho(lista))}x · Pix · Boleto</small>` : ''}`;
     checkoutErroEl.classList.remove('show');
     checkoutErroEl.textContent = '';
     checkoutNomeEl.value = '';
