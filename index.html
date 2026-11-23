@@ -1521,6 +1521,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
   .hon-linha b{color:var(--cream);display:block;} .hon-linha .compra-meta{display:block;}
   .hon-linha-dir{display:flex;align-items:center;gap:12px;} .hon-linha-dir b{display:inline;}
   .hon-pane > .btn{margin-top:16px;}
+  .hon-ted{white-space:pre-wrap;font:inherit;background:rgba(173,129,91,.12);border-left:3px solid #AD815B;padding:10px 12px;margin:8px 0;font-size:.9rem}
   .hon-form{display:grid;grid-template-columns:1fr 1fr;gap:12px 16px;margin-bottom:16px;}
   .hon-form label{display:flex;flex-direction:column;gap:5px;font-size:.82rem;color:var(--cream-2);}
   .hon-form .hon-c2{grid-column:1/-1;}
@@ -4734,7 +4735,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     const l = r.cobrancas || [], prev = r.previstos || [], cfg = r.pagamento || {};
     const wa = WA_BASE + encodeURIComponent('Olá! Sou cliente e quero combinar o pagamento dos meus honorários.');
     const dt = (v) => v ? v.split('-').reverse().join('/') : '';
-    const FORMAS_ROT = { pix: 'Pix direto para o escritório', dinheiro: 'Dinheiro', cartao: 'Cartão de crédito', boleto: 'Boleto' };
+    const FORMAS_ROT = { pix: 'Pix direto para o escritório', dinheiro: 'Dinheiro', cartao: 'Cartão de crédito', boleto: 'Boleto', ted: 'TED / transferência' };
     if (!l.length && !prev.length){
       alvo.innerHTML = `<div class="compras-vazio"><p>Você não tem honorários cadastrados no momento.</p><p style="font-size:0.88rem;margin-top:10px;">Se esperava ver valores aqui, confirme se o e-mail da sua conta é o mesmo que você informou ao escritório. <a href="${wa}" target="_blank" rel="noopener" style="color:var(--gold-light);text-decoration:underline;">Falar com o escritório</a>.</p></div>`;
       return;
@@ -4743,7 +4744,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
     const somaPend = pend.reduce((n, c) => n + Number(c.valor || 0), 0) + prev.reduce((n, p) => n + Number(p.honorarios || 0), 0);
     const somaPago = pagas.reduce((n, c) => n + Number(c.valor || 0), 0);
     const comVenc = pend.filter(c => c.vencimento).sort((a, b) => a.vencimento.localeCompare(b.vencimento))[0];
-    const meios = [r.pix_ativo ? 'Pix' : '', r.pagamento_online ? 'Mercado Pago' : 'Cartão', 'Boleto', 'Dinheiro'].filter(Boolean);
+    const meios = [r.pix_ativo ? 'Pix' : '', r.pagamento_online ? 'Mercado Pago' : 'Cartão', 'Boleto', 'Dinheiro', cfg.contas_ted ? 'TED' : ''].filter(Boolean);
     const qtdAbertas = pend.length + prev.length;
 
     const kpi = (rot, val, sub, cls) => `<div class="hon-kpi"><span class="hon-kpi-rot">${rot}</span><b class="hon-kpi-val ${cls || ''}">${val}</b><span class="hon-kpi-sub">${sub}</span></div>`;
@@ -4778,7 +4779,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
 
     // ----- 1. Dados do cliente
     function abaDados(){
-      const c = cli || {};
+      const c = cli || {}, pg = c.pagador || {};
       pane.innerHTML = `<h4 class="hon-h">Dados do cliente</h4><p class="compra-meta" style="margin-bottom:14px;">Esses dados aparecem no contrato e nos recibos. Confira e corrija se precisar.</p>
         <div class="hon-form">
           <label class="hon-c2">Nome completo<input id="hdNome" maxlength="150" value="${escAttr(c.nome)}"></label>
@@ -4789,13 +4790,20 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
           <label class="hon-c2">Nacionalidade, estado civil e profissão<input id="hdQual" maxlength="200" placeholder="brasileiro, casado, professor" value="${escAttr(c.qualificacao)}"></label>
           <label class="hon-c2">Endereço completo<input id="hdEnd" maxlength="300" placeholder="Rua, número, bairro, cidade, UF, CEP" value="${escAttr(c.endereco)}"></label>
         </div>
+        <h4 class="hon-h" style="margin-top:18px;">Outra pessoa vai pagar? (opcional)</h4>
+        <p class="compra-meta" style="margin-bottom:10px;">Se um terceiro (familiar, empresa) pagar os honorários por você, informe quem é para constar no recibo.</p>
+        <div class="hon-form">
+          <label class="hon-c2">Nome do pagador<input id="hdPgNome" maxlength="150" value="${escAttr(pg.nome)}"></label>
+          <label>CPF ou CNPJ do pagador<input id="hdPgDoc" maxlength="20" inputmode="numeric" value="${escAttr(pg.doc)}"></label>
+          <label>Vínculo com o cliente<input id="hdPgVinc" maxlength="80" placeholder="Ex.: cônjuge, empresa do cliente" value="${escAttr(pg.vinculo)}"></label>
+        </div>
         <button type="button" class="btn btn-gold" id="hdSalvar">Salvar dados do cliente</button> <span class="pag-ok" id="hdOk" role="status"></span>`;
       pane.querySelector('#hdSalvar').addEventListener('click', async (e) => {
         const btn = e.currentTarget, ok = pane.querySelector('#hdOk'); btn.disabled = true; ok.textContent = '';
         try{
           const v = (i) => pane.querySelector(i).value.trim();
-          await apiAluno('/area-cliente/dados', { method: 'PUT', json: { nome: v('#hdNome'), cpf: v('#hdCpf'), rg: v('#hdRg'), telefone: v('#hdTel'), qualificacao: v('#hdQual'), endereco: v('#hdEnd') } });
-          cli = Object.assign(cli || {}, { nome: v('#hdNome'), cpf: v('#hdCpf'), rg: v('#hdRg'), telefone: v('#hdTel'), qualificacao: v('#hdQual'), endereco: v('#hdEnd') });
+          await apiAluno('/area-cliente/dados', { method: 'PUT', json: { nome: v('#hdNome'), cpf: v('#hdCpf'), rg: v('#hdRg'), telefone: v('#hdTel'), qualificacao: v('#hdQual'), endereco: v('#hdEnd'), pagador: { nome: v('#hdPgNome'), doc: v('#hdPgDoc'), vinculo: v('#hdPgVinc') } } });
+          cli = Object.assign(cli || {}, { nome: v('#hdNome'), cpf: v('#hdCpf'), rg: v('#hdRg'), telefone: v('#hdTel'), qualificacao: v('#hdQual'), endereco: v('#hdEnd'), pagador: { nome: v('#hdPgNome'), doc: v('#hdPgDoc'), vinculo: v('#hdPgVinc') } });
           ok.textContent = 'Dados salvos.';
         }catch(err){ ok.textContent = err.message; }
         btn.disabled = false;
@@ -4810,6 +4818,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
         ${card('Cartão de crédito', escapeHtml(cfg.texto_cartao || ''), r.pagamento_online ? '<p class="compra-meta">Também disponível online, pelo Mercado Pago.</p>' : '')}
         ${card('Boleto', escapeHtml(cfg.texto_boleto || ''))}
         ${card('Dinheiro', escapeHtml(cfg.texto_dinheiro || ''))}
+        ${cfg.contas_ted ? card('TED / transferência', 'Dados bancários do escritório para transferência. Depois de pagar, avise pelo Painel de pagamento.', `<pre class="hon-ted">${escapeHtml(cfg.contas_ted)}</pre>`) : ''}
       </div>${cfg.texto_geral ? `<p class="compra-meta" style="margin-top:14px;">${escapeHtml(cfg.texto_geral)}</p>` : ''}`;
       const cp = pane.querySelector('[data-copiar]'); if (cp) cp.addEventListener('click', (ev) => { try{ navigator.clipboard.writeText(ev.target.dataset.copiar); ev.target.textContent = 'Copiado'; }catch(er){} });
     }
@@ -4822,6 +4831,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
         <button class="btn btn-outline" data-forma="cartao">Cartão de crédito</button>
         <button class="btn btn-outline" data-forma="boleto">Boleto</button>
         <button class="btn btn-outline" data-forma="dinheiro">Dinheiro</button>
+        ${cfg.contas_ted ? '<button class="btn btn-outline" data-forma="ted">TED / transferência</button>' : ''}
         <div class="pag-detalhe" style="display:none"></div></div>`;
       const blocos = [
         ...prev.map(p => `<div class="hon-item"><div class="hon-item-cab"><div><span class="carrinho-item-tag">HONORÁRIOS ADVOCATÍCIOS${p.numero ? ' · PROCESSO ' + escapeHtml(p.numero) : ''}</span><h4>Pagamento de honorários advocatícios</h4><span class="compra-meta">${formatPreco(p.honorarios)} · valor combinado com o escritório. Escolha abaixo como prefere pagar.</span></div></div>${botoes('p', Number(p.id), null)}</div>`),
@@ -4856,7 +4866,7 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
         const b = e.target.closest('button[data-forma]'); if (!b) return;
         const forma = b.dataset.forma, det = box.querySelector('.pag-detalhe'), item = box.dataset.item;
         box.querySelectorAll('button').forEach(x => x.classList.toggle('sel', x === b));
-        const info = `<p style="margin:0 0 8px;">${escapeHtml(forma === 'dinheiro' ? (cfg.texto_dinheiro || '') : forma === 'cartao' ? (cfg.texto_cartao || '') : (cfg.texto_boleto || ''))}</p>`;
+        const info = forma === 'ted' ? `<p style="margin:0 0 8px;">Faça a transferência para uma das contas abaixo e clique em confirmar para avisar o escritório.</p><pre class="hon-ted">${escapeHtml(cfg.contas_ted || '')}</pre>` : `<p style="margin:0 0 8px;">${escapeHtml(forma === 'dinheiro' ? (cfg.texto_dinheiro || '') : forma === 'cartao' ? (cfg.texto_cartao || '') : (cfg.texto_boleto || ''))}</p>`;
         det.style.display = 'block';
         det.innerHTML = `${info}<textarea rows="3" maxlength="1000" placeholder="${forma === 'cartao' ? 'Observação (ex.: em quantas parcelas prefere pagar)' : 'Observação para o escritório (opcional)'}"></textarea><button type="button" class="btn btn-gold" data-confirmar="${forma}">Confirmar esta forma de pagamento</button> <span class="pag-ok" role="status"></span>`;
         det.querySelector('[data-confirmar]').addEventListener('click', async (ev) => {
@@ -4872,8 +4882,14 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
 
     // ----- 4. Histórico e recibos
     function abaHistorico(){
-      pane.innerHTML = `<h4 class="hon-h">Pagamentos confirmados</h4>` + (pagas.length ? `<div class="hon-tabela"><table><thead><tr><th>Data</th><th>Descrição</th><th>Forma</th><th>Valor</th><th></th></tr></thead><tbody>${pagas.map(c => `<tr><td>${dt(c.pago_em)}</td><td>${escapeHtml(c.descricao || 'Honorários advocatícios')}</td><td>${escapeHtml(c.forma_pagamento || '—')}</td><td>${formatPreco(c.valor)}</td><td><button type="button" class="btn btn-outline" data-recibo="${Number(c.id)}">Ver recibo</button></td></tr>`).join('')}</tbody></table></div>` : `<p class="compra-meta">Os pagamentos confirmados pelo escritório aparecem aqui, com o recibo para imprimir ou salvar em PDF.</p>`);
+      pane.innerHTML = `<h4 class="hon-h">Pagamentos confirmados</h4>` + (pagas.length ? `<div class="hon-tabela"><table><thead><tr><th>Data</th><th>Descrição</th><th>Forma</th><th>Valor</th><th></th></tr></thead><tbody>${pagas.map(c => `<tr><td>${dt(c.pago_em)}</td><td>${escapeHtml(c.descricao || 'Honorários advocatícios')}</td><td>${escapeHtml(c.forma_pagamento || '—')}</td><td>${formatPreco(c.valor)}</td><td><button type="button" class="btn btn-outline" data-recibo="${Number(c.id)}">Ver recibo</button> <button type="button" class="btn btn-outline" data-reciboemail="${Number(c.id)}">Enviar por e-mail</button></td></tr>`).join('')}</tbody></table></div>` : `<p class="compra-meta">Os pagamentos confirmados pelo escritório aparecem aqui, com o recibo para imprimir ou salvar em PDF.</p>`);
       pane.querySelectorAll('[data-recibo]').forEach(b => b.addEventListener('click', () => abrirRecibo(pagas.find(c => c.id === Number(b.dataset.recibo)), cli)));
+      pane.querySelectorAll('[data-reciboemail]').forEach(b => b.addEventListener('click', async () => {
+        b.disabled = true; msg.textContent = '';
+        try{ const d = await apiAluno(`/area-cliente/honorarios/${Number(b.dataset.reciboemail)}/recibo-email`, { method: 'POST' }); msg.textContent = 'Recibo enviado para ' + d.para + '.'; }
+        catch(err){ msg.textContent = err.message; }
+        b.disabled = false;
+      }));
     }
     abrirAba(qtdAbertas ? 'painel' : 'resumo');
   }
