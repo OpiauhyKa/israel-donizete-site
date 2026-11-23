@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Israel Donizete da Silva | Advocacia Trabalhista e Previdenciária</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
@@ -51,9 +52,9 @@
 
   /* ---------- HEADER ---------- */
   header{
-    background:rgba(20,38,47,0.72);
-    backdrop-filter:blur(14px) saturate(140%);
-    -webkit-backdrop-filter:blur(14px) saturate(140%);
+    background:rgba(20,38,47,0.84);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
     position:sticky;top:0;z-index:50;
     border-bottom:1px solid var(--navy-line);
     border-radius:0 0 22px 22px;
@@ -1209,7 +1210,7 @@
 .cta-strip .btn-outline-dark:hover{color:var(--cream);}
 
 /* chamada principal da página inicial respira de leve */
-body.hero-pronto .hero-actions .btn-gold:not(:hover){animation:visPulso 3.6s ease-out 2.2s infinite;}
+body.hero-pronto .hero-actions .btn-gold:not(:hover){animation:visPulso 3.6s ease-out 2.2s 3;}
 @keyframes visPulso{
   0%{box-shadow:0 1px 0 rgba(255,255,255,.35) inset,0 6px 16px -6px rgba(154,112,73,.55),0 0 0 0 rgba(217,182,142,.38);}
   70%,100%{box-shadow:0 1px 0 rgba(255,255,255,.35) inset,0 6px 16px -6px rgba(154,112,73,.55),0 0 0 14px rgba(217,182,142,0);}
@@ -1310,7 +1311,7 @@ body.hero-pronto .hero-meta{opacity:1;transform:none;transition:opacity .8s ease
 .cta-strip{
   position:relative;overflow:hidden;
   background:linear-gradient(120deg,#A47A55 0%,#B98E65 35%,#D3AE84 55%,#B98E65 72%,#A47A55 100%);
-  background-size:220% 100%;animation:visCobre 14s ease-in-out infinite alternate;
+  background-size:220% 100%;animation:visCobre 14s ease-in-out 0s 2 alternate both;
   box-shadow:0 30px 60px -30px rgba(173,129,91,.55);
 }
 @keyframes visCobre{from{background-position:0% 0;}to{background-position:100% 0;}}
@@ -1416,9 +1417,9 @@ input:not([type=checkbox]):not([type=radio]):not([type=file]):focus,select:focus
 .whatsapp-float{position:fixed;}
 .whatsapp-float::before{
   content:"";position:absolute;inset:0;border-radius:50%;z-index:-1;
-  box-shadow:0 0 0 0 rgba(37,211,102,.45);animation:visZap 5s ease-out 3s infinite;
+  background:#25D366;opacity:0;animation:visZap 5s ease-out 3s infinite;will-change:transform,opacity;
 }
-@keyframes visZap{0%{box-shadow:0 0 0 0 rgba(37,211,102,.45);}30%,100%{box-shadow:0 0 0 18px rgba(37,211,102,0);}}
+@keyframes visZap{0%{transform:scale(1);opacity:.45;}30%,100%{transform:scale(1.7);opacity:0;}}
 
 /* voltar ao topo */
 #visualTopo{
@@ -1696,6 +1697,31 @@ body.hero-pronto .cena.video-ok .hero-video video{animation:videoEntra 3.6s cubi
 .hon-simula select,.hon-simula input,.hon-simula textarea{display:block;width:100%;margin-top:5px;padding:10px 12px;border-radius:8px;border:1px solid var(--navy-line);background:var(--navy-deep);color:var(--cream);font:400 .95rem 'Source Sans 3',sans-serif;}
 .hon-simula select:focus,.hon-simula input:focus,.hon-simula textarea:focus{outline:2px solid var(--gold-light);outline-offset:1px;}
 .hon-simula-resumo{margin:12px 0 0;color:var(--cream);font-size:.92rem;min-height:1.3em;}
+
+/* v37: desempenho. Faixas que andam só rodam quando aparecem na tela; seções abaixo da dobra só são desenhadas ao chegar perto */
+.pausa-fora,.pausa-fora *{animation-play-state:paused !important;}
+#sobre,.secao-situacao,.secao-consulta,.secao-conta,.secao-apres,footer{content-visibility:auto;contain-intrinsic-size:auto 620px;}
+.whatsapp-float{contain:layout;}
+@media (max-width:820px){
+  body.hero-pronto .cena-camada svg{animation:cenaEntra 3.4s cubic-bezier(.16,.84,.3,1) both;}
+  body.hero-pronto .cena-luz{animation:none;opacity:0;}
+  .cena-camada{will-change:auto;}
+}
+@media (prefers-reduced-motion:reduce){ .whatsapp-float::before{animation:none;opacity:0;} .cta-strip{animation:none;} }
+
+/* v37: nada fora da tela */
+.shop-tabs{flex-wrap:wrap;}
+body{overflow-x:clip;}
+@media (min-width:961px){
+  header nav.main-nav > ul > li:nth-last-child(-n+6) > .dropdown{left:auto;right:0;}
+}
+
+/* v37: números do topo em 3 colunas no celular */
+@media (max-width:600px){
+  .hero-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+  .hero-meta div span.num{font-size:1.35rem;}
+  .hero-meta div span.label{font-size:.74rem;line-height:1.25;}
+}
 </style>
 </head>
 <body>
@@ -7230,6 +7256,21 @@ body.hero-pronto .cena.video-ok .hero-video video{animation:videoEntra 3.6s cubi
     if (es[0].isIntersecting) { var q = v.play(); if (q && q.catch) q.catch(function () {}); } else v.pause();
   }, { threshold: 0.02 }).observe(hero);
   document.addEventListener('visibilitychange', function () { if (document.hidden) v.pause(); else if (mostrou) { var q = v.play(); if (q && q.catch) q.catch(function () {}); } });
+})();
+</script>
+<script>
+// Desempenho: faixas animadas só andam enquanto estão visíveis
+(function () {
+  if (!('IntersectionObserver' in window)) return;
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { e.target.classList.toggle('pausa-fora', !e.isIntersecting); });
+  }, { rootMargin: '80px' });
+  var vistos = new WeakSet();
+  function varrer() {
+    document.querySelectorAll('.faixa-areas,.obras-faixa,.cta-strip').forEach(function (el) { if (!vistos.has(el)) { vistos.add(el); io.observe(el); } });
+  }
+  varrer(); setTimeout(varrer, 2500); setTimeout(varrer, 7000);
+  window.addEventListener('hashchange', function () { setTimeout(varrer, 600); setTimeout(varrer, 2500); });
 })();
 </script>
 </body>
